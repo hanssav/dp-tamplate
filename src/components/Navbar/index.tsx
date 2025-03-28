@@ -39,6 +39,9 @@ const NavbarMenu: React.FC<NavbarProps> = ({
             <HiMenu size={24} />
           </button>
 
+          {/* navbar toogle untuk mobile view */}
+          {/* <Navbar.Toggle /> */}
+
           <Navbar.Collapse>
             {navLinks.map(({ href, label, active }) => (
               <Navbar.Link key={label} href={href} active={active}>
