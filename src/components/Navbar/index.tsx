@@ -1,8 +1,9 @@
-import { Navbar, Button, DarkThemeToggle } from 'flowbite-react';
-import { HiMenu, HiViewGrid } from 'react-icons/hi';
-import { useState } from 'react';
+import { Navbar, DarkThemeToggle } from 'flowbite-react';
+import { HiViewGrid } from 'react-icons/hi';
+import { useEffect, useState } from 'react';
 import { navLinks } from '../../datas/components/navLinks';
-import UserDropdown from './userDropdown';
+import UserDropdown from './UserDropdown';
+import Button from '../Button';
 
 interface NavbarProps {
   toggleMobileSidebar: () => void;
@@ -19,36 +20,33 @@ const NavbarMenu: React.FC<NavbarProps> = ({
     setIsRightSidebarOpen(!isRightSidebarOpen);
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <Navbar
       fluid
       className="bg-white px-4 shadow-md dark:bg-gray-900 dark:text-white"
     >
       <div className="flex w-full items-center justify-between">
-        <div className="flex items-center">
-          {/* Button Mobile Sidebar */}
-          <Button size="sm" className="md:hidden" onClick={toggleMobileSidebar}>
-            <HiMenu size={20} />
-          </Button>
-
-          {/* Button Sidebar untuk Desktop */}
-          <button
-            onClick={toggleSidebar}
-            className="hidden rounded-md p-2 hover:bg-gray-200 dark:hover:bg-gray-700 md:block"
-          >
-            <HiMenu size={24} />
-          </button>
-
-          {/* navbar toogle untuk mobile view */}
-          {/* <Navbar.Toggle /> */}
-
-          <Navbar.Collapse>
-            {navLinks.map(({ href, label, active }) => (
-              <Navbar.Link key={label} href={href} active={active}>
-                {label}
-              </Navbar.Link>
-            ))}
-          </Navbar.Collapse>
+        <div className="flex items-center gap-x-1">
+          {navLinks(isMobile, toggleMobileSidebar, toggleSidebar).map(
+            ({ label, icon, onClick, size, className }) => (
+              <Button
+                color="light"
+                onClick={onClick}
+                size={size}
+                className={className}
+              >
+                {label} {icon}
+              </Button>
+            )
+          )}
         </div>
 
         {/* Grid Dots, Dark Mode Toggle, dan User Dropdown */}
