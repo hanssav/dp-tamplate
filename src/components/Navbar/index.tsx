@@ -37,9 +37,9 @@ const NavbarMenu: React.FC<NavbarProps> = ({
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-x-1">
           {navLinks(isMobile, toggleMobileSidebar, toggleSidebar).map(
-            ({ label, icon, onClick, size, className, rounded }) => (
+            ({ label, icon, onClick, size, className, rounded }, index) => (
               <Button
-                key={label}
+                key={label || index}
                 color="light"
                 onClick={onClick}
                 size={size}
