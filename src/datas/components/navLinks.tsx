@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
-import { HiChevronDown, HiMenu, HiOutlineSearch } from 'react-icons/hi'; // Import icons from react-icons
+import { HiChevronDown, HiMenu, HiOutlineSearch } from 'react-icons/hi';
 
 export type NavLink = {
   href?: string;
-  size?: 'icon' | 'sm' | 'md' | 'lg';
+  size?: 'icon' | 'xs' | 'sm' | 'md' | 'lg';
   label?: string;
   active?: boolean;
+  rounded?: boolean;
   icon?: ReactNode;
   className?: string;
   onClick?: () => void;
@@ -21,29 +22,31 @@ export const navLinks = (
       active: true,
       icon: <HiMenu size={20} />,
       size: 'icon',
+      rounded: true,
       onClick: isMobile ? toggleMobileSidebar : toggleSidebar,
     },
     {
       active: true,
       icon: <HiOutlineSearch size={20} />,
       size: 'icon',
+      rounded: true,
       onClick: () => {},
     },
     {
       href: '#',
       label: 'Apps',
       active: true,
-      size: 'sm',
+      size: 'xs',
       icon: <HiChevronDown size={20} />,
       className: 'hidden md:block',
     },
     {
       href: '#',
       label: 'Chat',
-      size: 'sm',
+      size: 'xs',
       active: true,
     },
-    { href: '#', label: 'Calendar', active: false, size: 'sm' },
-    { href: '#', label: 'Email', active: false, size: 'sm' },
+    { href: '#', label: 'Calendar', active: false, size: 'xs' },
+    { href: '#', label: 'Email', active: false, size: 'xs' },
   ];
 };

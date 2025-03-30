@@ -1,5 +1,5 @@
-import { Navbar, DarkThemeToggle } from 'flowbite-react';
-import { HiViewGrid } from 'react-icons/hi';
+import { Navbar, useThemeMode } from 'flowbite-react';
+import { HiViewGrid, HiOutlineMoon, HiOutlineBell } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import { navLinks } from '../../datas/components/navLinks';
 import UserDropdown from './UserDropdown';
@@ -28,6 +28,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const { mode, setMode } = useThemeMode();
   return (
     <Navbar
       fluid
@@ -36,12 +37,14 @@ const NavbarMenu: React.FC<NavbarProps> = ({
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-x-1">
           {navLinks(isMobile, toggleMobileSidebar, toggleSidebar).map(
-            ({ label, icon, onClick, size, className }) => (
+            ({ label, icon, onClick, size, className, rounded }) => (
               <Button
+                key={label}
                 color="light"
                 onClick={onClick}
                 size={size}
-                className={className}
+                rounded={rounded}
+                className={`${className}`}
               >
                 {label} {icon}
               </Button>
@@ -49,18 +52,40 @@ const NavbarMenu: React.FC<NavbarProps> = ({
           )}
         </div>
 
-        {/* Grid Dots, Dark Mode Toggle, dan User Dropdown */}
-        <div className="flex items-center gap-4">
-          {/* Grid Dots Button */}
-          <button
+        <div className="flex items-center gap-2">
+          <Button
+            color="light"
             onClick={handleRightSidebar}
-            className="rounded-md p-2 hover:bg-gray-200 dark:hover:bg-gray-700"
+            size="icon"
+            rounded={true}
           >
             <HiViewGrid size={24} />
-          </button>
+          </Button>
 
-          {/* Dark Mode Toggle dari Flowbite */}
-          <DarkThemeToggle />
+          <Button
+            color="light"
+            onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
+            size="icon"
+            rounded={true}
+          >
+            <HiOutlineMoon size={24} />
+          </Button>
+
+          <div className="relative">
+            <Button
+              color="light"
+              size="icon"
+              rounded
+              onClick={() => {}}
+              className="relative"
+            >
+              <HiOutlineBell size={24} />
+            </Button>
+
+            <span className="absolute right-2 top-2 z-20 -mr-1 -mt-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-xs text-white">
+              1
+            </span>
+          </div>
 
           <UserDropdown />
         </div>

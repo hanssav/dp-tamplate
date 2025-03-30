@@ -1,4 +1,5 @@
 import { Dropdown, Avatar } from 'flowbite-react';
+import IMAGE_CONSTANTS from '../../helpers/imagesUrl';
 
 const UserDropdown: React.FC = () => {
   return (
@@ -6,7 +7,13 @@ const UserDropdown: React.FC = () => {
       arrowIcon={false}
       inline
       label={
-        <Avatar alt="User" img="https://i.pravatar.cc/150?img=3" rounded />
+        <Avatar
+          className="px-2"
+          size="sm"
+          alt="User"
+          img={IMAGE_CONSTANTS.USER_PROFILE}
+          rounded
+        />
       }
     >
       <Dropdown.Header>

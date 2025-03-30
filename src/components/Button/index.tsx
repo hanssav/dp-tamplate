@@ -1,16 +1,16 @@
-import type { CustomFlowbiteTheme } from 'flowbite-react';
-import { Button as ButtonFlowbite } from 'flowbite-react';
+import { Button as ButtonFlowbite, CustomFlowbiteTheme } from 'flowbite-react';
 
 const customTheme = {
   color: {
     primary:
-      'border border-transparent bg-primary text-white focus:outline-none focus:ring-0 enabled:hover:bg-primary/90 dark:bg-primary dark:focus:ring-0 dark:enabled:hover:bg-primary/90',
+      'bg-primary text-white focus:outline-none focus:ring-0 enabled:hover:bg-primary/90 dark:bg-primary dark:focus:ring-0 dark:enabled:hover:bg-primary/90',
     secondary:
-      'border border-primary bg-white text-primary focus:ring-0 focus:ring-cyan-300 enabled:hover:bg-secondary dark:border-primary dark:bg-darkBg dark:text-primary dark:focus:ring-gray-700 dark:enabled:hover:border-primary dark:enabled:hover:bg-darkHover',
+      'border border-primary bg-transparent text-primary focus:ring-0 enabled:hover:bg-secondary dark:bg-transparent dark:enabled:hover:bg-darkHover',
     light:
-      'bg-white text-gray-900 focus:ring-0 focus:ring-transparent enabled:hover:bg-gray-100 dark:bg-transparent dark:text-white dark:focus:ring-gray-700 dark:enabled:hover:bg-gray-700',
+      'bg-transparent text-gray-900 focus:ring-0 focus:ring-transparent enabled:hover:bg-secondary dark:bg-transparent dark:text-white dark:enabled:hover:bg-gray-700',
   },
   size: {
+    xs: 'px-0 py-1 text-sm',
     sm: 'px-0.5 py-1 text-sm',
     md: 'px-4 py-1 text-sm',
     lg: 'px-5 py-1.5 text-base',
@@ -43,7 +43,7 @@ export default function Button({
   return (
     <ButtonFlowbite
       theme={customTheme as CustomFlowbiteTheme['button']}
-      className={`${className} ${customTheme.color[color]} ${customTheme.size[size]} ${rounded ? customTheme.rounded : ''} transition-colors duration-300`}
+      className={`${className} ${customTheme.color[color]} ${customTheme.size[size]} ${rounded ? customTheme.rounded : ''}`}
       onClick={onClick}
       {...props}
     >

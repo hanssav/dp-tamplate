@@ -26,7 +26,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
   return (
     <Sidebar
       aria-label="Sidebar navigation"
-      className={`transition-all ${isSidebarOpen ? 'w-64' : 'w-24'} fixed inset-y-0 left-0 z-50 h-screen text-wrap bg-white text-gray-900 shadow-lg transition-transform dark:bg-gray-900 dark:text-white ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'} text-wrap md:relative md:translate-x-0 `}
+      className={`transition-all ${isSidebarOpen ? 'w-64' : 'w-24'} fixed inset-y-0 left-0 z-50 h-screen text-wrap bg-white text-gray-900 shadow-lg transition-transform dark:bg-gray-900 dark:text-white ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}  -wrap md:relative md:translate-x-0 `}
     >
       <div className="mb-5 flex items-center justify-between py-2">
         <SidebarLogo
