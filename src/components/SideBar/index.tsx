@@ -46,9 +46,9 @@ const SidebarMenu: React.FC<SidebarProps> = ({
       <SidebarItems>
         {menuItems.map(({ category, items }) => (
           <Sidebar.ItemGroup key={category}>
-            <h3 className="p-2 text-sm font-semibold text-gray-600 dark:text-gray-300">
+            <h4 className="p-2 text-sm/5 font-semibold text-gray-600 dark:text-gray-300">
               {category}
-            </h3>
+            </h4>
             {items.map(({ href, icon: Icon, label, subItems }) => (
               <div key={label}>
                 {subItems ? (
@@ -86,7 +86,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                   <Sidebar.Item
                     href={href}
                     icon={Icon}
-                    className={`${!isSidebarOpen && 'grid justify-items-center'}`}
+                    className={`${!isSidebarOpen && ' grid justify-items-center'}`}
                   >
                     {isSidebarOpen && label}
                   </Sidebar.Item>

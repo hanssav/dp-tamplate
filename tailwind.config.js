@@ -11,6 +11,9 @@ export default {
         darkHover: '#212D3E',
         darkBg: '#1C252E',
       },
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [flowbite.plugin()],

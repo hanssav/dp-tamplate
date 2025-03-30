@@ -15,7 +15,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     setIsMobileSidebarOpen(!isMobileSidebarOpen);
 
   return (
-    <div className="flex h-screen dark:bg-gray-900 dark:text-white">
+    <div className="flex h-screen font-sans dark:bg-gray-900 dark:text-white">
       <SidebarMenu
         isSidebarOpen={isSidebarOpen}
         isMobileSidebarOpen={isMobileSidebarOpen}
