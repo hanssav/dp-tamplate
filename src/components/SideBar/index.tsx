@@ -11,6 +11,21 @@ interface SidebarProps {
   toggleMobileSidebar: () => void;
 }
 
+const DotIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="h-5 w-5"
+  >
+    <circle cx="12" cy="12" r="4" fill="none" />
+  </svg>
+);
+
 const SidebarMenu: React.FC<SidebarProps> = ({
   isSidebarOpen,
   isMobileSidebarOpen,
@@ -26,27 +41,34 @@ const SidebarMenu: React.FC<SidebarProps> = ({
   return (
     <Sidebar
       aria-label="Sidebar navigation"
-      className={`transition-all ${isSidebarOpen ? 'w-64' : 'w-24'} fixed inset-y-0 left-0 z-50 h-screen text-wrap bg-white text-gray-900 shadow-lg transition-transform dark:bg-gray-900 dark:text-white ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}  -wrap md:relative md:translate-x-0 `}
+      className={`scrollbar-sidebar transition-all ${isSidebarOpen ? 'w-64' : 'w-24'} fixed inset-y-0 left-0 z-50 h-screen text-wrap bg-white text-gray-900 transition-transform dark:bg-gray-900 dark:text-white ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}  -wrap md:relative md:translate-x-0 `}
     >
-      <div className="mb-5 flex items-center justify-between py-2">
+      <div
+        className={twMerge(
+          'fixed left-0 top-0 z-50 flex h-[60px] w-full items-center bg-white px-4 pt-1 dark:bg-gray-900',
+          isMobileSidebarOpen ? 'justify-between' : 'justify-center'
+        )}
+      >
         <SidebarLogo
           imageSrc={imageSrc}
           isSidebarOpen={isSidebarOpen}
           isMobileSidebarOpen={isMobileSidebarOpen}
         />
 
-        <button
-          onClick={toggleMobileSidebar}
-          className="m-0 p-0 text-gray-900 dark:text-white md:hidden"
-        >
-          <HiX size={24} />
-        </button>
+        {isMobileSidebarOpen && (
+          <button
+            onClick={toggleMobileSidebar}
+            className="text-gray-900 dark:text-white md:hidden"
+          >
+            <HiX size={20} />
+          </button>
+        )}
       </div>
 
-      <SidebarItems>
+      <SidebarItems className="scrollbar-sidebar mt-[60px]">
         {menuItems.map(({ category, items }) => (
           <Sidebar.ItemGroup key={category}>
-            <h4 className="p-2 text-sm/5 font-semibold text-gray-600 dark:text-gray-300">
+            <h4 className="p-2 text-xs font-bold text-gray-600 dark:text-gray-300">
               {category}
             </h4>
             {items.map(({ href, icon: Icon, label, subItems }) => (
@@ -54,10 +76,12 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                 {subItems ? (
                   <Sidebar.Collapse
                     className={twMerge(
-                      !isSidebarOpen ? 'grid justify-items-center' : ''
+                      !isSidebarOpen
+                        ? 'grid justify-items-center text-sm'
+                        : 'ml-3 text-sm'
                     )}
-                    icon={Icon as React.FC<React.SVGProps<SVGSVGElement>>}
-                    label={isSidebarOpen ? label : ''}
+                    icon={(props) => <Icon {...props} className="h-5 w-5" />}
+                    label={isSidebarOpen ? label : undefined}
                     renderChevronIcon={(theme, open) => {
                       if (!isSidebarOpen) return <></>;
 
@@ -68,27 +92,34 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                           aria-hidden
                           className={twMerge(
                             theme.label.icon.open[open ? 'on' : 'off'],
-                            'rotate-0' // deleted rotate efect bawaan Flowbite
+                            'h-5 w-5 rotate-0'
                           )}
                         />
                       );
                     }}
                   >
-                    {subItems.map(
-                      ({ href, icon: SubIcon, label: subLabel }) => (
-                        <Sidebar.Item key={subLabel} href={href} icon={SubIcon}>
-                          {isSidebarOpen && subLabel}
-                        </Sidebar.Item>
-                      )
-                    )}
+                    {subItems.map(({ href, label: subLabel }) => (
+                      <Sidebar.Item key={subLabel} href={href} className="px-2">
+                        <div className="flex items-center gap-x-1">
+                          <DotIcon />
+                          {isSidebarOpen && (
+                            <span className="text-sm">{subLabel}</span>
+                          )}
+                        </div>
+                      </Sidebar.Item>
+                    ))}
                   </Sidebar.Collapse>
                 ) : (
                   <Sidebar.Item
                     href={href}
-                    icon={Icon}
-                    className={`${!isSidebarOpen && ' grid justify-items-center'}`}
+                    className={`${!isSidebarOpen && 'grid justify-items-center'}`}
                   >
-                    {isSidebarOpen && label}
+                    <div className="flex items-center gap-x-2">
+                      <Icon className="h-5 w-5" />{' '}
+                      {isSidebarOpen && (
+                        <span className="text-sm">{label}</span>
+                      )}{' '}
+                    </div>
                   </Sidebar.Item>
                 )}
               </div>

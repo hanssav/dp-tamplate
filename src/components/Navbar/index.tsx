@@ -30,10 +30,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
 
   const { mode, setMode } = useThemeMode();
   return (
-    <Navbar
-      fluid
-      className="bg-white px-4 shadow-md dark:bg-gray-900 dark:text-white"
-    >
+    <Navbar fluid className="bg-white px-4 dark:bg-gray-900 dark:text-white">
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-x-1">
           {navLinks(isMobile, toggleMobileSidebar, toggleSidebar).map(

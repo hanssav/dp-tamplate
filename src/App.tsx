@@ -5,7 +5,9 @@ import { HiMenu } from 'react-icons/hi';
 const App = () => {
   return (
     <DashboardLayout>
-      <h1 className="text-2xl font-bold">Welcome to the Dashboard</h1>
+      <div className="... col-span-4 col-start-2 h-12 bg-blue-200"></div>
+
+      {/* <h1 className="text-2xl font-bold">Welcome to the Dashboard</h1>
       <p className="my-4">This is the main content of the dashboard.</p>
 
       <div className="flex gap-x-4">
@@ -27,7 +29,7 @@ const App = () => {
         >
           <HiMenu size={20} />
         </Button>
-      </div>
+      </div> */}
     </DashboardLayout>
   );
 };

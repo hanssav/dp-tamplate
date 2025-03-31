@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Sidebar Scrollbar */
+nav ::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+nav ::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 5px;
+    margin-top: 60px;
+}
+
+/* Handle */
+nav ::-webkit-scrollbar-thumb {
+    background: rgb(172, 171, 171);
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+nav ::-webkit-scrollbar-thumb:hover {
+    background: rgb(172, 171, 171);
+}
+
+/* Dark Mode Scrollbar */
+.dark nav ::-webkit-scrollbar-track {
+    margin-top: 60px;
+    background: #374151;
+}
+
+.dark nav ::-webkit-scrollbar-thumb {
+    background: #374151;
+}
+
+.dark nav ::-webkit-scrollbar-thumb:hover {
+    background: #374151;
+}

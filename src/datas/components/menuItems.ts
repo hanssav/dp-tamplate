@@ -25,7 +25,7 @@ interface MenuCategory {
 
 export const menuItems: MenuCategory[] = [
   {
-    category: 'Dashboard',
+    category: 'DASHBOARD',
     items: [
       { href: '/dashboard', icon: HiOutlineHome, label: 'Home' },
       { href: '/analytics', icon: HiOutlineChartPie, label: 'Analytics' },
@@ -33,7 +33,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'Orders',
+    category: 'ORDERS',
     items: [
       { href: '/orders', icon: HiOutlineShoppingCart, label: 'All Orders' },
       {
@@ -54,7 +54,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'Products',
+    category: 'PRODUCTS',
     items: [
       {
         href: '/products',
@@ -86,7 +86,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'Apps',
+    category: 'APPS',
     items: [
       { href: '/dashboard', icon: HiOutlineHome, label: 'Dashboard' },
       {
@@ -116,7 +116,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'Customers',
+    category: 'CUSTOMERS',
     items: [
       { href: '/customers', icon: HiOutlineUsers, label: 'Customer List' },
       {
@@ -132,7 +132,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'User Management',
+    category: 'USER MANAGEMENT',
     items: [
       { href: '/users', icon: HiOutlineUsers, label: 'Users' },
       {
@@ -143,7 +143,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'Notifications',
+    category: 'NOTIFICATIONS',
     items: [
       {
         href: '/notifications',
@@ -158,7 +158,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'Settings',
+    category: 'SETTINGS',
     items: [
       { href: '/account', icon: HiOutlineCog, label: 'Account Settings' },
       {
@@ -187,7 +187,7 @@ export const menuItems: MenuCategory[] = [
     ],
   },
   {
-    category: 'Logout',
+    category: 'LOGOUT',
     items: [{ href: '/logout', icon: HiOutlineLogout, label: 'Logout' }],
   },
 ];
