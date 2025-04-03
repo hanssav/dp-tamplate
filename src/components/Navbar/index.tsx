@@ -63,7 +63,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
             color="light"
             onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
             size="icon"
-            rounded={true}
+            rounded
           >
             <HiOutlineMoon size={24} />
           </Button>

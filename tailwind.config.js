@@ -15,6 +15,11 @@ export default {
         sans: ['Plus Jakarta Sans', 'sans-serif'],
       },
     },
+    container: {
+      padding: {
+        xl: '6rem',
+      },
+    },
   },
   plugins: [flowbite.plugin()],
 };

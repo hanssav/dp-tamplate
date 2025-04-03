@@ -26,8 +26,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           toggleMobileSidebar={toggleMobileSidebar}
           toggleSidebar={toggleSidebar}
         />
-        <main className="grid grid-cols-6 gap-4 dark:bg-gray-800 dark:text-white">
-          {children}
+        <main className="container mx-auto my-5 dark:bg-gray-800 dark:text-white">
+          <div className="">{children}</div>
         </main>
       </div>
     </div>

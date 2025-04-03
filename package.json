@@ -17,14 +17,16 @@
     "flowbite-react": "^0.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router": "^7.4.1",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
+    "@types/react-icons": "^2.2.7",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",

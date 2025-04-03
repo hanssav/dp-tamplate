@@ -9,7 +9,7 @@ nav ::-webkit-scrollbar {
 
 /* Track */
 nav ::-webkit-scrollbar-track {
-    background: white;
+    background-color: white;
     border-radius: 5px;
     margin-top: 60px;
 }

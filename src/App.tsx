@@ -1,36 +1,27 @@
-import Button from './components/Button';
-import DashboardLayout from './components/DashboardLayout';
-import { HiMenu } from 'react-icons/hi';
+import { Routes, Route } from 'react-router';
+import { SidebarProvider } from './context/sidebarContext';
+import Home from './pages';
+import CardPages from './pages/widgets/card';
 
 const App = () => {
   return (
-    <DashboardLayout>
-      <div className="... col-span-4 col-start-2 h-12 bg-blue-200"></div>
+    <SidebarProvider>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="widgets/card" element={<CardPages />} />
 
-      {/* <h1 className="text-2xl font-bold">Welcome to the Dashboard</h1>
-      <p className="my-4">This is the main content of the dashboard.</p>
-
-      <div className="flex gap-x-4">
-        <Button color="primary" onClick={() => console.log('Button Clicked!')}>
-          Primary Button
-        </Button>
-
-        <Button
-          color="secondary"
-          onClick={() => console.log('Button Clicked!')}
-        >
-          Secondary Button
-        </Button>
-
-        <Button
-          color="light"
-          onClick={() => console.log('Button Clicked!')}
-          rounded={true}
-        >
-          <HiMenu size={20} />
-        </Button>
-      </div> */}
-    </DashboardLayout>
+        {/* <Route element={<AuthLayout />}>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Route>
+    
+      <Route path="concerts">
+        <Route index element={<ConcertsHome />} />
+        <Route path=":city" element={<City />} />
+        <Route path="trending" element={<Trending />} />
+      </Route> */}
+      </Routes>
+    </SidebarProvider>
   );
 };
 

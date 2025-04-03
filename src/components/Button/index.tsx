@@ -1,26 +1,14 @@
 import { Button as ButtonFlowbite, CustomFlowbiteTheme } from 'flowbite-react';
+import { theme } from '../../config/theme';
 
-const customTheme = {
-  color: {
-    primary:
-      'bg-primary text-white focus:outline-none focus:ring-0 enabled:hover:bg-primary/90 dark:bg-primary dark:focus:ring-0 dark:enabled:hover:bg-primary/90',
-    secondary:
-      'border border-primary bg-transparent text-primary focus:ring-0 enabled:hover:bg-secondary dark:bg-transparent dark:enabled:hover:bg-darkHover',
-    light:
-      'bg-transparent text-gray-900 focus:ring-0 focus:ring-transparent enabled:hover:bg-secondary dark:bg-transparent dark:text-white dark:enabled:hover:bg-gray-700',
-  },
-  size: {
-    xs: 'px-0 py-1 text-sm',
-    sm: 'px-0.5 py-1 text-sm',
-    md: 'px-4 py-1 text-sm',
-    lg: 'px-5 py-1.5 text-base',
-    icon: 'w-10 h-10 flex items-center justify-center',
-  },
+const buttonTheme = {
+  color: theme.colors,
+  size: theme.sizes,
   rounded: 'rounded-full',
-} as const;
+};
 
-type ButtonColor = keyof typeof customTheme.color;
-type ButtonSize = keyof typeof customTheme.size;
+type ButtonColor = keyof typeof buttonTheme.color;
+type ButtonSize = keyof typeof buttonTheme.size;
 
 interface ButtonProps {
   color?: ButtonColor;
@@ -42,8 +30,8 @@ export default function Button({
 }: ButtonProps) {
   return (
     <ButtonFlowbite
-      theme={customTheme as CustomFlowbiteTheme['button']}
-      className={`${className} ${customTheme.color[color]} ${customTheme.size[size]} ${rounded ? customTheme.rounded : ''}`}
+      theme={buttonTheme as CustomFlowbiteTheme['button']}
+      className={`${className} ${buttonTheme.color[color]} ${buttonTheme.size[size]} ${rounded ? buttonTheme.rounded : ''}`}
       onClick={onClick}
       {...props}
     >

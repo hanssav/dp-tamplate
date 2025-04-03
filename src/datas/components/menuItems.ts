@@ -9,13 +9,14 @@ import {
   HiOutlineCog,
   HiOutlineCreditCard,
   HiOutlineLogout,
+  HiOutlineTemplate,
 } from 'react-icons/hi';
 
 interface MenuItem {
   href: string;
   icon: React.ElementType;
   label: string;
-  subItems?: { href: string; icon: React.ElementType; label: string }[]; // Optional subItems
+  subItems?: { href: string; label: string }[]; // Optional subItems
 }
 
 interface MenuCategory {
@@ -25,11 +26,35 @@ interface MenuCategory {
 
 export const menuItems: MenuCategory[] = [
   {
-    category: 'DASHBOARD',
+    category: 'HOME',
     items: [
-      { href: '/dashboard', icon: HiOutlineHome, label: 'Home' },
-      { href: '/analytics', icon: HiOutlineChartPie, label: 'Analytics' },
-      { href: '/reports', icon: HiOutlineViewBoards, label: 'Reports' },
+      { href: '/', icon: HiOutlineHome, label: 'Home' },
+      { href: '/analytical', icon: HiOutlineChartPie, label: 'Analytical' },
+      { href: '/ecommerce', icon: HiOutlineShoppingCart, label: 'eCommerce' },
+    ],
+  },
+  {
+    category: 'PAGES',
+    items: [
+      {
+        href: '/widged',
+        icon: HiOutlineTemplate,
+        label: 'Widgets',
+        subItems: [
+          {
+            href: '/widgets/card',
+            label: 'Card',
+          },
+          {
+            href: '/widgets/banners',
+            label: 'Banners',
+          },
+          {
+            href: '/widgets/charts',
+            label: 'Charts',
+          },
+        ],
+      },
     ],
   },
   {
@@ -63,12 +88,10 @@ export const menuItems: MenuCategory[] = [
         subItems: [
           {
             href: '/products/featured',
-            icon: HiOutlineViewBoards,
             label: 'Featured Products',
           },
           {
             href: '/products/on-sale',
-            icon: HiOutlineViewBoards,
             label: 'On Sale Products',
           },
         ],
@@ -94,11 +117,11 @@ export const menuItems: MenuCategory[] = [
         icon: HiOutlineChartPie,
         label: 'Analytics',
         subItems: [
-          { href: '/reports', icon: HiOutlineViewBoards, label: 'Reports' },
-          { href: '/traffic', icon: HiOutlineViewBoards, label: 'Traffic' },
+          { href: '/reports', label: 'Reports' },
+          { href: '/traffic', label: 'Traffic' },
           {
             href: '/conversions',
-            icon: HiOutlineViewBoards,
+
             label: 'Conversions',
           },
         ],
@@ -108,9 +131,9 @@ export const menuItems: MenuCategory[] = [
         icon: HiOutlineShoppingCart,
         label: 'E-commerce',
         subItems: [
-          { href: '/orders', icon: HiOutlineViewBoards, label: 'Orders' },
-          { href: '/products', icon: HiOutlineViewBoards, label: 'Products' },
-          { href: '/customers', icon: HiOutlineUsers, label: 'Customers' },
+          { href: '/orders', label: 'Orders' },
+          { href: '/products', label: 'Products' },
+          { href: '/customers', label: 'Customers' },
         ],
       },
     ],
@@ -174,12 +197,10 @@ export const menuItems: MenuCategory[] = [
         subItems: [
           {
             href: '/settings/privacy',
-            icon: HiOutlineCog,
             label: 'Privacy Settings',
           },
           {
             href: '/settings/security',
-            icon: HiOutlineCog,
             label: 'Security Settings',
           },
         ],
