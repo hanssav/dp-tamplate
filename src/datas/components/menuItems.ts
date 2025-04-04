@@ -37,7 +37,7 @@ export const menuItems: MenuCategory[] = [
     category: 'PAGES',
     items: [
       {
-        href: '/widged',
+        href: '/widgets',
         icon: HiOutlineTemplate,
         label: 'Widgets',
         subItems: [

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useThemeMode, Sidebar, SidebarItems } from 'flowbite-react';
 import { HiX, HiChevronDown, HiChevronUp } from 'react-icons/hi';
-import IMAGE_CONSTANTS from '../../helpers/imagesUrl';
 import { menuItems } from '../../datas/components/menuItems';
 import { twMerge } from 'tailwind-merge';
 import SidebarLogo from './SidebarLogo';
@@ -9,6 +8,7 @@ import { NavLink, useLocation } from 'react-router';
 import { useSidebarContext } from '../../context/sidebarContext';
 import DotIcon from '../../assets/icons/DotIcon';
 import { theme } from '../../config/theme';
+import IMAGE_CONSTANTS from '../../constant/images';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -124,6 +124,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                               : 'text-gray-900 dark:text-white'
                           )
                         }
+                        end
                       >
                         <DotIcon />
                         {isSidebarOpen && <span>{subLabel}</span>}
@@ -142,6 +143,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                         !isSidebarOpen ? 'grid justify-items-center' : 'ml-3'
                       )
                     }
+                    end
                   >
                     <Icon className="h-5 w-5" />
                     {isSidebarOpen && <span>{label}</span>}

@@ -1,14 +1,18 @@
-import { Routes, Route } from 'react-router';
+import { Routes, Route, useLocation } from 'react-router';
 import { SidebarProvider } from './context/sidebarContext';
 import Home from './pages';
-import CardPages from './pages/widgets/card';
+import NotFoundPage from './pages/404';
+import ParentMenu from './pages/[parent]';
 
 const App = () => {
+  const location = useLocation();
+
   return (
     <SidebarProvider>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="widgets/card" element={<CardPages />} />
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path={location.pathname} element={<ParentMenu />} />
 
         {/* <Route element={<AuthLayout />}>
         <Route path="login" element={<Login />} />

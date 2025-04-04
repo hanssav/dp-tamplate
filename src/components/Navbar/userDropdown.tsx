@@ -1,5 +1,5 @@
 import { Dropdown, Avatar } from 'flowbite-react';
-import IMAGE_CONSTANTS from '../../helpers/imagesUrl';
+import IMAGE_CONSTANTS from '../../constant/images';
 
 const UserDropdown: React.FC = () => {
   return (

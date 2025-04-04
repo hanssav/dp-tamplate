@@ -9,7 +9,6 @@ const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 export const SidebarProvider = ({ children }: { children: ReactNode }) => {
   const [open, setOpen] = useState<string | null>(null);
-  console.log(open, 'open in context');
 
   return (
     <SidebarContext.Provider value={{ open, setOpen }}>

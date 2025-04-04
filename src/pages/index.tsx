@@ -9,22 +9,15 @@ const Home = () => {
       <p className="my-4">This is the main content of the dashboard.</p>
 
       <div className="flex gap-x-4">
-        <Button color="primary" onClick={() => console.log('Button Clicked!')}>
+        <Button color="primary" onClick={() => {}}>
           Primary Button
         </Button>
 
-        <Button
-          color="secondary"
-          onClick={() => console.log('Button Clicked!')}
-        >
+        <Button color="secondary" onClick={() => {}}>
           Secondary Button
         </Button>
 
-        <Button
-          color="light"
-          onClick={() => console.log('Button Clicked!')}
-          rounded={true}
-        >
+        <Button color="light" onClick={() => {}} rounded={true}>
           <HiMenu size={20} />
         </Button>
       </div>
