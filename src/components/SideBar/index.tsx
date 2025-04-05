@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
 import { useThemeMode, Sidebar, SidebarItems } from 'flowbite-react';
 import { HiX, HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import { menuItems } from '../../datas/components/menuItems';
 import { twMerge } from 'tailwind-merge';
 import SidebarLogo from './SidebarLogo';
-import { NavLink, useLocation } from 'react-router';
+import { Navigate, NavLink, useLocation } from 'react-router';
 import { useSidebarContext } from '../../context/sidebarContext';
-import DotIcon from '../../assets/icons/DotIcon';
+import DotIcon from '../../assets/icons/RouteIcon';
 import { theme } from '../../config/theme';
 import IMAGE_CONSTANTS from '../../constant/images';
+import { checkValidPath } from '../../utils/checkValidPath';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -23,26 +23,19 @@ const SidebarMenu: React.FC<SidebarProps> = ({
 }) => {
   const { mode } = useThemeMode();
   const location = useLocation();
+
+  const isValid = checkValidPath(location.pathname);
+
+  if (isValid === '404') {
+    return <Navigate to="/404" replace />;
+  }
+
+  const { open, setOpen } = useSidebarContext();
+
   const imageSrc =
     mode === 'dark'
       ? IMAGE_CONSTANTS.DARK_LOGO_URL
       : IMAGE_CONSTANTS.LIGHT_LOGO_URL;
-
-  const { open, setOpen } = useSidebarContext();
-
-  useEffect(() => {
-    menuItems.reduce(
-      (acc, { items }) => {
-        items.forEach(({ label, subItems }) => {
-          if (subItems?.some(({ href }) => location.pathname === href)) {
-            acc[label] = true;
-          }
-        });
-        return acc;
-      },
-      {} as Record<string, boolean>
-    );
-  }, [location.pathname, setOpen]);
 
   const customTheme = {
     root: {

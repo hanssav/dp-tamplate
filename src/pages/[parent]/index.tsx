@@ -1,23 +1,22 @@
-import { useLocation, Navigate } from 'react-router';
+import { useLocation } from 'react-router';
+import { Card } from '../../components/Card';
 import DashboardLayout from '../../components/DashboardLayout';
-import { checkValidPath } from '../../utils/checkValidPath';
+import IMAGE_CONSTANTS from '../../constant/images';
+import { getTitleFromPath } from '../../utils/getTitleFromPath';
 
 const ParentMenu = () => {
   const location = useLocation();
-  const isValid = checkValidPath(location.pathname);
 
-  if (isValid === '404') {
-    return <Navigate to="/404" replace />;
-  }
-
+  const title = getTitleFromPath(location.pathname);
   return (
     <DashboardLayout>
-      <h1 className="text-2xl font-bold">
-        Welcome to the Parrent {location.pathname}
-      </h1>
-      <p className="my-4">
-        This is the main content of the {location.pathname}.
-      </p>
+      <Card
+        title={title}
+        border={false}
+        bgColor="bg-ligth-primary"
+        bgImage={IMAGE_CONSTANTS.BREADCRUMB_BG}
+        className="p-10"
+      />
     </DashboardLayout>
   );
 };
