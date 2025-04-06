@@ -1,87 +1,37 @@
-import { Card as CardFlowbite, CustomFlowbiteTheme } from 'flowbite-react';
-import { twMerge } from 'tailwind-merge';
-import FilledCircleIcon from '../../assets/icons/FilledCircleIcon';
+import { forwardRef } from 'react';
+import { Card as CardFlowbite } from 'flowbite-react';
+import { CardContentData, renderCardContent } from './cardContent';
+import { getCardStyle } from './getCardStyle';
 
 interface CardProps {
-  title?: string;
+  content?: CardContentData;
   children?: React.ReactNode;
   className?: string;
   shadow?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'custom';
-  border?: boolean;
-  bgColor?: string;
-  bgImage?: string;
+  variant?: 'breadcrumb' | 'info' | 'post';
 }
 
-const customCardTheme: CustomFlowbiteTheme['card'] = {
-  root: {
-    base: 'rounded-xl p-4',
-    children: '',
-    horizontal: {
-      off: '',
-      on: 'flex flex-col md:flex-row',
-    },
-    href: 'hover:opacity-90',
-  },
-};
+export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+  { children, content, className, shadow = 'none', variant = 'breadcrumb' },
+  ref
+) {
+  const bgImage = content?.bgImage;
+  const type = content?.type;
+  const { className: combinedClass, backgroundImageStyle: inlineStyle } =
+    getCardStyle({
+      variant,
+      shadow,
+      className,
+      bgImage,
+      type,
+    });
 
-export function Card({
-  children,
-  title,
-  className,
-  shadow = 'none',
-  border = true,
-  bgColor = 'bg-white',
-  bgImage,
-}: CardProps) {
-  const isCustom = shadow === 'custom';
-
-  const customShadowStyle = '';
-
-  const shadowClass =
-    shadow !== 'none'
-      ? isCustom
-        ? customShadowStyle
-        : `shadow-${shadow}`
-      : '';
-
-  const hoverEffect = '';
-
-  const borderClass = border ? 'border' : '';
-
-  const combinedClass = twMerge(
-    borderClass,
-    shadowClass,
-    hoverEffect,
-    bgColor,
-    className
-  );
-
-  const inlineStyle = bgImage
-    ? {
-        backgroundImage: `url(${bgImage})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'right 3rem bottom -50px',
-        backgroundSize: 'auto',
-      }
-    : undefined;
+  console.log(content, 'content');
 
   return (
-    <CardFlowbite
-      theme={customCardTheme}
-      className={combinedClass}
-      style={inlineStyle}
-    >
-      {title && (
-        <>
-          <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-          <div className="mb-4 flex items-center gap-2 text-sm text-gray-500">
-            <span>Dashboard</span>
-            <FilledCircleIcon />
-            <span>{title}</span>
-          </div>
-        </>
-      )}
+    <CardFlowbite ref={ref} className={combinedClass} style={inlineStyle}>
+      {renderCardContent({ variant, content })}
       {children}
     </CardFlowbite>
   );
-}
+});

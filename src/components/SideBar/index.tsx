@@ -3,12 +3,11 @@ import { HiX, HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import { menuItems } from '../../datas/components/menuItems';
 import { twMerge } from 'tailwind-merge';
 import SidebarLogo from './SidebarLogo';
-import { Navigate, NavLink, useLocation } from 'react-router';
+import { NavLink } from 'react-router';
 import { useSidebarContext } from '../../context/sidebarContext';
 import DotIcon from '../../assets/icons/RouteIcon';
 import { theme } from '../../config/theme';
 import IMAGE_CONSTANTS from '../../constant/images';
-import { checkValidPath } from '../../utils/checkValidPath';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -22,13 +21,6 @@ const SidebarMenu: React.FC<SidebarProps> = ({
   toggleMobileSidebar,
 }) => {
   const { mode } = useThemeMode();
-  const location = useLocation();
-
-  const isValid = checkValidPath(location.pathname);
-
-  if (isValid === '404') {
-    return <Navigate to="/404" replace />;
-  }
 
   const { open, setOpen } = useSidebarContext();
 
@@ -48,8 +40,9 @@ const SidebarMenu: React.FC<SidebarProps> = ({
     <Sidebar
       aria-label="Sidebar"
       theme={customTheme}
-      className={`transition-all ${isSidebarOpen ? 'w-64' : 'w-24'} fixed inset-y-0 left-0 z-50 h-screen  transition-transform dark:bg-gray-900 dark:text-white ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}  -wrap md:relative md:translate-x-0 `}
+      className={`transition-all ${isSidebarOpen ? 'w-64' : 'w-24'} fixed inset-y-0 left-0 z-50 h-screen transition-transform dark:bg-gray-900 dark:text-white ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}  -wrap border-grey-900 border-r pr-2 dark:border-none md:relative md:translate-x-0 `}
     >
+      {/* can change use Col */}
       <div
         className={
           'fixed left-0 top-0 z-50 flex h-[60px] w-full items-center justify-between bg-white px-4 pt-1 dark:bg-gray-900'
@@ -61,6 +54,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
           isMobileSidebarOpen={isMobileSidebarOpen}
         />
         {isMobileSidebarOpen && (
+          // Change use Button
           <button
             onClick={toggleMobileSidebar}
             className="text-gray-900 dark:text-white md:hidden"
@@ -73,10 +67,12 @@ const SidebarMenu: React.FC<SidebarProps> = ({
       <SidebarItems className="mt-[60px]">
         {menuItems.map(({ category, items }) => (
           <Sidebar.ItemGroup key={category}>
+            {/* Create Typografy and change this */}
             <h4 className="p-2 text-xs font-bold text-gray-600 dark:text-gray-300">
               {category}
             </h4>
             {items.map(({ href, icon: Icon, label, subItems }) => (
+              // div can change use Col
               <div key={label}>
                 {subItems ? (
                   <Sidebar.Collapse

@@ -42,8 +42,8 @@ export const menuItems: MenuCategory[] = [
         label: 'Widgets',
         subItems: [
           {
-            href: '/widgets/card',
-            label: 'Card',
+            href: '/widgets/cards',
+            label: 'Cards',
           },
           {
             href: '/widgets/banners',

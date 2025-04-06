@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import DashboardLayout from '../components/DashboardLayout';
 
 const NotFoundPage = () => {
@@ -9,12 +10,12 @@ const NotFoundPage = () => {
         <p className="mt-2 text-gray-500">
           The page you’re looking for doesn’t exist or has been moved.
         </p>
-        <a
-          href="/"
+        <Link
+          to="/"
           className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-2 text-white transition hover:bg-blue-700"
         >
           Go Home
-        </a>
+        </Link>
       </div>
     </DashboardLayout>
   );

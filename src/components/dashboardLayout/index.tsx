@@ -15,7 +15,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     setIsMobileSidebarOpen(!isMobileSidebarOpen);
 
   return (
-    <div className="flex h-screen font-sans dark:bg-gray-900 dark:text-white">
+    <div className="flex h-screen font-sans dark:bg-dark-bg-main dark:text-white">
       <SidebarMenu
         isSidebarOpen={isSidebarOpen}
         isMobileSidebarOpen={isMobileSidebarOpen}
@@ -26,9 +26,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           toggleMobileSidebar={toggleMobileSidebar}
           toggleSidebar={toggleSidebar}
         />
-        <main className="container mx-auto my-5 dark:bg-gray-800 dark:text-white">
-          <div className="">{children}</div>
-        </main>
+        <main className="container my-5">{children}</main>
       </div>
     </div>
   );
