@@ -1,5 +1,5 @@
 import { Button as ButtonFlowbite, CustomFlowbiteTheme } from 'flowbite-react';
-import { theme } from '../../config/theme';
+import { theme } from './GetButtonStyle';
 
 const buttonTheme = {
   color: theme.colors,

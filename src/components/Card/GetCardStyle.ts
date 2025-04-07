@@ -18,10 +18,10 @@ const bgMap = {
 
 const textMap = {
   primary: 'text-primary',
-  warning: 'text-text-light-warning',
-  secondary: 'text-text-light-secondary',
-  error: 'text-text-light-error',
-  success: 'text-text-light-success',
+  warning: 'text-warning',
+  secondary: 'text-secondary',
+  error: 'text-error',
+  success: 'text-success',
 };
 
 export const getCardStyle = ({

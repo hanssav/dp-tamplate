@@ -6,8 +6,8 @@ import SidebarLogo from './SidebarLogo';
 import { NavLink } from 'react-router';
 import { useSidebarContext } from '../../context/sidebarContext';
 import DotIcon from '../../assets/icons/RouteIcon';
-import { theme } from '../../config/theme';
 import IMAGE_CONSTANTS from '../../constant/images';
+import { theme } from '../Button/GetButtonStyle'; // theme for NavLink or button style, need to upadate
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -128,7 +128,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                         'flex items-center gap-x-2 p-2 text-sm',
                         isActive
                           ? `${theme.colors.primary} ${theme.rounded.lg}`
-                          : 'hover:text-grey-900 text-gray-900 hover:bg-secondary dark:text-white dark:hover:text-blue-400',
+                          : 'hover:text-grey-900 hover:bg-soft-blue text-gray-900 dark:text-white dark:hover:text-blue-400',
                         !isSidebarOpen ? 'grid justify-items-center' : 'ml-3'
                       )
                     }

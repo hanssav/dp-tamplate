@@ -26,7 +26,6 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       type,
     });
 
-  console.log(content, 'content');
 
   return (
     <CardFlowbite ref={ref} className={combinedClass} style={inlineStyle}>

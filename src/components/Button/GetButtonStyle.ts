@@ -3,9 +3,9 @@ export const theme = {
     primary:
       'bg-primary text-white focus:outline-none focus:ring-0 enabled:hover:bg-primary/90 dark:bg-primary dark:focus:ring-0 dark:enabled:hover:bg-primary/90',
     secondary:
-      'border border-primary bg-transparent text-primary focus:ring-0 enabled:hover:bg-secondary dark:bg-transparent dark:enabled:hover:bg-darkHover',
+      'border border-primary bg-transparent text-primary focus:ring-0 enabled:hover:bg-soft-blue dark:bg-transparent dark:enabled:hover:bg-dark-hover',
     light:
-      'bg-transparent text-gray-900 focus:ring-0 focus:ring-transparent enabled:hover:bg-secondary dark:bg-transparent dark:text-white dark:enabled:hover:bg-gray-700',
+      'bg-transparent text-gray-900 focus:ring-0 focus:ring-transparent enabled:hover:bg-soft-blue dark:bg-transparent dark:text-white dark:enabled:hover:bg-gray-700',
   },
   sizes: {
     xs: 'px-0 py-1 text-sm',
