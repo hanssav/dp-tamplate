@@ -7,7 +7,7 @@ interface CardProps {
   content?: CardContentData;
   children?: React.ReactNode;
   className?: string;
-  variant?: 'breadcrumb' | 'info' | 'post';
+  variant?: 'breadcrumb' | 'info' | 'post' | 'product';
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(

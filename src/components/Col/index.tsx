@@ -25,13 +25,13 @@
 
 const colTheme = {
   col: {
-    'col-1': 'grid grid-cols-1 gap-4',
-    'col-2': 'grid grid-cols-1 sm:grid-cols-2 gap-4',
-    'col-3': 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4',
+    'col-1': 'grid grid-cols-1 gap-6',
+    'col-2': 'grid grid-cols-1 sm:grid-cols-2 gap-6',
+    'col-3': 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6',
     'col-4':
-      'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
+      'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6',
     'col-5':
-      'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4',
+      'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6',
     'col-6':
       'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6',
   },

@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 
 interface GetCardStyleProps {
-  variant?: 'breadcrumb' | 'info' | 'post';
+  variant?: 'breadcrumb' | 'info' | 'post' | 'product';
   shadow?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'custom';
   className?: string;
   bgImg?: string;
@@ -57,6 +57,7 @@ export const getCardStyle = ({
       'border-none',
     ],
     post: [
+      'mb-6',
       'border-none',
       'shadow-ms',
       'transition-transform',
@@ -66,6 +67,7 @@ export const getCardStyle = ({
       'hover:shadow-md',
       'cursor-pointer',
     ],
+    product: ['mb-6', 'cursor-pointer', 'border-none', 'shadow-ms'],
   };
 
   const classes = twMerge(...variantClassMap[variant], className);
@@ -85,7 +87,10 @@ export const getCardStyle = ({
       backgroundPosition: 'right 3rem bottom -50px',
       backgroundSize: 'auto',
     };
-  } else if (variant === 'post' && bgImg) {
+  } else if (
+    (variant === 'post' && bgImg) ||
+    (variant === 'product' && bgImg)
+  ) {
     renderImage = (theme, horizontal) => (
       <img
         src={bgImg}

@@ -6,6 +6,7 @@ import IMAGE_CONSTANTS from '../../constant/images';
 import { checkValidPath, getTitleFromPath } from '../../utils/function';
 import infoCardContent from '../../utils/pages/cards/infoCardContent';
 import postCardContent from '../../utils/pages/cards/postCardContent';
+import ProductCardContent from '../../utils/pages/cards/productCardContent';
 
 const ParentMenu = () => {
   const location = useLocation();
@@ -33,6 +34,11 @@ const ParentMenu = () => {
       <Col col="col-3">
         {postCardContent.map((item, index) => (
           <Card key={index} variant="post" content={item} />
+        ))}
+      </Col>
+      <Col col="col-4">
+        {ProductCardContent.map((item, index) => (
+          <Card variant="product" content={item} />
         ))}
       </Col>
     </DashboardLayout>
