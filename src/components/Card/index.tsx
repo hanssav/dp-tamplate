@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Card as CardFlowbite } from 'flowbite-react';
-import { CardContentData, renderCardContent } from './cardContent';
+import { CardContentData, getCardContent } from './cardContent';
 import { getCardStyle } from './getCardStyle';
 
 interface CardProps {
@@ -35,7 +35,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       style={inlineStyle}
       renderImage={renderImage}
     >
-      {renderCardContent({ variant, content })}
+      {getCardContent({ variant, content })}
       {children}
     </CardFlowbite>
   );

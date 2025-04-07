@@ -4,7 +4,8 @@ import Col from '../../components/Col';
 import DashboardLayout from '../../components/DashboardLayout';
 import IMAGE_CONSTANTS from '../../constant/images';
 import { checkValidPath, getTitleFromPath } from '../../utils/function';
-import infoCardContent from '../../utils/pages/cards/constants';
+import infoCardContent from '../../utils/pages/cards/infoCardContent';
+import postCardContent from '../../utils/pages/cards/postCardContent';
 
 const ParentMenu = () => {
   const location = useLocation();
@@ -30,36 +31,9 @@ const ParentMenu = () => {
       </Col>
 
       <Col col="col-3">
-        <Card
-          variant="post"
-          content={{
-            title:
-              'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
-            category: 'Social',
-            userImg: IMAGE_CONSTANTS.POST_USER_IMG_1,
-            bgImg: IMAGE_CONSTANTS.POST_BG_1,
-          }}
-        ></Card>
-        <Card
-          variant="post"
-          content={{
-            title:
-              'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
-            category: 'Social',
-            userImg: IMAGE_CONSTANTS.POST_USER_IMG_1,
-            bgImg: IMAGE_CONSTANTS.POST_BG_1,
-          }}
-        ></Card>
-        <Card
-          variant="post"
-          content={{
-            title:
-              'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
-            category: 'Social',
-            userImg: IMAGE_CONSTANTS.POST_USER_IMG_1,
-            bgImg: IMAGE_CONSTANTS.POST_BG_1,
-          }}
-        ></Card>
+        {postCardContent.map((item, index) => (
+          <Card key={index} variant="post" content={item} />
+        ))}
       </Col>
     </DashboardLayout>
   );

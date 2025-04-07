@@ -26,6 +26,14 @@ const IMAGE_CONSTANTS = {
     '	https://modernize-angular-main.netlify.app/assets/images/profile/user-1.jpg',
   POST_BG_1:
     '	https://modernize-angular-main.netlify.app/assets/images/blog/blog-img1.jpg',
+  POST_USER_IMG_2:
+    '	https://modernize-angular-main.netlify.app/assets/images/profile/user-2.jpg',
+  POST_BG_2:
+    '	https://modernize-angular-main.netlify.app/assets/images/blog/blog-img2.jpg',
+  POST_USER_IMG_3:
+    'https://modernize-angular-main.netlify.app/assets/images/profile/user-3.jpg',
+  POST_BG_3:
+    'https://modernize-angular-main.netlify.app/assets/images/blog/blog-img3.jpg',
 };
 
 export default IMAGE_CONSTANTS;

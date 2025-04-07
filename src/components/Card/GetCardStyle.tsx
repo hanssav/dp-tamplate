@@ -57,7 +57,14 @@ export const getCardStyle = ({
       'border-none',
     ],
     post: [
-      'border-none shadow-ms transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-md cursor-pointer',
+      'border-none',
+      'shadow-ms',
+      'transition-transform',
+      'duration-200',
+      'ease-in-out',
+      'hover:scale-[1.02]',
+      'hover:shadow-md',
+      'cursor-pointer',
     ],
   };
 
