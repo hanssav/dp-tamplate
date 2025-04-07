@@ -21,6 +21,11 @@ const IMAGE_CONSTANTS = {
     '	https://modernize-angular-main.netlify.app/assets/images/svgs/icon-speech-bubble.svg',
   INFO_CONTACT_IMG:
     '	https://modernize-angular-main.netlify.app/assets/images/svgs/icon-connect.svg',
+
+  POST_USER_IMG_1:
+    '	https://modernize-angular-main.netlify.app/assets/images/profile/user-1.jpg',
+  POST_BG_1:
+    '	https://modernize-angular-main.netlify.app/assets/images/blog/blog-img1.jpg',
 };
 
 export default IMAGE_CONSTANTS;

@@ -4,7 +4,7 @@ export interface InfoCardItem {
   title: string;
   img: string;
   count: string;
-  type: string;
+  type: 'primary' | 'warning' | 'secondary' | 'error' | 'success';
 }
 
 const infoCardContent: InfoCardItem[] = [

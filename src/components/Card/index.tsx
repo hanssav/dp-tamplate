@@ -7,28 +7,34 @@ interface CardProps {
   content?: CardContentData;
   children?: React.ReactNode;
   className?: string;
-  shadow?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'custom';
   variant?: 'breadcrumb' | 'info' | 'post';
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { children, content, className, shadow = 'none', variant = 'breadcrumb' },
+  { children, content, className, variant = 'breadcrumb' },
   ref
 ) {
-  const bgImage = content?.bgImage;
   const type = content?.type;
-  const { className: combinedClass, backgroundImageStyle: inlineStyle } =
-    getCardStyle({
-      variant,
-      shadow,
-      className,
-      bgImage,
-      type,
-    });
+  const bgImg = content?.bgImg;
 
+  const {
+    className: combinedClass,
+    style: inlineStyle,
+    renderImage,
+  } = getCardStyle({
+    variant,
+    className,
+    bgImg,
+    type,
+  });
 
   return (
-    <CardFlowbite ref={ref} className={combinedClass} style={inlineStyle}>
+    <CardFlowbite
+      ref={ref}
+      className={combinedClass}
+      style={inlineStyle}
+      renderImage={renderImage}
+    >
       {renderCardContent({ variant, content })}
       {children}
     </CardFlowbite>

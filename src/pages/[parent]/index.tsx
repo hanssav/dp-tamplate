@@ -20,13 +20,46 @@ const ParentMenu = () => {
     <DashboardLayout>
       <Card
         variant="breadcrumb"
-        content={{ title: title, bgImage: IMAGE_CONSTANTS.BREADCRUMB_BG }}
+        content={{ title: title, bgImg: IMAGE_CONSTANTS.BREADCRUMB_BG }}
       />
 
       <Col col="col-6">
         {infoCardContent.map((item, index) => (
           <Card key={index} variant="info" content={item} />
         ))}
+      </Col>
+
+      <Col col="col-3">
+        <Card
+          variant="post"
+          content={{
+            title:
+              'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
+            category: 'Social',
+            userImg: IMAGE_CONSTANTS.POST_USER_IMG_1,
+            bgImg: IMAGE_CONSTANTS.POST_BG_1,
+          }}
+        ></Card>
+        <Card
+          variant="post"
+          content={{
+            title:
+              'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
+            category: 'Social',
+            userImg: IMAGE_CONSTANTS.POST_USER_IMG_1,
+            bgImg: IMAGE_CONSTANTS.POST_BG_1,
+          }}
+        ></Card>
+        <Card
+          variant="post"
+          content={{
+            title:
+              'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
+            category: 'Social',
+            userImg: IMAGE_CONSTANTS.POST_USER_IMG_1,
+            bgImg: IMAGE_CONSTANTS.POST_BG_1,
+          }}
+        ></Card>
       </Col>
     </DashboardLayout>
   );

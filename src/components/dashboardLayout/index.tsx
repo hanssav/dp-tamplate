@@ -15,13 +15,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     setIsMobileSidebarOpen(!isMobileSidebarOpen);
 
   return (
-    <div className="flex h-screen font-sans dark:bg-dark-bg-main dark:text-white">
+    <div className="flex h-screen font-sans dark:bg-dark-bg-main dark:text-white ">
       <SidebarMenu
         isSidebarOpen={isSidebarOpen}
         isMobileSidebarOpen={isMobileSidebarOpen}
         toggleMobileSidebar={toggleMobileSidebar}
       />
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col overflow-y-scroll">
         <NavbarMenu
           toggleMobileSidebar={toggleMobileSidebar}
           toggleSidebar={toggleSidebar}
