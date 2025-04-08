@@ -10,10 +10,18 @@ interface CardProps
   children?: React.ReactNode;
   variant?: CardVariant;
   className?: string;
+  horizontal?: boolean;
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { children, content, variant = 'breadcrumb', className = '', ...rest },
+  {
+    children,
+    content,
+    variant = 'breadcrumb',
+    horizontal = false,
+    className = '',
+    ...rest
+  },
   ref
 ) {
   const type = content?.type;
@@ -36,6 +44,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       className={className}
       style={inlineStyle}
       renderImage={renderImage}
+      horizontal={horizontal}
       {...rest}
     >
       {getCardContent({ variant, content })}

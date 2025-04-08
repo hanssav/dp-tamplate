@@ -5,6 +5,7 @@ import DashboardLayout from '../../components/DashboardLayout';
 import IMAGE_CONSTANTS from '../../constant/images';
 import { checkValidPath, getTitleFromPath } from '../../utils/function';
 import infoCardContent from '../../utils/pages/cards/infoCardContent';
+import musicCardContents from '../../utils/pages/cards/musicCardContent';
 import postCardContent from '../../utils/pages/cards/postCardContent';
 import ProductCardContent from '../../utils/pages/cards/productCardContent';
 
@@ -39,6 +40,12 @@ const ParentMenu = () => {
       <Col col="col-4">
         {ProductCardContent.map((item, index) => (
           <Card key={index} variant="product" content={item} />
+        ))}
+      </Col>
+
+      <Col col="col-3">
+        {musicCardContents.map((item, index) => (
+          <Card key={index} variant="music" horizontal content={item} />
         ))}
       </Col>
     </DashboardLayout>

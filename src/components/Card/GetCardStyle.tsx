@@ -42,7 +42,7 @@ export const getCardStyle = ({
     breadcrumb: createTheme({
       card: {
         root: {
-          base: `mb-6 rounded-xl p-1 shadow-none ${bgClass} border-none`,
+          base: `mb-6 rounded-xl p-1 shadow-none ${bgClass} dark:bg-dark border-none`,
         },
       },
     }),
@@ -72,7 +72,20 @@ export const getCardStyle = ({
     music: createTheme({
       card: {
         root: {
-          base: '',
+          base: 'flex rounded-lg border-none bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
+          children: 'flex h-full flex-col justify-center gap-4 p-6',
+          horizontal: {
+            off: 'flex-col',
+            on: 'flex-row md:max-w-xl md:flex-row-reverse',
+          },
+          href: 'hover:bg-gray-100 dark:hover:bg-gray-700',
+        },
+        img: {
+          base: 'h-48 w-full object-cover md:h-auto md:w-48',
+          horizontal: {
+            on: 'rounded-r-lg md:rounded-l-lg',
+            off: 'rounded-t-lg',
+          },
         },
       },
     }),
@@ -90,17 +103,14 @@ export const getCardStyle = ({
   }
 
   // Optional image render
-  let renderImage: (
-    theme: {
-      img?: {
-        base?: string;
-        horizontal?: { off?: string; on?: string };
-      };
-    },
-    horizontal: boolean
-  ) => JSX.Element = () => <></>;
+  let renderImage:
+    | ((theme: any, horizontal: boolean) => JSX.Element)
+    | undefined = undefined;
 
-  if ((variant === 'post' || variant === 'product') && bgImg) {
+  if (
+    (variant === 'post' || variant === 'product' || variant === 'music') &&
+    bgImg
+  ) {
     renderImage = (theme, horizontal) => (
       <img
         src={bgImg}

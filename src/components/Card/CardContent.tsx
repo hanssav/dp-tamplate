@@ -2,6 +2,7 @@ import { HiOutlineShoppingBag, HiStar } from 'react-icons/hi';
 import { Link } from 'react-router';
 import FilledCircleIcon from '../../assets/icons/FilledCircleIcon';
 import { RenderCardContentProps } from '../_types/Card';
+import { SkipBack, Play, SkipForward } from 'lucide-react';
 
 // Component: Breadcrumb
 function BreadcrumbCardContent({ content }: RenderCardContentProps) {
@@ -112,7 +113,22 @@ function ProductCardContent({ content }: RenderCardContentProps) {
 }
 
 const MusicCardContent: React.FC<RenderCardContentProps> = ({ content }) => {
-  return <div>music card content here - {content?.title}</div>;
+  return (
+    <>
+      <div className="gap-1">
+        <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+          {content?.title}
+        </h5>
+        <p className="text-gray-600 dark:text-gray-300">{content?.artis}</p>
+      </div>
+
+      <div className="mt-2 flex items-center gap-4">
+        <SkipBack className="h-4 w-4 text-black dark:text-white" />
+        <Play className="h-4 w-4 text-black dark:text-white" />
+        <SkipForward className="h-4 w-4 text-black dark:text-white" />
+      </div>
+    </>
+  );
 };
 
 // Fungsi Utama: getCardContent

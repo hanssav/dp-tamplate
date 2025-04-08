@@ -43,6 +43,14 @@ const IMAGE_CONSTANTS = {
     '	https://modernize-angular-main.netlify.app/assets/images/products/s7.jpg',
   PRODUCT_IMG_4:
     '	https://modernize-angular-main.netlify.app/assets/images/products/s11.jpg',
+
+  // Music Card, pages Widgets/card
+  MUSIC_IMG_1:
+    'https://modernize-angular-main.netlify.app/assets/images/blog/blog-img5.jpg',
+  MUSIC_IMG_2:
+    '	https://modernize-angular-main.netlify.app/assets/images/blog/blog-img4.jpg',
+  MUSIC_IMG_3:
+    'https://modernize-angular-main.netlify.app/assets/images/blog/blog-img3.jpg',
 };
 
 export default IMAGE_CONSTANTS;
