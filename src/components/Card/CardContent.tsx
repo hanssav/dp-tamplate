@@ -1,15 +1,8 @@
-import { HiShoppingCart, HiStar } from 'react-icons/hi';
+import { HiOutlineShoppingBag, HiStar } from 'react-icons/hi';
 import { Link } from 'react-router';
 import FilledCircleIcon from '../../assets/icons/FilledCircleIcon';
+import { RenderCardContentProps } from '../_types/Card';
 
-export interface CardContentData {
-  [key: string]: any;
-}
-
-interface RenderCardContentProps {
-  variant?: 'breadcrumb' | 'info' | 'post' | 'product';
-  content?: CardContentData;
-}
 // Component: Breadcrumb
 function BreadcrumbCardContent({ content }: RenderCardContentProps) {
   return (
@@ -91,7 +84,7 @@ function ProductCardContent({ content }: RenderCardContentProps) {
     <div>
       {/* Icon keranjang */}
       <div className="flex h-8 w-8 translate-x-[-15px] translate-y-[-15px] items-center justify-center rounded-full bg-primary text-white">
-        <HiShoppingCart className="h-4 w-4" />
+        <HiOutlineShoppingBag className="h-4 w-4" />
       </div>
 
       {/* Judul */}
@@ -118,6 +111,10 @@ function ProductCardContent({ content }: RenderCardContentProps) {
   );
 }
 
+const MusicCardContent: React.FC<RenderCardContentProps> = ({ content }) => {
+  return <div>music card content here - {content?.title}</div>;
+};
+
 // Fungsi Utama: getCardContent
 export function getCardContent({
   variant = 'breadcrumb',
@@ -132,6 +129,8 @@ export function getCardContent({
       return <PostCardContent content={content} variant={variant} />;
     case 'product':
       return <ProductCardContent content={content} variant={variant} />;
+    case 'music':
+      return <MusicCardContent content={content} variant={variant} />;
     default:
       return null;
   }

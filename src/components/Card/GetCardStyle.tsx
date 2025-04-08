@@ -1,7 +1,8 @@
 import { twMerge } from 'tailwind-merge';
+import { CardVariant } from '../_types/Card';
 
 interface GetCardStyleProps {
-  variant?: 'breadcrumb' | 'info' | 'post' | 'product';
+  variant?: CardVariant;
   shadow?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'custom';
   className?: string;
   bgImg?: string;
@@ -68,6 +69,7 @@ export const getCardStyle = ({
       'cursor-pointer',
     ],
     product: ['mb-6', 'cursor-pointer', 'border-none', 'shadow-ms'],
+    music: [],
   };
 
   const classes = twMerge(...variantClassMap[variant], className);

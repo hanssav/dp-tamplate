@@ -1,13 +1,14 @@
 import { forwardRef } from 'react';
 import { Card as CardFlowbite } from 'flowbite-react';
-import { CardContentData, getCardContent } from './cardContent';
+import { getCardContent } from './cardContent';
 import { getCardStyle } from './getCardStyle';
+import { CardVariant, CardContentData } from '../_types/Card';
 
 interface CardProps {
   content?: CardContentData;
   children?: React.ReactNode;
   className?: string;
-  variant?: 'breadcrumb' | 'info' | 'post' | 'product';
+  variant?: CardVariant;
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(

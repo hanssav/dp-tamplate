@@ -38,7 +38,7 @@ const ParentMenu = () => {
       </Col>
       <Col col="col-4">
         {ProductCardContent.map((item, index) => (
-          <Card variant="product" content={item} />
+          <Card key={index} variant="product" content={item} />
         ))}
       </Col>
     </DashboardLayout>
