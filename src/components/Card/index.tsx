@@ -1,40 +1,42 @@
 import { forwardRef } from 'react';
 import { Card as CardFlowbite } from 'flowbite-react';
 import { getCardContent } from './cardContent';
-import { getCardStyle } from './getCardStyle';
 import { CardVariant, CardContentData } from '../_types/Card';
+import { getCardStyle } from './GetCardStyle';
 
-interface CardProps {
+interface CardProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
   content?: CardContentData;
   children?: React.ReactNode;
-  className?: string;
   variant?: CardVariant;
+  className?: string;
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { children, content, className, variant = 'breadcrumb' },
+  { children, content, variant = 'breadcrumb', className = '', ...rest },
   ref
 ) {
   const type = content?.type;
   const bgImg = content?.bgImg;
 
   const {
-    className: combinedClass,
+    theme,
     style: inlineStyle,
     renderImage,
   } = getCardStyle({
     variant,
-    className,
-    bgImg,
     type,
+    bgImg,
   });
 
   return (
     <CardFlowbite
       ref={ref}
-      className={combinedClass}
+      theme={theme}
+      className={className}
       style={inlineStyle}
       renderImage={renderImage}
+      {...rest}
     >
       {getCardContent({ variant, content })}
       {children}

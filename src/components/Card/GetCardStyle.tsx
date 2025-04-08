@@ -1,17 +1,8 @@
-import { twMerge } from 'tailwind-merge';
+import { createTheme } from 'flowbite-react';
+import React from 'react';
 import { CardVariant } from '../_types/Card';
 
-interface GetCardStyleProps {
-  variant?: CardVariant;
-  shadow?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'custom';
-  className?: string;
-  bgImg?: string;
-  type?: BgMapKey;
-}
-
-// type-safe key for bgMap
-type BgMapKey = keyof typeof bgMap;
-
+// Mapping warna
 const bgMap = {
   primary: 'bg-light-primary',
   warning: 'bg-light-warning',
@@ -28,60 +19,67 @@ const textMap = {
   success: 'text-success',
 };
 
+// Key aman untuk theme type
+type BgMapKey = keyof typeof bgMap;
+type VariantType = CardVariant;
+
+interface GetCardStyleProps {
+  variant?: VariantType;
+  type?: BgMapKey;
+  bgImg?: string;
+}
+
+// Main function
 export const getCardStyle = ({
   variant = 'breadcrumb',
-  className = '',
+  type = 'primary',
   bgImg,
-  type,
 }: GetCardStyleProps) => {
-  const bgClass = bgMap[type ?? 'primary'];
-  const textClass = textMap[type ?? 'primary'];
+  const bgClass = bgMap[type];
+  const textClass = textMap[type];
 
-  const variantClassMap: Record<string, string[]> = {
-    breadcrumb: [
-      'shadow-none',
-      'p-1',
-      'mb-6',
-      'rounded-xl',
-      'bg-light-primary',
-      'border-none',
-    ],
-    info: [
-      'shadow-none',
-      'p-1',
-      'mb-6',
-      bgClass,
-      textClass,
-      'flex',
-      'items-center',
-      'justify-center',
-      'border-none',
-    ],
-    post: [
-      'mb-6',
-      'border-none',
-      'shadow-ms',
-      'transition-transform',
-      'duration-200',
-      'ease-in-out',
-      'hover:scale-[1.02]',
-      'hover:shadow-md',
-      'cursor-pointer',
-    ],
-    product: ['mb-6', 'cursor-pointer', 'border-none', 'shadow-ms'],
-    music: [],
+  const themeMap = {
+    breadcrumb: createTheme({
+      card: {
+        root: {
+          base: `mb-6 rounded-xl p-1 shadow-none ${bgClass} border-none`,
+        },
+      },
+    }),
+    info: createTheme({
+      card: {
+        root: {
+          base: `mb-6 rounded-xl shadow-none ${bgClass} ${textClass} flex items-center justify-center border-none`,
+        },
+      },
+    }),
+    post: createTheme({
+      card: {
+        root: {
+          base: `mb-6 cursor-pointer border-none shadow-md transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg`,
+          children: 'm-0 flex flex-col justify-center gap-4 p-4',
+        },
+      },
+    }),
+    product: createTheme({
+      card: {
+        root: {
+          base: `mb-6 cursor-pointer border-none shadow-md`,
+          children: 'm-0 flex flex-col justify-center gap-4 p-4',
+        },
+      },
+    }),
+    music: createTheme({
+      card: {
+        root: {
+          base: '',
+        },
+      },
+    }),
   };
 
-  const classes = twMerge(...variantClassMap[variant], className);
-
+  // Optional background style
   let style: React.CSSProperties | undefined = undefined;
-  let renderImage: (
-    theme: {
-      img?: { base?: string; horizontal?: { off?: string; on?: string } };
-    },
-    horizontal: boolean
-  ) => JSX.Element = () => <></>;
-
   if (variant === 'breadcrumb' && bgImg) {
     style = {
       backgroundImage: `url(${bgImg})`,
@@ -89,14 +87,24 @@ export const getCardStyle = ({
       backgroundPosition: 'right 3rem bottom -50px',
       backgroundSize: 'auto',
     };
-  } else if (
-    (variant === 'post' && bgImg) ||
-    (variant === 'product' && bgImg)
-  ) {
+  }
+
+  // Optional image render
+  let renderImage: (
+    theme: {
+      img?: {
+        base?: string;
+        horizontal?: { off?: string; on?: string };
+      };
+    },
+    horizontal: boolean
+  ) => JSX.Element = () => <></>;
+
+  if ((variant === 'post' || variant === 'product') && bgImg) {
     renderImage = (theme, horizontal) => (
       <img
         src={bgImg}
-        alt="background-image-post"
+        alt={`background-${variant}`}
         className={`${theme.img?.base ?? ''} ${
           horizontal ? theme.img?.horizontal?.on : theme.img?.horizontal?.off
         }`}
@@ -105,7 +113,7 @@ export const getCardStyle = ({
   }
 
   return {
-    className: classes,
+    theme: themeMap[variant].card,
     style,
     renderImage,
   };
