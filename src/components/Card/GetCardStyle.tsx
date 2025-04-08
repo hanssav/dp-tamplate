@@ -4,11 +4,11 @@ import { CardVariant } from '../_types/Card';
 
 // Mapping warna
 const bgMap = {
-  primary: 'bg-light-primary',
-  warning: 'bg-light-warning',
-  secondary: 'bg-light-secondary',
-  error: 'bg-light-error',
-  success: 'bg-light-success',
+  primary: 'bg-light-primary dark:bg-primary-dark',
+  warning: 'bg-light-warning dark:bg-warning-dark',
+  secondary: 'bg-light-secondary dark:bg-secondary-dark',
+  error: 'bg-light-error dark:bg-error-dark',
+  success: 'bg-light-success dark:bg-success-dark',
 };
 
 const textMap = {
@@ -42,7 +42,7 @@ export const getCardStyle = ({
     breadcrumb: createTheme({
       card: {
         root: {
-          base: `mb-6 rounded-xl p-1 shadow-none ${bgClass} dark:bg-dark border-none`,
+          base: `mb-6 rounded-xl p-1 shadow-none ${bgClass} dark:bg-primary-dark border-none`,
         },
       },
     }),
@@ -56,7 +56,7 @@ export const getCardStyle = ({
     post: createTheme({
       card: {
         root: {
-          base: `mb-6 cursor-pointer border-none shadow-md transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg`,
+          base: `dark:bg-primary-dark mb-6 cursor-pointer border-none shadow-md transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg dark:text-white`,
           children: 'm-0 flex flex-col justify-center gap-4 p-4',
         },
       },
@@ -64,7 +64,7 @@ export const getCardStyle = ({
     product: createTheme({
       card: {
         root: {
-          base: `mb-6 cursor-pointer border-none shadow-md`,
+          base: `dark:bg-primary-dark mb-6 cursor-pointer border-none shadow-md`,
           children: 'm-0 flex flex-col justify-center gap-4 p-4',
         },
       },
@@ -72,7 +72,7 @@ export const getCardStyle = ({
     music: createTheme({
       card: {
         root: {
-          base: 'flex rounded-lg border-none bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
+          base: 'dark:bg-primary-dark mb-6 flex rounded-lg border-none bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
           children: 'flex h-full flex-col justify-center gap-4 p-6',
           horizontal: {
             off: 'flex-col',
@@ -86,6 +86,20 @@ export const getCardStyle = ({
             on: 'rounded-r-lg md:rounded-l-lg',
             off: 'rounded-t-lg',
           },
+        },
+      },
+    }),
+    'follow-card': createTheme({
+      card: {
+        root: {
+          base: 'dark:bg-primary-dark mb-6 rounded-lg border-none shadow-md',
+        },
+      },
+    }),
+    'friend-suggestion': createTheme({
+      card: {
+        root: {
+          base: 'dark:bg-primary-dark mb-6 rounded-lg border-none shadow-md',
         },
       },
     }),

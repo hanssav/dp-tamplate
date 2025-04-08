@@ -51,6 +51,16 @@ const IMAGE_CONSTANTS = {
     '	https://modernize-angular-main.netlify.app/assets/images/blog/blog-img4.jpg',
   MUSIC_IMG_3:
     'https://modernize-angular-main.netlify.app/assets/images/blog/blog-img3.jpg',
+
+  // fFOLLOW Card, pages Widgets/card
+  FOLLOW_USER_1:
+    'https://modernize-angular-main.netlify.app/assets/images/profile/user-1.jpg',
+  FOLLOW_USER_2:
+    '	https://modernize-angular-main.netlify.app/assets/images/profile/user-2.jpg',
+  FOLLOW_USER_3:
+    'https://modernize-angular-main.netlify.app/assets/images/profile/user-3.jpg',
+  FOLLOW_USER_4:
+    '	https://modernize-angular-main.netlify.app/assets/images/profile/user-4.jpg',
 };
 
 export default IMAGE_CONSTANTS;
