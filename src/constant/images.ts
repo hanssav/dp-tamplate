@@ -69,6 +69,16 @@ const IMAGE_CONSTANTS = {
     '	https://modernize-angular-main.netlify.app/assets/images/products/s2.jpg',
   GIFT_CARD_3:
     'https://modernize-angular-main.netlify.app/assets/images/products/s3.jpg',
+
+  // Payment Card, pages widgets/card
+  PAYMENT_PAYPAL_ICON:
+    '	https://modernize-angular-main.netlify.app/assets/images/svgs/icon-paypal.svg',
+  PAYMENT_WALLET_ICON:
+    '	https://modernize-angular-main.netlify.app/assets/images/svgs/icon-office-bag.svg',
+  PAYMENT_CREDIT_CARD_ICON:
+    '	https://modernize-angular-main.netlify.app/assets/images/svgs/icon-master-card.svg  ',
+  PAYMENT_REFUND_ICON:
+    '	https://modernize-angular-main.netlify.app/assets/images/svgs/icon-pie.svg',
 };
 
 export default IMAGE_CONSTANTS;

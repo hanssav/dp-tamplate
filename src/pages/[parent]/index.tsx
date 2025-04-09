@@ -10,6 +10,7 @@ import { friendSuggestionData } from '../../utils/pages/cards/friendSuggestionCo
 import { giftCardData } from '../../utils/pages/cards/giftCardContent';
 import infoCardContent from '../../utils/pages/cards/infoCardContent';
 import musicCardContents from '../../utils/pages/cards/musicCardContent';
+import { paymentData } from '../../utils/pages/cards/paymentCardContent';
 import postCardContent from '../../utils/pages/cards/postCardContent';
 import ProductCardContent from '../../utils/pages/cards/productCardContent';
 
@@ -74,6 +75,12 @@ const ParentMenu = () => {
       <Col col="col-3">
         {giftCardData.map((card, index) => (
           <Card key={index} variant="gift-card" content={card} />
+        ))}
+      </Col>
+
+      <Col col="col-3" className="flex items-start">
+        {paymentData.map((content, index) => (
+          <Card key={index} variant="payment-card" content={content} />
         ))}
       </Col>
     </DashboardLayout>

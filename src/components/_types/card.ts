@@ -7,7 +7,22 @@ export type CardVariant =
   | 'follow-card'
   | 'friend-suggestion'
   | 'friend'
-  | 'gift-card';
+  | 'gift-card'
+  | 'payment-card';
+
+export interface BreadcrumbProps {
+  content?: {
+    title?: string;
+  };
+}
+
+export interface InfoCardContentProps {
+  content: {
+    title?: string;
+    img?: string;
+    count?: string | number;
+  };
+}
 
 export interface CardContentData {
   title?: string;
@@ -52,4 +67,30 @@ export interface FriendGiftCardProps {
     name?: string;
     image?: string;
   };
+}
+
+import { IconType } from 'react-icons';
+
+export interface PaymentItem {
+  name: string;
+  description: string;
+  amount: string;
+  icon?: string | IconType;
+  bg?: string;
+  textColor?: string;
+}
+
+export interface TimelineItemType {
+  time: string;
+  title: string;
+  link?: string;
+  type: string;
+}
+
+export type PaymentCardContent = (PaymentItem | TimelineItemType)[];
+
+export interface PaymentCardProps {
+  title: string;
+  desc: string;
+  content: (PaymentItem | TimelineItemType)[];
 }
