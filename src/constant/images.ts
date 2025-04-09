@@ -61,6 +61,14 @@ const IMAGE_CONSTANTS = {
     'https://modernize-angular-main.netlify.app/assets/images/profile/user-3.jpg',
   FOLLOW_USER_4:
     '	https://modernize-angular-main.netlify.app/assets/images/profile/user-4.jpg',
+
+  // GIFT Card, pages Widgets/card
+  GIFT_CARD_1:
+    '	https://modernize-angular-main.netlify.app/assets/images/products/s1.jpg',
+  GIFT_CARD_2:
+    '	https://modernize-angular-main.netlify.app/assets/images/products/s2.jpg',
+  GIFT_CARD_3:
+    'https://modernize-angular-main.netlify.app/assets/images/products/s3.jpg',
 };
 
 export default IMAGE_CONSTANTS;

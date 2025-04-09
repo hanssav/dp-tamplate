@@ -111,6 +111,14 @@ export const getCardStyle = ({
         },
       },
     }),
+    'gift-card': createTheme({
+      card: {
+        root: {
+          base: 'mb-6 rounded-lg border-none shadow-md dark:bg-primary-dark',
+          children: 'flex h-full flex-col justify-center p-0',
+        },
+      },
+    }),
   };
 
   // Optional background style

@@ -7,6 +7,7 @@ import { checkValidPath, getTitleFromPath } from '../../utils/function';
 import { followCardData } from '../../utils/pages/cards/followCardContent';
 import { friendCardData } from '../../utils/pages/cards/friendCardContent';
 import { friendSuggestionData } from '../../utils/pages/cards/friendSuggestionContent';
+import { giftCardData } from '../../utils/pages/cards/giftCardContent';
 import infoCardContent from '../../utils/pages/cards/infoCardContent';
 import musicCardContents from '../../utils/pages/cards/musicCardContent';
 import postCardContent from '../../utils/pages/cards/postCardContent';
@@ -67,6 +68,12 @@ const ParentMenu = () => {
       <Col col="col-3">
         {friendCardData.map((content, index) => (
           <Card variant="friend" key={index} content={content} />
+        ))}
+      </Col>
+
+      <Col col="col-3">
+        {giftCardData.map((card, index) => (
+          <Card key={index} variant="gift-card" content={card} />
         ))}
       </Col>
     </DashboardLayout>

@@ -6,7 +6,8 @@ export type CardVariant =
   | 'music'
   | 'follow-card'
   | 'friend-suggestion'
-  | 'friend';
+  | 'friend'
+  | 'gift-card';
 
 export interface CardContentData {
   title?: string;
@@ -44,4 +45,11 @@ export interface FriendCardContent {
 export interface FriendCardProps {
   content: FriendCardContent;
   variant?: CardVariant;
+}
+
+export interface FriendGiftCardProps {
+  content: {
+    name?: string;
+    image?: string;
+  };
 }
