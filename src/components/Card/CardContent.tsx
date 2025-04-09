@@ -2,12 +2,23 @@ import { HiLocationMarker, HiOutlineShoppingBag, HiStar } from 'react-icons/hi';
 import { Link } from 'react-router';
 import FilledCircleIcon from '../../assets/icons/FilledCircleIcon';
 import {
+  FriendCardContent,
+  FriendCardProps,
   FriendSuggestionCardProps,
   FriendSuggestionContent,
   RenderCardContentProps,
 } from '../_types/Card';
-import { SkipBack, Play, SkipForward } from 'lucide-react';
+import {
+  SkipBack,
+  Play,
+  SkipForward,
+  Users,
+  Globe,
+  Code,
+  Instagram,
+} from 'lucide-react';
 import Button from '../Button';
+import { Avatar } from 'flowbite-react';
 
 // Component: Breadcrumb
 function BreadcrumbCardContent({ content }: RenderCardContentProps) {
@@ -29,7 +40,7 @@ function BreadcrumbCardContent({ content }: RenderCardContentProps) {
 function InfoCardContent({ content }: RenderCardContentProps) {
   return (
     <div className="justify-items-center">
-      <img alt="users" src={content?.img} />
+      <img alt={content?.title} src={content?.img} />
       <p className="mt-3 text-sm font-semibold">{content?.title}</p>
       <h6 className="text-xl font-bold">{content?.count}</h6>
     </div>
@@ -41,10 +52,12 @@ function PostCardContent({ content }: RenderCardContentProps) {
   return (
     <div>
       <div className="flex items-start justify-between">
-        <img
-          src={content?.userImg}
+        <Avatar
+          img={content?.userImg}
           alt="User profile"
-          className="h-10 w-10 translate-y-[-45px] rounded-full object-cover"
+          rounded
+          size="md"
+          className="translate-y-[-40px] rounded-full object-cover"
         />
         <button
           type="button"
@@ -143,11 +156,7 @@ const FollowCardContent: React.FC<RenderCardContentProps> = ({ content }) => {
       {/* Avatar + Name + Location */}
       <div className="flex items-center gap-3">
         {/* Avatar */}
-        <img
-          src={content?.bgUser}
-          alt={content?.name}
-          className="h-10 w-10 rounded-full object-cover"
-        />
+        <Avatar img={content?.bgUser} alt={content?.name} rounded size="md" />
 
         {/* Name & Location */}
         <div className="flex flex-col">
@@ -169,41 +178,77 @@ const FollowCardContent: React.FC<RenderCardContentProps> = ({ content }) => {
   );
 };
 
+// Component: Friend Suggestion Card/ Profile Mini
 const FriendSuggestionCardContent: React.FC<FriendSuggestionCardProps> = ({
   content,
 }) => {
   return (
     <div className="flex flex-col py-5">
-      <img
-        src={content.mainImage}
+      <Avatar
+        img={content.mainImage}
         alt={content.name}
-        width={80}
-        height={80}
-        className="mb-4 rounded-full"
+        size="lg"
+        rounded
+        className="mb-4 h-[80px] w-[80px] object-cover"
       />
+
       <h5 className="text-base font-semibold">{content.name}</h5>
       <div className="mt-2 flex items-center gap-2">
         <div className="flex -space-x-2">
           {content.mutualFriends.map((img, idx) => (
-            <img
+            <Avatar
               key={idx}
-              src={img}
+              img={img}
               alt="mutual"
-              width={28}
-              height={28}
-              className="rounded-full border-2 border-white dark:border-gray-800"
+              size="xs"
+              rounded
+              className="border-2 border-white dark:border-gray-800"
             />
           ))}
         </div>
         <span className="text-sm">{content.mutualCount} mutual friends</span>
       </div>
-      <Button className="mt-6 w-full">Add Friend</Button>
-      <Button
-        color="light"
-        className="mt-2 w-full border-red-300 text-red-500 hover:bg-red-50"
-      >
-        Remove
-      </Button>
+      <Button className="mb-2 mt-6 w-full">Add Friend</Button>
+      <Button color="secondary">Remove</Button>
+    </div>
+  );
+};
+
+// Component: Friend Card/ Profile Mini
+export const FriendCard: React.FC<FriendCardProps> = ({ content }) => {
+  const iconMap = {
+    facebook: <Users className="text-blue-600" size={18} />,
+    twitter: <Globe className="text-blue-400" size={18} />,
+    github: <Code className="text-green-600" size={18} />,
+    instagram: <Instagram className="text-pink-500" size={18} />,
+  };
+
+  return (
+    <div className="text-center">
+      <div className="py-5">
+        <Avatar
+          img={content.image}
+          alt={content.name}
+          size="lg"
+          rounded
+          className="mx-auto mb-4 object-cover"
+        />
+        <h5 className="text-lg font-semibold">{content.name}</h5>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          {content.role}
+        </p>
+      </div>
+
+      <div className="mt-4 flex items-center justify-center gap-3 bg-light-primary py-3 dark:bg-[#26334D]">
+        {content.platforms.map((platform) => (
+          <button
+            key={platform}
+            className="rounded-full p-2 transition hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            {iconMap[platform]}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
@@ -217,24 +262,25 @@ export function getCardContent({
 
   switch (variant) {
     case 'breadcrumb':
-      return <BreadcrumbCardContent content={content} variant={variant} />;
+      return <BreadcrumbCardContent content={content} />;
     case 'info':
-      return <InfoCardContent content={content} variant={variant} />;
+      return <InfoCardContent content={content} />;
     case 'post':
-      return <PostCardContent content={content} variant={variant} />;
+      return <PostCardContent content={content} />;
     case 'product':
-      return <ProductCardContent content={content} variant={variant} />;
+      return <ProductCardContent content={content} />;
     case 'music':
-      return <MusicCardContent content={content} variant={variant} />;
+      return <MusicCardContent content={content} />;
     case 'follow-card':
-      return <FollowCardContent content={content} variant={variant} />;
+      return <FollowCardContent content={content} />;
     case 'friend-suggestion':
       return (
         <FriendSuggestionCardContent
           content={content as FriendSuggestionContent}
-          variant={variant}
         />
       );
+    case 'friend':
+      return <FriendCard content={content as FriendCardContent} />;
     default:
       return null;
   }

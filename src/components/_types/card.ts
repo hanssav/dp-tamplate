@@ -5,7 +5,8 @@ export type CardVariant =
   | 'product'
   | 'music'
   | 'follow-card'
-  | 'friend-suggestion';
+  | 'friend-suggestion'
+  | 'friend';
 
 export interface CardContentData {
   title?: string;
@@ -30,5 +31,17 @@ export interface FriendSuggestionContent {
 
 export interface FriendSuggestionCardProps {
   content: FriendSuggestionContent;
+  variant?: CardVariant;
+}
+
+export interface FriendCardContent {
+  name: string;
+  role: string;
+  image: string;
+  platforms: ('facebook' | 'twitter' | 'github' | 'instagram')[];
+}
+
+export interface FriendCardProps {
+  content: FriendCardContent;
   variant?: CardVariant;
 }

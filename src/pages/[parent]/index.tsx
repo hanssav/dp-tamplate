@@ -5,6 +5,7 @@ import DashboardLayout from '../../components/DashboardLayout';
 import IMAGE_CONSTANTS from '../../constant/images';
 import { checkValidPath, getTitleFromPath } from '../../utils/function';
 import { followCardData } from '../../utils/pages/cards/followCardContent';
+import { friendCardData } from '../../utils/pages/cards/friendCardContent';
 import { friendSuggestionData } from '../../utils/pages/cards/friendSuggestionContent';
 import infoCardContent from '../../utils/pages/cards/infoCardContent';
 import musicCardContents from '../../utils/pages/cards/musicCardContent';
@@ -60,6 +61,12 @@ const ParentMenu = () => {
       <Col col="col-4">
         {friendSuggestionData.map((user, index) => (
           <Card key={index} variant="friend-suggestion" content={user} />
+        ))}
+      </Col>
+
+      <Col col="col-3">
+        {friendCardData.map((content, index) => (
+          <Card variant="friend" key={index} content={content} />
         ))}
       </Col>
     </DashboardLayout>

@@ -42,7 +42,7 @@ export const getCardStyle = ({
     breadcrumb: createTheme({
       card: {
         root: {
-          base: `mb-6 rounded-xl p-1 shadow-none ${bgClass} dark:bg-primary-dark border-none`,
+          base: `mb-6 rounded-xl p-1 shadow-none ${bgClass} border-none dark:bg-primary-dark`,
         },
       },
     }),
@@ -56,7 +56,7 @@ export const getCardStyle = ({
     post: createTheme({
       card: {
         root: {
-          base: `dark:bg-primary-dark mb-6 cursor-pointer border-none shadow-md transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg dark:text-white`,
+          base: `mb-6 cursor-pointer border-none shadow-md transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg dark:bg-primary-dark dark:text-white`,
           children: 'm-0 flex flex-col justify-center gap-4 p-4',
         },
       },
@@ -64,7 +64,7 @@ export const getCardStyle = ({
     product: createTheme({
       card: {
         root: {
-          base: `dark:bg-primary-dark mb-6 cursor-pointer border-none shadow-md`,
+          base: `mb-6 cursor-pointer border-none shadow-md dark:bg-primary-dark`,
           children: 'm-0 flex flex-col justify-center gap-4 p-4',
         },
       },
@@ -72,7 +72,7 @@ export const getCardStyle = ({
     music: createTheme({
       card: {
         root: {
-          base: 'dark:bg-primary-dark mb-6 flex rounded-lg border-none bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
+          base: 'mb-6 flex rounded-lg border-none bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 dark:bg-primary-dark',
           children: 'flex h-full flex-col justify-center gap-4 p-6',
           horizontal: {
             off: 'flex-col',
@@ -92,14 +92,22 @@ export const getCardStyle = ({
     'follow-card': createTheme({
       card: {
         root: {
-          base: 'dark:bg-primary-dark mb-6 rounded-lg border-none shadow-md',
+          base: 'mb-6 rounded-lg border-none shadow-md dark:bg-primary-dark',
         },
       },
     }),
     'friend-suggestion': createTheme({
       card: {
         root: {
-          base: 'dark:bg-primary-dark mb-6 rounded-lg border-none shadow-md',
+          base: 'mb-6 rounded-lg border-none shadow-md dark:bg-primary-dark',
+        },
+      },
+    }),
+    friend: createTheme({
+      card: {
+        root: {
+          base: 'mb-6 rounded-lg border-none shadow-md dark:bg-primary-dark',
+          children: 'flex h-full flex-col justify-center p-0',
         },
       },
     }),

@@ -47,8 +47,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       horizontal={horizontal}
       {...rest}
     >
-      {getCardContent({ variant, content })}
-      {children}
+      {content ? getCardContent({ variant, content }) : children}
     </CardFlowbite>
   );
 });
