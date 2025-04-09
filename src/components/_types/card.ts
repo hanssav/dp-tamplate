@@ -24,6 +24,42 @@ export interface InfoCardContentProps {
   };
 }
 
+export interface PostCardContentProps {
+  content: {
+    userImg?: string;
+    lastView?: string;
+    category?: string;
+    title?: string;
+    views?: number;
+    comments?: number;
+    date?: string;
+  };
+}
+
+export interface ProductContentProps {
+  content: {
+    title?: string;
+    discount_price?: number;
+    normal_price?: number;
+    rating?: number;
+  };
+}
+
+export interface MusicContentProps {
+  content: {
+    title?: string;
+    artis?: string;
+  };
+}
+
+export interface FollowContentProps {
+  content: {
+    bgUser?: string;
+    name?: string;
+    location?: string;
+  };
+}
+
 export interface CardContentData {
   title?: string;
   normal_price?: number;
