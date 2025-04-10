@@ -2,6 +2,8 @@ import { IconType } from 'react-icons';
 import Button from '../Button';
 import React from 'react';
 import { TimelineItemType, PaymentItem } from '../_types/Card';
+import Typography from '../Typography';
+import Col from '../Col';
 
 interface UpcomingActivityItemProps {
   icon: IconType;
@@ -20,7 +22,7 @@ const UpcomingActivityItem: React.FC<UpcomingActivityItemProps> = ({
   bg,
   textColor,
 }) => (
-  <div className="flex items-center py-4">
+  <div className="flex items-center py-3">
     {/* Icon container */}
     <span
       className={`flex h-10 w-10 items-center justify-center rounded-full ${bg} ${textColor}`}
@@ -29,15 +31,13 @@ const UpcomingActivityItem: React.FC<UpcomingActivityItemProps> = ({
     </span>
 
     {/* Text content */}
-    <div className="ml-4 mr-auto">
-      <h4 className="text-base font-semibold text-gray-800 dark:text-white">
-        {name}
-      </h4>
-      <p className="text-sm text-gray-500 dark:text-white">{description}</p>
-    </div>
+    <Col className="ml-4 mr-auto gap-y-0">
+      <Typography textStyle="subtitle">{name}</Typography>
+      <Typography textStyle="desc">{description}</Typography>
+    </Col>
 
     {/* Amount/time */}
-    <span className="text-sm text-gray-700 dark:text-white">{amount}</span>
+    <Typography textStyle="body">{amount}</Typography>
   </div>
 );
 
@@ -54,28 +54,29 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   time,
   title,
   link,
-  type,
   isLast,
   badgeColor,
 }) => (
   <div className="flex items-start space-x-4">
-    <div className="w-20 shrink-0 text-right text-sm">{time}</div>
+    <Typography as="div" textStyle="body" className="w-20 text-right">
+      {time}
+    </Typography>
     <div className="relative flex items-center">
       <span
         className={`mb-6 mt-2 h-4 w-4 rounded-full border-4 ${badgeColor}`}
       />
       {!isLast && (
-        <span className="absolute left-1/2 top-4 -ml-px h-full w-0.5 bg-gray-200" />
+        <span className="absolute left-1/2 top-6 -ml-px h-full w-0.5 bg-gray-200" />
       )}
     </div>
     <div className="flex-1">
-      <p className="text-sm font-medium text-gray-800 dark:text-white">
+      <Typography as="p" textStyle="body">
         {title}
-      </p>
+      </Typography>
       {link && (
-        <a href="#" className="text-sm text-blue-600 hover:underline">
+        <Typography as="a" href="#" textStyle="link">
           {link}
-        </a>
+        </Typography>
       )}
     </div>
   </div>
@@ -101,7 +102,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
   const Icon = icon as IconType;
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center py-2">
       <span
         className={`flex h-10 w-10 items-center justify-center rounded ${bg} ${textColor}`}
       >
@@ -112,10 +113,10 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
         ) : null}
       </span>
       <div className="ml-4 mr-auto">
-        <h4 className="text-base font-semibold">{name}</h4>
-        <p className="text-sm text-gray-500">{description}</p>
+        <Typography textStyle="subtitle">{name}</Typography>
+        <Typography textStyle="desc">{description}</Typography>
       </div>
-      <span className="text-sm font-semibold">{amount}</span>
+      <Typography textStyle="body">{amount}</Typography>
     </div>
   );
 };
@@ -146,16 +147,23 @@ interface PaymentCardProps {
   content: (PaymentItem | TimelineItemType)[];
 }
 
-const PaymentCard: React.FC<PaymentCardProps> = ({ title, desc, content }) => {
+export const PaymentCard: React.FC<PaymentCardProps> = ({
+  title,
+  desc,
+  content,
+}) => {
   const isUpcoming = title === 'Upcoming Activity';
   const isTimeline = title === 'Timeline Activity';
+  const isPaymentGateway = title === 'Payment Gateways';
 
   return (
     <div className="w-full rounded-xl p-6 shadow-md dark:text-white">
-      <h3 className="text-lg font-semibold">{title}</h3>
-      <p className="mb-6 text-sm text-gray-500">{desc}</p>
+      <Typography textStyle="title">{title}</Typography>
+      <Typography textStyle="desc" className="mb-6">
+        {desc}
+      </Typography>
 
-      {isUpcoming ? (
+      {isUpcoming && (
         <div className="space-y-4">
           {content.filter(isPaymentItem).map((item, index) => {
             const paymentItem = item as PaymentItem;
@@ -172,7 +180,9 @@ const PaymentCard: React.FC<PaymentCardProps> = ({ title, desc, content }) => {
             );
           })}
         </div>
-      ) : isTimeline ? (
+      )}
+
+      {isTimeline && (
         <div className="space-y-6">
           {content.filter(isTimelineItem).map((item, index, arr) => (
             <TimelineItem
@@ -186,7 +196,9 @@ const PaymentCard: React.FC<PaymentCardProps> = ({ title, desc, content }) => {
             />
           ))}
         </div>
-      ) : (
+      )}
+
+      {isPaymentGateway && (
         <div className="space-y-6">
           {content.filter(isPaymentItem).map((item, index) => (
             <TransactionItem
@@ -199,11 +211,11 @@ const PaymentCard: React.FC<PaymentCardProps> = ({ title, desc, content }) => {
               textColor={item.textColor}
             />
           ))}
-          <Button className="mt-6 w-full">View all Transactions</Button>
+          <Button color="secondary" className="mt-6 w-full">
+            View all Transactions
+          </Button>
         </div>
       )}
     </div>
   );
 };
-
-export default PaymentCard;

@@ -35,8 +35,12 @@ export const getCardStyle = ({
   type = 'primary',
   bgImg,
 }: GetCardStyleProps) => {
-  const bgClass = bgMap[type];
-  const textClass = textMap[type];
+  const validTypes = Object.keys(bgMap) as BgMapKey[];
+  const isValid = validTypes.includes(type as BgMapKey);
+  const safeType: BgMapKey = isValid ? (type as BgMapKey) : 'primary';
+
+  const bgClass = bgMap[safeType];
+  const textClass = textMap[safeType];
 
   const themeMap = {
     breadcrumb: createTheme({

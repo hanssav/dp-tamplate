@@ -1,14 +1,18 @@
 import { MusicContentProps } from '../_types/Card';
 import { SkipBack, Play, SkipForward } from 'lucide-react';
+import Typography from '../Typography';
 
 export const MusicCardContent: React.FC<MusicContentProps> = ({ content }) => {
   return (
     <>
-      <div className="gap-1">
-        <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+      <div className="gap-0">
+        <Typography as="h5" textStyle="title">
           {content?.title}
-        </h5>
-        <p className="text-gray-600 dark:text-gray-300">{content?.artis}</p>
+        </Typography>
+
+        <Typography as="p" textStyle="desc">
+          {content?.artis}
+        </Typography>
       </div>
 
       <div className="mt-2 flex items-center gap-4">

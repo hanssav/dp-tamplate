@@ -1,12 +1,7 @@
+import { MusicContentProps } from '../../../components/_types/Card';
 import IMAGE_CONSTANTS from '../../../constant/images';
 
-export interface CardContentData {
-  title: string;
-  artis: string;
-  bgImg: string;
-}
-
-const musicCardContents: CardContentData[] = [
+const musicCardContents: MusicContentProps['content'][] = [
   {
     title: 'Uptown Funk',
     artis: 'Jon Bon Jovi',

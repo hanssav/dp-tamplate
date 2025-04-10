@@ -1,10 +1,11 @@
 import { Avatar } from 'flowbite-react';
 import Button from '../Button';
+import Typography from '../Typography'; // <-- tambahin ini
 import { FriendSuggestionCardProps } from '../_types/Card';
 
-const FriendSuggestionCardContent: React.FC<FriendSuggestionCardProps> = ({
-  content,
-}) => {
+export const FriendSuggestionCardContent: React.FC<
+  FriendSuggestionCardProps
+> = ({ content }) => {
   return (
     <div className="flex flex-col py-5">
       {/* Avatar Pengguna */}
@@ -17,7 +18,9 @@ const FriendSuggestionCardContent: React.FC<FriendSuggestionCardProps> = ({
       />
 
       {/* Nama Pengguna */}
-      <h5 className="text-base font-semibold">{content.name}</h5>
+      <Typography as="h5" textStyle="body" className="font-semibold">
+        {content.name}
+      </Typography>
 
       {/* Teman Bersama */}
       <div className="mt-2 flex items-center gap-2">
@@ -33,7 +36,9 @@ const FriendSuggestionCardContent: React.FC<FriendSuggestionCardProps> = ({
             />
           ))}
         </div>
-        <span className="text-sm">{content.mutualCount} mutual friends</span>
+        <Typography textStyle="desc" className="text-sm">
+          {content.mutualCount} mutual friends
+        </Typography>
       </div>
 
       {/* Tombol */}
@@ -42,5 +47,3 @@ const FriendSuggestionCardContent: React.FC<FriendSuggestionCardProps> = ({
     </div>
   );
 };
-
-export default FriendSuggestionCardContent;

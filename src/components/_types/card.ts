@@ -24,6 +24,15 @@ export interface InfoCardContentProps {
   };
 }
 
+export const validInfoCardTypes = [
+  'primary',
+  'warning',
+  'secondary',
+  'error',
+  'success',
+] as const;
+export type BgMapKey = (typeof validInfoCardTypes)[number];
+
 export interface PostCardContentProps {
   content: {
     userImg?: string;
@@ -49,6 +58,7 @@ export interface MusicContentProps {
   content: {
     title?: string;
     artis?: string;
+    bgImg?: string;
   };
 }
 
@@ -58,20 +68,6 @@ export interface FollowContentProps {
     name?: string;
     location?: string;
   };
-}
-
-export interface CardContentData {
-  title?: string;
-  normal_price?: number;
-  discount_price?: number;
-  rating?: number;
-  bgImg?: string;
-  [key: string]: any;
-}
-
-export interface RenderCardContentProps {
-  variant?: CardVariant;
-  content?: CardContentData;
 }
 
 export interface FriendSuggestionContent {
@@ -95,7 +91,6 @@ export interface FriendCardContent {
 
 export interface FriendCardProps {
   content: FriendCardContent;
-  variant?: CardVariant;
 }
 
 export interface FriendGiftCardProps {
@@ -129,4 +124,25 @@ export interface PaymentCardProps {
   title: string;
   desc: string;
   content: (PaymentItem | TimelineItemType)[];
+}
+
+export type CardContentData = (
+  | BreadcrumbProps['content']
+  | InfoCardContentProps['content']
+  | PostCardContentProps['content']
+  | ProductContentProps['content']
+  | MusicContentProps['content']
+  | FollowContentProps['content']
+  | FriendSuggestionContent
+  | FriendCardContent
+  | FriendGiftCardProps['content']
+  | PaymentCardProps
+) & {
+  bgImg?: string;
+  type?: string;
+};
+
+export interface RenderCardContentProps {
+  variant?: CardVariant;
+  content?: CardContentData;
 }

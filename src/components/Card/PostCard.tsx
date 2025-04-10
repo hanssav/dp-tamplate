@@ -1,4 +1,5 @@
 import { Avatar } from 'flowbite-react';
+import Typography from '../Typography';
 import { PostCardContentProps } from '../_types/Card';
 
 export function PostCardContent({ content }: PostCardContentProps) {
@@ -12,38 +13,48 @@ export function PostCardContent({ content }: PostCardContentProps) {
           size="md"
           className="translate-y-[-40px] rounded-full object-cover"
         />
-        <button
-          type="button"
-          className="translate-y-[-95px] rounded-lg border bg-gray-50 p-2 text-sm text-gray-700 hover:bg-gray-200 focus:outline-none"
+        <Typography
+          as="button"
+          textStyle="desc"
+          className="translate-y-[-95px] rounded-lg border bg-gray-50 p-2 hover:bg-gray-200 focus:outline-none"
         >
           {content?.lastView}
-        </button>
+        </Typography>
       </div>
 
-      <button
-        type="button"
-        className="translate-y-[-25px] rounded-lg border bg-gray-100 p-2 text-sm text-gray-700 hover:bg-gray-200 focus:outline-none"
+      <Typography
+        as="button"
+        textStyle="desc"
+        className="translate-y-[-25px] rounded-lg border bg-gray-100 p-2 hover:bg-gray-200 focus:outline-none"
       >
         {content?.category}
-      </button>
+      </Typography>
 
-      <h2 className="text-lg font-semibold">{content?.title}</h2>
+      <Typography as="h2" textStyle="title" className="mt-2">
+        {content?.title}
+      </Typography>
 
       <div className="mt-3 flex items-start justify-between text-sm text-gray-500 dark:text-white">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1" title="Views">
             <span>👁️</span>
-            <span>{content?.views}</span>
+            <Typography as="span" textStyle="desc">
+              {content?.views}
+            </Typography>
           </div>
           <div className="flex items-center gap-1" title="Comments">
             <span>💬</span>
-            <span>{content?.comments}</span>
+            <Typography as="span" textStyle="desc">
+              {content?.comments}
+            </Typography>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <span className="text-xs text-blue-500">●</span>
-          <span>{content?.date}</span>
+          <Typography as="span" textStyle="desc">
+            {content?.date}
+          </Typography>
         </div>
       </div>
     </div>

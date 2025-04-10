@@ -43,9 +43,13 @@
 import { forwardRef } from 'react';
 import { Card as CardFlowbite } from 'flowbite-react';
 import { getCardContent } from './cardContent';
-import { CardVariant, CardContentData } from '../_types/Card';
+import {
+  CardVariant,
+  CardContentData,
+  BgMapKey,
+  validInfoCardTypes,
+} from '../_types/Card';
 import { getCardStyle } from './GetCardStyle';
-
 interface CardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
   content?: CardContentData;
@@ -66,7 +70,11 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   },
   ref
 ) {
-  const type = content?.type;
+  const isValidType = validInfoCardTypes.includes(content?.type as BgMapKey);
+  const safeType: BgMapKey = isValidType
+    ? (content?.type as BgMapKey)
+    : 'primary';
+
   const bgImg = content?.bgImg;
 
   const {
@@ -75,7 +83,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     renderImage,
   } = getCardStyle({
     variant,
-    type,
+    type: safeType,
     bgImg,
   });
 

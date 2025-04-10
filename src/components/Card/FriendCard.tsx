@@ -1,6 +1,7 @@
 import { Avatar } from 'flowbite-react';
 import { FriendCardProps } from '../_types/Card';
 import { Users, Globe, Code, Instagram } from 'lucide-react';
+import Typography from '../Typography'; // <- jangan lupa
 
 export const FriendCard: React.FC<FriendCardProps> = ({ content }) => {
   const iconMap: Record<string, JSX.Element> = {
@@ -20,10 +21,18 @@ export const FriendCard: React.FC<FriendCardProps> = ({ content }) => {
           rounded
           className="mx-auto mb-4 object-cover"
         />
-        <h5 className="text-lg font-semibold">{content.name}</h5>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+
+        <Typography as="h5" textStyle="body" className="font-semibold">
+          {content.name}
+        </Typography>
+
+        <Typography
+          as="p"
+          textStyle="desc"
+          className="text-gray-500 dark:text-gray-400"
+        >
           {content.role}
-        </p>
+        </Typography>
       </div>
 
       <div className="mt-4 flex items-center justify-center gap-3 bg-light-primary py-3 dark:bg-[#26334D]">

@@ -2,6 +2,7 @@ import { FollowContentProps } from '../_types/Card';
 import { HiLocationMarker } from 'react-icons/hi';
 import { Avatar } from 'flowbite-react';
 import Button from '../Button';
+import Typography from '../Typography'; // <- jangan lupa import
 
 export const FollowCardContent: React.FC<FollowContentProps> = ({
   content,
@@ -15,12 +16,19 @@ export const FollowCardContent: React.FC<FollowContentProps> = ({
 
         {/* Name & Location */}
         <div className="flex flex-col">
-          <h4 className="text-sm font-semibold leading-tight text-gray-900 dark:text-white">
+          <Typography
+            as="h4"
+            textStyle="body"
+            className="font-semibold leading-tight"
+          >
             {content?.name}
-          </h4>
+          </Typography>
+
           <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
             <HiLocationMarker className="mr-1 h-3.5 w-3.5" />
-            <span>{content?.location}</span>
+            <Typography as="span" textStyle="desc">
+              {content?.location}
+            </Typography>
           </div>
         </div>
       </div>

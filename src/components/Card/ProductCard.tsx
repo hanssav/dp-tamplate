@@ -1,4 +1,5 @@
 import { HiOutlineShoppingBag, HiStar } from 'react-icons/hi';
+import Typography from '../Typography';
 import { ProductContentProps } from '../_types/Card';
 
 export function ProductCardContent({ content }: ProductContentProps) {
@@ -10,16 +11,20 @@ export function ProductCardContent({ content }: ProductContentProps) {
       </div>
 
       {/* Judul */}
-      <h2 className="text-md my-2 font-semibold">{content?.title}</h2>
+      <Typography as="h2" textStyle="subtitle" className="my-2">
+        {content?.title}
+      </Typography>
 
       {/* Harga dan Rating */}
       <div className="flex items-start justify-between">
         {/* Harga */}
         <div className="flex items-start gap-x-2">
-          <h2 className="font-semibold">$ {content?.discount_price}</h2>
-          <p className="text-sm text-gray-500 line-through">
+          <Typography as="h2" textStyle="body" className="font-semibold">
+            $ {content?.discount_price}
+          </Typography>
+          <Typography as="p" textStyle="desc" className="line-through">
             $ {content?.normal_price}
-          </p>
+          </Typography>
         </div>
 
         {/* Rating */}

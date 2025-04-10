@@ -48,7 +48,7 @@ export const paymentData: PaymentCardProps[] = [
     ],
   },
   {
-    title: 'Upcomming Activity',
+    title: 'Upcoming Activity',
     desc: 'In New year',
     content: [
       {
@@ -120,8 +120,8 @@ export const paymentData: PaymentCardProps[] = [
         type: 'warning',
       },
       {
-        time: '12.30 pm',
-        title: 'New arrival recorded',
+        time: '01.40 am',
+        title: 'check to add activity',
         link: '#ML-3467',
         type: 'error',
       },
