@@ -1,5 +1,5 @@
-import { InfoCardContentProps } from '../_types/Card';
-import Typography from '../Typography';
+import { InfoCardContentProps } from '@components/_types/Card';
+import Typography from '@components/Typography';
 
 export function InfoCardContent({ content }: InfoCardContentProps) {
   return (

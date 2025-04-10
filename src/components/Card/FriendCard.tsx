@@ -1,7 +1,7 @@
 import { Avatar } from 'flowbite-react';
-import { FriendCardProps } from '../_types/Card';
+import { FriendCardProps } from '@components/_types/Card';
 import { Users, Globe, Code, Instagram } from 'lucide-react';
-import Typography from '../Typography'; // <- jangan lupa
+import Typography from '@components/Typography'; // <- jangan lupa
 
 export const FriendCard: React.FC<FriendCardProps> = ({ content }) => {
   const iconMap: Record<string, JSX.Element> = {

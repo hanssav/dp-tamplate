@@ -9,17 +9,17 @@ import {
   InfoCardContentProps,
   PostCardContentProps,
   ProductContentProps,
-} from '../_types/Card';
-import { BreadcrumbCardContent } from './BreadCrumbCard';
-import { InfoCardContent } from './InfoCard';
-import { PostCardContent } from './PostCard';
-import { ProductCardContent } from './ProductCard';
-import { MusicCardContent } from './MusicCard';
-import { FollowCardContent } from './FollowCard';
-import { FriendSuggestionCardContent } from './FriendSuggestionCard';
-import { FriendCard } from './FriendCard';
-import { FriendGiftCard } from './FriendGiftCard';
-import { PaymentCard } from './PaymentCard';
+} from '@components/_types/Card';
+import { BreadcrumbCardContent } from '@components/Card/BreadCrumbCard';
+import { InfoCardContent } from '@components/Card/InfoCard';
+import { PostCardContent } from '@components/Card/PostCard';
+import { ProductCardContent } from '@components/Card/ProductCard';
+import { MusicCardContent } from '@components/Card/MusicCard';
+import { FollowCardContent } from '@components/Card/FollowCard';
+import { FriendSuggestionCardContent } from '@components/Card/FriendSuggestionCard';
+import { FriendCard } from '@components/Card/FriendCard';
+import { FriendGiftCard } from '@components/Card/FriendGiftCard';
+import { PaymentCard } from '@components/Card/PaymentCard';
 import { BreadcrumbComponentProps } from 'flowbite-react';
 
 export function getCardContent({

@@ -1,13 +1,13 @@
 import { useThemeMode, Sidebar, SidebarItems } from 'flowbite-react';
 import { HiX, HiChevronDown, HiChevronUp } from 'react-icons/hi';
-import { menuItems } from '../../datas/components/menuItems';
+import { menuItems } from '@datas/components/menuItems';
 import { twMerge } from 'tailwind-merge';
-import SidebarLogo from './SidebarLogo';
 import { NavLink } from 'react-router';
-import { useSidebarContext } from '../../context/sidebarContext';
-import DotIcon from '../../assets/icons/RouteIcon';
-import IMAGE_CONSTANTS from '../../constant/images';
-import { theme } from '../Button/GetButtonStyle'; // theme for NavLink or button style, need to upadate
+import { useSidebarContext } from '@context/sidebarContext';
+import DotIcon from '@assets/icons/RouteIcon';
+import IMAGE_CONSTANTS from '@constant/images';
+import { theme } from '@components/Button/GetButtonStyle';
+import SidebarLogo from '@components/SideBar/SidebarLogo';
 
 interface SidebarProps {
   isSidebarOpen: boolean;

@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
-import FilledCircleIcon from '../../assets/icons/FilledCircleIcon';
-import Col from '../Col';
-import Typography from '../Typography';
-import { BreadcrumbProps } from '../_types/Card';
+import FilledCircleIcon from '@assets/icons/FilledCircleIcon';
+import Col from '@components/Col';
+import { BreadcrumbProps } from '@components/_types/Card';
+import Typography from '@components/Typography';
 
 export function BreadcrumbCardContent({ content }: BreadcrumbProps) {
   return (

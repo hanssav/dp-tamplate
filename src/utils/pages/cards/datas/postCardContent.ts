@@ -1,4 +1,4 @@
-import IMAGE_CONSTANTS from '../../../constant/images';
+import IMAGE_CONSTANTS from '@constant/images';
 
 export interface PostCardItem {
   title: string;
@@ -11,7 +11,7 @@ export interface PostCardItem {
   lastView: string;
 }
 
-const postCardContent: PostCardItem[] = [
+export const postCardContent: PostCardItem[] = [
   {
     title: 'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
     bgImg: IMAGE_CONSTANTS.POST_BG_1,
@@ -44,5 +44,3 @@ const postCardContent: PostCardItem[] = [
     lastView: '2 mins Read',
   },
 ];
-
-export default postCardContent;

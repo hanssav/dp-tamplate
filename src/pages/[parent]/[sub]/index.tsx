@@ -1,6 +1,6 @@
+import DashboardLayout from '@components/DashboardLayout';
+import { menuItems } from '@datas/components/menuItems';
 import { useLocation, Navigate } from 'react-router'; // or 'react-router-dom' if using it
-import DashboardLayout from '../../../components/DashboardLayout';
-import { menuItems } from '../../../datas/components/menuItems';
 
 const Child = () => {
   const location = useLocation();

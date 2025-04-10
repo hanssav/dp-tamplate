@@ -1,6 +1,6 @@
-import Button from '../Button';
-import Typography from '../Typography'; // <- jangan lupa ini
-import { FriendGiftCardProps } from '../_types/Card';
+import Button from '@components/Button';
+import Typography from '@components/Typography'; // <- jangan lupa ini
+import { FriendGiftCardProps } from '@components/_types/Card';
 import { Gift } from 'lucide-react';
 
 export const FriendGiftCard: React.FC<FriendGiftCardProps> = ({ content }) => {

@@ -1,9 +1,9 @@
 import { Navbar, useThemeMode } from 'flowbite-react';
 import { HiViewGrid, HiOutlineMoon, HiOutlineBell } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
-import { navLinks } from '../../datas/components/navLinks';
-import UserDropdown from './UserDropdown';
-import Button from '../Button';
+import { navLinks } from '@datas/components/navLinks';
+import Button from '@components/Button';
+import UserDropdown from '@components/Navbar/userDropdown';
 
 interface NavbarProps {
   toggleMobileSidebar: () => void;

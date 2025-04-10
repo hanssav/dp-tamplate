@@ -1,4 +1,4 @@
-import IMAGE_CONSTANTS from '../../../constant/images';
+import IMAGE_CONSTANTS from '@constant/images';
 
 export interface FollowCardContent {
   name: string;

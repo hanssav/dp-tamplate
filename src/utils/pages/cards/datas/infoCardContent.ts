@@ -1,4 +1,4 @@
-import IMAGE_CONSTANTS from '../../../constant/images';
+import IMAGE_CONSTANTS from '@constant/images';
 
 export interface InfoCardItem {
   title: string;
@@ -7,7 +7,7 @@ export interface InfoCardItem {
   type: 'primary' | 'warning' | 'secondary' | 'error' | 'success';
 }
 
-const infoCardContent: InfoCardItem[] = [
+export const infoCardContent: InfoCardItem[] = [
   {
     title: 'Profile',
     img: IMAGE_CONSTANTS.INFO_USER_IMG,
@@ -45,5 +45,3 @@ const infoCardContent: InfoCardItem[] = [
     type: 'secondary',
   },
 ];
-
-export default infoCardContent;

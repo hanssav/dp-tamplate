@@ -1,6 +1,6 @@
-import { MusicContentProps } from '../_types/Card';
+import { MusicContentProps } from '@components/_types/Card';
 import { SkipBack, Play, SkipForward } from 'lucide-react';
-import Typography from '../Typography';
+import Typography from '@components/Typography';
 
 export const MusicCardContent: React.FC<MusicContentProps> = ({ content }) => {
   return (

@@ -1,8 +1,8 @@
-import { FollowContentProps } from '../_types/Card';
+import { FollowContentProps } from '@components/_types/Card';
 import { HiLocationMarker } from 'react-icons/hi';
 import { Avatar } from 'flowbite-react';
-import Button from '../Button';
-import Typography from '../Typography'; // <- jangan lupa import
+import Button from '@components/Button';
+import Typography from '@components/Typography';
 
 export const FollowCardContent: React.FC<FollowContentProps> = ({
   content,

@@ -1,5 +1,5 @@
-import { FriendSuggestionContent } from './../../../components/_types/card';
-import IMAGE_CONSTANTS from '../../../constant/images';
+import { FriendSuggestionContent } from '@components/_types/Card';
+import IMAGE_CONSTANTS from '@constant/images';
 
 export const friendSuggestionData: FriendSuggestionContent[] = [
   {

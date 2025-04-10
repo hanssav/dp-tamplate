@@ -1,6 +1,6 @@
+import NavbarMenu from '@components/Navbar';
+import SidebarMenu from '@components/SideBar';
 import { useState, ReactNode } from 'react';
-import NavbarMenu from '../Navbar';
-import SidebarMenu from '../SideBar';
 
 interface DashboardLayoutProps {
   children: ReactNode;

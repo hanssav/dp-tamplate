@@ -7,7 +7,7 @@ export function getTitleFromPath(pathname: string): string {
     .join(' ');
 }
 
-import { menuItems } from '../datas/components/menuItems';
+import { menuItems } from '@datas/components/menuItems';
 
 export const checkValidPath = (pathname: string): true | '404' => {
   for (const category of menuItems) {

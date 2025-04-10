@@ -1,6 +1,6 @@
 import { Avatar } from 'flowbite-react';
-import Typography from '../Typography';
-import { PostCardContentProps } from '../_types/Card';
+import Typography from '@components/Typography';
+import { PostCardContentProps } from '@components/_types/Card';
 
 export function PostCardContent({ content }: PostCardContentProps) {
   return (

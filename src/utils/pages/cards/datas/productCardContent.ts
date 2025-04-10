@@ -1,4 +1,4 @@
-import IMAGE_CONSTANTS from '../../../constant/images';
+import IMAGE_CONSTANTS from '@constant/images';
 
 export interface ProductCardItem {
   title: string;
@@ -8,7 +8,7 @@ export interface ProductCardItem {
   rating: number;
 }
 
-const ProductCardContent: ProductCardItem[] = [
+export const ProductCardContent: ProductCardItem[] = [
   {
     title: 'Boat Headphone',
     normal_price: 375,
@@ -38,5 +38,3 @@ const ProductCardContent: ProductCardItem[] = [
     bgImg: IMAGE_CONSTANTS.PRODUCT_IMG_4,
   },
 ];
-
-export default ProductCardContent;

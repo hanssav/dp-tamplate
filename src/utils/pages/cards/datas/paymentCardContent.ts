@@ -1,5 +1,3 @@
-import { PaymentCardProps } from '../../../components/_types/Card';
-import IMAGE_CONSTANTS from '../../../constant/images';
 import {
   HiLocationMarker,
   HiArchive,
@@ -7,6 +5,8 @@ import {
   HiClipboardCheck,
   HiMail,
 } from 'react-icons/hi';
+import { PaymentCardProps } from '@components/_types/Card';
+import IMAGE_CONSTANTS from '@constant/images';
 
 export const paymentData: PaymentCardProps[] = [
   {

@@ -1,18 +1,20 @@
 import { Navigate, useLocation } from 'react-router';
-import { Card } from '../../components/Card';
-import Col from '../../components/Col';
-import DashboardLayout from '../../components/DashboardLayout';
-import IMAGE_CONSTANTS from '../../constant/images';
-import { checkValidPath, getTitleFromPath } from '../../utils/function';
-import { followCardData } from '../../utils/pages/cards/followCardContent';
-import { friendCardData } from '../../utils/pages/cards/friendCardContent';
-import { friendSuggestionData } from '../../utils/pages/cards/friendSuggestionContent';
-import { giftCardData } from '../../utils/pages/cards/giftCardContent';
-import infoCardContent from '../../utils/pages/cards/infoCardContent';
-import musicCardContents from '../../utils/pages/cards/musicCardContent';
-import { paymentData } from '../../utils/pages/cards/paymentCardContent';
-import postCardContent from '../../utils/pages/cards/postCardContent';
-import ProductCardContent from '../../utils/pages/cards/productCardContent';
+import { Card } from '@components/Card';
+import Col from '@components/Col';
+import DashboardLayout from '@components/DashboardLayout';
+import IMAGE_CONSTANTS from '@constant/images';
+import { checkValidPath, getTitleFromPath } from '@utils/function';
+import {
+  friendCardData,
+  friendSuggestionData,
+  giftCardData,
+  musicCardContents,
+  paymentData,
+  postCardContent,
+  followCardData,
+  infoCardContent,
+  ProductCardContent,
+} from '@utils/pages/cards';
 
 const ParentMenu = () => {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import { createTheme } from 'flowbite-react';
 import React from 'react';
-import { CardVariant } from '../_types/Card';
+import { CardVariant } from '@components/_types/Card';
 
 // Mapping warna
 const bgMap = {

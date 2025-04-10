@@ -1,9 +1,9 @@
 import { IconType } from 'react-icons';
-import Button from '../Button';
+import Button from '@components/Button';
 import React from 'react';
-import { TimelineItemType, PaymentItem } from '../_types/Card';
-import Typography from '../Typography';
-import Col from '../Col';
+import { TimelineItemType, PaymentItem } from '@components/_types/Card';
+import Typography from '@components/Typography';
+import Col from '@components/Col';
 
 interface UpcomingActivityItemProps {
   icon: IconType;

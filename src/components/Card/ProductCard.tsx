@@ -1,6 +1,6 @@
 import { HiOutlineShoppingBag, HiStar } from 'react-icons/hi';
-import Typography from '../Typography';
-import { ProductContentProps } from '../_types/Card';
+import Typography from '@components/Typography';
+import { ProductContentProps } from '@components/_types/Card';
 
 export function ProductCardContent({ content }: ProductContentProps) {
   return (

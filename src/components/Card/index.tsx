@@ -48,7 +48,7 @@ import {
   CardContentData,
   BgMapKey,
   validInfoCardTypes,
-} from '../_types/Card';
+} from '@components/_types/Card';
 import { getCardStyle } from './GetCardStyle';
 interface CardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
