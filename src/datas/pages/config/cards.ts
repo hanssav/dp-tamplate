@@ -9,17 +9,9 @@ import {
   giftCardData,
   paymentData,
 } from '@/datas/pages/cards';
-import { ColProps } from '@components/Col';
-import { CardVariant } from '@components/_types/Card';
+import { GenericSectionProps } from '@datas/pages/config/_types';
 
-type CardSection = {
-  col: NonNullable<ColProps['col']>;
-  data: any[];
-  variant: CardVariant;
-  horizontal?: boolean;
-};
-
-export const cardSections: CardSection[] = [
+export const cards: GenericSectionProps[] = [
   { col: 'col-6', data: infoCardData, variant: 'info' },
   { col: 'col-3', data: postCardData, variant: 'post' },
   { col: 'col-4', data: ProductCardData, variant: 'product' },

@@ -7,4 +7,3 @@ export * from '@datas/pages/cards/datas/musicCardContent';
 export * from '@datas/pages/cards/datas/paymentCardContent';
 export * from '@datas/pages/cards/datas/postCardContent';
 export * from '@datas/pages/cards/datas/productCardContent';
-export * from '@datas/pages/cards/datas/cardSections';

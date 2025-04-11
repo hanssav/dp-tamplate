@@ -23,3 +23,19 @@ export const checkValidPath = (pathname: string): true | '404' => {
   }
   return '404';
 };
+
+export function toCamelCase(input: string): string {
+  const words = input.trim().split(/\s+/);
+
+  if (words.length === 1) {
+    return words[0].toLowerCase();
+  }
+
+  return (
+    words[0].toLowerCase() +
+    words
+      .slice(1)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join('')
+  );
+}
