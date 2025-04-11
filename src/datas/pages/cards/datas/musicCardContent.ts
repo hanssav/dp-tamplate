@@ -1,7 +1,7 @@
 import { MusicContentProps } from '@components/_types/Card';
 import IMAGE_CONSTANTS from '@constant/images';
 
-export const musicCardContents: MusicContentProps['content'][] = [
+export const musicCardData: MusicContentProps['content'][] = [
   {
     title: 'Uptown Funk',
     artis: 'Jon Bon Jovi',

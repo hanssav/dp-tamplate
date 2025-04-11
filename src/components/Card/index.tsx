@@ -59,7 +59,7 @@ interface CardProps
   horizontal?: boolean;
 }
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   {
     children,
     content,
@@ -101,3 +101,5 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     </CardFlowbite>
   );
 });
+
+export default Card;

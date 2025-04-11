@@ -7,7 +7,7 @@ export interface InfoCardItem {
   type: 'primary' | 'warning' | 'secondary' | 'error' | 'success';
 }
 
-export const infoCardContent: InfoCardItem[] = [
+export const infoCardData: InfoCardItem[] = [
   {
     title: 'Profile',
     img: IMAGE_CONSTANTS.INFO_USER_IMG,

@@ -11,7 +11,7 @@ export interface PostCardItem {
   lastView: string;
 }
 
-export const postCardContent: PostCardItem[] = [
+export const postCardData: PostCardItem[] = [
   {
     title: 'As yen tumbles, gadget-loving Japan goes for secondhand iPhones',
     bgImg: IMAGE_CONSTANTS.POST_BG_1,

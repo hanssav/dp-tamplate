@@ -8,7 +8,7 @@ export interface ProductCardItem {
   rating: number;
 }
 
-export const ProductCardContent: ProductCardItem[] = [
+export const ProductCardData: ProductCardItem[] = [
   {
     title: 'Boat Headphone',
     normal_price: 375,
