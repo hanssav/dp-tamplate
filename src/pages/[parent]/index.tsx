@@ -14,7 +14,7 @@ import {
   followCardData,
   infoCardContent,
   ProductCardContent,
-} from '@utils/pages/cards';
+} from '@datas/pages/cards';
 
 const ParentMenu = () => {
   const location = useLocation();
