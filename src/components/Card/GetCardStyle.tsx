@@ -132,6 +132,14 @@ export const getCardStyle = ({
         },
       },
     }),
+    banners: createTheme({
+      card: {
+        root: {
+          base: 'mb-6 rounded-lg border-none dark:bg-primary-dark',
+          children: 'flex h-full flex-col justify-center p-0',
+        },
+      },
+    }),
   };
 
   // Optional background style

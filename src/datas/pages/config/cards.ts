@@ -8,7 +8,7 @@ import {
   friendCardData,
   giftCardData,
   paymentData,
-} from '@/datas/pages/cards';
+} from '@datas/pages/cards';
 import { GenericSectionProps } from '@datas/pages/config/_types';
 
 export const cards: GenericSectionProps[] = [

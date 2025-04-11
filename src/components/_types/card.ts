@@ -1,3 +1,6 @@
+import { SectionProps } from '@datas/pages/config';
+import { IconType } from 'react-icons';
+
 export type CardVariant =
   | 'breadcrumb'
   | 'info'
@@ -8,7 +11,8 @@ export type CardVariant =
   | 'friend-suggestion'
   | 'friend'
   | 'gift-card'
-  | 'payment-card';
+  | 'payment-card'
+  | 'banners';
 
 export interface BreadcrumbProps {
   content?: {
@@ -100,8 +104,6 @@ export interface FriendGiftCardProps {
   };
 }
 
-import { IconType } from 'react-icons';
-
 export interface PaymentItem {
   name: string;
   description: string;
@@ -137,6 +139,7 @@ export type CardContentData = (
   | FriendCardContent
   | FriendGiftCardProps['content']
   | PaymentCardProps
+  | SectionProps
 ) & {
   bgImg?: string;
   type?: string;

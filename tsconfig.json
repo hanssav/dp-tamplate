@@ -22,7 +22,7 @@
 
     "baseUrl": ".", // penting!
     "paths": {
-      "@*": ["src/*"],
+      // "@*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@constant/*": ["src/constant/*"],
       "@utils/*": ["src/utils/*"],
