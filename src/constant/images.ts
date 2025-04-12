@@ -85,6 +85,12 @@ const IMAGE_CONSTANTS = {
     '	https://modernize-angular-main.netlify.app/assets/images/backgrounds/welcome-bg2.png',
   IMG_BANNERS_2:
     '	https://modernize-angular-main.netlify.app/assets/images/backgrounds/login-bg.svg',
+  IMG_BANNERS_3:
+    '	https://modernize-angular-main.netlify.app/assets/images/backgrounds/maintenance2.svg',
+  IMG_BANNERS_4:
+    '	https://modernize-angular-main.netlify.app/assets/images/products/empty-shopping-cart.svg',
+  IMG_BANNERS_5:
+    'https://modernize-angular-main.netlify.app/assets/images/backgrounds/gold.png',
 };
 
 export default IMAGE_CONSTANTS;

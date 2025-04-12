@@ -1,4 +1,3 @@
-// NestedCol.tsx
 import {
   CardContent,
   NestedContent,
@@ -12,8 +11,6 @@ const isCardContent = (item: SectionContent): item is CardContent =>
   'variant' in item;
 
 const NestedCol = ({ col, data, horizontal, span }: NestedContent) => {
-  console.log(data, 'items data in function');
-
   const items: GridItem[] = data.map((item, idx) => {
     if (isCardContent(item)) {
       return {

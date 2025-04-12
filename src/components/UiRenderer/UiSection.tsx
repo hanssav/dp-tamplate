@@ -15,7 +15,6 @@ const isCardContent = (item: SectionContent): item is CardContent => {
 
 const UiSection = ({ section }: Props) => {
   const { col, data, variant, horizontal, span } = section;
-
   const items: GridItem[] | undefined = Array.isArray(data)
     ? data.map((item, index): GridItem => {
         if ('col' in item && 'data' in item) {
@@ -35,6 +34,8 @@ const UiSection = ({ section }: Props) => {
         }
 
         // Simple Card layout
+        console.log(item.span, 'item in cnestedCol');
+
         return {
           content: (
             <Card
@@ -44,11 +45,11 @@ const UiSection = ({ section }: Props) => {
               horizontal={horizontal}
             />
           ),
-          span,
+          span: item.span,
         };
       })
     : undefined;
-
+    
   return (
     <Col col={col} items={items}>
       {!items &&

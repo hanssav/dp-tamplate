@@ -85,6 +85,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     variant,
     type: safeType,
     bgImg,
+    content,
   });
 
   return (

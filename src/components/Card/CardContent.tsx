@@ -22,6 +22,8 @@ import { FriendGiftCard } from '@components/Card/FriendGiftCard';
 import { PaymentCard } from '@components/Card/PaymentCard';
 import { BreadcrumbComponentProps } from 'flowbite-react';
 import { BannersSectionProps } from '@datas/pages/config';
+import Button from '@components/Button';
+import Typography from '@components/Typography';
 
 export function getCardContent({
   variant = 'breadcrumb',
@@ -30,41 +32,66 @@ export function getCardContent({
   if (!content) return null;
 
   const BannersCardContent: React.FC<BannersSectionProps> = ({ content }) => {
-    const buttonColor =
-      content.button?.color === 'primary'
-        ? 'bg-blue-500'
-        : content.button?.color === 'accent'
-          ? 'bg-pink-500'
-          : content.button?.color === 'warn'
-            ? 'bg-red-500'
-            : 'bg-gray-400';
-
+    console.log(content.bgImage, content.title);
     return (
-      <div className="overflow-hidden rounded-xl bg-blue-50 p-8">
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="md:w-1/2">
-            <h2 className="text-2xl font-semibold text-gray-900">
-              {content.title}
-            </h2>
-            <p className="mt-4 text-gray-600">{content.subtitle}</p>
+      <div
+        className={`flex ${
+          content.imagePosition === 'top'
+            ? 'flex-col items-center'
+            : 'flex-col items-center justify-between md:flex-row-reverse'
+        } gap-y-6`}
+      >
+        {content.bgImage && (
+          <div
+            className={`${
+              content.imagePosition === 'top'
+                ? ''
+                : 'flex h-full items-end justify-end md:w-1/2'
+            }`}
+          >
+            <img
+              src={content.bgImage}
+              alt="banner"
+              className={`${
+                content.imagePosition === 'top'
+                  ? 'mx-auto w-full max-w-[200px]'
+                  : 'w-full max-w-[300px] translate-y-[30px]'
+              }`}
+            />
+          </div>
+        )}
+
+        <div
+          className={`flex flex-col gap-y-6 p-4 ${
+            content.imagePosition === 'top'
+              ? 'items-center text-center'
+              : 'w-full'
+          }`}
+        >
+          <Typography textStyle="heading-md" as="h2">
+            {content.title}
+          </Typography>
+          <Typography textStyle="body" as="p">
+            {content.subtitle}
+          </Typography>
+          <div
+            className={`flex gap-4 ${
+              content.imagePosition === 'top'
+                ? 'items-center justify-center'
+                : 'items-start justify-start'
+            }`}
+          >
             {content.button && (
-              <button
+              <Button
                 onClick={content.button.onclick}
-                className={`mt-6 rounded-md px-6 py-2 text-white ${buttonColor}`}
+                color={content.button.color}
+                size="md"
+                className="w-auto"
               >
                 {content.button.label}
-              </button>
+              </Button>
             )}
           </div>
-          {content.bgImage && (
-            <div className="flex justify-end md:w-1/2">
-              <img
-                src={content.bgImage}
-                alt="banner"
-                className="w-full max-w-[300px]"
-              />
-            </div>
-          )}
         </div>
       </div>
     );

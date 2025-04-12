@@ -11,7 +11,7 @@ export type GenericSectionProps = {
 
 export interface BannersSectionProps {
   content: {
-    col: ColKey;
+    col?: ColKey;
     data: SectionContent[];
     horizontal?: boolean;
     span?: number;

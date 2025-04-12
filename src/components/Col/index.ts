@@ -71,6 +71,7 @@ export default function Col({
   items,
   ...rest
 }: ColProps) {
+
   const mergedClass = twMerge(colTheme.col[col], className);
 
   const childrenToRender = items?.length

@@ -1,6 +1,7 @@
 import { createTheme } from 'flowbite-react';
 import React from 'react';
-import { CardVariant } from '@components/_types/Card';
+import { CardContentData, CardVariant } from '@components/_types/Card';
+import { CardContent } from '@datas/pages/config';
 
 // Mapping warna
 const bgMap = {
@@ -9,6 +10,7 @@ const bgMap = {
   secondary: 'bg-light-secondary dark:bg-secondary-dark',
   error: 'bg-light-error dark:bg-error-dark',
   success: 'bg-light-success dark:bg-success-dark',
+  light: 'bg-white dark:bg-primary-dark',
 };
 
 const textMap = {
@@ -17,6 +19,7 @@ const textMap = {
   secondary: 'text-secondary',
   error: 'text-error',
   success: 'text-success',
+  light: 'text-current',
 };
 
 // Key aman untuk theme type
@@ -27,17 +30,21 @@ interface GetCardStyleProps {
   variant?: VariantType;
   type?: BgMapKey;
   bgImg?: string;
+  content?: CardContentData;
 }
-
 // Main function
 export const getCardStyle = ({
   variant = 'breadcrumb',
   type = 'primary',
   bgImg,
+  content,
 }: GetCardStyleProps) => {
+  const rawType = (content as CardContent)?.bgColor ?? type;
+
   const validTypes = Object.keys(bgMap) as BgMapKey[];
-  const isValid = validTypes.includes(type as BgMapKey);
-  const safeType: BgMapKey = isValid ? (type as BgMapKey) : 'primary';
+  const safeType: BgMapKey = validTypes.includes(rawType as BgMapKey)
+    ? (rawType as BgMapKey)
+    : 'primary';
 
   const bgClass = bgMap[safeType];
   const textClass = textMap[safeType];
@@ -135,8 +142,8 @@ export const getCardStyle = ({
     banners: createTheme({
       card: {
         root: {
-          base: 'mb-6 rounded-lg border-none dark:bg-primary-dark',
-          children: 'flex h-full flex-col justify-center p-0',
+          base: `rounded-lg border-none shadow-md ${bgClass} px-5`,
+          children: 'flex h-full flex-col justify-center',
         },
       },
     }),

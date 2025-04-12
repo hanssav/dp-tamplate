@@ -1,4 +1,8 @@
-import { SectionProps } from '@datas/pages/config';
+import {
+  BannersSectionProps,
+  CardContent,
+  SectionProps,
+} from '@datas/pages/config';
 import { IconType } from 'react-icons';
 
 export type CardVariant =
@@ -129,6 +133,7 @@ export interface PaymentCardProps {
 }
 
 export type CardContentData = (
+  | CardContent
   | BreadcrumbProps['content']
   | InfoCardContentProps['content']
   | PostCardContentProps['content']
@@ -140,6 +145,7 @@ export type CardContentData = (
   | FriendGiftCardProps['content']
   | PaymentCardProps
   | SectionProps
+  | BannersSectionProps['content']
 ) & {
   bgImg?: string;
   type?: string;
