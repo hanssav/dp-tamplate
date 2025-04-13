@@ -5,6 +5,7 @@ import { SectionContent } from '@datas/pages/config';
 import {
   getColumnWidths,
   isCardContent,
+  isNestedColContent,
   splitIntoColumns,
 } from '@utils/function';
 
@@ -34,23 +35,22 @@ export const MasonrySection: React.FC<MasonryProps> = ({ data }) => {
         >
           {colItems.map((item, idx) => {
             const key = `col-${colIdx}-item-${idx}`;
-            const content =
-              'col' in item && 'data' in item ? (
-                <NestedCol
-                  key={key}
-                  col={item.col}
-                  data={item.data}
-                  span={item.span}
-                  horizontal={item.horizontal}
-                />
-              ) : isCardContent(item) ? (
-                <Card
-                  key={key}
-                  variant={item.variant as CardVariant}
-                  content={item}
-                  horizontal={item.horizontal}
-                />
-              ) : null;
+            const content = isNestedColContent(item) ? (
+              <NestedCol
+                key={key}
+                col={item.col}
+                data={item.data}
+                span={item.span}
+                horizontal={item.horizontal}
+              />
+            ) : isCardContent(item) ? (
+              <Card
+                key={key}
+                variant={item.variant as CardVariant}
+                content={item}
+                horizontal={item.horizontal}
+              />
+            ) : null;
             return <div key={key}>{content}</div>;
           })}
         </div>

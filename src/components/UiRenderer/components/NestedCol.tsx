@@ -6,6 +6,7 @@ import {
 import Col from '@components/Col';
 import Card from '@components/Card';
 import { GridItem } from '@components/Col/colTheme';
+import { isNestedColContent } from '@utils/function';
 
 const isCardContent = (item: SectionContent): item is CardContent =>
   'variant' in item;
@@ -26,7 +27,7 @@ const NestedCol = ({ col, data, horizontal, span }: NestedContent) => {
       };
     }
 
-    if ('col' in item && 'data' in item) {
+    if (isNestedColContent(item)) {
       return {
         content: (
           <NestedCol
