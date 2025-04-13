@@ -11,12 +11,16 @@ export const colTheme = {
       'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6',
     'col-6':
       'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6',
-    // layout Masonry
+
+    // Masonry layout
     'masonry-2': 'columns-1 sm:columns-2 gap-6',
     'masonry-3': 'columns-1 sm:columns-2 md:columns-3 gap-6',
     'masonry-4': 'columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6',
+    'masonry-5': 'columns-1 sm:columns-2 md:columns-3 lg:columns-5 gap-6',
+    'masonry-6': 'columns-1 sm:columns-2 md:columns-3 lg:columns-6 gap-6',
   },
 };
+
 
 export type ColKey = keyof typeof colTheme.col;
 
