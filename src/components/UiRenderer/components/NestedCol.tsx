@@ -1,15 +1,8 @@
-import {
-  CardContent,
-  NestedContent,
-  SectionContent,
-} from '@datas/pages/config';
+import { NestedContent } from '@datas/pages/config';
 import Col from '@components/Col';
 import Card from '@components/Card';
 import { GridItem } from '@components/Col/colTheme';
-import { isNestedColContent } from '@utils/function';
-
-const isCardContent = (item: SectionContent): item is CardContent =>
-  'variant' in item;
+import { isCardContent, isNestedColContent } from '@utils/function';
 
 const NestedCol = ({ col, data, horizontal, span }: NestedContent) => {
   const items: GridItem[] = data.map((item, idx) => {
