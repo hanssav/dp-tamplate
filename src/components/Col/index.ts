@@ -53,7 +53,6 @@
  * - Small screens (sm): 2 columns
  * - Medium screens (md): 3 columns
  */
-
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { colTheme, ColKey, GridItem } from '@components/Col/colTheme';
@@ -64,15 +63,9 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   items?: GridItem[];
 }
 
-export default function Col({
-  col = 'col-1',
-  className,
-  children,
-  items,
-  ...rest
-}: ColProps) {
-
+export default function Col({ col = 'col-1', className, children, items, ...rest }: ColProps) {
   const mergedClass = twMerge(colTheme.col[col], className);
+  const isMasonry = colTheme.col[col].includes('columns-');
 
   const childrenToRender = items?.length
     ? items.map((item, index) =>
@@ -81,8 +74,12 @@ export default function Col({
           {
             key: index,
             className: twMerge(
-              item.span ? `col-span-${item.span}` : '',
-              item.start ? `col-start-${item.start}` : ''
+              isMasonry
+                ? 'mb-6 break-inside-avoid' // masonry style
+                : [
+                    item.span ? `col-span-${item.span}` : '',
+                    item.start ? `col-start-${item.start}` : '',
+                  ].join(' ')
             ),
           },
           item.content
@@ -96,3 +93,5 @@ export default function Col({
     children: childrenToRender,
   });
 }
+
+

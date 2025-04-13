@@ -1,6 +1,6 @@
 import { Avatar } from 'flowbite-react';
 import Button from '@components/Button';
-import Typography from '@components/Typography'; // <-- tambahin ini
+import Typography from '@components/Typography';
 import { FriendSuggestionCardProps } from '@components/_types/Card';
 
 export const FriendSuggestionCardContent: React.FC<

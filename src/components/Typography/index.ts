@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 /**
  * Available text style variants used in the Typography component.
  */
-type TextStyle =
+export type TextStyle =
   | 'heading-lg'
   | 'heading-md'
   | 'title'

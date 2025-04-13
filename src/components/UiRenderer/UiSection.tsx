@@ -1,24 +1,36 @@
 import Card from '@components/Card';
 import Col from '@components/Col';
-import { CardContent, SectionContent, SectionProps } from '@datas/pages/config';
-import { GridItem } from '@components/Col/colTheme';
-import NestedCol from './NestedCol';
+import { MasonrySection } from '@components/UiRenderer/components/MasonrySection';
+import NestedCol from '@components/UiRenderer/NestedCol';
 import { CardVariant } from '@components/_types/Card';
+import { CardContent, SectionContent, SectionProps } from '@datas/pages/config';
+import { useMasonry } from '@hooks/useMasonry';
 
 type Props = {
   section: SectionProps;
 };
 
-const isCardContent = (item: SectionContent): item is CardContent => {
+export const isCardContent = (item: SectionContent): item is CardContent => {
   return 'variant' in item;
 };
 
 const UiSection = ({ section }: Props) => {
-  const { col, data, variant, horizontal, span } = section;
-  const items: GridItem[] | undefined = Array.isArray(data)
-    ? data.map((item, index): GridItem => {
+  const { col, data, variant, horizontal, masonryConfig } = section;
+
+  // custom layout for masonry
+  if (Array.isArray(data) && col && col.includes('masonry')) {
+    const masonryData = useMasonry(
+      data,
+      masonryConfig?.columnCount,
+      masonryConfig?.columnWidths
+    );
+
+    return <MasonrySection data={masonryData} />;
+  }
+
+  const items = Array.isArray(data)
+    ? data.map((item, index) => {
         if ('col' in item && 'data' in item) {
-          // Nested layout
           return {
             content: (
               <NestedCol
@@ -29,12 +41,9 @@ const UiSection = ({ section }: Props) => {
                 horizontal={item.horizontal}
               />
             ),
-            span,
+            span: item.span,
           };
         }
-
-        // Simple Card layout
-        console.log(item.span, 'item in cnestedCol');
 
         return {
           content: (
@@ -49,7 +58,7 @@ const UiSection = ({ section }: Props) => {
         };
       })
     : undefined;
-    
+
   return (
     <Col col={col} items={items}>
       {!items &&

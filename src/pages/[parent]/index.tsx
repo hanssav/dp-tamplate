@@ -7,7 +7,6 @@ import * as UiConfig from '@datas/pages/config';
 import { useEffect, useState } from 'react';
 import { SectionProps } from '@datas/pages/config';
 import UiSection from '@components/UiRenderer/UiSection';
-import Col from '@components/Col';
 
 const ParentMenu = () => {
   const location = useLocation();

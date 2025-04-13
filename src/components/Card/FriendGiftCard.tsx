@@ -1,5 +1,5 @@
 import Button from '@components/Button';
-import Typography from '@components/Typography'; // <- jangan lupa ini
+import Typography from '@components/Typography'; 
 import { FriendGiftCardProps } from '@components/_types/Card';
 import { Gift } from 'lucide-react';
 

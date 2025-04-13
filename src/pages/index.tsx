@@ -4,6 +4,117 @@ import Col from '../components/Col';
 import DashboardLayout from '../components/DashboardLayout';
 
 const Home = () => {
+  const imageItems = [
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
+          alt=""
+        />
+      ),
+    },
+    {
+      content: (
+        <img
+          className="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+          alt=""
+        />
+      ),
+    },
+  ];
+
   return (
     <DashboardLayout>
       <h1 className="text-2xl font-bold">Welcome to the Dashboard</h1>
@@ -55,6 +166,9 @@ const Home = () => {
           </p>
         </div>
       </Col>
+
+      {/* Gunakan Col dengan layout masonry */}
+      <Col col="masonry-4" items={imageItems} />
     </DashboardLayout>
   );
 };

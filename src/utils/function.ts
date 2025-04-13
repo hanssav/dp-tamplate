@@ -39,3 +39,21 @@ export function toCamelCase(input: string): string {
       .join('')
   );
 }
+
+export function splitIntoColumns<T>(data: T[], columnCount: number): T[][] {
+  const columns: T[][] = Array.from({ length: columnCount }, () => []);
+  data.forEach((item, index) => {
+    const columnIndex = index % columnCount;
+    columns[columnIndex].push(item);
+  });
+  return columns;
+}
+
+export function getColumnWidths(
+  count: number,
+  customWidths?: number[]
+): number[] {
+  if (customWidths && customWidths.length === count) return customWidths;
+  const evenWidth = 100 / count;
+  return Array(count).fill(evenWidth);
+}

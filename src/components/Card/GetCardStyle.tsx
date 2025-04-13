@@ -40,7 +40,7 @@ export const getCardStyle = ({
   content,
 }: GetCardStyleProps) => {
   const rawType = (content as CardContent)?.bgColor ?? type;
-
+  
   const validTypes = Object.keys(bgMap) as BgMapKey[];
   const safeType: BgMapKey = validTypes.includes(rawType as BgMapKey)
     ? (rawType as BgMapKey)
@@ -142,7 +142,7 @@ export const getCardStyle = ({
     banners: createTheme({
       card: {
         root: {
-          base: `rounded-lg border-none shadow-md ${bgClass} px-5`,
+          base: ` rounded-lg border-none shadow-md ${bgClass} p-5`,
           children: 'flex h-full flex-col justify-center',
         },
       },

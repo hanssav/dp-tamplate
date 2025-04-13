@@ -7,7 +7,7 @@ const buttonTheme = {
   rounded: 'rounded-full',
 };
 
-type ButtonColor = keyof typeof buttonTheme.color;
+export type ButtonColor = keyof typeof buttonTheme.color;
 type ButtonSize = keyof typeof buttonTheme.size;
 
 interface ButtonProps {

@@ -22,80 +22,13 @@ import { FriendGiftCard } from '@components/Card/FriendGiftCard';
 import { PaymentCard } from '@components/Card/PaymentCard';
 import { BreadcrumbComponentProps } from 'flowbite-react';
 import { BannersSectionProps } from '@datas/pages/config';
-import Button from '@components/Button';
-import Typography from '@components/Typography';
+import { BannersCardContent } from '@components/Card/BannerCardContent';
 
 export function getCardContent({
   variant = 'breadcrumb',
   content,
 }: RenderCardContentProps) {
   if (!content) return null;
-
-  const BannersCardContent: React.FC<BannersSectionProps> = ({ content }) => {
-    console.log(content.bgImage, content.title);
-    return (
-      <div
-        className={`flex ${
-          content.imagePosition === 'top'
-            ? 'flex-col items-center'
-            : 'flex-col items-center justify-between md:flex-row-reverse'
-        } gap-y-6`}
-      >
-        {content.bgImage && (
-          <div
-            className={`${
-              content.imagePosition === 'top'
-                ? ''
-                : 'flex h-full items-end justify-end md:w-1/2'
-            }`}
-          >
-            <img
-              src={content.bgImage}
-              alt="banner"
-              className={`${
-                content.imagePosition === 'top'
-                  ? 'mx-auto w-full max-w-[200px]'
-                  : 'w-full max-w-[300px] translate-y-[30px]'
-              }`}
-            />
-          </div>
-        )}
-
-        <div
-          className={`flex flex-col gap-y-6 p-4 ${
-            content.imagePosition === 'top'
-              ? 'items-center text-center'
-              : 'w-full'
-          }`}
-        >
-          <Typography textStyle="heading-md" as="h2">
-            {content.title}
-          </Typography>
-          <Typography textStyle="body" as="p">
-            {content.subtitle}
-          </Typography>
-          <div
-            className={`flex gap-4 ${
-              content.imagePosition === 'top'
-                ? 'items-center justify-center'
-                : 'items-start justify-start'
-            }`}
-          >
-            {content.button && (
-              <Button
-                onClick={content.button.onclick}
-                color={content.button.color}
-                size="md"
-                className="w-auto"
-              >
-                {content.button.label}
-              </Button>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   switch (variant) {
     case 'breadcrumb':
