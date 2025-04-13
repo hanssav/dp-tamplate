@@ -16,7 +16,7 @@ import {
 
 // Type guard to check if an item is of type SectionContent
 const isSectionContent = (item: any): item is SectionContent => {
-  return item && typeof item.variant === 'string'; // Check if 'variant' exists and is a string
+  return typeof item === 'object' && item !== null;
 };
 
 // Function to filter and return valid SectionContent items

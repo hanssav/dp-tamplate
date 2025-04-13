@@ -29,9 +29,9 @@ export const BannersCardContent: React.FC<BannersSectionProps> = ({
               key={index}
               className={`flex ${
                 item.imagePosition === 'top'
-                  ? 'flex-col items-center'
-                  : 'flex-col items-center justify-between md:flex-row-reverse'
-              } gap-y-6`}
+                  ? 'my-6 flex-col items-center'
+                  : 'flex-col items-center justify-between py-0 md:flex-row-reverse'
+              }`}
             >
               {item.preTitle && (
                 <Typography
@@ -66,15 +66,20 @@ export const BannersCardContent: React.FC<BannersSectionProps> = ({
                 className={`flex flex-col gap-y-6 p-4 ${
                   item.imagePosition === 'top'
                     ? 'items-center text-center'
-                    : 'w-full'
+                    : 'w-1/2'
                 }`}
               >
                 <Typography textStyle="heading-md" as="h2">
                   {item.title}
                 </Typography>
-                <Typography textStyle="body" as="p">
-                  {item.subtitle}
-                </Typography>
+                <Typography
+                  textStyle="body"
+                  as="p"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      typeof item.subtitle === 'string' ? item.subtitle : '',
+                  }}
+                ></Typography>
 
                 <div
                   className={`flex gap-2 ${

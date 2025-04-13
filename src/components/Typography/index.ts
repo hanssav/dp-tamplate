@@ -65,7 +65,7 @@ type TypographyProps<T extends keyof JSX.IntrinsicElements = 'p'> = {
   /**
    * The content to display inside the typography component.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 } & Omit<React.ComponentPropsWithoutRef<T>, 'className' | 'children'>;
 
 /**

@@ -142,8 +142,8 @@ export const getCardStyle = ({
     banners: createTheme({
       card: {
         root: {
-          base: ` rounded-lg border-none shadow-md ${bgClass} p-5`,
-          children: 'flex h-full flex-col justify-center',
+          base: `rounded-lg border-none shadow-md ${bgClass} px-5`,
+          children: 'flex h-full flex-col justify-center py-0',
         },
       },
     }),
