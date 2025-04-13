@@ -1,9 +1,12 @@
 import Card from '@components/Card';
-import NestedCol from '@components/UiRenderer/NestedCol';
-import { isCardContent } from '@components/UiRenderer/UiSection';
+import NestedCol from '@components/UiRenderer/components/NestedCol';
 import { CardVariant } from '@components/_types/Card';
 import { SectionContent } from '@datas/pages/config';
-import { getColumnWidths, splitIntoColumns } from '@utils/function';
+import {
+  getColumnWidths,
+  isCardContent,
+  splitIntoColumns,
+} from '@utils/function';
 
 export type MasonryData = {
   columnCount: number;

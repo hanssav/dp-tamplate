@@ -1,3 +1,10 @@
+import { menuItems } from '@datas/components/menuItems';
+import {
+  CardContent,
+  NestedContent,
+  SectionContent,
+} from '@datas/pages/config';
+
 export function getTitleFromPath(pathname: string): string {
   const lastSegment = pathname.split('/').filter(Boolean).pop() ?? '';
   const withSpaces = lastSegment.replace(/-/g, ' ');
@@ -6,8 +13,6 @@ export function getTitleFromPath(pathname: string): string {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
-
-import { menuItems } from '@datas/components/menuItems';
 
 export const checkValidPath = (pathname: string): true | '404' => {
   for (const category of menuItems) {
@@ -57,3 +62,13 @@ export function getColumnWidths(
   const evenWidth = 100 / count;
   return Array(count).fill(evenWidth);
 }
+
+export const isCardContent = (item: SectionContent): item is CardContent => {
+  return 'variant' in item;
+};
+
+export const isNestedColContent = (
+  item: SectionContent
+): item is NestedContent => {
+  return 'col' in item && 'data' in item;
+};
