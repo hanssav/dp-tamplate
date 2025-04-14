@@ -56,7 +56,7 @@ export const getCardStyle = ({
   const textClass = textMap[safeType];
 
   // Mapping themes menggunakan fungsi yang telah dibuat
-  const themeMap = {
+  const customTheme = {
     breadcrumb: createBreadcrumbTheme(bgClass),
     info: createInfoTheme(bgClass, textClass),
     post: createPostTheme(),
@@ -107,7 +107,7 @@ export const getCardStyle = ({
   }
 
   return {
-    theme: themeMap[variant].card,
+    theme: customTheme[variant].card,
     style,
     renderImage,
   };

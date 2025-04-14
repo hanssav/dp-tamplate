@@ -2,6 +2,17 @@ import { HiOutlineShoppingBag, HiStar } from 'react-icons/hi';
 import Typography from '@components/Typography';
 import { ProductContentProps } from '@components/_types/Card';
 
+/**
+ * ProductCardContent Component
+ * Renders the content of a product card, displaying product title, price (with discount), 
+ * and rating, along with a shopping bag icon.
+ * 
+ * @param {Object} props - The component's props.
+ * @param {ProductContentProps} props.content - The content of the product, including title, price, rating, etc.
+ * 
+ * @returns {JSX.Element} The ProductCardContent component displaying the product details.
+ */
+
 export function ProductCardContent({ content }: ProductContentProps) {
   return (
     <div>

@@ -4,6 +4,18 @@ import Col from '@components/Col';
 import { BreadcrumbProps } from '@components/_types/Card';
 import Typography from '@components/Typography';
 
+/**
+ * `BreadcrumbCardContent` renders a breadcrumb-style header for a card.
+ * It includes the title of the current section and a simple navigation path.
+ *
+ * @component
+ * @param {BreadcrumbProps} props - The props for the breadcrumb content.
+ * @param {object} props.content - The content object containing breadcrumb data.
+ * @param {string} props.content.title - The title to be displayed as the current breadcrumb.
+ *
+ * @returns {JSX.Element} A component that renders breadcrumb navigation inside a card.
+ */
+
 export function BreadcrumbCardContent({ content }: BreadcrumbProps) {
   return (
     <Col className="gap-y-1">

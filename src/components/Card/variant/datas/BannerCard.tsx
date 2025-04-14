@@ -6,6 +6,12 @@ import {
   SectionContent,
 } from '@datas/pages/config';
 
+/**
+ * Type guard to check if the item is of type CardContent.
+ * 
+ * @param item - The item to check.
+ * @returns True if the item is a CardContent, false otherwise.
+ */
 function isCardContent(item: SectionContent): item is CardContent {
   return (
     (item as CardContent).title !== undefined ||
@@ -13,6 +19,13 @@ function isCardContent(item: SectionContent): item is CardContent {
   );
 }
 
+/**
+ * BannersCard Component
+ * Renders a list of banner cards with images, titles, subtitles, and buttons.
+ * 
+ * @param {BannersSectionProps} props - The content for the banners.
+ * @returns {JSX.Element} A list of banner cards, or a message if no content is available.
+ */
 export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
   if (!content) return <div>No content available</div>;
 
@@ -31,6 +44,7 @@ export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
                   : 'flex-col items-center justify-between py-0 md:flex-row-reverse'
               }`}
             >
+              {/* Pre-Title */}
               {item.preTitle && (
                 <Typography
                   textStyle={item.preTitle.style as TextStyle}
@@ -40,6 +54,7 @@ export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
                 </Typography>
               )}
 
+              {/* Image */}
               {item.bgImage && (
                 <div
                   className={`${
@@ -60,11 +75,10 @@ export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
                 </div>
               )}
 
+              {/* Content */}
               <div
                 className={`flex flex-col gap-y-6 p-4 ${
-                  item.imagePosition === 'top'
-                    ? 'items-center text-center'
-                    : 'w-1/2'
+                  item.imagePosition === 'top' ? 'items-center text-center' : 'w-1/2'
                 }`}
               >
                 <Typography textStyle="heading-md" as="h2">
@@ -74,11 +88,11 @@ export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
                   textStyle="body"
                   as="p"
                   dangerouslySetInnerHTML={{
-                    __html:
-                      typeof item.subtitle === 'string' ? item.subtitle : '',
+                    __html: typeof item.subtitle === 'string' ? item.subtitle : '',
                   }}
                 ></Typography>
 
+                {/* Buttons */}
                 <div
                   className={`flex gap-2 ${
                     item.imagePosition === 'top'

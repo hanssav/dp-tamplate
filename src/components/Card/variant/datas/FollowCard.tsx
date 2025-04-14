@@ -4,6 +4,20 @@ import { Avatar } from 'flowbite-react';
 import Button from '@components/Button';
 import Typography from '@components/Typography';
 
+/**
+ * `FollowCardContent` is a component that displays user information in a card-like format.
+ * It includes the user's avatar, name, location, and a follow button.
+ *
+ * @component
+ * @param {FollowContentProps} props - The props for the Follow card content.
+ * @param {object} props.content - The content object containing user data.
+ * @param {string} props.content.bgUser - The URL of the user's avatar image.
+ * @param {string} props.content.name - The name of the user.
+ * @param {string} props.content.location - The user's location.
+ *
+ * @returns {JSX.Element} A card displaying the user's information and a follow button.
+ */
+
 export const FollowCardContent: React.FC<FollowContentProps> = ({
   content,
 }) => {
