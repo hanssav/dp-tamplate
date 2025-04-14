@@ -11,6 +11,7 @@ import {
   PostCardContent,
   ProductCardContent,
 } from '@components/Card/variant';
+
 import {
   FriendCardContent,
   FriendGiftCardProps,
@@ -23,8 +24,41 @@ import {
   PostCardContentProps,
   ProductContentProps,
 } from '@components/_types/Card';
+
 import { BannersSectionProps } from '@datas/pages/config';
 import { BreadcrumbComponentProps } from 'flowbite-react';
+
+const cardRenderMap: Record<string, (content: any) => JSX.Element | null> = {
+  breadcrumb: (content) => (
+    <BreadcrumbCardContent content={content as BreadcrumbComponentProps} />
+  ),
+  info: (content) => (
+    <InfoCardContent content={content as InfoCardContentProps['content']} />
+  ),
+  post: (content) => (
+    <PostCardContent content={content as PostCardContentProps['content']} />
+  ),
+  product: (content) => (
+    <ProductCardContent content={content as ProductContentProps['content']} />
+  ),
+  music: (content) => (
+    <MusicCardContent content={content as MusicContentProps['content']} />
+  ),
+  follow: (content) => (
+    <FollowCardContent content={content as FollowContentProps['content']} />
+  ),
+  friendSuggestion: (content) => (
+    <FriendSuggestionCardContent content={content as FriendSuggestionContent} />
+  ),
+  friend: (content) => <FriendCard content={content as FriendCardContent} />,
+  gift: (content) => (
+    <FriendGiftCard content={content as FriendGiftCardProps['content']} />
+  ),
+  payment: (content) => <PaymentCard {...(content as PaymentCardProps)} />,
+  banners: (content) => (
+    <BannersCard content={content as BannersSectionProps['content']} />
+  ),
+};
 
 export function getCardContent({
   variant = 'breadcrumb',
@@ -32,52 +66,6 @@ export function getCardContent({
 }: RenderCardContentProps) {
   if (!content) return null;
 
-  switch (variant) {
-    case 'breadcrumb':
-      return (
-        <BreadcrumbCardContent content={content as BreadcrumbComponentProps} />
-      );
-    case 'info':
-      return (
-        <InfoCardContent content={content as InfoCardContentProps['content']} />
-      );
-    case 'post':
-      return (
-        <PostCardContent content={content as PostCardContentProps['content']} />
-      );
-    case 'product':
-      return (
-        <ProductCardContent
-          content={content as ProductContentProps['content']}
-        />
-      );
-    case 'music':
-      return (
-        <MusicCardContent content={content as MusicContentProps['content']} />
-      );
-    case 'follow-card':
-      return (
-        <FollowCardContent content={content as FollowContentProps['content']} />
-      );
-    case 'friend-suggestion':
-      return (
-        <FriendSuggestionCardContent
-          content={content as FriendSuggestionContent}
-        />
-      );
-    case 'friend':
-      return <FriendCard content={content as FriendCardContent} />;
-    case 'gift-card':
-      return (
-        <FriendGiftCard content={content as FriendGiftCardProps['content']} />
-      );
-    case 'payment-card':
-      return <PaymentCard {...(content as PaymentCardProps)} />;
-    case 'banners':
-      return (
-        <BannersCard content={content as BannersSectionProps['content']} />
-      );
-    default:
-      return null;
-  }
+  const renderFn = cardRenderMap[variant];
+  return renderFn ? renderFn(content) : null;
 }

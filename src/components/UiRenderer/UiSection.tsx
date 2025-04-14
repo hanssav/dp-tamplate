@@ -4,7 +4,7 @@ import { GridItem } from '@components/Col/colTheme';
 import { MasonrySection } from '@components/UiRenderer/components/MasonrySection';
 import NestedCol from '@components/UiRenderer/components/NestedCol';
 import { CardVariant } from '@components/_types/Card';
-import { CardContent, SectionContent, SectionProps } from '@datas/pages/config';
+import { SectionContent, SectionProps } from '@datas/pages/config';
 import { useMasonry } from '@hooks/useMasonry';
 import { isNestedColContent } from '@utils/function';
 

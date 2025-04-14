@@ -29,12 +29,12 @@ export const cards: GenericSectionProps[] = [
   {
     col: 'col-3',
     data: getValidSectionContent(followCardData.slice(0, 3)),
-    variant: 'follow-card',
+    variant: 'follow',
   },
   {
     col: 'col-4',
     data: getValidSectionContent(friendSuggestionData),
-    variant: 'friend-suggestion',
+    variant: 'friendSuggestion',
   },
   {
     col: 'col-3',
@@ -44,11 +44,11 @@ export const cards: GenericSectionProps[] = [
   {
     col: 'col-3',
     data: getValidSectionContent(giftCardData),
-    variant: 'gift-card',
+    variant: 'gift',
   },
   {
     col: 'col-3',
     data: getValidSectionContent(paymentData),
-    variant: 'payment-card',
+    variant: 'payment',
   },
 ];

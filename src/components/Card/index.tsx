@@ -12,11 +12,11 @@
  *    - 'post'
  *    - 'product'
  *    - 'music'
- *    - 'follow-card'
- *    - 'friend-suggestion'
+ *    - 'follow'
+ *    - 'friendSuggestion'
  *    - 'friend'
- *    - 'gift-card'
- *    - 'payment-card'
+ *    - 'gift'
+ *    - 'payment'
  * @param {boolean} [horizontal=false] - Determines if the card layout should be horizontal. For some variants (like music), this will adjust layout to horizontal.
  * @param {string} [className=''] - Optional custom class names to apply additional styling to the card.
  * @param {React.HTMLAttributes<HTMLDivElement>} props - Additional HTML div props (e.g., id, style, onClick).
@@ -49,7 +49,7 @@ import {
   BgMapKey,
   validInfoCardTypes,
 } from '@components/_types/Card';
-import { getCardStyle } from './GetCardStyle';
+import { getCardStyle } from '@components/Card/GetCardStyle';
 interface CardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
   content?: CardContentData;

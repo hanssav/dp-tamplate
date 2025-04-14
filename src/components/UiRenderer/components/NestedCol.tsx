@@ -26,6 +26,7 @@ const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
       };
     }
 
+    //cover rekursive nested col
     if (isNestedColContent(item)) {
       return {
         content: (
