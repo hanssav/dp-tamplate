@@ -1,4 +1,17 @@
 import {
+  BannersCard,
+  BreadcrumbCardContent,
+  FollowCardContent,
+  FriendCard,
+  FriendGiftCard,
+  FriendSuggestionCardContent,
+  InfoCardContent,
+  MusicCardContent,
+  PaymentCard,
+  PostCardContent,
+  ProductCardContent,
+} from '@components/Card/variant';
+import {
   FriendCardContent,
   FriendGiftCardProps,
   FriendSuggestionContent,
@@ -10,19 +23,8 @@ import {
   PostCardContentProps,
   ProductContentProps,
 } from '@components/_types/Card';
-import { BreadcrumbCardContent } from '@components/Card/BreadCrumbCard';
-import { InfoCardContent } from '@components/Card/InfoCard';
-import { PostCardContent } from '@components/Card/PostCard';
-import { ProductCardContent } from '@components/Card/ProductCard';
-import { MusicCardContent } from '@components/Card/MusicCard';
-import { FollowCardContent } from '@components/Card/FollowCard';
-import { FriendSuggestionCardContent } from '@components/Card/FriendSuggestionCard';
-import { FriendCard } from '@components/Card/FriendCard';
-import { FriendGiftCard } from '@components/Card/FriendGiftCard';
-import { PaymentCard } from '@components/Card/PaymentCard';
-import { BreadcrumbComponentProps } from 'flowbite-react';
 import { BannersSectionProps } from '@datas/pages/config';
-import { BannersCardContent } from '@components/Card/BannerCardContent';
+import { BreadcrumbComponentProps } from 'flowbite-react';
 
 export function getCardContent({
   variant = 'breadcrumb',
@@ -73,9 +75,7 @@ export function getCardContent({
       return <PaymentCard {...(content as PaymentCardProps)} />;
     case 'banners':
       return (
-        <BannersCardContent
-          content={content as BannersSectionProps['content']}
-        />
+        <BannersCard content={content as BannersSectionProps['content']} />
       );
     default:
       return null;

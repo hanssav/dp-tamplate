@@ -3,15 +3,21 @@ import Col from '@components/Col';
 import Card from '@components/Card';
 import { GridItem } from '@components/Col/colTheme';
 import { isCardContent, isNestedColContent } from '@utils/function';
+import { CardVariant } from '@components/_types/Card';
 
-const NestedCol = ({ col, data, horizontal, span }: NestedContent) => {
-  const items: GridItem[] = data.map((item, idx) => {
+const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
+  const datas = data.map((item) => ({
+    ...item,
+    variant: variant as CardVariant,
+  }));
+
+  const items: GridItem[] = datas.map((item, idx) => {
     if (isCardContent(item)) {
       return {
         content: (
           <Card
             key={idx}
-            variant={item.variant}
+            variant={variant}
             content={item}
             horizontal={horizontal}
           />
@@ -29,6 +35,7 @@ const NestedCol = ({ col, data, horizontal, span }: NestedContent) => {
             data={item.data}
             horizontal={item.horizontal}
             span={item.span}
+            variant={variant}
           />
         ),
         span,

@@ -13,6 +13,7 @@ export type MasonryData = {
   columnCount: number;
   columnWidths?: number[];
   items: SectionContent[];
+  variant: CardVariant;
 };
 
 export type MasonryProps = {
@@ -42,6 +43,7 @@ export const MasonrySection: React.FC<MasonryProps> = ({ data }) => {
                 data={item.data}
                 span={item.span}
                 horizontal={item.horizontal}
+                variant={item.variant as CardVariant}
               />
             ) : isCardContent(item) ? (
               <Card

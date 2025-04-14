@@ -9,54 +9,46 @@ import {
   giftCardData,
   paymentData,
 } from '@datas/pages/cards';
-import {
-  GenericSectionProps,
-  SectionContent,
-} from '@datas/pages/config/_types';
-
-// Type guard to check if an item is of type SectionContent
-const isSectionContent = (item: any): item is SectionContent => {
-  return typeof item === 'object' && item !== null;
-};
-
-// Function to filter and return valid SectionContent items
-const asSectionData = (data: any[]): SectionContent[] => {
-  return data.filter((item) => isSectionContent(item)); // Filter only valid items
-};
+import { GenericSectionProps } from '@datas/pages/config/_types';
+import { getValidSectionContent } from '@utils/function';
 
 export const cards: GenericSectionProps[] = [
-  { col: 'col-6', data: asSectionData(infoCardData), variant: 'info' },
-  { col: 'col-3', data: asSectionData(postCardData), variant: 'post' },
+  { col: 'col-6', data: getValidSectionContent(infoCardData), variant: 'info' },
+  { col: 'col-3', data: getValidSectionContent(postCardData), variant: 'post' },
   {
     col: 'col-4',
-    data: asSectionData(ProductCardData),
+    data: getValidSectionContent(ProductCardData),
     variant: 'product',
   },
   {
     col: 'col-3',
-    data: asSectionData(musicCardData),
+    data: getValidSectionContent(musicCardData),
     variant: 'music',
     horizontal: true,
   },
   {
     col: 'col-3',
-    data: asSectionData(followCardData.slice(0, 3)),
+    data: getValidSectionContent(followCardData.slice(0, 3)),
     variant: 'follow-card',
   },
   {
     col: 'col-4',
-    data: asSectionData(friendSuggestionData),
+    data: getValidSectionContent(friendSuggestionData),
     variant: 'friend-suggestion',
   },
-  { col: 'col-3', data: asSectionData(friendCardData), variant: 'friend' },
   {
     col: 'col-3',
-    data: asSectionData(giftCardData),
+    data: getValidSectionContent(friendCardData),
+    variant: 'friend',
+  },
+  {
+    col: 'col-3',
+    data: getValidSectionContent(giftCardData),
     variant: 'gift-card',
   },
   {
     col: 'col-3',
-    data: asSectionData(paymentData),
+    data: getValidSectionContent(paymentData),
     variant: 'payment-card',
   },
 ];

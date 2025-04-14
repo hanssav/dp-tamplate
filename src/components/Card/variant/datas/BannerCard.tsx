@@ -13,9 +13,7 @@ function isCardContent(item: SectionContent): item is CardContent {
   );
 }
 
-export const BannersCardContent: React.FC<BannersSectionProps> = ({
-  content,
-}) => {
+export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
   if (!content) return <div>No content available</div>;
 
   const items = Array.isArray(content) ? content : [content];
@@ -55,8 +53,8 @@ export const BannersCardContent: React.FC<BannersSectionProps> = ({
                     alt={item.title || 'banner image'}
                     className={`${
                       item.imagePosition === 'top'
-                        ? 'mx-auto w-full max-w-[200px] rounded-full'
-                        : 'w-full max-w-[300px] translate-y-[30px]'
+                        ? 'mx-auto my-5 w-full max-w-[150px] rounded-full'
+                        : 'w-full max-w-[250px] translate-y-[30px]'
                     }`}
                   />
                 </div>

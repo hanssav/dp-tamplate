@@ -5,7 +5,6 @@ import {
   SectionContent,
 } from '@datas/pages/config';
 
-
 /**
  * Extracts a readable title from a URL path.
  * Converts dashes to spaces and capitalizes the first letter of each word.
@@ -111,4 +110,21 @@ export const isNestedColContent = (
   item: SectionContent
 ): item is NestedContent => {
   return 'col' in item && 'data' in item;
+};
+
+/**
+ * Filters and returns only valid `SectionContent` items from a given array.
+ *
+ * This utility helps ensure that only objects matching the `SectionContent` shape
+ * are included in the result, preventing unexpected values like `null`, `undefined`,
+ * or primitives from being processed further in your application logic.
+ *
+ * @param {any[]} data - An array that may contain mixed item types.
+ * @returns {SectionContent[]} - An array of valid `SectionContent` objects.
+ */
+
+export const getValidSectionContent = (data: any[]): SectionContent[] => {
+  return data.filter(
+    (item): item is SectionContent => typeof item === 'object' && item !== null
+  );
 };

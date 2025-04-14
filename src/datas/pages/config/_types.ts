@@ -28,6 +28,7 @@ export interface NestedContent {
   data: SectionContent[];
   horizontal?: boolean;
   span?: number;
+  variant?: CardVariant;
 }
 
 // ✅ Untuk card biasa

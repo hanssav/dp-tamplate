@@ -4,10 +4,7 @@ import { GridItem } from '@components/Col/colTheme';
 import { MasonrySection } from '@components/UiRenderer/components/MasonrySection';
 import NestedCol from '@components/UiRenderer/components/NestedCol';
 import { CardVariant } from '@components/_types/Card';
-import {
-  SectionContent,
-  SectionProps,
-} from '@datas/pages/config';
+import { CardContent, SectionContent, SectionProps } from '@datas/pages/config';
 import { useMasonry } from '@hooks/useMasonry';
 import { isNestedColContent } from '@utils/function';
 
@@ -60,7 +57,7 @@ const UiSection = ({ section }: Props) => {
   // Custom layout for masonry
   if (Array.isArray(data) && col && col.includes('masonry')) {
     const masonryData = useMasonry(
-      data,
+      data.map((item) => ({ ...item, variant: variant as CardVariant })),
       masonryConfig?.columnCount,
       masonryConfig?.columnWidths
     );
