@@ -4,11 +4,7 @@ import { getValidSectionContent } from '@utils/function';
 
 export const banners: BannersSectionProps['content'][] = [
   {
-    col: 'masonry-2',
-    masonryConfig: {
-      columnCount: 2,
-      columnWidths: [70, 30],
-    },
+    col: 'col-3',
     variant: 'banners',
     data: getValidSectionContent(BannersCardContent),
   },

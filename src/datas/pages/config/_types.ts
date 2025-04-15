@@ -24,11 +24,12 @@ export type GenericSectionProps = BaseSection;
 
 // ✅ Untuk nested section (bisa col di dalam col)
 export interface NestedContent {
-  col: ColKey;
+  col?: ColKey;
   data: SectionContent[];
   horizontal?: boolean;
   span?: number;
   variant?: CardVariant;
+  type?: string;
 }
 
 // ✅ Untuk card biasa
@@ -43,6 +44,7 @@ export interface CardContent {
   horizontal?: boolean;
   imagePosition?: 'top' | 'side';
   span?: number;
+  multipleRow?: boolean;
   preTitle?: {
     text?: string;
     style?: string;

@@ -63,7 +63,13 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   items?: GridItem[];
 }
 
-export default function Col({ col = 'col-1', className, children, items, ...rest }: ColProps) {
+export default function Col({
+  col = 'col-1',
+  className,
+  children,
+  items,
+  ...rest
+}: ColProps) {
   const mergedClass = twMerge(colTheme.col[col], className);
   const isMasonry = colTheme.col[col].includes('columns-');
 

@@ -18,7 +18,7 @@ import Typography from '@components/Typography';
 
 export function BreadcrumbCardContent({ content }: BreadcrumbProps) {
   return (
-    <Col className="gap-y-1">
+    <Col col="col-1" className="gap-y-1">
       <Typography as="h3" textStyle="title" className="mb-2">
         {content?.title}
       </Typography>

@@ -1,57 +1,21 @@
-import Card from '@components/Card';
 import Col from '@components/Col';
 import { GridItem } from '@components/Col/colTheme';
 import { MasonrySection } from '@components/UiRenderer/components/MasonrySection';
-import NestedCol from '@components/UiRenderer/components/NestedCol';
+import {
+  renderCard,
+  renderChildItem,
+  renderNestedCol,
+} from '@components/UiRenderer/components/RenderHelpers';
 import { CardVariant } from '@components/_types/Card';
-import { SectionContent, SectionProps } from '@datas/pages/config';
+import { CardContent, NestedContent, SectionProps } from '@datas/pages/config';
 import { useMasonry } from '@hooks/useMasonry';
 import { isNestedColContent } from '@utils/function';
 
-type Props = {
+type UiSectionProps = {
   section: SectionProps;
 };
 
-// Fungsi untuk merender NestedCol
-const renderNestedCol = (item: SectionContent, index: number) => {
-  if (isNestedColContent(item)) {
-    return {
-      content: (
-        <NestedCol
-          key={index}
-          col={item.col}
-          data={item.data}
-          span={item.span}
-          horizontal={item.horizontal}
-        />
-      ),
-      span: item.span,
-    };
-  }
-  return;
-};
-
-// Fungsi untuk merender Card
-const renderCard = (
-  item: SectionContent,
-  index: number,
-  variant: CardVariant,
-  horizontal: boolean
-) => {
-  return {
-    content: (
-      <Card
-        key={index}
-        variant={variant as CardVariant}
-        content={item}
-        horizontal={horizontal}
-      />
-    ),
-    span: item.span,
-  };
-};
-
-const UiSection = ({ section }: Props) => {
+const UiSection = ({ section }: UiSectionProps) => {
   const { col, data, variant, horizontal, masonryConfig } = section;
 
   // Custom layout for masonry
@@ -65,21 +29,39 @@ const UiSection = ({ section }: Props) => {
     return <MasonrySection data={masonryData} />;
   }
 
-  const items = Array.isArray(data)
-    ? (data
-        .map((item, index) => {
-          if (isNestedColContent(item)) {
-            return renderNestedCol(item, index);
-          }
+  const items: GridItem[] | undefined = Array.isArray(data)
+    ? (data.flatMap((item, index) => {
+        if (isNestedColContent(item)) {
+          return [renderNestedCol(item, index)].filter(Boolean);
+        }
 
-          return renderCard(
-            item,
+        if ('data' in item && Array.isArray(item.data)) {
+          const children = item.data.map((child, i) =>
+            renderChildItem(child, i, variant as CardVariant, horizontal)
+          );
+
+          return [
+            {
+              content: (
+                <Col
+                  col={(item as NestedContent).col ?? 'col-1'}
+                  items={children}
+                />
+              ),
+              span: item.span,
+            },
+          ].filter(Boolean);
+        }
+
+        return [
+          renderCard(
+            item as CardContent,
             index,
             variant as CardVariant,
             horizontal ?? false
-          );
-        })
-        .filter(Boolean) as GridItem[])
+          ),
+        ].filter(Boolean);
+      }) as GridItem[])
     : undefined;
 
   return <Col col={col} items={items} />;
