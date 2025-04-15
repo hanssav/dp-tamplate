@@ -22,7 +22,7 @@ const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
             horizontal={horizontal}
           />
         ),
-        span,
+        span: item.span,
       };
     }
 
@@ -39,7 +39,7 @@ const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
             variant={variant}
           />
         ),
-        span,
+        span: item.span,
       };
     }
 

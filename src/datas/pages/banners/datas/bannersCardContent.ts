@@ -42,11 +42,11 @@ export const BannersCardContent: SectionContent[] = [
         bgColor: 'secondary',
         imagePosition: 'side',
       },
-      // Third Row (nested)
       {
         col: 'col-2',
         type: 'nested',
         variant: 'banners',
+        span: 2,
         data: [
           {
             components: 'cards',
@@ -62,6 +62,7 @@ export const BannersCardContent: SectionContent[] = [
             bgImage: IMAGE_CONSTANTS.IMG_BANNERS_3,
             bgColor: 'light',
             imagePosition: 'top',
+            span: 1,
           },
           {
             components: 'cards',
@@ -77,6 +78,7 @@ export const BannersCardContent: SectionContent[] = [
             bgImage: IMAGE_CONSTANTS.IMG_BANNERS_4,
             bgColor: 'light',
             imagePosition: 'top',
+            span: 1,
           },
         ],
       },
