@@ -11,6 +11,7 @@ import {
   PostCardContent,
   ProductCardContent,
 } from '@components/Card/variant';
+import AreaChartCard from '@components/Card/variant/charts/AreaChart';
 
 import {
   FriendCardContent,
@@ -58,6 +59,7 @@ const cardRenderMap: Record<string, (content: any) => JSX.Element | null> = {
   banners: (content) => (
     <BannersCard content={content as BannersSectionProps['content']} />
   ),
+  areaChart: (content) => <AreaChartCard content={content} />,
 };
 
 export function getCardContent({

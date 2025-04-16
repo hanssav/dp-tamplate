@@ -5,6 +5,7 @@ import {
   bgMap,
   createBannersTheme,
   createBreadcrumbTheme,
+  createChartsTheme,
   createFollowTheme,
   createFriendSuggestionTheme,
   createFriendTheme,
@@ -68,6 +69,7 @@ export const getCardStyle = ({
     gift: createGiftTheme(),
     payment: createPaymentTheme(),
     banners: createBannersTheme(bgClass),
+    areaChart: createChartsTheme(),
   };
 
   // Optional background style

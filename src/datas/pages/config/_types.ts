@@ -1,5 +1,6 @@
 import { ColKey } from '@components/Col/colTheme';
 import { CardVariant } from '@components/_types/Card';
+import { AreaChartCardContent } from '@datas/pages/charts';
 
 export type MasonryConfig = {
   columnCount: number;
@@ -20,7 +21,7 @@ export interface BannersSectionProps {
   content: BaseSection;
 }
 
-export type GenericSectionProps = BaseSection; 
+export type GenericSectionProps = BaseSection;
 
 // ✅ Untuk nested section (bisa col di dalam col)
 export interface NestedContent {
@@ -53,7 +54,7 @@ export interface CardContent {
 }
 
 // ✅ Union type: card / nested
-export type SectionContent = CardContent | NestedContent;
+export type SectionContent = CardContent | NestedContent | AreaChartCardContent;
 
 // ✅ Tombol opsional di card
 export interface SectionButton {

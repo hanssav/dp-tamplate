@@ -1,1 +1,1 @@
-export * from '@datas/pages/charts/datas/banners';
+export * from '@datas/pages/charts/datas/areaCharts';

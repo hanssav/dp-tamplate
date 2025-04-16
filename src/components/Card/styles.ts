@@ -139,3 +139,13 @@ export const createBannersTheme = (bgClass: string) =>
       },
     },
   });
+
+export const createChartsTheme = () =>
+  createTheme({
+    card: {
+      root: {
+        base: 'mb-6 rounded-lg rounded-lg border-none bg-white p-4 shadow-md dark:bg-primary-dark ',
+        children: 'flex h-full flex-col justify-center p-0',
+      },
+    },
+  });

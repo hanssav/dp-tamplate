@@ -128,3 +128,16 @@ export const getValidSectionContent = (data: any[]): SectionContent[] => {
     (item): item is SectionContent => typeof item === 'object' && item !== null
   );
 };
+
+export const formatNumber = (value: number | string): string => {
+  if (typeof value === 'string' && value.includes('$')) {
+    return value;
+  }
+
+  // Convert ke number
+  const number = typeof value === 'string' ? parseFloat(value) : value;
+
+  if (isNaN(number)) return '-';
+
+  return new Intl.NumberFormat('en-US').format(number);
+};

@@ -11,12 +11,13 @@ export type CardVariant =
   | 'post'
   | 'product'
   | 'music'
-  | 'follow-card'
-  | 'friend-suggestion'
+  | 'follow'
+  | 'friendSuggestion'
   | 'friend'
-  | 'gift-card'
-  | 'payment-card'
-  | 'banners';
+  | 'gift'
+  | 'payment'
+  | 'banners'
+  | 'areaChart';
 
 export interface BreadcrumbProps {
   content?: {
