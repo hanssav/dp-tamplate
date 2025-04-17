@@ -1,39 +1,75 @@
+import { ApexOptions } from 'apexcharts';
+import { ButtonColor } from '@components/Button';
 import { ColKey } from '@components/Col/colTheme';
 import { CardVariant } from '@components/_types/Card';
-import { AreaChartCardContent } from '@datas/pages/charts';
+
+//
+// 🔹 Shared Types
+//
+export interface SectionButton {
+  label: string;
+  onclick: () => void;
+  color?: ButtonColor;
+}
 
 export type MasonryConfig = {
   columnCount: number;
   columnWidths?: number[];
 };
 
-// 🧩 Optional base type biar DRY
-interface BaseSection {
-  col?: ColKey;
-  data: SectionContent[];
-  horizontal?: boolean;
+//
+// 🔹 Chart Related Types
+//
+export interface ChartCardConfig {
+  valuePosition?: 'up' | 'down';
+  chartPosition?: 'up' | 'down';
+}
+
+export interface ChartCardBase {
+  title: string;
+  value: string | number;
+  percentage?: string;
+  percentageColor?: string;
+  chartColor?: string | string[];
   span?: number;
+  config?: ChartCardConfig;
   variant?: CardVariant;
-  masonryConfig?: MasonryConfig;
 }
 
-export interface BannersSectionProps {
-  content: BaseSection;
+export interface ChartCardContent extends ChartCardBase {
+  series: { name: string; data: number[] }[];
+  options: ApexOptions;
 }
-
-export type GenericSectionProps = BaseSection;
-
-// ✅ Untuk nested section (bisa col di dalam col)
-export interface NestedContent {
+export interface ChartChild {
+  type: 'child';
+  data: ChartCardContent[];
   col?: ColKey;
-  data: SectionContent[];
-  horizontal?: boolean;
-  span?: number;
-  variant?: CardVariant;
-  type?: string;
 }
 
-// ✅ Untuk card biasa
+export interface ChartParent {
+  type: 'parent';
+  title: string;
+  variant: string;
+  button?: SectionButton[];
+  child?: ChartChild;
+}
+
+export interface ChartCardContentWithType extends ChartCardContent {
+  type: 'child' | 'parent';
+}
+
+export type ChartCardGroupItem = ChartParent | ChartCardContentWithType;
+
+export interface ChartCardGroup {
+  col?: ColKey;
+  variant?: CardVariant;
+  multipleRow?: boolean;
+  data: ChartCardGroupItem[];
+}
+
+//
+// 🔹 General Card Type
+//
 export interface CardContent {
   components?: any;
   title?: string;
@@ -53,15 +89,41 @@ export interface CardContent {
   };
 }
 
-// ✅ Union type: card / nested
-export type SectionContent = CardContent | NestedContent | AreaChartCardContent;
-
-// ✅ Tombol opsional di card
-export interface SectionButton {
-  label: string;
-  onclick: () => void;
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | string;
+//
+// 🔹 Nested Section Type
+//
+export interface NestedContent {
+  col?: ColKey;
+  data: SectionContent[];
+  horizontal?: boolean;
+  span?: number;
+  variant?: CardVariant;
+  type?: string;
+  masonryConfig?: MasonryConfig;
 }
 
-// ✅ Jika butuh general section type
-export type SectionProps = BannersSectionProps['content'] | GenericSectionProps;
+//
+// 🔹 Section Wrapper
+//
+export interface BaseSection {
+  col?: ColKey;
+  data: SectionContent[];
+  horizontal?: boolean;
+  span?: number;
+  variant?: CardVariant;
+  masonryConfig?: MasonryConfig;
+}
+
+export interface BannersSectionProps {
+  content: BaseSection;
+}
+
+//
+// 🔹 Final Union
+//
+export type SectionContent =
+  | CardContent
+  | NestedContent
+  | ChartCardContent
+  | ChartCardGroup
+  | BannersSectionProps['content'];

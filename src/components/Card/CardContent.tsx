@@ -1,6 +1,7 @@
 import {
   BannersCard,
   BreadcrumbCardContent,
+  DefaultContent,
   FollowCardContent,
   FriendCard,
   FriendGiftCard,
@@ -11,7 +12,7 @@ import {
   PostCardContent,
   ProductCardContent,
 } from '@components/Card/variant';
-import AreaChartCard from '@components/Card/variant/charts/AreaChart';
+import { ChartContent } from '@components/Card/variant/charts';
 
 import {
   FriendCardContent,
@@ -28,8 +29,12 @@ import {
 
 import { BannersSectionProps } from '@datas/pages/config';
 import { BreadcrumbComponentProps } from 'flowbite-react';
+import React from 'react';
 
-const cardRenderMap: Record<string, (content: any) => JSX.Element | null> = {
+const cardRenderMap: Record<
+  string,
+  (content: any, children: React.ReactNode) => JSX.Element | null
+> = {
   breadcrumb: (content) => (
     <BreadcrumbCardContent content={content as BreadcrumbComponentProps} />
   ),
@@ -59,15 +64,20 @@ const cardRenderMap: Record<string, (content: any) => JSX.Element | null> = {
   banners: (content) => (
     <BannersCard content={content as BannersSectionProps['content']} />
   ),
-  areaChart: (content) => <AreaChartCard content={content} />,
+  chart: (content) => <ChartContent content={content} />,
+  default: (content, children) => (
+    <DefaultContent content={content}>{children}</DefaultContent>
+  ),
 };
 
 export function getCardContent({
   variant = 'breadcrumb',
   content,
-}: RenderCardContentProps) {
+  children,
+}: RenderCardContentProps & { children?: React.ReactNode }) {
   if (!content) return null;
 
   const renderFn = cardRenderMap[variant];
-  return renderFn ? renderFn(content) : null;
+
+  return renderFn ? renderFn(content, children) : null;
 }

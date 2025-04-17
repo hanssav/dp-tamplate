@@ -9,3 +9,4 @@ export * from '@components/Card/variant/datas/MusicCard';
 export * from '@components/Card/variant/datas/PaymentCard';
 export * from '@components/Card/variant/datas/PostCard';
 export * from '@components/Card/variant/datas/ProductCard';
+export * from '@components/Card/variant/datas/DefaultCard';

@@ -1,3 +1,4 @@
+import { createDefaultTheme } from './styles';
 import React from 'react';
 import { CardContentData, CardVariant } from '@components/_types/Card';
 import { CardContent } from '@datas/pages/config';
@@ -69,7 +70,8 @@ export const getCardStyle = ({
     gift: createGiftTheme(),
     payment: createPaymentTheme(),
     banners: createBannersTheme(bgClass),
-    areaChart: createChartsTheme(),
+    chart: createChartsTheme(),
+    default: createDefaultTheme(),
   };
 
   // Optional background style

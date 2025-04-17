@@ -1,7 +1,7 @@
 import {
   BannersSectionProps,
   CardContent,
-  SectionProps,
+  SectionContent,
 } from '@datas/pages/config';
 import { IconType } from 'react-icons';
 
@@ -17,7 +17,8 @@ export type CardVariant =
   | 'gift'
   | 'payment'
   | 'banners'
-  | 'areaChart';
+  | 'chart'
+  | 'default';
 
 export interface BreadcrumbProps {
   content?: {
@@ -145,7 +146,7 @@ export type CardContentData = (
   | FriendCardContent
   | FriendGiftCardProps['content']
   | PaymentCardProps
-  | SectionProps
+  | SectionContent
   | BannersSectionProps['content']
 ) & {
   bgImg?: string;

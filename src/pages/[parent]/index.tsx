@@ -5,12 +5,12 @@ import IMAGE_CONSTANTS from '@constant/images';
 import { checkValidPath, getTitleFromPath, toCamelCase } from '@utils/function';
 import * as UiConfig from '@datas/pages/config';
 import { useEffect, useState } from 'react';
-import { SectionProps } from '@datas/pages/config';
+import { SectionContent } from '@datas/pages/config';
 import UiSection from '@components/UiRenderer/UiSection';
 
 const ParentMenu = () => {
   const location = useLocation();
-  const [uiConfig, setUiConfig] = useState<SectionProps[]>([]);
+  const [uiConfig, setUiConfig] = useState<SectionContent[]>([]);
 
   const isValid = checkValidPath(location.pathname);
 

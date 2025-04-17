@@ -9,10 +9,10 @@ import {
   giftCardData,
   paymentData,
 } from '@datas/pages/cards';
-import { GenericSectionProps } from '@datas/pages/config/_types';
+import { SectionContent } from '@datas/pages/config/_types';
 import { getValidSectionContent } from '@utils/function';
 
-export const cards: GenericSectionProps[] = [
+export const cards: SectionContent[] = [
   { col: 'col-6', data: getValidSectionContent(infoCardData), variant: 'info' },
   { col: 'col-3', data: getValidSectionContent(postCardData), variant: 'post' },
   {

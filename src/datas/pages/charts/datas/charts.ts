@@ -1,26 +1,7 @@
+import { SectionContent } from '@datas/pages/config';
 import { ApexOptions } from 'apexcharts';
 
-interface ChartCardConfig {
-  valuePosition?: 'up' | 'down'; // set value under title
-  chartPosition?: 'up' | 'down';
-}
-
-export interface AreaChartCard {
-  title: string;
-  value: string | number;
-  percentage?: string;
-  percentageColor?: string;
-  chartColor?: string | string[];
-  span?: number;
-  config?: ChartCardConfig;
-}
-
-export interface AreaChartCardContent extends AreaChartCard {
-  series: { name: string; data: number[] }[];
-  options: ApexOptions;
-}
-
-const areaChartsOptions: ApexOptions = {
+export const areaChartsOptions: ApexOptions = {
   chart: {
     id: 'followers-chart',
     toolbar: { show: false },
@@ -52,7 +33,7 @@ const areaChartsOptions: ApexOptions = {
   },
 };
 
-const barChartsOptions: ApexOptions = {
+export const barChartsOptions: ApexOptions = {
   chart: {
     id: 'views-bar-chart',
     type: 'bar',
@@ -62,6 +43,7 @@ const barChartsOptions: ApexOptions = {
     toolbar: {
       show: false,
     },
+    background: 'transparent',
   },
 
   plotOptions: {
@@ -98,35 +80,35 @@ const viewBarCharColor = [
   '#dbeafe',
 ];
 
-const followerChartSeries = [
+export const followerChartSeries = [
   {
     name: 'Followers',
     data: [0, 15, 11, 24, 20, 20, 30, 20],
   },
 ];
 
-const viewsChartSeries = [
+export const viewsChartSeries = [
   {
     name: 'Views',
     data: [20, 15, 30, 25, 10, 18, 20],
   },
 ];
 
-const earnChartSeries = [
+export const earnChartSeries = [
   {
     name: 'Earned',
     data: [0, 3, 1, 2, 8, 1, 5, 1],
   },
 ];
 
-const totalChartSeries = [
+export const totalChartSeries = [
   {
     name: 'Earned',
     data: [4, 10, 9, 7, 9, 10, 11, 8, 10],
   },
 ];
 
-export const areaChartContent: AreaChartCardContent[] = [
+export const chartContent: SectionContent[] = [
   {
     config: {
       valuePosition: 'up',

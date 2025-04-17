@@ -1,6 +1,6 @@
 import Col from '@components/Col';
 import Typography from '@components/Typography';
-import { AreaChartCardContent } from '@datas/pages/charts';
+import { ChartCardContent } from '@datas/pages/config';
 import { formatNumber } from '@utils/function';
 import { useThemeMode } from 'flowbite-react';
 import React, { useMemo } from 'react';
@@ -34,11 +34,11 @@ const TitleValue: React.FC<TitleValueProps> = ({
   );
 };
 
-interface AreaChartCardProps {
-  content: AreaChartCardContent;
+interface ChartCardProps {
+  content: ChartCardContent;
 }
 
-const AreaChartCard: React.FC<AreaChartCardProps> = ({ content }) => {
+export const ChartContent: React.FC<ChartCardProps> = ({ content }) => {
   const {
     title,
     value,
@@ -70,7 +70,7 @@ const AreaChartCard: React.FC<AreaChartCardProps> = ({ content }) => {
     };
   }, [mode, chartColor]);
 
-  const renderHeader = () => (
+  const renderContentText = () => (
     <Col col="col-2" className="flex items-end justify-between">
       <Col className="gap-0">
         <TitleValue
@@ -103,10 +103,8 @@ const AreaChartCard: React.FC<AreaChartCardProps> = ({ content }) => {
   return (
     <Col className="max-w-wd w-full">
       {config.chartPosition === 'up' && renderChart()}
-      {renderHeader()}
+      {renderContentText()}
       {config.chartPosition !== 'up' && renderChart()}
     </Col>
   );
 };
-
-export default AreaChartCard;

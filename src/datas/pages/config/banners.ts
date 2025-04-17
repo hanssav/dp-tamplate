@@ -1,8 +1,8 @@
 import { BannersCardContent } from '@datas/pages/banners';
-import { BannersSectionProps } from '@datas/pages/config/_types';
+import { SectionContent } from '@datas/pages/config/_types';
 import { getValidSectionContent } from '@utils/function';
 
-export const banners: BannersSectionProps['content'][] = [
+export const banners: SectionContent[] = [
   {
     col: 'col-3',
     variant: 'banners',

@@ -5,6 +5,7 @@ import NestedCol from '@components/UiRenderer/components/NestedCol';
 import { CardVariant } from '@components/_types/Card';
 import { CardContent, SectionContent } from '@datas/pages/config';
 import { isNestedColContent } from '@utils/function';
+import React from 'react';
 
 /**
  * Function to render a NestedCol component.
@@ -51,16 +52,23 @@ export const renderCard = (
   item: CardContent,
   index: number,
   variant: CardVariant,
-  horizontal: boolean
+  horizontal: boolean,
+  children?: React.ReactNode
 ) => {
+  const childContent = React.isValidElement(children)
+    ? children
+    : ((children as any)?.content ?? null);
+
   return {
     content: (
       <Card
         key={index}
-        variant={variant as CardVariant}
+        variant={item.variant || variant}
         content={item}
         horizontal={horizontal}
-      />
+      >
+        {childContent}
+      </Card>
     ),
     span: item.span,
   };
@@ -97,6 +105,8 @@ export const renderChildItem = (
   }
 
   if (child.type === 'nested' && child.data) {
+    console.log(child, 'child');
+
     return renderNestedCol(child, index) as GridItem;
   }
 

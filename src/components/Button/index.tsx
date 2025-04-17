@@ -15,7 +15,8 @@ interface ButtonProps {
   size?: ButtonSize;
   rounded?: boolean;
   onClick?: () => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  label?: string;
   className?: any;
 }
 
@@ -25,6 +26,7 @@ export default function Button({
   rounded = false,
   onClick,
   children,
+  label,
   className = '',
   ...props
 }: ButtonProps) {
@@ -35,7 +37,7 @@ export default function Button({
       onClick={onClick}
       {...props}
     >
-      {children}
+      {label ?? children}
     </ButtonFlowbite>
   );
 }

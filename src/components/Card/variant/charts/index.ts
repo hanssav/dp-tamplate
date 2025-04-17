@@ -1,1 +1,1 @@
-export * from '@components/Card/variant/charts/AreaChart';
+export * from '@components/Card/variant/charts/Chart';

@@ -144,7 +144,17 @@ export const createChartsTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'mb-6 rounded-lg rounded-lg border-none bg-white p-4 shadow-md dark:bg-primary-dark ',
+        base: 'mb-6 rounded-lg border-none bg-white p-4 shadow-lg dark:bg-primary-dark ',
+        children: 'flex h-full flex-col justify-center p-0',
+      },
+    },
+  });
+
+export const createDefaultTheme = () =>
+  createTheme({
+    card: {
+      root: {
+        base: 'mb-6 rounded-lg border-none shadow-lg dark:bg-primary-dark',
         children: 'flex h-full flex-col justify-center p-0',
       },
     },

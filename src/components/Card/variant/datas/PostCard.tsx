@@ -38,7 +38,7 @@ export function PostCardContent({ content }: PostCardContentProps) {
       <Typography
         as="button"
         textStyle="desc"
-        className="translate-y-[-25px] rounded-lg border bg-gray-100 p-2 hover:bg-gray-200 focus:outline-none"
+        className="bg:transparant hover:transparant translate-y-[-25px] rounded-lg border p-2 focus:outline-none"
       >
         {content?.category}
       </Typography>
