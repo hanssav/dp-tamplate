@@ -7,38 +7,16 @@ import {
 } from '@components/UiRenderer/components/RenderHelpers';
 import { CardVariant } from '@components/_types/Card';
 import {
-  BaseSection,
   SectionContent,
   NestedContent,
   CardContent,
 } from '@datas/pages/config';
 import { useMasonry } from '@hooks/useMasonry';
+import { hasChild, isBaseSection } from '@utils/function';
 
 type UiSectionProps = {
   section: SectionContent;
 };
-
-function isBaseSection(section: SectionContent): section is BaseSection {
-  return (
-    'data' in section &&
-    Array.isArray(section.data) &&
-    'masonryConfig' in section
-  );
-}
-
-function hasChild(item: unknown): item is {
-  child: { data: CardContent[]; col?: string };
-  variant?: CardVariant;
-  horizontal?: boolean;
-  span?: number;
-} {
-  return (
-    typeof item === 'object' &&
-    item !== null &&
-    'child' in item &&
-    Array.isArray((item as any).child?.data)
-  );
-}
 
 const UiSection = ({ section }: UiSectionProps) => {
   if (!('data' in section) || !Array.isArray(section.data)) return null;
@@ -95,11 +73,9 @@ const UiSection = ({ section }: UiSectionProps) => {
         )
       );
 
-      if (tempChild.length > 0) {
-        childrenComponent = (
-          <Col col={(item.child.col as ColKey) ?? 'col-3'} items={tempChild} />
-        );
-      }
+      childrenComponent = (
+        <Col col={(item.child.col as ColKey) ?? 'col-3'} items={tempChild} />
+      );
     }
 
     return [

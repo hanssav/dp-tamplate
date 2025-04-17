@@ -105,8 +105,6 @@ export const renderChildItem = (
   }
 
   if (child.type === 'nested' && child.data) {
-    console.log(child, 'child');
-
     return renderNestedCol(child, index) as GridItem;
   }
 

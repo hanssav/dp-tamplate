@@ -1,9 +1,9 @@
 import {
   areaChartsOptions,
-  chartContent,
   followerChartSeries,
 } from './../charts/datas/charts';
 import { SectionContent } from '@datas/pages/config/_types';
+import { chartContent } from '@datas/pages/charts';
 
 export const charts: SectionContent[] = [
   {
