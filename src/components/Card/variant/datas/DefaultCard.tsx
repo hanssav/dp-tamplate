@@ -19,7 +19,7 @@ export const DefaultContent: React.FC<DefaultContentProps> = ({
 
   return (
     <Col className="gap-5 p-5">
-      <Col col="col-2" className="flex items-center justify-between">
+      <Col col="col-2" className="flex items-center justify-between mb-5">
         <Typography as="h2" textStyle="heading-md">
           {title}
         </Typography>

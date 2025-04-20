@@ -50,6 +50,8 @@ export const ChartContent: React.FC<ChartCardProps> = ({ content }) => {
     config = {},
   } = content;
 
+  console.log(options, title);
+
   const { mode } = useThemeMode();
 
   const themeMode: 'light' | 'dark' = mode === 'dark' ? 'dark' : 'light';
@@ -71,7 +73,7 @@ export const ChartContent: React.FC<ChartCardProps> = ({ content }) => {
   }, [mode, chartColor]);
 
   const renderContentText = () => (
-    <Col col="col-2" className="flex items-end justify-between">
+    <Col col="col-2" className="flex items-end justify-between p-4">
       <Col className="gap-0">
         <TitleValue
           title={title}
@@ -89,12 +91,12 @@ export const ChartContent: React.FC<ChartCardProps> = ({ content }) => {
   );
 
   const renderChart = () => (
-    <div className="mt-4">
+    <div className="">
       <Chart
         options={dynamicOptions}
         series={series}
         type={options.chart?.type || 'area'}
-        height={100}
+        height={options.chart?.height || 100}
         width="100%"
       />
     </div>

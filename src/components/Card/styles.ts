@@ -144,7 +144,7 @@ export const createChartsTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'mb-6 rounded-lg border-none bg-white p-4 shadow-lg dark:bg-primary-dark ',
+        base: 'mb-6 rounded-lg border-none bg-white shadow-lg dark:bg-primary-dark ',
         children: 'flex h-full flex-col justify-center p-0',
       },
     },
@@ -154,8 +154,8 @@ export const createDefaultTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'mb-6 rounded-lg border-none shadow-lg dark:bg-primary-dark',
-        children: 'flex h-full flex-col justify-center p-0',
+        base: 'mb-6 rounded-lg border-none px-0 shadow-lg dark:bg-primary-dark',
+        children: 'flex h-full flex-col justify-center px-0',
       },
     },
   });
