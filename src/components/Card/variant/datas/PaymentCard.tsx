@@ -31,7 +31,7 @@ const UpcomingActivityItem: React.FC<UpcomingActivityItemProps> = ({
     </span>
 
     {/* Text content */}
-    <Col className="ml-4 mr-auto gap-y-0">
+    <Col className="mb-0 ml-4 mr-auto gap-y-0">
       <Typography textStyle="subtitle">{name}</Typography>
       <Typography textStyle="desc">{description}</Typography>
     </Col>

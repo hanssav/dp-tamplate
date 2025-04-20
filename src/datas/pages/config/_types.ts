@@ -21,8 +21,8 @@ export type MasonryConfig = {
 // 🔹 Chart Related Types
 //
 export interface ChartCardConfig {
+  chartPosition?: 'up' | 'down' | 'left' | 'right';
   valuePosition?: 'up' | 'down';
-  chartPosition?: 'up' | 'down';
 }
 
 export interface ChartCardBase {
@@ -34,6 +34,9 @@ export interface ChartCardBase {
   span?: number;
   config?: ChartCardConfig;
   variant?: CardVariant;
+  additionalContent?: {
+    [key: string]: any;
+  };
 }
 
 export interface ChartCardContent extends ChartCardBase {

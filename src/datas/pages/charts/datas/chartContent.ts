@@ -26,11 +26,14 @@ import {
   viewsChartSeries,
 } from '@datas/pages/charts/options/viewChartOptions';
 import { SectionContent } from '@datas/pages/config';
+import {
+  yearlyBackupChartOptions,
+  yearlyBackupChartSeries,
+} from '@datas/pages/charts/options/yearlyBackupChartOptions';
 
 export const chartContentDatas1: SectionContent[] = [
   {
     config: {
-      valuePosition: 'up',
       chartPosition: 'down',
     },
     title: 'Followers',
@@ -71,8 +74,8 @@ export const chartContentDatas1: SectionContent[] = [
     options: totalChartOptions,
     span: 1,
     config: {
-      valuePosition: 'down',
       chartPosition: 'down',
+      valuePosition: 'down',
     },
   },
 ];
@@ -92,7 +95,6 @@ export const chartContentDatas2: SectionContent[] = [
       data: [
         {
           config: {
-            valuePosition: 'down',
             chartPosition: 'up',
           },
           variant: 'chart',
@@ -107,7 +109,6 @@ export const chartContentDatas2: SectionContent[] = [
         },
         {
           config: {
-            valuePosition: 'down',
             chartPosition: 'up',
           },
           variant: 'chart',
@@ -122,7 +123,6 @@ export const chartContentDatas2: SectionContent[] = [
         },
         {
           config: {
-            valuePosition: 'down',
             chartPosition: 'up',
           },
           variant: 'chart',
@@ -138,5 +138,75 @@ export const chartContentDatas2: SectionContent[] = [
         },
       ],
     },
+  },
+];
+
+import { HiArrowSmUp } from 'react-icons/hi';
+
+export const chartContentData3: SectionContent[] = [
+  {
+    multipleRow: true,
+    variant: 'chart',
+    span: 1,
+    data: [
+      {
+        config: {
+          chartPosition: 'right',
+        },
+        additionalContent: {
+          summaryPercent: ' +9%',
+          summaryIcon: HiArrowSmUp,
+          bgIcon: 'text-green-500', 
+          summaryYears: ['2025', '2023'],
+        },
+        title: 'Yearly Breakup',
+        variant: 'chart',
+        value: '$36,358',
+        chartColor: ['#1E90FF', '#E5EDFF', '#F1F5F9'],
+        series: yearlyBackupChartSeries,
+        options: yearlyBackupChartOptions,
+        span: 1,
+      },
+      {
+        title: 'Views',
+        variant: 'chart',
+        value: 2545,
+        percentage: '-4.150%',
+        percentageColor: 'text-red-400 dark:text-red-400',
+        chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
+        series: viewsChartSeries,
+        options: viewChartOptions,
+        span: 1,
+      },
+    ],
+  },
+  {
+    config: {
+      chartPosition: 'up',
+    },
+    variant: 'chart',
+    title: 'Current Year',
+    value: '$98,260',
+    percentage: '+2.5%',
+    percentageColor: 'text-green-400 dark:text-green-400',
+    chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
+    series: currentYearChartDatas,
+    options: currentYearChartOptions,
+    span: 1,
+  },
+  {
+    config: {
+      chartPosition: 'up',
+    },
+    variant: 'chart',
+
+    title: 'Current Year',
+    value: '$98,260',
+    percentage: '+2.5%',
+    percentageColor: 'text-green-400 dark:text-green-400',
+    chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
+    series: currentYearChartDatas,
+    options: currentYearChartOptions,
+    span: 1,
   },
 ];

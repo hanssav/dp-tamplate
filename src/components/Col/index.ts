@@ -61,6 +61,9 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   col?: ColKey;
   children?: React.ReactNode;
   items?: GridItem[];
+  margin?: string; // e.g. "mb-4 mt-2"
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
+  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 }
 
 export default function Col({
@@ -68,10 +71,23 @@ export default function Col({
   className,
   children,
   items,
+  margin,
+  justify,
+  align,
   ...rest
 }: ColProps) {
-  const mergedClass = twMerge(colTheme.col[col], className);
   const isMasonry = colTheme.col[col].includes('columns-');
+
+  const justifyClass = justify ? `justify-${justify}` : '';
+  const alignClass = align ? `items-${align}` : '';
+
+  const mergedClass = twMerge(
+    colTheme.col[col],
+    margin,
+    justifyClass,
+    alignClass,
+    className
+  );
 
   const childrenToRender = items?.length
     ? items.map((item, index) =>
@@ -81,7 +97,7 @@ export default function Col({
             key: index,
             className: twMerge(
               isMasonry
-                ? 'mb-6 break-inside-avoid' // masonry style
+                ? 'mb-6 break-inside-avoid'
                 : [
                     item.span ? `col-span-${item.span}` : '',
                     item.start ? `col-start-${item.start}` : '',
@@ -99,5 +115,3 @@ export default function Col({
     children: childrenToRender,
   });
 }
-
-

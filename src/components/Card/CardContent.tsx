@@ -12,7 +12,7 @@ import {
   PostCardContent,
   ProductCardContent,
 } from '@components/Card/variant';
-import { ChartContent } from '@components/Card/variant/charts';
+import { Chart } from '@components/Charts';
 
 import {
   FriendCardContent,
@@ -64,7 +64,7 @@ const cardRenderMap: Record<
   banners: (content) => (
     <BannersCard content={content as BannersSectionProps['content']} />
   ),
-  chart: (content) => <ChartContent content={content} />,
+  chart: (content) => <Chart content={content} />,
   default: (content, children) => (
     <DefaultContent content={content}>{children}</DefaultContent>
   ),
