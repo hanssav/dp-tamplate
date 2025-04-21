@@ -37,28 +37,30 @@ const UiSection = ({ section }: UiSectionProps) => {
     return <MasonrySection data={masonryData} />;
   }
 
-  const items: GridItem[] | undefined = data.flatMap((item, index) => {
-    if ('data' in item && Array.isArray(item.data)) {
-      const children = item.data.map((child, i) =>
-        renderChildItem(
-          child,
-          i,
-          variant as CardVariant,
-          'horizontal' in section ? section.horizontal : false
-        )
-      );
+  const renderNestedContent = (item: NestedContent, variant: CardVariant, section: SectionContent) => {
+    const children = item.data.map((child, i) =>
+      renderChildItem(
+        child,
+        i,
+        variant,
+        'horizontal' in section ? section.horizontal : false
+      )
+    );
 
-      return [
-        {
-          content: (
-            <Col
-              col={(item as NestedContent).col ?? 'col-1'}
-              items={children}
-            />
-          ),
-          span: (item as any).span,
-        },
-      ];
+    return {
+      content: (
+        <Col
+          col={item.col ?? 'col-1'}
+          items={children}
+        />
+      ),
+      span: (item as any).span,
+    };
+  };
+
+  const renderItem = (item: any, index: number, variant: CardVariant, section: SectionContent) => {
+    if ('data' in item && Array.isArray(item.data)) {
+      return renderNestedContent(item as NestedContent, variant, section);
     }
 
     let childrenComponent: React.ReactNode = null;
@@ -78,16 +80,18 @@ const UiSection = ({ section }: UiSectionProps) => {
       );
     }
 
-    return [
-      renderCard(
-        item as CardContent,
-        index,
-        variant as CardVariant,
-        (section as any).horizontal ?? false,
-        childrenComponent
-      ),
-    ];
-  });
+    return renderCard(
+      item as CardContent,
+      index,
+      variant,
+      (section as any).horizontal ?? false,
+      childrenComponent
+    );
+  };
+
+  const items: GridItem[] | undefined = data.flatMap((item, index) =>
+    renderItem(item, index, variant as CardVariant, section)
+  );
 
   return <Col col={col} items={items} />;
 };

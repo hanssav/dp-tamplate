@@ -1,3 +1,4 @@
+import { THEME_MODE_CONSTANT } from '@constant/index';
 import { createChartOptions } from '@datas/pages/charts/utils/mergeChartOptions';
 import { ApexOptions } from 'apexcharts';
 
@@ -47,7 +48,7 @@ export const currentYearChartOptions: ApexOptions = createChartOptions(
     },
     tooltip: {
       enabled: true,
-      theme: 'dark',
+      theme: THEME_MODE_CONSTANT.DARK,
     },
     labels: ['series-1', 'series-2', 'series-3'],
   }

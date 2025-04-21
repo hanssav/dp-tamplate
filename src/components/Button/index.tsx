@@ -11,7 +11,7 @@ export type ButtonColor = keyof typeof buttonTheme.color;
 type ButtonSize = keyof typeof buttonTheme.size;
 
 interface ButtonProps {
-  color?: ButtonColor;
+  color?: ButtonColor | string;
   size?: ButtonSize;
   rounded?: boolean;
   onClick?: () => void;
@@ -30,10 +30,15 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
+  const customColorClass =
+    typeof color === 'string' && !buttonTheme.color[color] ? color : '';
+  const colorClass =
+    buttonTheme.color[color as ButtonColor] || customColorClass;
+
   return (
     <ButtonFlowbite
       theme={buttonTheme as CustomFlowbiteTheme['button']}
-      className={`${className} ${buttonTheme.color[color]} ${buttonTheme.size[size]} ${rounded ? buttonTheme.rounded : ''}`}
+      className={`${className} ${colorClass} ${buttonTheme.size[size]} ${rounded ? buttonTheme.rounded : ''}`}
       onClick={onClick}
       {...props}
     >

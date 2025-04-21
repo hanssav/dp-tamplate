@@ -2,6 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import { ButtonColor } from '@components/Button';
 import { ColKey } from '@components/Col/colTheme';
 import { CardVariant } from '@components/_types/Card';
+import { POSITIONS } from '@datas/pages/charts/constants';
 
 //
 // 🔹 Shared Types
@@ -20,11 +21,11 @@ export type MasonryConfig = {
 //
 // 🔹 Chart Related Types
 //
+export type ChartPosition = (typeof POSITIONS)[keyof typeof POSITIONS];
 export interface ChartCardConfig {
-  chartPosition?: 'up' | 'down' | 'left' | 'right';
-  valuePosition?: 'up' | 'down';
+  chartPosition?: ChartPosition;
+  valuePosition?: typeof POSITIONS.UP | typeof POSITIONS.DOWN;
 }
-
 export interface ChartCardBase {
   title: string;
   value: string | number;

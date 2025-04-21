@@ -2,27 +2,37 @@ import React, { useMemo } from 'react';
 import ApexChart from 'react-apexcharts';
 import { useThemeMode } from 'flowbite-react';
 import Col from '@components/Col';
-import { ChartCardContent } from '@datas/pages/config';
-import {
-  applyThemeToOptions,
-  getChartLayoutClassName,
-  ChartPosition,
-} from './utils';
+import { ChartCardContent, ChartPosition } from '@datas/pages/config';
+import { applyThemeToOptions, getChartLayoutClassName } from './utils';
 import {
   DefaultContent,
+  MonthlyEarningContent,
   YearlyBackupContent,
+  YearlySalesContent,
+  YearlySalesFooter,
 } from '@components/Charts/contents/ChartContents';
+import { YEARLY_BACKUP_ID } from '@datas/pages/charts/options/yearlyBackupChartOptions';
+import {
+  MONTHLY_EARNING_ID,
+  POSITIONS,
+  YEARLY_SALES_ID,
+} from '@datas/pages/charts/constants';
+import { ThemeMode, THEME_MODE_CONSTANT } from '@constant/index';
 
 interface ChartCardProps {
   content: ChartCardContent;
 }
 
 export const Chart: React.FC<ChartCardProps> = ({ content }) => {
-  const { chartColor = '#3b82f6', options, series, config = {} } = content;
+  const { chartColor = 'primary', options, series, config = {} } = content;
 
   const { mode } = useThemeMode();
-  const themeMode: 'light' | 'dark' = mode === 'dark' ? 'dark' : 'light';
-  const isYearlyBackupChart = options.chart?.id === 'yearly-backup-chart';
+  const themeMode: ThemeMode =
+    mode === 'dark' ? THEME_MODE_CONSTANT.DARK : THEME_MODE_CONSTANT.LIGHT;
+
+  const isYearlyBackupChart = options.chart?.id === YEARLY_BACKUP_ID;
+  const isMonthlyEarningChart = options.chart?.id === MONTHLY_EARNING_ID;
+  const isYearlySalesChart = options.chart?.id === YEARLY_SALES_ID;
   const chartPosition = (config.chartPosition as ChartPosition) || '';
 
   // Determine whether to show content based on title and value existence
@@ -47,7 +57,7 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
     </Col>
   );
 
-  // Content rendering - only if we have content to show
+  // Upper content rendering - only if we have content to show
   const renderContent = () => {
     if (!shouldShowContent) {
       return null;
@@ -55,31 +65,45 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
 
     return isYearlyBackupChart ? (
       <YearlyBackupContent content={content} />
+    ) : isMonthlyEarningChart ? (
+      <MonthlyEarningContent content={content} />
+    ) : isYearlySalesChart ? (
+      <YearlySalesContent content={content} />
     ) : (
       <DefaultContent content={content} />
     );
   };
 
+  // Footer rendering - only if chartPosition is 'center'
+  const renderFooter = () => {
+    if (chartPosition !== POSITIONS.CENTER) {
+      return null;
+    }
+    return isYearlySalesChart ? <YearlySalesFooter content={content} /> : '';
+  };
+
+  // Layout rendering based on chart position
   const renderLayout = () => {
     return shouldShowContent ? renderMergedLayout() : renderChart();
   };
 
   function renderMergedLayout() {
     const layoutComponents = {
-      yearlyBackup: [
-        renderContent,
-        () => <Col justify="end">{renderChart()}</Col>,
-      ],
+      yearlyBackup: [renderContent, renderChart],
+      montlyEarn: [renderContent, renderChart],
       up: [renderChart, renderContent],
       right: [renderContent, renderChart],
       left: [renderContent, renderChart],
+      center: [renderContent, renderChart, renderFooter],
       default: [renderContent, renderChart],
     };
 
     const selectedLayout = isYearlyBackupChart
       ? layoutComponents.yearlyBackup
-      : layoutComponents[chartPosition as keyof typeof layoutComponents] ||
-        layoutComponents.default;
+      : isMonthlyEarningChart
+        ? layoutComponents.montlyEarn
+        : layoutComponents[chartPosition as keyof typeof layoutComponents] ||
+          layoutComponents.default;
 
     return (
       <>

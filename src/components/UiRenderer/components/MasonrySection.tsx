@@ -20,6 +20,48 @@ export type MasonryProps = {
   data: MasonryData;
 };
 
+const renderContent = (item: SectionContent, key: string) => {
+  if (isNestedColContent(item)) {
+    return (
+      <NestedCol
+        key={key}
+        col={item.col}
+        data={item.data}
+        span={item.span}
+        horizontal={item.horizontal}
+        variant={item.variant as CardVariant}
+      />
+    );
+  } else if (isCardContent(item)) {
+    return (
+      <Card
+        key={key}
+        variant={item.variant as CardVariant}
+        content={item}
+        horizontal={item.horizontal}
+      />
+    );
+  }
+  return null;
+};
+
+const renderColumn = (
+  colItems: SectionContent[],
+  colIdx: number,
+  widths: number[]
+) => (
+  <div
+    key={colIdx}
+    className="flex flex-col gap-6"
+    style={{ width: `${widths[colIdx]}%` }}
+  >
+    {colItems.map((item, idx) => {
+      const key = `col-${colIdx}-item-${idx}`;
+      return <div key={key}>{renderContent(item, key)}</div>;
+    })}
+  </div>
+);
+
 export const MasonrySection: React.FC<MasonryProps> = ({ data }) => {
   const { columnCount, columnWidths, items } = data;
 
@@ -28,35 +70,9 @@ export const MasonrySection: React.FC<MasonryProps> = ({ data }) => {
 
   return (
     <div className="flex w-full gap-4">
-      {columns.map((colItems, colIdx) => (
-        <div
-          key={colIdx}
-          className="flex flex-col gap-6"
-          style={{ width: `${widths[colIdx]}%` }}
-        >
-          {colItems.map((item, idx) => {
-            const key = `col-${colIdx}-item-${idx}`;
-            const content = isNestedColContent(item) ? (
-              <NestedCol
-                key={key}
-                col={item.col}
-                data={item.data}
-                span={item.span}
-                horizontal={item.horizontal}
-                variant={item.variant as CardVariant}
-              />
-            ) : isCardContent(item) ? (
-              <Card
-                key={key}
-                variant={item.variant as CardVariant}
-                content={item}
-                horizontal={item.horizontal}
-              />
-            ) : null;
-            return <div key={key}>{content}</div>;
-          })}
-        </div>
-      ))}
+      {columns.map((colItems, colIdx) =>
+        renderColumn(colItems, colIdx, widths)
+      )}
     </div>
   );
 };

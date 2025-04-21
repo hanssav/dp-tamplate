@@ -1,5 +1,6 @@
 import { ApexOptions } from 'apexcharts';
 import { createChartOptions } from '@datas/pages/charts/utils/mergeChartOptions';
+import { THEME_MODE_CONSTANT } from '@constant/index';
 
 export const followerChartOptions: ApexOptions = createChartOptions('area', {
   chart: {
@@ -8,7 +9,7 @@ export const followerChartOptions: ApexOptions = createChartOptions('area', {
   colors: ['#4CAF50'],
   tooltip: {
     enabled: true,
-    theme: 'dark',
+    theme: THEME_MODE_CONSTANT.DARK,
   },
 });
 

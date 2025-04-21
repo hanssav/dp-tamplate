@@ -6,7 +6,7 @@ export const theme = {
       'border border-primary bg-transparent text-primary focus:ring-0 enabled:hover:bg-soft-blue dark:bg-transparent dark:enabled:hover:bg-dark-hover',
     light:
       'bg-transparent text-gray-900 focus:ring-0 focus:ring-transparent enabled:hover:bg-soft-blue dark:bg-transparent dark:text-white dark:enabled:hover:bg-gray-700',
-  },
+  } as { [key: string]: string },
   sizes: {
     xs: 'px-0 py-1 text-sm',
     sm: 'px-0.5 py-1 text-sm',

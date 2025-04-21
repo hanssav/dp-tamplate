@@ -1,12 +1,13 @@
 import { ApexOptions } from 'apexcharts';
 import { createChartOptions } from '@datas/pages/charts/utils/mergeChartOptions';
+import { YEARLY_SALES_ID } from '@datas/pages/charts/constants';
 import { THEME_MODE_CONSTANT } from '@constant/index';
 
-export const incomeChartOptions: ApexOptions = createChartOptions('bar', {
+export const yearlyChartOptions: ApexOptions = createChartOptions('bar', {
   chart: {
-    id: 'income-chart',
+    id: YEARLY_SALES_ID,
     type: 'bar',
-    height: 250,
+    height: 300,
     stacked: true,
     toolbar: {
       show: false,
@@ -22,7 +23,6 @@ export const incomeChartOptions: ApexOptions = createChartOptions('bar', {
       options: {
         legend: {
           position: 'bottom',
-          offsetX: -10,
           offsetY: 0,
         },
       },
@@ -32,19 +32,23 @@ export const incomeChartOptions: ApexOptions = createChartOptions('bar', {
     bar: {
       horizontal: false,
       borderRadius: 6,
-      columnWidth: '20%',
+      columnWidth: '40%',
     },
   },
   xaxis: {
-    type: 'datetime',
-    categories: [
-      '01/01/2011 GMT',
-      '01/02/2011 GMT',
-      '01/03/2011 GMT',
-      '01/04/2011 GMT',
-      '01/05/2011 GMT',
-      '01/06/2011 GMT',
-    ],
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    position: 'bottom',
+    axisTicks: {
+      show: true,
+      color: '#78909C',
+    },
+    labels: {
+      show: true,
+      style: {
+        colors: '#78909C',
+        fontSize: '12px',
+      },
+    },
   },
   fill: {
     opacity: 1,
@@ -52,20 +56,16 @@ export const incomeChartOptions: ApexOptions = createChartOptions('bar', {
   grid: {
     padding: {
       top: 10,
-      right: 20,
-      bottom: 20,
-      left: 20,
+      right: 30,
+      bottom: 50,
+      left: 30,
     },
   },
 });
 
-export const incomeChartSeries = [
+export const yearlyChartSeries = [
   {
     name: 'PRODUCT A',
-    data: [2.5, 3.7, 3.2, 2.6, 1.9, 2.5],
-  },
-  {
-    name: 'PRODUCT B',
-    data: [-2.8, -1.1, -3, -1.5, -1.9, -2.8],
+    data: [2.5, 3.7, 5.2, 2.6, 1.9, 2.5],
   },
 ];

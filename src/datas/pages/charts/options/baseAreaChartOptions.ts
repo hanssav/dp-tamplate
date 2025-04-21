@@ -1,3 +1,4 @@
+import { THEME_MODE_CONSTANT } from '@constant/index';
 import { ApexOptions } from 'apexcharts';
 
 export const baseAreaChartsOptions: ApexOptions = {
@@ -15,7 +16,7 @@ export const baseAreaChartsOptions: ApexOptions = {
   fill: {
     type: 'gradient',
     gradient: {
-      shade: 'light',
+      shade: THEME_MODE_CONSTANT.LIGHT,
       type: 'vertical',
       shadeIntensity: 0.1,
       gradientToColors: ['#3b82f6'],
@@ -28,7 +29,7 @@ export const baseAreaChartsOptions: ApexOptions = {
   colors: ['#3b82f6'],
   tooltip: {
     enabled: true,
-    theme: 'dark',
+    theme: THEME_MODE_CONSTANT.DARK,
   },
   grid: {
     padding: {

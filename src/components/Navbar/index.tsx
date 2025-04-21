@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { navLinks } from '@datas/components/navLinks';
 import Button from '@components/Button';
 import UserDropdown from '@components/Navbar/userDropdown';
+import { THEME_MODE_CONSTANT } from '@constant/index';
 
 interface NavbarProps {
   toggleMobileSidebar: () => void;
@@ -65,7 +66,13 @@ const NavbarMenu: React.FC<NavbarProps> = ({
 
           <Button
             color="light"
-            onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
+            onClick={() =>
+              setMode(
+                mode === THEME_MODE_CONSTANT.DARK
+                  ? THEME_MODE_CONSTANT.LIGHT
+                  : THEME_MODE_CONSTANT.DARK
+              )
+            }
             size="icon"
             rounded
           >

@@ -1,3 +1,7 @@
+import {
+  monthlyEarningChartSeries,
+  monthlyEarningrChartOptions,
+} from './../options/monthlyEarningChartOptions';
 import { currentYearChartDatas } from './../options/currentYearChartOptions';
 import { currentYearChartOptions } from '@datas/pages/charts/options/currentYearChartOptions';
 import {
@@ -142,6 +146,12 @@ export const chartContentDatas2: SectionContent[] = [
 ];
 
 import { HiArrowSmUp } from 'react-icons/hi';
+import { Grip } from 'lucide-react';
+import {
+  yearlyChartOptions,
+  yearlyChartSeries,
+} from '@datas/pages/charts/options/yearlySalesChartOptions';
+import { POSITIONS } from '@datas/pages/charts/constants';
 
 export const chartContentData3: SectionContent[] = [
   {
@@ -156,7 +166,7 @@ export const chartContentData3: SectionContent[] = [
         additionalContent: {
           summaryPercent: ' +9%',
           summaryIcon: HiArrowSmUp,
-          bgIcon: 'text-green-500', 
+          bgIcon: 'text-green-500',
           summaryYears: ['2025', '2023'],
         },
         title: 'Yearly Breakup',
@@ -168,30 +178,64 @@ export const chartContentData3: SectionContent[] = [
         span: 1,
       },
       {
-        title: 'Views',
+        additionalContent: {
+          summaryPercent: ' +9%',
+          summaryIcon: HiArrowSmUp,
+          bgIcon: 'text-green-500',
+          summaryYears: ['2025', '2023'],
+        },
+        title: 'Monthly Earnings',
         variant: 'chart',
-        value: 2545,
+        value: '$6,820',
         percentage: '-4.150%',
         percentageColor: 'text-red-400 dark:text-red-400',
-        chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
-        series: viewsChartSeries,
-        options: viewChartOptions,
+        chartColor: ['#3b82f6'],
+        series: monthlyEarningChartSeries,
+        options: monthlyEarningrChartOptions,
         span: 1,
       },
     ],
   },
   {
-    config: {
-      chartPosition: 'up',
-    },
     variant: 'chart',
-    title: 'Current Year',
-    value: '$98,260',
-    percentage: '+2.5%',
-    percentageColor: 'text-green-400 dark:text-green-400',
-    chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
-    series: currentYearChartDatas,
-    options: currentYearChartOptions,
+    config: {
+      chartPosition: POSITIONS.CENTER,
+    },
+    additionalContent: {
+      footer: [
+        {
+          label: 'Salary',
+          value: '$36,358',
+          icon: Grip,
+          iconColor:
+            'text-primary hover:text-white dark:text-primary dark:hover:text-white',
+          bgIcon:
+            'bg-light-primary enabled:hover:bg-[#7599FF] enabled:dark:bg-primary-dark dark:enabled:hover:bg-[#7599FF] ',
+        },
+        {
+          label: 'Expance',
+          value: '$5,296',
+          icon: Grip,
+          bgIcon:
+            'bg-light-secondary enabled:hover:bg-[#64C8FF] dark:bg-secondary-dark',
+          iconColor:
+            'text-secondary  hover:text-white dark:text-primary dark:hover:text-white',
+        },
+      ],
+      title: 'Yearly Sales',
+      desc: 'Every month',
+    },
+    title: 'Yearly Sales',
+    chartColor: [
+      '#E5EDFF',
+      '#E5EDFF',
+      '#7599FF',
+      '#E5EDFF',
+      '#E5EDFF',
+      '#F1F5F9',
+    ],
+    series: yearlyChartSeries,
+    options: yearlyChartOptions,
     span: 1,
   },
   {

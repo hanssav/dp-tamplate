@@ -7,17 +7,10 @@ import { CardContent, SectionContent } from '@datas/pages/config';
 import { isNestedColContent } from '@utils/function';
 import React from 'react';
 
-/**
- * Function to render a NestedCol component.
- * - The function checks if the item is of type NestedColContent.
- * - If true, it renders a NestedCol with the specified properties.
- *
- * @param item - The content to be rendered, expected to be of type NestedColContent.
- * @param index - The index of the item in the array, used as the key for the NestedCol component.
- * @returns GridItem - An object containing the NestedCol component (JSX) and the column span for the item.
- */
-
-export const renderNestedCol = (item: SectionContent, index: number) => {
+export const renderNestedCol = (
+  item: SectionContent,
+  index: number
+): GridItem | undefined => {
   if (isNestedColContent(item)) {
     return {
       content: (
@@ -33,20 +26,7 @@ export const renderNestedCol = (item: SectionContent, index: number) => {
       span: item.span,
     };
   }
-  return;
 };
-
-/**
- * Function to render a Card component.
- * - The function takes a CardContent item and renders it as a Card.
- * - It also applies the specified variant and horizontal orientation to the card.
- *
- * @param item - The card content to be rendered (CardContent).
- * @param index - The index of the item in the array, used as the key for the Card component.
- * @param variant - The variant of the card (CardVariant) for rendering.
- * @param horizontal - Determines if the card should be rendered in a horizontal orientation.
- * @returns GridItem - An object containing the Card component (JSX) and the column span for the item.
- */
 
 export const renderCard = (
   item: CardContent,
@@ -54,7 +34,7 @@ export const renderCard = (
   variant: CardVariant,
   horizontal: boolean,
   children?: React.ReactNode
-) => {
+): GridItem => {
   const childContent = React.isValidElement(children)
     ? children
     : ((children as any)?.content ?? null);
@@ -74,24 +54,11 @@ export const renderCard = (
   };
 };
 
-/**
- * Function to render an item within a column, including handling multipleRow and nested content cases.
- * - If the item has the `multipleRow` property and data, the data will be rendered across separate columns.
- * - If the item has a 'nested' type and data, it will render a NestedCol for that item.
- * - If the item is a regular content, it will render a Card.
- *
- * @param child - The child data to be rendered (which may be an object with a `multipleRow` property or nested content).
- * @param index - The index of the item in the array, used as the key for the element.
- * @param variant - The variant of the card (CardVariant) for rendering.
- * @param horizontal - Determines if the card should be rendered in a horizontal orientation.
- * @returns GridItem - An object containing the content (JSX component) and the column span for the item.
- */
-
 export const renderChildItem = (
   child: any,
   index: number,
   variant: CardVariant,
-  horizontal?: boolean
+  horizontal: boolean = false
 ): GridItem => {
   if (child.multipleRow && Array.isArray(child.data)) {
     const nestedChildren = child.data.map((nestedChild: any, i: number) =>
@@ -108,5 +75,5 @@ export const renderChildItem = (
     return renderNestedCol(child, index) as GridItem;
   }
 
-  return renderCard(child, index, variant, horizontal ?? false);
+  return renderCard(child, index, variant, horizontal);
 };
