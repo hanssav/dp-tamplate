@@ -1,7 +1,14 @@
 import { ApexOptions } from 'apexcharts';
 import { createChartOptions } from '@datas/pages/charts/utils/mergeChartOptions';
-import { YEARLY_SALES_ID } from '@datas/pages/charts/constants';
+import { MONTH_DATAS, YEARLY_SALES_ID } from '@datas/pages/charts/constants';
 import { THEME_MODE_CONSTANT } from '@constant/index';
+
+export const yearlyChartSeries = [
+  {
+    name: 'PRODUCT A',
+    data: [2.5, 3.7, 5.2, 2.6, 1.9, 2.5],
+  },
+];
 
 export const yearlyChartOptions: ApexOptions = createChartOptions('bar', {
   chart: {
@@ -36,7 +43,7 @@ export const yearlyChartOptions: ApexOptions = createChartOptions('bar', {
     },
   },
   xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    categories: MONTH_DATAS.slice(0, yearlyChartSeries[0].data.length),
     position: 'bottom',
     axisTicks: {
       show: true,
@@ -62,10 +69,3 @@ export const yearlyChartOptions: ApexOptions = createChartOptions('bar', {
     },
   },
 });
-
-export const yearlyChartSeries = [
-  {
-    name: 'PRODUCT A',
-    data: [2.5, 3.7, 5.2, 2.6, 1.9, 2.5],
-  },
-];

@@ -17,6 +17,7 @@ export const YEAR_DATAS = ['2020', '2021', '2022', '2023', '2024', '2025'];
 
 export const YEARLY_SALES_ID = 'yearly-sales-chart';
 export const MONTHLY_EARNING_ID = 'monthly-earning-chart';
+export const REVENUE_UPDATE_ID = 'revenue-update-chart';
 
 export const POSITIONS = {
   UP: 'up',

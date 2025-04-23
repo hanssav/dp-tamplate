@@ -41,7 +41,7 @@ export interface ChartCardBase {
 }
 
 export interface ChartCardContent extends ChartCardBase {
-  series: { name: string; data: number[] }[] | Array<number>;
+  series: { name: string; data: any[] }[] | Array<number>;
   options: ApexOptions;
 }
 export interface ChartChild {

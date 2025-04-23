@@ -27,7 +27,7 @@ export const applyThemeToOptions = (
 
   return {
     ...options,
-    colors: colorsArray,
+    colors: colorsArray.length > 0 ? colorsArray : options.colors,
     theme: {
       mode: themeMode,
     },

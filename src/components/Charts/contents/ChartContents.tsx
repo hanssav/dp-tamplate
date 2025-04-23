@@ -110,9 +110,7 @@ const MonthlyEarningContent: React.FC<{ content: ChartCardContent }> = ({
   );
 };
 
-const YearlySalesContent: React.FC<{ content: ChartCardContent }> = ({
-  content,
-}) => {
+const ChartHeader: React.FC<{ content: ChartCardContent }> = ({ content }) => {
   return (
     <Col margin="p-4 gap-1">
       <Typography as="h2" textStyle="title">
@@ -128,7 +126,6 @@ const YearlySalesContent: React.FC<{ content: ChartCardContent }> = ({
 const YearlySalesFooter: React.FC<{ content: ChartCardContent }> = ({
   content,
 }) => {
-  console.log(content.additionalContent?.footer, 'content in footer');
   const footerContent = content.additionalContent?.footer || [];
 
   return (
@@ -189,6 +186,6 @@ export {
   YearlyBackupContent,
   MonthlyEarningContent,
   DefaultContent,
-  YearlySalesContent,
+  ChartHeader,
   YearlySalesFooter,
 };

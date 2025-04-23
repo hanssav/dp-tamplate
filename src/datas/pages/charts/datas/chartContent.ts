@@ -1,4 +1,8 @@
 import {
+  reveneueUpdateChartOptions,
+  revenueUpdateChartSeries,
+} from './../options/revenueUpdateChartOptions';
+import {
   monthlyEarningChartSeries,
   monthlyEarningrChartOptions,
 } from './../options/monthlyEarningChartOptions';
@@ -161,7 +165,7 @@ export const chartContentData3: SectionContent[] = [
     data: [
       {
         config: {
-          chartPosition: 'right',
+          chartPosition: POSITIONS.RIGHT,
         },
         additionalContent: {
           summaryPercent: ' +9%',
@@ -178,6 +182,9 @@ export const chartContentData3: SectionContent[] = [
         span: 1,
       },
       {
+        config: {
+          chartPosition: POSITIONS.DOWN,
+        },
         additionalContent: {
           summaryPercent: ' +9%',
           summaryIcon: HiArrowSmUp,
@@ -227,30 +234,27 @@ export const chartContentData3: SectionContent[] = [
     },
     title: 'Yearly Sales',
     chartColor: [
-      '#E5EDFF',
-      '#E5EDFF',
+      '#E7EDFF',
+      '#E7EDFF',
       '#7599FF',
-      '#E5EDFF',
-      '#E5EDFF',
-      '#F1F5F9',
+      '#E7EDFF',
+      '#E7EDFF',
+      '#E7EDFF',
     ],
     series: yearlyChartSeries,
     options: yearlyChartOptions,
     span: 1,
   },
   {
-    config: {
-      chartPosition: 'up',
-    },
     variant: 'chart',
-
-    title: 'Current Year',
-    value: '$98,260',
-    percentage: '+2.5%',
-    percentageColor: 'text-green-400 dark:text-green-400',
-    chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
-    series: currentYearChartDatas,
-    options: currentYearChartOptions,
+    title: 'Revenue Updates',
+    additionalContent: {
+      title: 'Revenue Updates',
+      desc: 'Overview of Profit',
+    },
+    // chartColor: ['#7599FF', '#64C8FF'],
+    series: revenueUpdateChartSeries,
+    options: reveneueUpdateChartOptions,
     span: 1,
   },
 ];
