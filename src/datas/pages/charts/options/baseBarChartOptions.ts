@@ -23,7 +23,6 @@ export const baseBarChartOptions: ApexOptions = {
     axisTicks: { show: false },
     axisBorder: { show: false },
   },
-
   grid: {
     padding: {
       top: 10,

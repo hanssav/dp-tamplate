@@ -252,7 +252,7 @@ export const chartContentData3: SectionContent[] = [
       title: 'Revenue Updates',
       desc: 'Overview of Profit',
     },
-    // chartColor: ['#7599FF', '#64C8FF'],
+    chartColor: ['#7599FF', '#64C8FF'],
     series: revenueUpdateChartSeries,
     options: reveneueUpdateChartOptions,
     span: 1,

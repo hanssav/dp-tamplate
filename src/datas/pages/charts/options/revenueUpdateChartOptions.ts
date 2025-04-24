@@ -14,93 +14,93 @@
     },
     ];
 
-    export const reveneueUpdateChartOptions: ApexOptions = createChartOptions(
-    'bar',
-    {
-        chart: {
+    export const reveneueUpdateChartOptions: ApexOptions = createChartOptions('bar', {
+      chart: {
         id: REVENUE_UPDATE_ID,
         height: 350,
         stacked: true,
         sparkline: {
-            enabled: false,
+          enabled: false,
         },
-        },
-        tooltip: {
+      },
+      tooltip: {
         enabled: true,
         theme: THEME_MODE_CONSTANT.DARK,
-        },
-        colors: ['#7599FF', '#64C8FF'],
-        plotOptions: {
+      },
+      plotOptions: {
         bar: {
-            horizontal: false,
-            borderRadius: 5,
-            columnWidth: '20%',
+          horizontal: false,
+          borderRadius: 5,
+          columnWidth: '20%',
+          distributed: false,
         },
-        },
-        legend: {
+      },
+      legend: {
         position: 'top',
         horizontalAlign: 'left',
         show: true,
         showForSingleSeries: true,
         customLegendItems: ['Footware', 'Fashionware'],
         markers: {
-            fillColors: ['#7599FF', '#64C8FF'],
-            size: 6,
-            shape: 'circle',
+          fillColors: ['#7599FF', '#64C8FF'],
+          size: 6,
+          shape: 'circle',
         },
-        },
-        xaxis: {
-        categories: MONTH_DATAS.slice(0, revenueUpdateChartSeries[0].data.length),
+      },
+      xaxis: {
+        categories: MONTH_DATAS.slice(
+          0,
+          revenueUpdateChartSeries[0].data.length
+        ),
         position: 'bottom',
         labels: {
-            show: true,
-            style: {
+          show: true,
+          style: {
             colors: '#78909C',
             fontSize: '12px',
-            },
+          },
         },
         axisBorder: {
-            show: true,
-            color: '#78909C',
-            strokeWidth: 1,
-            offsetX: 0,
-            offsetY: 0,
+          show: true,
+          color: '#78909C',
+          strokeWidth: 1,
+          offsetX: 0,
+          offsetY: 0,
         },
         axisTicks: {
-            show: true,
-            borderType: 'solid',
-            color: '#78909C',
-            height: 6,
+          show: true,
+          borderType: 'solid',
+          color: '#78909C',
+          height: 6,
         },
-        },
-        yaxis: {
+      },
+      yaxis: {
         show: true,
         labels: {
-            show: true,
-            showDuplicates: false,
-            align: 'right',
-            maxWidth: 160,
-            style: {
+          show: true,
+          showDuplicates: false,
+          align: 'right',
+          maxWidth: 160,
+          style: {
             colors: ['#78909C'],
             cssClass: 'apexcharts-yaxis-label',
-            },
-            offsetX: 11,
-            offsetY: 0,
-            rotate: 0,
-            formatter: (val: number) => `${val}`,
+          },
+          offsetX: 11,
+          offsetY: 0,
+          rotate: 0,
+          formatter: (val: number) => `${val}`,
         },
-        },
-        dataLabels: {
+      },
+      dataLabels: {
         enabled: false,
-        },
-        grid: {
+      },
+      grid: {
         show: false,
         padding: {
-            top: 30,
-            right: 30,
-            bottom: 30,
-            left: 30,
+          top: 30,
+          right: 30,
+          bottom: 30,
+          left: 30,
         },
-        },
-    }
-    );
+      },
+    });
