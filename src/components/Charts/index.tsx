@@ -8,14 +8,17 @@ import {
   ChartHeader,
   DefaultContent,
   MonthlyEarningContent,
-  YearlyBackupContent,
-  YearlySalesFooter,
+  RightCardContent,
+  FooterChart,
 } from '@components/Charts/contents/ChartContents';
 import { YEARLY_BACKUP_ID } from '@datas/pages/charts/options/yearlyBackupChartOptions';
 import {
   MONTHLY_EARNING_ID,
+  MOST_VISITED_ID,
+  PAGE_IMPRESSION_ID,
   POSITIONS,
   REVENUE_UPDATE_ID,
+  SALES_OVERVIEW_ID,
   YEARLY_SALES_ID,
 } from '@datas/pages/charts/constants';
 import { ThemeMode, THEME_MODE_CONSTANT } from '@constant/index';
@@ -31,10 +34,18 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
   const themeMode: ThemeMode =
     mode === 'dark' ? THEME_MODE_CONSTANT.DARK : THEME_MODE_CONSTANT.LIGHT;
 
-  const isYearlyBackupChart = options.chart?.id === YEARLY_BACKUP_ID;
-  const isMonthlyEarningChart = options.chart?.id === MONTHLY_EARNING_ID;
-  const isYearlySalesChart = options.chart?.id === YEARLY_SALES_ID;
-  const isReveneuUpdateChart = options.chart?.id === REVENUE_UPDATE_ID;
+  const chartId = options.chart?.id;
+
+  const isChart = (targetId: string) => chartId === targetId;
+
+  const isYearlyBackupChart = isChart(YEARLY_BACKUP_ID);
+  const isMonthlyEarningChart = isChart(MONTHLY_EARNING_ID);
+  const isYearlySalesChart = isChart(YEARLY_SALES_ID);
+  const isReveneuUpdateChart = isChart(REVENUE_UPDATE_ID);
+  const isMostVisitedChart = isChart(MOST_VISITED_ID);
+  const isPageImpressionChart = isChart(PAGE_IMPRESSION_ID);
+  const isSalesOverviewChart = isChart(SALES_OVERVIEW_ID);
+
   const chartPosition = (config.chartPosition as ChartPosition) || '';
 
   // Determine whether to show content based on title and value existence
@@ -45,11 +56,14 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
       return null;
     }
 
-    return isYearlyBackupChart ? (
-      <YearlyBackupContent content={content} />
+    return isYearlyBackupChart || isPageImpressionChart ? (
+      <RightCardContent content={content} />
     ) : isMonthlyEarningChart ? (
       <MonthlyEarningContent content={content} />
-    ) : isYearlySalesChart || isReveneuUpdateChart ? (
+    ) : isYearlySalesChart ||
+      isReveneuUpdateChart ||
+      isMostVisitedChart ||
+      isSalesOverviewChart ? (
       <ChartHeader content={content} />
     ) : (
       <DefaultContent content={content} />
@@ -60,7 +74,11 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
     if (chartPosition !== POSITIONS.CENTER) {
       return null;
     }
-    return isYearlySalesChart ? <YearlySalesFooter content={content} /> : '';
+    return isYearlySalesChart || isSalesOverviewChart ? (
+      <FooterChart content={content} />
+    ) : (
+      ''
+    );
   };
 
   // Chart options with theme mode

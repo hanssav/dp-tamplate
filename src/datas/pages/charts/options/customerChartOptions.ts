@@ -2,21 +2,19 @@ import { ApexOptions } from 'apexcharts';
 import { createChartOptions } from '@datas/pages/charts/utils/mergeChartOptions';
 import { THEME_MODE_CONSTANT } from '@constant/index';
 
-export const followerChartOptions: ApexOptions = createChartOptions('area', {
+export const customerChartOptions: ApexOptions = createChartOptions('area', {
   chart: {
-    id: 'followers-chart',
-    height: 140,
+    id: 'customer-chart',
   },
-  colors: ['#4CAF50'],
   tooltip: {
     enabled: true,
     theme: THEME_MODE_CONSTANT.DARK,
   },
 });
 
-export const followerChartSeries = [
+export const customerChartSeries = [
   {
-    name: 'Followers',
+    name: 'Customer',
     data: [0, 15, 11, 24, 20, 20, 30, 20],
   },
 ];

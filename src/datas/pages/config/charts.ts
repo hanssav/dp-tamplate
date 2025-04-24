@@ -1,6 +1,7 @@
 import { SectionContent } from '@datas/pages/config/_types';
 import {
   chartContentData3,
+  chartContentData4,
   chartContentDatas1,
   chartContentDatas2,
 } from '@datas/pages/charts';
@@ -16,4 +17,5 @@ export const charts: SectionContent[] = [
     data: chartContentDatas2,
   },
   { col: 'col-3', data: chartContentData3 },
+  { col: 'col-3', data: chartContentData4 },
 ];

@@ -9,8 +9,8 @@ interface TitleValueProps {
 }
 
 const TitleValue: React.FC<TitleValueProps> = ({
-  title,
-  value,
+  title = '',
+  value = '',
   position = 'up',
 }) => {
   const valueItem = { text: formatNumber(value), style: 'title' as const };

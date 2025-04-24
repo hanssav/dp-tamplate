@@ -49,10 +49,7 @@ const UiSection = ({ section }: UiSectionProps) => {
 
     return {
       content: (
-        <Col
-          col={item.col ?? 'col-1'}
-          items={children}
-        />
+        <Col col={item.col ?? 'col-1'} items={children} className="gap-x-0" />
       ),
       span: (item as any).span,
     };

@@ -139,7 +139,7 @@ export const formatNumber = (value: number | string): string => {
   // Convert ke number
   const number = typeof value === 'string' ? parseFloat(value) : value;
 
-  if (isNaN(number)) return '-';
+  if (isNaN(number)) return '';
 
   return new Intl.NumberFormat('en-US').format(number);
 };

@@ -25,6 +25,7 @@ export type ChartPosition = (typeof POSITIONS)[keyof typeof POSITIONS];
 export interface ChartCardConfig {
   chartPosition?: ChartPosition;
   valuePosition?: typeof POSITIONS.UP | typeof POSITIONS.DOWN;
+  percentagePosition?: typeof POSITIONS.UP | typeof POSITIONS.DOWN;
 }
 export interface ChartCardBase {
   title: string;
