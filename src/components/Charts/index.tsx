@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import ApexChart from 'react-apexcharts';
 import { useThemeMode } from 'flowbite-react';
 import Col from '@components/Col';

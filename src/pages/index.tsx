@@ -1,5 +1,4 @@
 import { reveneueUpdateChartOptions } from '@datas/pages/charts/options/revenueUpdateChartOptions';
-import { ApexOptions } from 'apexcharts';
 import ReactApexChart from 'react-apexcharts';
 import { HiMenu } from 'react-icons/hi';
 import Button from '../components/Button';
@@ -16,66 +15,6 @@ const Home = () => {
       data: [-20, -30, -10, -40, -15, -25],
     },
   ];
-
-  const options: ApexOptions = {
-    chart: {
-      type: 'bar',
-      height: 350,
-      stacked: true,
-      toolbar: {
-        show: false,
-      },
-    },
-    colors: ['#7599FF', '#64C8FF'],
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: '20%',
-        borderRadius: 4,
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      show: true,
-      width: 1,
-      colors: ['#fff'],
-    },
-    xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-      labels: {
-        style: {
-          colors: '#78909C',
-          fontSize: '12px',
-        },
-      },
-    },
-    yaxis: {
-      labels: {
-        formatter: (val: number) => val.toFixed(0),
-        style: {
-          colors: '#78909C',
-        },
-      },
-    },
-    legend: {
-      position: 'top',
-      horizontalAlign: 'left',
-      markers: {
-        fillColors: ['#7599FF', '#64C8FF'],
-      },
-    },
-    tooltip: {
-      shared: true,
-      intersect: false,
-      theme: 'dark',
-    },
-    grid: {
-      show: true,
-      borderColor: '#e0e0e0',
-    },
-  };
 
   return (
     <DashboardLayout>
