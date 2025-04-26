@@ -1,16 +1,21 @@
-import { Button as ButtonFlowbite, CustomFlowbiteTheme } from 'flowbite-react';
-import { theme } from './GetButtonStyle';
+import { customButtonTheme } from '@components/Button/GetButtonStyle';
+// import { theme } from './GetButtonStyle';
 
 const buttonTheme = {
-  color: theme.colors,
-  size: theme.sizes,
+  color: customButtonTheme.color,
+  size: customButtonTheme.size,
   rounded: 'rounded-full',
 };
 
 export type ButtonColor = keyof typeof buttonTheme.color;
 type ButtonSize = keyof typeof buttonTheme.size;
 
-interface ButtonProps {
+import {
+  Button as ButtonFlowbite,
+  ButtonProps as FlowbiteButtonProps,
+} from 'flowbite-react';
+
+interface ButtonProps extends FlowbiteButtonProps {
   color?: ButtonColor | string;
   size?: ButtonSize;
   rounded?: boolean;
@@ -30,15 +35,13 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const customColorClass =
-    typeof color === 'string' && !buttonTheme.color[color] ? color : '';
-  const colorClass =
-    buttonTheme.color[color as ButtonColor] || customColorClass;
 
   return (
     <ButtonFlowbite
-      theme={buttonTheme as CustomFlowbiteTheme['button']}
-      className={`${className} ${colorClass} ${buttonTheme.size[size]} ${rounded ? buttonTheme.rounded : ''}`}
+      theme={customButtonTheme}
+      color={color}
+      size={size}
+      className={`${className} ${rounded ? buttonTheme.rounded : ''}`}
       onClick={onClick}
       {...props}
     >

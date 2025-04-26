@@ -2,6 +2,7 @@ import { Avatar } from 'flowbite-react';
 import { FriendCardProps } from '@components/_types/Card';
 import { Users, Globe, Code, Instagram } from 'lucide-react';
 import Typography from '@components/Typography';
+import Button from '@components/Button';
 
 /**
  * `FriendCard` is a component that displays a user's profile picture, name, role, and social media platform icons.
@@ -57,12 +58,9 @@ export const FriendCard: React.FC<FriendCardProps> = ({ content }) => {
       {/* Social Media Buttons */}
       <div className="mt-4 flex items-center justify-center gap-3 bg-light-primary py-3 dark:bg-[#26334D]">
         {content.platforms.map((platform) => (
-          <button
-            key={platform}
-            className="rounded-full p-2 transition hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
+          <Button color="light" size="icon" pill key={platform}>
             {iconMap[platform]}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

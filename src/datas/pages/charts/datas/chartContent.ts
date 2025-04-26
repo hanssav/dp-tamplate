@@ -61,6 +61,10 @@ import {
   salesOverviewChartDatas,
   salesOverviewChartOptions,
 } from '@datas/pages/charts/options/salesOverviewChartOptions';
+import {
+  customerChartOptions,
+  customerChartSeries,
+} from '@datas/pages/charts/options/customerChartOptions';
 
 export const chartContentDatas1: SectionContent[] = [
   {
@@ -345,8 +349,8 @@ export const chartContentData4: SectionContent[] = [
               summaryIcon: HiArrowSmUp,
             },
             chartColor: ['#64C8FF'],
-            series: followerChartSeries,
-            options: followerChartOptions,
+            series: customerChartSeries,
+            options: customerChartOptions,
           },
           {
             config: {

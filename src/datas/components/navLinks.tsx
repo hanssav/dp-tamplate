@@ -36,17 +36,17 @@ export const navLinks = (
       href: '#',
       label: 'Apps',
       active: true,
-      size: 'xs',
+      size: 'md',
       icon: <HiChevronDown size={20} />,
       className: 'hidden md:block',
     },
     {
       href: '#',
       label: 'Chat',
-      size: 'xs',
+      size: 'md',
       active: true,
     },
-    { href: '#', label: 'Calendar', active: false, size: 'xs' },
-    { href: '#', label: 'Email', active: false, size: 'xs' },
+    { href: '#', label: 'Calendar', active: false, size: 'md' },
+    { href: '#', label: 'Email', active: false, size: 'md' },
   ];
 };

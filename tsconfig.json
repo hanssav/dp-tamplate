@@ -29,7 +29,8 @@
       "@assets/*": ["src/assets/*"],
       "@datas/*": ["src/datas/*"],
       "@context/*": ["src/context/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@themes/*": ["src/themes/*"]
     }
   },
   "include": ["src"],

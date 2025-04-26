@@ -5,7 +5,7 @@ import { THEME_MODE_CONSTANT } from '@constant/index';
 export const followerChartOptions: ApexOptions = createChartOptions('area', {
   chart: {
     id: 'followers-chart',
-    height: 140,
+    height: 100,
   },
   colors: ['#4CAF50'],
   tooltip: {
