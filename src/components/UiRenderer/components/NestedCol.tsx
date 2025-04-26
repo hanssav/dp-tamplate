@@ -1,7 +1,7 @@
 import { NestedContent } from '@datas/pages/config';
-import Col from '@components/Col';
+import Box from '@components/Box';
 import Card from '@components/Card';
-import { GridItem } from '@components/Col/colTheme';
+import { GridItem } from '@components/Box/boxTheme';
 import { isCardContent, isNestedColContent } from '@utils/function';
 import { CardVariant } from '@components/_types/Card';
 
@@ -50,7 +50,7 @@ const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
     };
   });
 
-  return <Col col={col} items={items} />;
+  return <Box col={col} items={items} />;
 };
 
 export default NestedCol;

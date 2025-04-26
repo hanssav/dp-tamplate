@@ -7,7 +7,7 @@
  * This component supports rendering using either direct `children` elements
  * or a structured array of `items` for more reusable and flexible layouts.
  *
- * @param {keyof typeof colTheme.col} [col='col-1'] - Defines the number of columns with responsive breakpoints:
+ * @param {keyof typeof boxTheme.col} [col='col-1'] - Defines the number of columns with responsive breakpoints:
  *   - 'col-1' → 1 column at all screen sizes
  *   - 'col-2' → 1 column on mobile, 2 on small (sm) and up
  *   - 'col-3' → 1 on mobile, 2 on sm, 3 on medium (md) and up
@@ -30,7 +30,7 @@
  *   <Card />
  *   <Card />
  *   <Card />
- * </Col>
+ * </Box>
  *
  * @example
  * // Using items for reusable, dynamic layout
@@ -55,7 +55,7 @@
  */
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
-import { colTheme, ColKey, GridItem } from '@components/Col/colTheme';
+import { boxTheme, ColKey, GridItem } from '@components/Box/boxTheme';
 
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   col?: ColKey;
@@ -66,7 +66,7 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 }
 
-export default function Col({
+export default function Box({
   col = 'col-1',
   className,
   children,
@@ -76,13 +76,13 @@ export default function Col({
   align,
   ...rest
 }: ColProps) {
-  const isMasonry = colTheme.col[col].includes('columns-');
+  const isMasonry = boxTheme.col[col].includes('columns-');
 
   const justifyClass = justify ? `justify-${justify}` : '';
   const alignClass = align ? `items-${align}` : '';
 
   const mergedClass = twMerge(
-    colTheme.col[col],
+    boxTheme.col[col],
     margin,
     justifyClass,
     alignClass,

@@ -1,6 +1,6 @@
 import Card from '@components/Card';
-import Col from '@components/Col';
-import { GridItem } from '@components/Col/colTheme';
+import Box from '@components/Box';
+import { GridItem } from '@components/Box/boxTheme';
 import NestedCol from '@components/UiRenderer/components/NestedCol';
 import { CardVariant } from '@components/_types/Card';
 import { CardContent, SectionContent } from '@datas/pages/config';
@@ -66,7 +66,7 @@ export const renderChildItem = (
     );
 
     return {
-      content: <Col col={child.col ?? 'col-1'} items={nestedChildren} />,
+      content: <Box col={child.col ?? 'col-1'} items={nestedChildren} />,
       span: child.span,
     };
   }

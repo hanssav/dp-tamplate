@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const colTheme = {
+export const boxTheme = {
   col: {
     'col-1': 'grid grid-cols-1 gap-6 mb-6',
     'col-2': 'grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6',
@@ -21,8 +21,7 @@ export const colTheme = {
   },
 };
 
-
-export type ColKey = keyof typeof colTheme.col;
+export type ColKey = keyof typeof boxTheme.col;
 
 export interface GridItem {
   content: React.ReactNode;

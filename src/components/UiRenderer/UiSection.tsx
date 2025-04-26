@@ -1,5 +1,5 @@
-import Col from '@components/Col';
-import { ColKey, GridItem } from '@components/Col/colTheme';
+import Box from '@components/Box';
+import { ColKey, GridItem } from '@components/Box/boxTheme';
 import { MasonrySection } from '@components/UiRenderer/components/MasonrySection';
 import {
   renderCard,
@@ -37,7 +37,11 @@ const UiSection = ({ section }: UiSectionProps) => {
     return <MasonrySection data={masonryData} />;
   }
 
-  const renderNestedContent = (item: NestedContent, variant: CardVariant, section: SectionContent) => {
+  const renderNestedContent = (
+    item: NestedContent,
+    variant: CardVariant,
+    section: SectionContent
+  ) => {
     const children = item.data.map((child, i) =>
       renderChildItem(
         child,
@@ -49,13 +53,18 @@ const UiSection = ({ section }: UiSectionProps) => {
 
     return {
       content: (
-        <Col col={item.col ?? 'col-1'} items={children} className="gap-x-0" />
+        <Box col={item.col ?? 'col-1'} items={children} className="gap-x-0" />
       ),
       span: (item as any).span,
     };
   };
 
-  const renderItem = (item: any, index: number, variant: CardVariant, section: SectionContent) => {
+  const renderItem = (
+    item: any,
+    index: number,
+    variant: CardVariant,
+    section: SectionContent
+  ) => {
     if ('data' in item && Array.isArray(item.data)) {
       return renderNestedContent(item as NestedContent, variant, section);
     }
@@ -73,7 +82,7 @@ const UiSection = ({ section }: UiSectionProps) => {
       );
 
       childrenComponent = (
-        <Col col={(item.child.col as ColKey) ?? 'col-3'} items={tempChild} />
+        <Box col={(item.child.col as ColKey) ?? 'col-3'} items={tempChild} />
       );
     }
 
@@ -90,7 +99,7 @@ const UiSection = ({ section }: UiSectionProps) => {
     renderItem(item, index, variant as CardVariant, section)
   );
 
-  return <Col col={col} items={items} />;
+  return <Box col={col} items={items} />;
 };
 
 export default UiSection;

@@ -41,7 +41,7 @@ export const createPostTheme = () =>
   createTheme({
     card: {
       root: {
-        base: `cursor-pointer border-none shadow-md transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg dark:bg-primary-dark dark:text-white`,
+        base: `cursor-pointer border-none shadow-soft transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-hard dark:bg-primary-dark dark:text-white`,
         children: 'm-0 flex flex-col justify-center gap-4 p-4',
       },
     },
@@ -51,7 +51,7 @@ export const createProductTheme = () =>
   createTheme({
     card: {
       root: {
-        base: `cursor-pointer border-none shadow-md dark:bg-primary-dark`,
+        base: `cursor-pointer border-none shadow-soft dark:bg-primary-dark`,
         children: 'm-0 flex flex-col justify-center gap-4 p-4',
       },
     },
@@ -61,7 +61,7 @@ export const createMusicTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'flex rounded-lg border-none bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 dark:bg-primary-dark',
+        base: 'flex rounded-lg border-none bg-white shadow-soft dark:border-gray-700 dark:bg-gray-800 dark:bg-primary-dark',
         children: 'w-full max-w-md justify-center gap-4 p-6',
         horizontal: {
           off: 'flex-col',
@@ -86,7 +86,7 @@ export const createFollowTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'rounded-lg border-none shadow-md dark:bg-primary-dark',
+        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
       },
     },
   });
@@ -95,7 +95,7 @@ export const createFriendSuggestionTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'rounded-lg border-none shadow-md dark:bg-primary-dark',
+        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
       },
     },
   });
@@ -104,7 +104,7 @@ export const createFriendTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'rounded-lg border-none shadow-md dark:bg-primary-dark',
+        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
         children: 'flex h-full flex-col justify-center p-0',
       },
     },
@@ -114,7 +114,7 @@ export const createGiftTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'rounded-lg border-none shadow-md dark:bg-primary-dark',
+        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
         children: 'flex h-full flex-col justify-center p-0',
       },
     },
@@ -134,7 +134,7 @@ export const createBannersTheme = (bgClass: string) =>
   createTheme({
     card: {
       root: {
-        base: `rounded-lg border-none shadow-md ${bgClass} px-5`,
+        base: `rounded-lg border-none shadow-soft ${bgClass} px-5`,
         children: 'flex h-full flex-col justify-center py-0',
       },
     },
@@ -144,7 +144,7 @@ export const createChartsTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'rounded-lg border-none bg-white shadow-md dark:bg-primary-dark ',
+        base: 'shadow-soft rounded-lg border-none bg-white dark:bg-primary-dark ',
         children: 'flex h-full flex-col justify-center p-0',
       },
     },
@@ -154,7 +154,7 @@ export const createDefaultTheme = () =>
   createTheme({
     card: {
       root: {
-        base: 'rounded-lg border-none px-0 shadow-md dark:bg-primary-dark',
+        base: 'shadow-soft rounded-lg border-none px-0 dark:bg-primary-dark',
         children: 'flex h-full flex-col justify-center px-0',
       },
     },

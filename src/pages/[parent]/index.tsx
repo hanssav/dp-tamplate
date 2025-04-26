@@ -7,7 +7,7 @@ import * as UiConfig from '@datas/pages/config';
 import { useEffect, useState } from 'react';
 import { SectionContent } from '@datas/pages/config';
 import UiSection from '@components/UiRenderer/UiSection';
-import Col from '@components/Col';
+import Box from '@components/Box';
 
 const ParentMenu = () => {
   const location = useLocation();
@@ -29,12 +29,12 @@ const ParentMenu = () => {
 
   return (
     <DashboardLayout>
-      <Col>
+      <Box>
         <Card
           variant="breadcrumb"
           content={{ title: title, bgImg: IMAGE_CONSTANTS.BREADCRUMB_BG }}
         />
-      </Col>
+      </Box>
 
       {uiConfig.map((section, idx) => (
         <UiSection key={idx} section={section} />

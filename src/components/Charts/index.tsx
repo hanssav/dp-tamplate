@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import ApexChart from 'react-apexcharts';
 import { useThemeMode } from 'flowbite-react';
-import Col from '@components/Col';
+import Box from '@components/Box';
 import { ChartCardContent, ChartPosition } from '@datas/pages/config';
 import { applyThemeToOptions, getChartLayoutClassName } from './utils';
 import {
@@ -35,7 +35,6 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
     mode === 'dark' ? THEME_MODE_CONSTANT.DARK : THEME_MODE_CONSTANT.LIGHT;
 
   const chartId = options.chart?.id;
-
   const isChart = (targetId: string) => chartId === targetId;
 
   const isYearlyBackupChart = isChart(YEARLY_BACKUP_ID);
@@ -88,7 +87,7 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
 
   // Chart rendering
   const renderChart = () => (
-    <Col className="span-0 mb-0">
+    <Box className="span-0 mb-0">
       <ApexChart
         key={options.chart?.id + '-' + themeMode}
         options={dynamicOptions}
@@ -97,7 +96,7 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
         height={options.chart?.height || 100}
         width="100%"
       />
-    </Col>
+    </Box>
   );
 
   function renderMergedLayout() {
@@ -134,7 +133,7 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
     ? 'mb-0 w-full'
     : getChartLayoutClassName(chartPosition);
 
-  return <Col className={className}>{renderLayout()}</Col>;
+  return <Box className={className}>{renderLayout()}</Box>;
 };
 
 export default Chart;

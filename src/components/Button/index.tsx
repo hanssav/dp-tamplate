@@ -1,4 +1,4 @@
-import { customButtonTheme } from '@components/Button/GetButtonStyle';
+import { customButtonTheme } from '@components/Button/buttonTheme';
 // import { theme } from './GetButtonStyle';
 
 const buttonTheme = {
@@ -35,7 +35,6 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-
   return (
     <ButtonFlowbite
       theme={customButtonTheme}

@@ -3,7 +3,7 @@ import Button from '@components/Button';
 import React from 'react';
 import { TimelineItemType, PaymentItem } from '@components/_types/Card';
 import Typography from '@components/Typography';
-import Col from '@components/Col';
+import Box from '@components/Box';
 
 interface UpcomingActivityItemProps {
   icon: IconType;
@@ -31,10 +31,10 @@ const UpcomingActivityItem: React.FC<UpcomingActivityItemProps> = ({
     </span>
 
     {/* Text content */}
-    <Col className="mb-0 ml-4 mr-auto gap-y-0">
+    <Box className="mb-0 ml-4 mr-auto gap-y-0">
       <Typography textStyle="subtitle">{name}</Typography>
       <Typography textStyle="desc">{description}</Typography>
-    </Col>
+    </Box>
 
     {/* Amount/time */}
     <Typography textStyle="body">{amount}</Typography>
@@ -157,7 +157,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
   const isPaymentGateway = title === 'Payment Gateways';
 
   return (
-    <div className="w-full rounded-xl p-6 shadow-md dark:text-white">
+    <div className="shadow-soft w-full rounded-xl p-6 dark:text-white">
       <Typography textStyle="title">{title}</Typography>
       <Typography textStyle="desc" className="mb-6">
         {desc}

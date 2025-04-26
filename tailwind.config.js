@@ -47,6 +47,10 @@ export default {
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'sans-serif'],
       },
+      boxShadow: {
+        soft: '0 0 20px rgba(0, 0, 0, 0.05)',
+        hard: '0 0 30px rgba(0, 0, 0, 0.1)',
+      },
     },
     container: {
       padding: {

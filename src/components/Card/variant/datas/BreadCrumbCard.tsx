@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import FilledCircleIcon from '@assets/icons/FilledCircleIcon';
-import Col from '@components/Col';
+import Box from '@components/Box';
 import { BreadcrumbProps } from '@components/_types/Card';
 import Typography from '@components/Typography';
 
@@ -18,7 +18,7 @@ import Typography from '@components/Typography';
 
 export function BreadcrumbCardContent({ content }: BreadcrumbProps) {
   return (
-    <Col col="col-1" className="gap-y-1">
+    <Box col="col-1" className="gap-y-1">
       <Typography as="h3" textStyle="title" className="mb-2">
         {content?.title}
       </Typography>
@@ -34,6 +34,6 @@ export function BreadcrumbCardContent({ content }: BreadcrumbProps) {
 
         <Typography textStyle="body">{content?.title}</Typography>
       </div>
-    </Col>
+    </Box>
   );
 }

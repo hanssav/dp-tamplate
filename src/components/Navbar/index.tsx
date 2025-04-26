@@ -106,7 +106,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
           onClick={handleRightSidebar}
         >
           <div
-            className="absolute right-0 top-0 h-full w-64 translate-x-0 transform bg-white p-4 shadow-lg transition-transform dark:bg-gray-800"
+            className="shadow-soft absolute right-0 top-0 h-full w-64 translate-x-0 transform bg-white p-4 transition-transform dark:bg-gray-800"
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className="border-b pb-2 text-lg font-semibold">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Col from '@components/Col';
+import Box from '@components/Box';
 import Typography from '@components/Typography';
 import TitleValue from '@components/Charts/contents/TitleValue';
 import Button from '@components/Button';
@@ -15,7 +15,11 @@ const IconWithPercentage: React.FC<{
   iconClass: string;
   rotateClass: string;
 }> = ({ Icon, percentageText, iconClass, rotateClass }) => (
-  <Typography as="p" textStyle="desc" className={`flex items-center ${iconClass}`}>
+  <Typography
+    as="p"
+    textStyle="desc"
+    className={`flex items-center ${iconClass}`}
+  >
     <span
       className={`mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-light-${
         iconClass === 'text-green-500' ? 'success' : 'error'
@@ -28,7 +32,9 @@ const IconWithPercentage: React.FC<{
 );
 
 // RightCardContent
-const RightCardContent: React.FC<{ content: ChartCardContent }> = ({ content }) => {
+const RightCardContent: React.FC<{ content: ChartCardContent }> = ({
+  content,
+}) => {
   const {
     summaryIcon: Icon,
     legends = [],
@@ -41,13 +47,13 @@ const RightCardContent: React.FC<{ content: ChartCardContent }> = ({ content }) 
   const isYearlyBackupChart = content.options.chart?.id === YEARLY_BACKUP_ID;
 
   return (
-    <Col margin="m-0 w-full gap-0">
+    <Box margin="m-0 w-full gap-0">
       <Typography as="h2" textStyle="title">
         {content.title}
       </Typography>
 
-      <Col margin="mt-4 mb-0" justify="between" align="center">
-        <Col margin="m-0 gap-y-3">
+      <Box margin="mt-4 mb-0" justify="between" align="center">
+        <Box margin="m-0 gap-y-3">
           <Typography as="p" textStyle="title">
             {content.value || value}
           </Typography>
@@ -62,10 +68,10 @@ const RightCardContent: React.FC<{ content: ChartCardContent }> = ({ content }) 
             iconClass={bgIcon}
             rotateClass={`rotate-${bgIcon === 'text-green-500' ? '[20deg]' : '[-20deg]'}`}
           />
-        </Col>
-      </Col>
+        </Box>
+      </Box>
 
-      <Col
+      <Box
         margin="mt-4 mb-0 gap-o"
         justify="start"
         align="center"
@@ -77,33 +83,35 @@ const RightCardContent: React.FC<{ content: ChartCardContent }> = ({ content }) 
             <span>{legend.year}</span>
           </div>
         ))}
-      </Col>
-    </Col>
+      </Box>
+    </Box>
   );
 };
 
 // MonthlyEarningContent
-const MonthlyEarningContent: React.FC<{ content: ChartCardContent }> = ({ content }) => {
+const MonthlyEarningContent: React.FC<{ content: ChartCardContent }> = ({
+  content,
+}) => {
   const { title, value } = content;
   const Icon = content.additionalContent?.summaryIcon;
 
   return (
     <>
-      <Col col="col-2" justify="between" align="center" margin="flex mb-0 p-4">
-        <Col margin="mb-0 gap-0">
+      <Box col="col-2" justify="between" align="center" margin="flex mb-0 p-4">
+        <Box margin="mb-0 gap-0">
           <Typography as="h2" textStyle="title">
             {title}
           </Typography>
-        </Col>
-        <Col
+        </Box>
+        <Box
           margin="mb-0 gap-0"
           className="rounded-lg bg-light-secondary dark:bg-secondary-dark"
           align="center"
         >
           <Button color="light" size="icon" />
-        </Col>
-      </Col>
-      <Col col="col-2" margin="flex mb-0 px-4" justify="start">
+        </Box>
+      </Box>
+      <Box col="col-2" margin="flex mb-0 px-4" justify="start">
         <Typography as="p" textStyle="heading-md">
           {value}
         </Typography>
@@ -113,7 +121,7 @@ const MonthlyEarningContent: React.FC<{ content: ChartCardContent }> = ({ conten
           iconClass="text-green-500"
           rotateClass="rotate-[-20deg]"
         />
-      </Col>
+      </Box>
     </>
   );
 };
@@ -125,15 +133,15 @@ const ChartHeader: React.FC<{ content: ChartCardContent }> = ({ content }) => {
   const [selectedMonth, setSelectedMonth] = useState(months[0] || '');
 
   return (
-    <Col col="col-2" margin="p-4 gap-1" align="end">
-      <Col margin="m-0 gap-0">
+    <Box col="col-2" margin="p-4 gap-1" align="end">
+      <Box margin="m-0 gap-0">
         <Typography as="h2" textStyle="title">
           {content.additionalContent?.title}
         </Typography>
         <Typography as="p" textStyle="desc">
           {content.additionalContent?.desc}
         </Typography>
-      </Col>
+      </Box>
 
       {months.length > 0 && (
         <Select
@@ -148,7 +156,7 @@ const ChartHeader: React.FC<{ content: ChartCardContent }> = ({ content }) => {
           ))}
         </Select>
       )}
-    </Col>
+    </Box>
   );
 };
 
@@ -157,31 +165,33 @@ const FooterChart: React.FC<{ content: ChartCardContent }> = ({ content }) => {
   const footerContent = content.additionalContent?.footer || [];
 
   return (
-    <Col col="col-2" align="end" justify="between" margin="px-5 py-0 m-0">
+    <Box col="col-2" align="end" justify="between" margin="px-5 py-0 m-0">
       {footerContent.map((item: any, idx: number) => {
         const IconComponent = item.icon;
         return (
-          <Col key={idx} margin="flex gap-3 p-0" justify="start" align="center">
+          <Box key={idx} margin="flex gap-3 p-0" justify="start" align="center">
             <Button color={item.bgIcon} className={item.iconColor} size="icon">
               {IconComponent && <IconComponent />}
             </Button>
-            <Col margin="p-0 m-0 gap-0">
+            <Box margin="p-0 m-0 gap-0">
               <Typography as="p" textStyle="desc">
                 {item.label}
               </Typography>
               <Typography as="h2" textStyle="title">
                 {item.value}
               </Typography>
-            </Col>
-          </Col>
+            </Box>
+          </Box>
         );
       })}
-    </Col>
+    </Box>
   );
 };
 
 // DefaultContent
-const DefaultContent: React.FC<{ content: ChartCardContent }> = ({ content }) => {
+const DefaultContent: React.FC<{ content: ChartCardContent }> = ({
+  content,
+}) => {
   const {
     title,
     value,
@@ -194,23 +204,33 @@ const DefaultContent: React.FC<{ content: ChartCardContent }> = ({ content }) =>
 
   return (
     <>
-      <Col col="col-2" className="mb-0 flex items-end justify-between px-4">
-        <Col className="mb-0 gap-0">
-          <TitleValue title={title} value={value} position={config.valuePosition} />
-        </Col>
+      <Box col="col-2" className="mb-0 flex items-end justify-between px-4">
+        <Box className="mb-0 gap-0">
+          <TitleValue
+            title={title}
+            value={value}
+            position={config.valuePosition}
+          />
+        </Box>
         {percentagePosition !== POSITIONS.DOWN && (
-          <Typography as="p" className={`mt-1 text-sm font-medium ${percentageColor}`}>
+          <Typography
+            as="p"
+            className={`mt-1 text-sm font-medium ${percentageColor}`}
+          >
             {percentage}
           </Typography>
         )}
-      </Col>
-      <Col margin="mb-0 gap-0 px-4">
+      </Box>
+      <Box margin="mb-0 gap-0 px-4">
         {percentagePosition === POSITIONS.DOWN && (
-          <Typography as="p" className={`mt-1 text-sm font-medium ${percentageColor}`}>
+          <Typography
+            as="p"
+            className={`mt-1 text-sm font-medium ${percentageColor}`}
+          >
             {percentage}
           </Typography>
         )}
-      </Col>
+      </Box>
     </>
   );
 };

@@ -18,7 +18,7 @@ import { Gift } from 'lucide-react';
 
 export const FriendGiftCard: React.FC<FriendGiftCardProps> = ({ content }) => {
   return (
-    <div className="w-full max-w-sm overflow-hidden rounded-xl p-6 shadow-md">
+    <div className="shadow-soft w-full max-w-sm overflow-hidden rounded-xl p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <Typography as="h3" textStyle="body" className="font-medium">

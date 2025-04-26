@@ -1,5 +1,5 @@
 import Button from '@components/Button';
-import Col from '@components/Col';
+import Box from '@components/Box';
 import Typography from '@components/Typography';
 import { SectionButton } from '@datas/pages/config';
 
@@ -18,12 +18,12 @@ export const DefaultContent: React.FC<DefaultContentProps> = ({
   const { title, button = [] } = content;
 
   return (
-    <Col className="gap-5 p-5">
-      <Col col="col-2" className="flex items-center justify-between mb-5">
+    <Box className="gap-5 p-5">
+      <Box col="col-2" className="mb-5 flex items-center justify-between">
         <Typography as="h2" textStyle="heading-md">
           {title}
         </Typography>
-        <Col className="flex gap-2">
+        <Box className="flex gap-2">
           {button.length > 0 &&
             button.map((btn, idx) => (
               <Button
@@ -33,9 +33,9 @@ export const DefaultContent: React.FC<DefaultContentProps> = ({
                 onClick={btn.onclick}
               />
             ))}
-        </Col>
-      </Col>
+        </Box>
+      </Box>
       {children}
-    </Col>
+    </Box>
   );
 };

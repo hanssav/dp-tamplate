@@ -6,7 +6,7 @@ import { NavLink } from 'react-router';
 import { useSidebarContext } from '@context/sidebarContext';
 import DotIcon from '@assets/icons/RouteIcon';
 import IMAGE_CONSTANTS from '@constant/images';
-import { theme } from '@components/Button/GetButtonStyle';
+import { customButtonTheme } from '@components/Button/buttonTheme';
 import SidebarLogo from '@components/SideBar/SidebarLogo';
 
 interface SidebarProps {
@@ -109,8 +109,8 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                           twMerge(
                             'ml-3 flex items-center gap-x-1 p-2 text-sm',
                             isActive
-                              ? `${theme.colors.primary} ${theme.rounded.lg}`
-                              : 'text-gray-900 dark:text-white'
+                              ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
+                              : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:text-blue-400'
                           )
                         }
                         end
@@ -127,8 +127,8 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                       twMerge(
                         'flex items-center gap-x-2 p-2 text-sm',
                         isActive
-                          ? `${theme.colors.primary} ${theme.rounded.lg}`
-                          : 'hover:text-grey-900 hover:bg-soft-blue text-gray-900 dark:text-white dark:hover:text-blue-400',
+                          ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
+                          : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:text-blue-400',
                         !isSidebarOpen ? 'grid justify-items-center' : 'ml-3'
                       )
                     }
