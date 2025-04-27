@@ -18,22 +18,20 @@ import Typography from '@components/Typography';
 
 export function BreadcrumbCardContent({ content }: BreadcrumbProps) {
   return (
-    <Box col="col-1" className="gap-y-1">
+    <Box className="gap-y-1">
       <Typography as="h3" textStyle="title" className="mb-2">
         {content?.title}
       </Typography>
 
-      <div className="mb-4 flex items-center gap-2">
+      <Box align="center" className="flex gap-2">
         <Link to="/">
-          <Typography className="hover:text-blue-400" textStyle="body">
-            Dashboard
-          </Typography>
+          <Typography textStyle="link">Dashboard</Typography>
         </Link>
 
         <FilledCircleIcon />
 
         <Typography textStyle="body">{content?.title}</Typography>
-      </div>
+      </Box>
     </Box>
   );
 }

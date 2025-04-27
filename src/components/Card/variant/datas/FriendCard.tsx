@@ -3,6 +3,7 @@ import { FriendCardProps } from '@components/_types/Card';
 import { Users, Globe, Code, Instagram } from 'lucide-react';
 import Typography from '@components/Typography';
 import Button from '@components/Button';
+import Box from '@components/Box';
 
 /**
  * `FriendCard` is a component that displays a user's profile picture, name, role, and social media platform icons.
@@ -29,8 +30,8 @@ export const FriendCard: React.FC<FriendCardProps> = ({ content }) => {
   };
 
   return (
-    <div className="text-center">
-      <div className="py-5">
+    <Box className="text-center">
+      <Box className="gap-1 py-5">
         {/* Avatar */}
         <Avatar
           img={content.image}
@@ -46,23 +47,23 @@ export const FriendCard: React.FC<FriendCardProps> = ({ content }) => {
         </Typography>
 
         {/* Role */}
-        <Typography
-          as="p"
-          textStyle="desc"
-          className="text-gray-500 dark:text-gray-400"
-        >
+        <Typography as="p" textStyle="desc">
           {content.role}
         </Typography>
-      </div>
+      </Box>
 
       {/* Social Media Buttons */}
-      <div className="mt-4 flex items-center justify-center gap-3 bg-light-primary py-3 dark:bg-[#26334D]">
+      <Box
+        justify="center"
+        align="center"
+        className="flex gap-1 bg-light-primary py-3 dark:bg-[#26334D]"
+      >
         {content.platforms.map((platform) => (
           <Button color="light" size="icon" pill key={platform}>
             {iconMap[platform]}
           </Button>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };

@@ -14,7 +14,7 @@ export const yearlyChartOptions: ApexOptions = createChartOptions('bar', {
   chart: {
     id: YEARLY_SALES_ID,
     type: 'bar',
-    height: 240,
+    height: 235,
     stacked: true,
     toolbar: {
       show: false,
@@ -62,7 +62,7 @@ export const yearlyChartOptions: ApexOptions = createChartOptions('bar', {
   },
   grid: {
     padding: {
-      top: 10,
+      top: 20,
       right: 30,
       bottom: 50,
       left: 30,

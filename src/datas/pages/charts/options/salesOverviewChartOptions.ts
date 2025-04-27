@@ -8,6 +8,7 @@ export const salesOverviewChartOptions: ApexOptions = createChartOptions(
   {
     chart: {
       id: SALES_OVERVIEW_ID,
+      height: 245,
     },
     series: [30, 40, 30],
     colors: ['#1E90FF', '#FFFFFF', '#38B2AC'],

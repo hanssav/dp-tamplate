@@ -2,6 +2,7 @@ import { Avatar } from 'flowbite-react';
 import Button from '@components/Button';
 import Typography from '@components/Typography';
 import { FriendSuggestionCardProps } from '@components/_types/Card';
+import Box from '@components/Box';
 
 /**
  * `FriendSuggestionCardContent` is a component that displays a card for suggesting a friend.
@@ -18,26 +19,25 @@ import { FriendSuggestionCardProps } from '@components/_types/Card';
  * @returns {JSX.Element} A friend suggestion card displaying the user's avatar, mutual friends, and action buttons.
  */
 
-export const FriendSuggestionCardContent: React.FC<FriendSuggestionCardProps> = ({ content }) => {
+export const FriendSuggestionCardContent: React.FC<
+  FriendSuggestionCardProps
+> = ({ content }) => {
   return (
-    <div className="flex flex-col py-5">
-      {/* Avatar Pengguna */}
+    <Box align="start" className="flex flex-col">
       <Avatar
         img={content.mainImage}
         alt={content.name}
         size="lg"
         rounded
-        className="mb-4 h-[80px] w-[80px] object-cover"
+        className="mb-4"
       />
 
-      {/* Nama Pengguna */}
       <Typography as="h5" textStyle="body" className="font-semibold">
         {content.name}
       </Typography>
 
-      {/* Teman Bersama */}
-      <div className="mt-2 flex items-center gap-2">
-        <div className="flex -space-x-2">
+      <Box align="center" className="mt-2 flex gap-2">
+        <Box className="flex -space-x-2">
           {content.mutualFriends.map((img, idx) => (
             <Avatar
               key={idx}
@@ -48,15 +48,16 @@ export const FriendSuggestionCardContent: React.FC<FriendSuggestionCardProps> = 
               className="border-2 border-white dark:border-gray-800"
             />
           ))}
-        </div>
+        </Box>
         <Typography textStyle="desc" className="text-sm">
           {content.mutualCount} mutual friends
         </Typography>
-      </div>
+      </Box>
 
-      {/* Tombol */}
-      <Button className="mb-2 mt-6 w-full">Add Friend</Button>
-      <Button color="secondary">Remove</Button>
-    </div>
+      <Box margin="mt-5" className="w-full gap-2">
+        <Button>Add Friend</Button>
+        <Button color="secondary">Remove</Button>
+      </Box>
+    </Box>
   );
 };

@@ -32,7 +32,7 @@ export const createInfoTheme = (bgClass: string, textClass: string) =>
   createTheme({
     card: {
       root: {
-        base: `rounded-xl shadow-none ${bgClass} ${textClass} flex items-center justify-center border-none`,
+        base: `rounded-xl shadow-none ${bgClass} ${textClass} flex items-center justify-center border-none dark:text-red-100`,
       },
     },
   });

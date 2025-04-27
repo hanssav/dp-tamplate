@@ -53,7 +53,7 @@ const UiSection = ({ section }: UiSectionProps) => {
 
     return {
       content: (
-        <Box col={item.col ?? 'col-1'} items={children} className="gap-x-0" />
+        <Box col={item.col ?? 'col-1'} items={children} className="gap-y-6" />
       ),
       span: (item as any).span,
     };
@@ -82,7 +82,12 @@ const UiSection = ({ section }: UiSectionProps) => {
       );
 
       childrenComponent = (
-        <Box col={(item.child.col as ColKey) ?? 'col-3'} items={tempChild} />
+        <Box
+          col={(item.child.col as ColKey) ?? 'col-3'}
+          items={tempChild}
+          margin="mb-6"
+          className="gap-6"
+        />
       );
     }
 
@@ -99,7 +104,7 @@ const UiSection = ({ section }: UiSectionProps) => {
     renderItem(item, index, variant as CardVariant, section)
   );
 
-  return <Box col={col} items={items} />;
+  return <Box col={col} items={items} margin="mb-6" className="gap-6" />;
 };
 
 export default UiSection;

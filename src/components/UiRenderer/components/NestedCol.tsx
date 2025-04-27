@@ -50,7 +50,7 @@ const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
     };
   });
 
-  return <Box col={col} items={items} />;
+  return <Box col={col} items={items} margin="mb-6" className="gap-6" />;
 };
 
 export default NestedCol;

@@ -19,7 +19,7 @@
       {
         chart: {
           id: REVENUE_UPDATE_ID,
-          height: 300,
+          height: 320,
           stacked: true,
           sparkline: {
             enabled: false,

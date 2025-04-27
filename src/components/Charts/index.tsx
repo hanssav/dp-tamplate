@@ -87,7 +87,7 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
 
   // Chart rendering
   const renderChart = () => (
-    <Box className="span-0 mb-0">
+    <Box className="span-0 ">
       <ApexChart
         key={options.chart?.id + '-' + themeMode}
         options={dynamicOptions}
@@ -130,7 +130,7 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
 
   // Use appropriate class based on whether content is shown
   const className = !shouldShowContent
-    ? 'mb-0 w-full'
+    ? ' w-full'
     : getChartLayoutClassName(chartPosition);
 
   return <Box className={className}>{renderLayout()}</Box>;

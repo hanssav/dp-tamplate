@@ -29,7 +29,7 @@ const ParentMenu = () => {
 
   return (
     <DashboardLayout>
-      <Box>
+      <Box margin="mb-6">
         <Card
           variant="breadcrumb"
           content={{ title: title, bgImg: IMAGE_CONSTANTS.BREADCRUMB_BG }}

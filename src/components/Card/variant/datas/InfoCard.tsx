@@ -1,5 +1,7 @@
 import { InfoCardContentProps } from '@components/_types/Card';
 import Typography from '@components/Typography';
+import Box from '@components/Box';
+import { Avatar } from 'flowbite-react';
 
 /**
  * `InfoCardContent` is a component that displays an informational card with an image,
@@ -17,19 +19,16 @@ import Typography from '@components/Typography';
 
 export function InfoCardContent({ content }: InfoCardContentProps) {
   return (
-    <div className="justify-items-center">
-      {/* Image */}
-      <img alt={content?.title} src={content?.img} />
+    <Box className="justify-items-center">
+      <Avatar img={content.img} alt={content.title} size="md" rounded />
 
-      {/* Title */}
       <Typography textStyle="subtitle" className="mt-3 text-current">
         {content?.title}
       </Typography>
 
-      {/* Count */}
       <Typography as="h6" textStyle="heading-md" className="text-current">
         {content?.count}
       </Typography>
-    </div>
+    </Box>
   );
 }

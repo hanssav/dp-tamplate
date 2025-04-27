@@ -1,23 +1,24 @@
 import { Avatar } from 'flowbite-react';
 import Typography from '@components/Typography';
 import { PostCardContentProps } from '@components/_types/Card';
+import Box from '@components/Box';
+import Button from '@components/Button';
 
 /**
  * PostCardContent Component
  * Renders the content for a single post, including the user's avatar, post category,
  * title, views, comments, and last viewed information.
- * 
+ *
  * @param {Object} props - The component's props.
  * @param {PostCardContentProps} props.content - The content to be displayed in the post card.
- * 
+ *
  * @returns {JSX.Element} The PostCardContent component rendering the post details.
  */
 
 export function PostCardContent({ content }: PostCardContentProps) {
   return (
-    <div>
-      {/* User Avatar and Last View Button */}
-      <div className="flex items-start justify-between">
+    <>
+      <Box align="start" justify="between" className="flex">
         <Avatar
           img={content?.userImg}
           alt="User profile"
@@ -32,48 +33,44 @@ export function PostCardContent({ content }: PostCardContentProps) {
         >
           {content?.lastView}
         </Typography>
-      </div>
+      </Box>
 
-      {/* Category Button */}
-      <Typography
-        as="button"
-        textStyle="desc"
-        className="bg:transparant hover:transparant translate-y-[-25px] rounded-lg border p-2 focus:outline-none"
+      <Button
+        color="light"
+        disabled
+        size="md"
+        className="bg:transparant w-fit translate-y-[-25px] rounded-lg border border-gray-300"
       >
         {content?.category}
-      </Typography>
+      </Button>
 
-      {/* Title of the Post */}
       <Typography as="h2" textStyle="title" className="mt-2">
         {content?.title}
       </Typography>
 
-      {/* Post Details */}
-      <div className="mt-3 flex items-start justify-between text-sm text-gray-500 dark:text-white">
-        {/* Views and Comments */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1" title="Views">
+      <Box align="start" justify="between" className="mt-3 flex text-sm">
+        <Box align='center' className="flex gap-4">
+          <Box align='center' className="flex gap-1" title="Views">
             <span>👁️</span>
             <Typography as="span" textStyle="desc">
               {content?.views}
             </Typography>
-          </div>
-          <div className="flex items-center gap-1" title="Comments">
+          </Box>
+          <Box align='center' className="flex gap-1" title="Comments">
             <span>💬</span>
             <Typography as="span" textStyle="desc">
               {content?.comments}
             </Typography>
-          </div>
-        </div>
+          </Box>
+        </Box>
 
-        {/* Date */}
-        <div className="flex items-center gap-2">
+        <Box align='center' className="flex gap-2">
           <span className="text-xs text-blue-500">●</span>
           <Typography as="span" textStyle="desc">
             {content?.date}
           </Typography>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </>
   );
 }

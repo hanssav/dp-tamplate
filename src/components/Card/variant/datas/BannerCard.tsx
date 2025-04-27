@@ -1,3 +1,4 @@
+import Box from '@components/Box';
 import Button, { ButtonColor } from '@components/Button';
 import Typography, { TextStyle } from '@components/Typography';
 import {
@@ -6,12 +7,6 @@ import {
   SectionContent,
 } from '@datas/pages/config';
 
-/**
- * Type guard to check if the item is of type CardContent.
- * 
- * @param item - The item to check.
- * @returns True if the item is a CardContent, false otherwise.
- */
 function isCardContent(item: SectionContent): item is CardContent {
   return (
     (item as CardContent).title !== undefined ||
@@ -19,104 +14,92 @@ function isCardContent(item: SectionContent): item is CardContent {
   );
 }
 
-/**
- * BannersCard Component
- * Renders a list of banner cards with images, titles, subtitles, and buttons.
- * 
- * @param {BannersSectionProps} props - The content for the banners.
- * @returns {JSX.Element} A list of banner cards, or a message if no content is available.
- */
 export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
-  if (!content) return <div>No content available</div>;
+  if (!content) return <Box>No content available</Box>;
 
   const items = Array.isArray(content) ? content : [content];
 
   return (
     <>
       {items.map((item, index) => {
-        if (isCardContent(item)) {
-          return (
-            <div
-              key={index}
-              className={`flex ${
-                item.imagePosition === 'top'
-                  ? 'my-6 flex-col items-center'
-                  : 'flex-col items-center justify-between py-0 md:flex-row-reverse'
-              }`}
-            >
-              {/* Pre-Title */}
-              {item.preTitle && (
-                <Typography
-                  textStyle={item.preTitle.style as TextStyle}
-                  as={item.preTitle.as}
-                >
-                  {item.preTitle.text}
-                </Typography>
-              )}
+        if (!isCardContent(item)) {
+          return <Box key={index}>Invalid item data</Box>;
+        }
 
-              {/* Image */}
-              {item.bgImage && (
-                <div
-                  className={`${
-                    item.imagePosition === 'top'
-                      ? ''
-                      : 'flex h-full items-end justify-end md:w-1/2'
-                  }`}
-                >
-                  <img
-                    src={item.bgImage}
-                    alt={item.title || 'banner image'}
-                    className={`${
-                      item.imagePosition === 'top'
-                        ? 'mx-auto my-5 w-full max-w-[150px] rounded-full'
-                        : 'w-full max-w-[250px] translate-y-[30px]'
-                    }`}
-                  />
-                </div>
-              )}
+        const isTop = item.imagePosition === 'top';
 
-              {/* Content */}
-              <div
-                className={`flex flex-col gap-y-6 p-4 ${
-                  item.imagePosition === 'top' ? 'items-center text-center' : 'w-1/2'
-                }`}
+        const wrapperClass = `flex flex-col ${isTop ? 'my-6' : 'py-0 md:flex-row-reverse'}`;
+        const imageWrapperClass = !isTop ? 'flex h-full items-end justify-end md:w-1/2' : '';
+        const imageClass = isTop
+          ? 'mx-auto my-5 w-full max-w-[150px] rounded-full'
+          : 'w-full max-w-[250px] translate-y-[30px]';
+        const contentClass = `flex flex-col gap-y-6 p-4 ${isTop ? 'items-center text-center' : 'w-1/2'}`;
+        const buttonWrapperClass = `flex gap-2 ${
+          isTop ? 'items-center justify-center' : 'items-start justify-start'
+        }`;
+
+        const renderImage = () =>
+          item.bgImage && (
+            <Box className={imageWrapperClass}>
+              <img
+                src={item.bgImage}
+                alt={item.title || 'banner image'}
+                className={imageClass}
+              />
+            </Box>
+          );
+
+        const renderButtons = () =>
+          item.button?.length ? (
+            <Box className={buttonWrapperClass}>
+              {item.button.map((btn, idx) => (
+                <Button
+                  key={idx}
+                  onClick={btn.onclick}
+                  color={btn.color as ButtonColor}
+                  size="md"
+                >
+                  {btn.label}
+                </Button>
+              ))}
+            </Box>
+          ) : null;
+
+        return (
+          <Box
+            key={index}
+            align="center"
+            justify={!isTop ? 'between' : undefined}
+            className={wrapperClass}
+          >
+            {item.preTitle && (
+              <Typography
+                textStyle={item.preTitle.style as TextStyle}
+                as={item.preTitle.as}
               >
-                <Typography textStyle="heading-md" as="h2">
-                  {item.title}
-                </Typography>
+                {item.preTitle.text}
+              </Typography>
+            )}
+
+            {renderImage()}
+
+            <Box className={contentClass}>
+              <Typography textStyle="heading-md" as="h2">
+                {item.title}
+              </Typography>
+
+              {typeof item.subtitle === 'string' && (
                 <Typography
                   textStyle="body"
                   as="p"
-                  dangerouslySetInnerHTML={{
-                    __html: typeof item.subtitle === 'string' ? item.subtitle : '',
-                  }}
-                ></Typography>
+                  dangerouslySetInnerHTML={{ __html: item.subtitle }}
+                />
+              )}
 
-                {/* Buttons */}
-                <div
-                  className={`flex gap-2 ${
-                    item.imagePosition === 'top'
-                      ? 'items-center justify-center'
-                      : 'items-start justify-start'
-                  }`}
-                >
-                  {item.button?.map((btn, idx) => (
-                    <Button
-                      key={idx}
-                      onClick={btn.onclick}
-                      color={btn.color as ButtonColor}
-                      size="md"
-                    >
-                      {btn.label}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          );
-        }
-
-        return <div key={index}>Invalid item data</div>;
+              {renderButtons()}
+            </Box>
+          </Box>
+        );
       })}
     </>
   );

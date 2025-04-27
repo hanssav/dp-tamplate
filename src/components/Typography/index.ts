@@ -23,7 +23,7 @@ const textStyleClasses: Record<TextStyle, string> = {
   subtitle: 'text-base font-semibold text-gray-800 dark:text-white',
   body: 'text-sm text-gray-800 dark:text-white',
   desc: 'text-sm text-gray-500 dark:text-gray-400',
-  link: 'text-sm text-blue-600 dark:text-blue-400 hover:underline',
+  link: 'text-sm hover:text-blue-600 dark:text-blue-400',
 };
 
 /**

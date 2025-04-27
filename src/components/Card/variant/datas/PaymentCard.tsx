@@ -22,23 +22,25 @@ const UpcomingActivityItem: React.FC<UpcomingActivityItemProps> = ({
   bg,
   textColor,
 }) => (
-  <div className="flex items-center py-3">
+  <Box align="center" className="flex py-3">
     {/* Icon container */}
-    <span
-      className={`flex h-10 w-10 items-center justify-center rounded-full ${bg} ${textColor}`}
+    <Button
+      size="icon"
+      color="light"
+      className={`rounded-full ${bg} ${textColor}`}
     >
       <Icon className="h-5 w-5" />
-    </span>
+    </Button>
 
     {/* Text content */}
-    <Box className="mb-0 ml-4 mr-auto gap-y-0">
+    <Box className=" ml-4 mr-auto gap-y-0">
       <Typography textStyle="subtitle">{name}</Typography>
       <Typography textStyle="desc">{description}</Typography>
     </Box>
 
     {/* Amount/time */}
     <Typography textStyle="body">{amount}</Typography>
-  </div>
+  </Box>
 );
 
 interface TimelineItemProps {
@@ -57,19 +59,23 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   isLast,
   badgeColor,
 }) => (
-  <div className="flex items-start space-x-4">
+  <Box align="center" className="flex space-x-4">
     <Typography as="div" textStyle="body" className="w-20 text-right">
       {time}
     </Typography>
-    <div className="relative flex items-center">
-      <span
+    <Box align="center" className="relative flex">
+      <Typography
+        as="span"
         className={`mb-6 mt-2 h-4 w-4 rounded-full border-4 ${badgeColor}`}
       />
       {!isLast && (
-        <span className="absolute left-1/2 top-6 -ml-px h-full w-0.5 bg-gray-200" />
+        <Typography
+          as="span"
+          className="absolute left-1/2 top-6 -ml-px h-full w-0.5 bg-gray-200"
+        />
       )}
-    </div>
-    <div className="flex-1">
+    </Box>
+    <Box className="flex-1">
       <Typography as="p" textStyle="body">
         {title}
       </Typography>
@@ -78,8 +84,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           {link}
         </Typography>
       )}
-    </div>
-  </div>
+    </Box>
+  </Box>
 );
 
 interface TransactionItemProps {
@@ -102,22 +108,23 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
   const Icon = icon as IconType;
 
   return (
-    <div className="flex items-center py-2">
-      <span
+    <Box align="center" className="flex py-2">
+      <Typography
+        as="span"
         className={`flex h-10 w-10 items-center justify-center rounded ${bg} ${textColor}`}
       >
         {typeof icon === 'string' ? (
-          <img src={icon} alt={name} className="h-5 w-5" />
+          <Typography as='img' src={icon} alt={name} className="h-5 w-5" />
         ) : icon ? (
           <Icon className="h-5 w-5" />
         ) : null}
-      </span>
-      <div className="ml-4 mr-auto">
+      </Typography>
+      <Box margin="ml-4 mr-auto">
         <Typography textStyle="subtitle">{name}</Typography>
         <Typography textStyle="desc">{description}</Typography>
-      </div>
+      </Box>
       <Typography textStyle="body">{amount}</Typography>
-    </div>
+    </Box>
   );
 };
 
@@ -157,14 +164,14 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
   const isPaymentGateway = title === 'Payment Gateways';
 
   return (
-    <div className="shadow-soft w-full rounded-xl p-6 dark:text-white">
+    <Box className="shadow-soft w-full rounded-xl p-6 dark:text-white">
       <Typography textStyle="title">{title}</Typography>
       <Typography textStyle="desc" className="mb-6">
         {desc}
       </Typography>
 
       {isUpcoming && (
-        <div className="space-y-4">
+        <Box className="space-y-4">
           {content.filter(isPaymentItem).map((item, index) => {
             const paymentItem = item as PaymentItem;
             return (
@@ -179,11 +186,11 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
               />
             );
           })}
-        </div>
+        </Box>
       )}
 
       {isTimeline && (
-        <div className="space-y-6">
+        <Box className="space-y-6">
           {content.filter(isTimelineItem).map((item, index, arr) => (
             <TimelineItem
               key={index}
@@ -195,11 +202,11 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
               badgeColor={badgeColorMap[item.type]}
             />
           ))}
-        </div>
+        </Box>
       )}
 
       {isPaymentGateway && (
-        <div className="space-y-6">
+        <Box className="space-y-6">
           {content.filter(isPaymentItem).map((item, index) => (
             <TransactionItem
               key={index}
@@ -214,8 +221,8 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
           <Button color="secondary" className="mt-6 w-full">
             View all Transactions
           </Button>
-        </div>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };

@@ -7,11 +7,11 @@ export const getChartLayoutClassName = (
   chartPosition: ChartPosition | string
 ): string => {
   const chartClassMap: Record<'right' | 'left', string> = {
-    right: 'p-4 gap-0 flex flex-row items-center justify-center',
-    left: 'flex flex-row-reverse items-center justify-center gap-0',
+    right: 'p-4  flex flex-row items-center justify-center',
+    left: 'flex flex-row-reverse items-center justify-center ',
   };
 
-  return `max-w-wd gap-2 mb-0 w-full ${
+  return `max-w-wd gap-2  w-full ${
     chartPosition === 'right' || chartPosition === 'left'
       ? chartClassMap[chartPosition]
       : ''
