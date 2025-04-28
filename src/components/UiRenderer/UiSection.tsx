@@ -1,5 +1,5 @@
 import Box from '@components/Box';
-import { ColKey, GridItem } from '@components/Box/boxTheme';
+import { GridItem } from '@components/Box/boxTheme';
 import { MasonrySection } from '@components/UiRenderer/components/MasonrySection';
 import {
   renderCard,
@@ -12,7 +12,7 @@ import {
   CardContent,
 } from '@datas/pages/config';
 import { useMasonry } from '@hooks/useMasonry';
-import { hasChild, isBaseSection } from '@utils/function';
+import { isBaseSection } from '@utils/function';
 
 type UiSectionProps = {
   section: SectionContent;
@@ -37,26 +37,44 @@ const UiSection = ({ section }: UiSectionProps) => {
     return <MasonrySection data={masonryData} />;
   }
 
-  const renderNestedContent = (
+  const renderGroupLayout = (
+    index: number,
     item: NestedContent,
     variant: CardVariant,
     section: SectionContent
   ) => {
-    const children = item.data.map((child, i) =>
-      renderChildItem(
+    const isCollumnGroup = item.type === 'columnGroup';
+
+    const children = item.data.map((child, i) => {
+      return renderChildItem(
         child,
         i,
         variant,
         'horizontal' in section ? section.horizontal : false
-      )
-    );
+      );
+    });
 
-    return {
+    const result = {
       content: (
-        <Box col={item.col ?? 'col-1'} items={children} className="gap-y-6" />
+        <Box
+          col={item.col ?? 'col-1'}
+          items={children}
+          className={isCollumnGroup ? 'gap-x-6 py-5' : `gap-y-6`}
+        />
       ),
-      span: (item as any).span,
+      span: (item as any).span ?? 'span-1',
     };
+
+    if (isCollumnGroup) {
+      return renderCard(
+        item as CardContent,
+        index,
+        variant,
+        (section as any).horizontal ?? false,
+        result.content
+      );
+    }
+    return result;
   };
 
   const renderItem = (
@@ -66,37 +84,13 @@ const UiSection = ({ section }: UiSectionProps) => {
     section: SectionContent
   ) => {
     if ('data' in item && Array.isArray(item.data)) {
-      return renderNestedContent(item as NestedContent, variant, section);
+      return renderGroupLayout(index, item as NestedContent, variant, section);
     }
-
-    let childrenComponent: React.ReactNode = null;
-
-    if (hasChild(item)) {
-      const tempChild = item.child.data.map((childDatas, index) =>
-        renderCard(
-          childDatas,
-          index,
-          item.variant as CardVariant,
-          item.horizontal ?? false
-        )
-      );
-
-      childrenComponent = (
-        <Box
-          col={(item.child.col as ColKey) ?? 'col-3'}
-          items={tempChild}
-          margin="mb-6"
-          className="gap-6"
-        />
-      );
-    }
-
     return renderCard(
       item as CardContent,
       index,
       variant,
-      (section as any).horizontal ?? false,
-      childrenComponent
+      (section as any).horizontal ?? false
     );
   };
 
@@ -104,7 +98,7 @@ const UiSection = ({ section }: UiSectionProps) => {
     renderItem(item, index, variant as CardVariant, section)
   );
 
-  return <Box col={col} items={items} margin="mb-6" className="gap-6" />;
+  return <Box col={col} items={items} margin="mb-6" className="gap-x-6" />;
 };
 
 export default UiSection;

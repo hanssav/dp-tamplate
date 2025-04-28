@@ -152,7 +152,7 @@ export function isBaseSection(section: SectionContent): section is BaseSection {
   );
 }
 
-export function hasChild(item: unknown): item is {
+export function isColumnGroup(item: unknown): item is {
   child: { data: CardContent[]; col?: string };
   variant?: CardVariant;
   horizontal?: boolean;

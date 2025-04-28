@@ -118,61 +118,60 @@ export const chartContentDatas1: SectionContent[] = [
 export const chartContentDatas2: SectionContent[] = [
   {
     variant: 'default',
-    type: 'parent',
+    type: 'columnGroup',
     title: 'Current Value',
     button: [
       { color: 'primary', label: 'Buy', onclick: () => {} },
       { color: 'secondary', label: 'Sell', onclick: () => {} },
     ],
-    child: {
-      type: 'child',
-      col: 'col-3',
-      data: [
-        {
-          config: {
-            chartPosition: 'up',
-          },
-          variant: 'chart',
-          title: 'Income',
-          value: '$25,260',
-          percentage: '+1.25%',
-          percentageColor: 'text-green-400 dark:text-green-400',
-          chartColor: ['#7599FF'],
-          series: incomeChartSeries,
-          options: incomeChartOptions,
-          span: 1,
-        },
-        {
-          config: {
-            chartPosition: 'up',
-          },
-          variant: 'chart',
-          title: 'Expance',
-          value: '$12,260',
-          percentage: '+4.25%',
-          percentageColor: 'text-green-400 dark:text-green-400',
-          chartColor: ['#64C8FF'],
-          series: expanceChartSeries,
-          options: expanceChartOptions,
-          span: 1,
-        },
-        {
-          config: {
-            chartPosition: 'up',
-          },
-          variant: 'chart',
-
-          title: 'Current Year',
-          value: '$98,260',
-          percentage: '+2.5%',
-          percentageColor: 'text-green-400 dark:text-green-400',
-          chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
-          series: currentYearChartDatas,
-          options: currentYearChartOptions,
-          span: 1,
-        },
-      ],
+    col: 'col-3',
+    childOptions: {
+      type: 'columnGroup',
     },
+    data: [
+      {
+        config: {
+          chartPosition: 'up',
+        },
+        variant: 'chart',
+        title: 'Income',
+        value: '$25,260',
+        percentage: '+1.25%',
+        percentageColor: 'text-green-400 dark:text-green-400',
+        chartColor: ['#7599FF'],
+        series: incomeChartSeries,
+        options: incomeChartOptions,
+        span: 1,
+      },
+      {
+        config: {
+          chartPosition: 'up',
+        },
+        variant: 'chart',
+        title: 'Expance',
+        value: '$12,260',
+        percentage: '+4.25%',
+        percentageColor: 'text-green-400 dark:text-green-400',
+        chartColor: ['#64C8FF'],
+        series: expanceChartSeries,
+        options: expanceChartOptions,
+        span: 1,
+      },
+      {
+        config: {
+          chartPosition: 'up',
+        },
+        variant: 'chart',
+        title: 'Current Year',
+        value: '$98,260',
+        percentage: '+2.5%',
+        percentageColor: 'text-green-400 dark:text-green-400',
+        chartColor: ['#7599FF', '#E7EDFF', '#64C8FF'],
+        series: currentYearChartDatas,
+        options: currentYearChartOptions,
+        span: 1,
+      },
+    ],
   },
 ];
 

@@ -3,7 +3,6 @@ import { SectionContent } from '@datas/pages/config/_types';
 
 export const BannersCardContent: SectionContent[] = [
   {
-    multipleRow: true,
     variant: 'banners',
     span: 2,
     data: [

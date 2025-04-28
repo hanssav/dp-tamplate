@@ -52,11 +52,14 @@ export interface ChartChild {
 }
 
 export interface ChartParent {
-  type: 'parent';
+  type: string;
   title: string;
   variant: string;
   button?: SectionButton[];
   child?: ChartChild;
+  childOptions?: {
+    [key: string]: any;
+  };
 }
 
 export interface ChartCardContentWithType extends ChartCardContent {
