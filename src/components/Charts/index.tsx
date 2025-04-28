@@ -83,13 +83,13 @@ export const Chart: React.FC<ChartCardProps> = ({ content }) => {
   // Chart options with theme mode
   const dynamicOptions = useMemo(() => {
     return applyThemeToOptions(options, themeMode, chartColor);
-  }, [themeMode, chartColor, options]);
+  }, [options]);
 
   // Chart rendering
   const renderChart = () => (
     <Box className="span-0 ">
       <ApexChart
-        key={options.chart?.id + '-' + themeMode}
+        key={options.chart?.id}
         options={dynamicOptions}
         series={series}
         type={options.chart?.type || 'area'}
