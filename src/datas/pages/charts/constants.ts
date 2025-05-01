@@ -21,6 +21,7 @@ export const REVENUE_UPDATE_ID = 'revenue-update-chart';
 export const MOST_VISITED_ID = 'most-visited-chart';
 export const PAGE_IMPRESSION_ID = 'page-impression-chart';
 export const SALES_OVERVIEW_ID = 'sales-overview-chart';
+export const YEARLY_BACKUP_ID = 'yearly-backup-chart';
 
 export const POSITIONS = {
   UP: 'up',

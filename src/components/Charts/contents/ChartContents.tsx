@@ -5,8 +5,7 @@ import TitleValue from '@components/Charts/contents/TitleValue';
 import Button from '@components/Button';
 import { Select } from 'flowbite-react';
 import { ChartCardContent } from '@datas/pages/config';
-import { YEARLY_BACKUP_ID } from '@datas/pages/charts/options/yearlyBackupChartOptions';
-import { POSITIONS } from '@datas/pages/charts/constants';
+import { POSITIONS, YEARLY_BACKUP_ID } from '@datas/pages/charts/constants';
 
 // IconWithPercentage
 const IconWithPercentage: React.FC<{
@@ -205,7 +204,7 @@ const DefaultContent: React.FC<{ content: ChartCardContent }> = ({
   return (
     <>
       <Box col="col-2" className="flex items-end justify-between px-4">
-        <Box className=" ">
+        <Box className="py-3">
           <TitleValue
             title={title}
             value={value}

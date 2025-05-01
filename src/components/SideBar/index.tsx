@@ -110,7 +110,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                             'ml-3 flex items-center gap-x-1 p-2 text-sm',
                             isActive
                               ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
-                              : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:text-blue-400'
+                              : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:bg-primary-dark'
                           )
                         }
                         end
@@ -128,7 +128,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                         'flex items-center gap-x-2 p-2 text-sm',
                         isActive
                           ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
-                          : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:text-blue-400',
+                          : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:bg-primary-dark',
                         !isSidebarOpen ? 'grid justify-items-center' : 'ml-3'
                       )
                     }

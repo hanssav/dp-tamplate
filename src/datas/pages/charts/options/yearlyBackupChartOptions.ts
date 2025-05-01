@@ -1,14 +1,13 @@
 import { THEME_MODE_CONSTANT } from '@constant/index';
+import { YEARLY_BACKUP_ID } from '@datas/pages/charts/constants';
 import { createChartOptions } from '@datas/pages/charts/utils/mergeChartOptions';
 import { ApexOptions } from 'apexcharts';
-
-export const YEARLY_BACKUP_ID = 'yearly-backup-chart';
 
 export const yearlyBackupChartOptions: ApexOptions = createChartOptions(
   'donut',
   {
     chart: {
-      id: 'yearly-backup-chart',
+      id: YEARLY_BACKUP_ID,
       height: 150,
     },
     series: [30, 40, 30],

@@ -8,7 +8,21 @@ interface SidebarContextType {
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 export const SidebarProvider = ({ children }: { children: ReactNode }) => {
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpenState] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('sidebarOpen');
+    }
+    return null;
+  });
+
+  const setOpen = (label: string | null) => {
+    setOpenState(label);
+    if (label) {
+      localStorage.setItem('sidebarOpen', label);
+    } else {
+      localStorage.removeItem('sidebarOpen');
+    }
+  };
 
   return (
     <SidebarContext.Provider value={{ open, setOpen }}>
