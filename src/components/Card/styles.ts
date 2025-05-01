@@ -40,8 +40,11 @@ export const createCardTheme = (
   padding: boolean | string = false,
   shadow: string = baseCardConfig.shadow.soft,
   horizontal: { on?: string; off?: string } = {},
-  href: string = ''
+  href: string = '',
+  img?: any,
+  content?: any
 ) => {
+  // Conditional padding class based on input
   const paddingClass =
     typeof padding === 'string'
       ? padding
@@ -49,14 +52,19 @@ export const createCardTheme = (
         ? baseCardConfig.padding
         : '';
 
+  // Conditional shadow class based on input
+  const shadowClass = shadow ? shadow : baseCardConfig.shadow.soft;
+
   return createTheme({
     card: {
       root: {
-        base: `${base} ${paddingClass} ${shadow}`,
+        base: `${base} ${paddingClass} ${shadowClass}`, // Apply padding and shadow dynamically
         children,
         horizontal,
         href,
       },
+      img: img, // Allow image customization
+      content: content, // Allow content customization
     },
   });
 };
@@ -91,16 +99,43 @@ export const createProductTheme = () =>
 
 export const createMusicTheme = () =>
   createCardTheme(
-    `flex ${baseCardConfig.rounded} ${baseCardConfig.border} bg-white dark:border-gray-700 dark:bg-gray-800 ${baseCardConfig.darkBg}`,
-    'w-full max-w-md justify-center gap-4',
-    true,
+    // Root base styles
+    `flex ${baseCardConfig.rounded} ${baseCardConfig.border} bg-white ${baseCardConfig.shadow.soft} dark:border-gray-700 dark:bg-gray-800 ${baseCardConfig.darkBg}`,
+
+    // Children styles
+    'w-full max-w-md justify-center gap-4 p-6',
+
+    // Padding (false as already included in children styles)
+    false,
+
+    // Shadow style
     baseCardConfig.shadow.soft,
+
+    // Horizontal layout for image/content
     {
       off: 'flex-col',
       on: 'flex-row md:flex-row-reverse',
     },
-    'hover:bg-gray-100 dark:hover:bg-gray-700'
+
+    // Hover styles for link
+    'hover:bg-gray-100 dark:hover:bg-gray-700',
+
+    // Image styles
+    {
+      base: 'h-48 w-full object-cover md:h-auto md:w-48',
+      horizontal: {
+        on: 'rounded-r-lg md:rounded-l-lg',
+        off: 'rounded-t-lg',
+      },
+    },
+
+    // Content base styles
+    {
+      base: 'flex min-w-0 flex-1 flex-col',
+    }
   );
+
+
 
 export const createFollowTheme = () =>
   createCardTheme(
