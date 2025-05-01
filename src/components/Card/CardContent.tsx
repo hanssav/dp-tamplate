@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   BannersCard,
   BreadcrumbCardContent,
@@ -15,7 +16,7 @@ import {
 import ChartCard from '@components/Charts/ChartCard';
 
 import {
-  FriendCardContent,
+  FriendCardContent as FriendCardData,
   FriendGiftCardProps,
   FriendSuggestionContent,
   PaymentCardProps,
@@ -26,10 +27,9 @@ import {
   PostCardContentProps,
   ProductContentProps,
 } from '@components/_types/Card';
-
 import { BannersSectionProps } from '@datas/pages/config';
 import { BreadcrumbComponentProps } from 'flowbite-react';
-import React from 'react';
+import Card from '@components/Card';
 
 const cardRenderMap: Record<
   string,
@@ -56,7 +56,7 @@ const cardRenderMap: Record<
   friendSuggestion: (content) => (
     <FriendSuggestionCardContent content={content as FriendSuggestionContent} />
   ),
-  friend: (content) => <FriendCard content={content as FriendCardContent} />,
+  friend: (content) => <FriendCard content={content as FriendCardData} />,
   gift: (content) => (
     <FriendGiftCard content={content as FriendGiftCardProps['content']} />
   ),
@@ -70,14 +70,44 @@ const cardRenderMap: Record<
   ),
 };
 
-export function getCardContent({
+export function renderCardContent({
   variant = 'breadcrumb',
   content,
   children,
 }: RenderCardContentProps & { children?: React.ReactNode }) {
   if (!content) return null;
-
   const renderFn = cardRenderMap[variant];
-
   return renderFn ? renderFn(content, children) : null;
+}
+
+export function DynamicCard({
+  variant,
+  content,
+  className,
+  children,
+  horizontal = false,
+  ...rest
+}: RenderCardContentProps & {
+  className?: string;
+  children?: React.ReactNode;
+  horizontal?: boolean;
+}) {
+  const rendered = renderCardContent({
+    variant,
+    content,
+    children,
+    horizontal,
+  });
+
+  return (
+    <Card
+      variant={variant}
+      content={content}
+      horizontal={horizontal}
+      className={className}
+      {...rest}
+    >
+      {rendered}
+    </Card>
+  );
 }

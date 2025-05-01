@@ -156,4 +156,5 @@ export type CardContentData = (
 export interface RenderCardContentProps {
   variant?: CardVariant;
   content?: CardContentData;
+  horizontal?: boolean;
 }

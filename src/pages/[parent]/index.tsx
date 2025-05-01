@@ -1,5 +1,4 @@
 import { Navigate, useLocation } from 'react-router';
-import Card from '@components/Card';
 import DashboardLayout from '@components/DashboardLayout';
 import IMAGE_CONSTANTS from '@constant/images';
 import { checkValidPath, getTitleFromPath, toCamelCase } from '@utils/function';
@@ -8,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { SectionContent } from '@datas/pages/config';
 import UiSection from '@components/UiRenderer/UiSection';
 import Box from '@components/Box';
+import { DynamicCard } from '@components/Card/CardContent';
 
 const ParentMenu = () => {
   const location = useLocation();
@@ -30,7 +30,7 @@ const ParentMenu = () => {
   return (
     <DashboardLayout>
       <Box margin="mb-6">
-        <Card
+        <DynamicCard
           variant="breadcrumb"
           content={{ title: title, bgImg: IMAGE_CONSTANTS.BREADCRUMB_BG }}
         />

@@ -1,4 +1,3 @@
-import Card from '@components/Card';
 import Box from '@components/Box';
 import { GridItem } from '@components/Box/boxTheme';
 import NestedCol from '@components/UiRenderer/components/NestedCol';
@@ -6,6 +5,7 @@ import { CardVariant } from '@components/_types/Card';
 import { CardContent, SectionContent } from '@datas/pages/config';
 import { isNestedColContent } from '@utils/function';
 import React from 'react';
+import { DynamicCard } from '@components/Card/CardContent';
 
 export const renderNestedCol = (
   item: SectionContent,
@@ -41,14 +41,14 @@ export const renderCard = (
 
   return {
     content: (
-      <Card
+      <DynamicCard
         key={index}
         variant={item.variant || variant}
         content={item}
         horizontal={horizontal}
       >
         {childContent}
-      </Card>
+      </DynamicCard>
     ),
     span: item.span,
   };

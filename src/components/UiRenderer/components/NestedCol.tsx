@@ -1,9 +1,9 @@
 import { NestedContent } from '@datas/pages/config';
 import Box from '@components/Box';
-import Card from '@components/Card';
 import { GridItem } from '@components/Box/boxTheme';
 import { isCardContent, isNestedColContent } from '@utils/function';
 import { CardVariant } from '@components/_types/Card';
+import { DynamicCard } from '@components/Card/CardContent';
 
 const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
   const datas = data.map((item) => ({
@@ -15,11 +15,11 @@ const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
     if (isCardContent(item)) {
       return {
         content: (
-          <Card
+          <DynamicCard
             key={idx}
             variant={variant}
+            horizontal={horizontal || false}
             content={item}
-            horizontal={horizontal}
           />
         ),
         span: item.span,
