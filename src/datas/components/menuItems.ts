@@ -1,3 +1,4 @@
+import IconLayoutGridAdd from '@assets/icons/IconGridAdd';
 import {
   HiOutlineHome,
   HiOutlineChartPie,
@@ -52,6 +53,38 @@ export const menuItems: MenuCategory[] = [
           {
             href: '/widgets/charts',
             label: 'Charts',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category: 'FORMS',
+    items: [
+      {
+        href: '/forms-elements',
+        icon: IconLayoutGridAdd,
+        label: 'Form Elements',
+        subItems: [
+          {
+            href: '/forms/forms-elements/autocomplete',
+            label: 'Autocomplete',
+          },
+          {
+            href: '/forms/forms-elements/Button',
+            label: 'Button',
+          },
+          {
+            href: '/forms/forms-elements/Ceckbox',
+            label: 'Checkbox',
+          },
+          {
+            href: '/forms/forms-elements/Radio',
+            label: 'Radio',
+          },
+          {
+            href: '/forms/forms-elements/Datepicker',
+            label: 'Datepicker',
           },
         ],
       },

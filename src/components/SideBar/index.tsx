@@ -98,8 +98,8 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                         />
                       );
                     }}
-                    open={open === label}
-                    onClick={() => setOpen(open === label ? null : label)}
+                    open={open.includes(label)}
+                    onClick={() => setOpen(open.includes(label) ? null : label)}
                   >
                     {subItems.map(({ href, label: subLabel }) => (
                       <NavLink
