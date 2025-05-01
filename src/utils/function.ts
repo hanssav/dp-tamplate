@@ -1,7 +1,6 @@
 import { CardVariant } from '@components/_types/Card';
 import { menuItems } from '@datas/components/menuItems';
 import {
-  BaseSection,
   CardContent,
   NestedContent,
   SectionContent,
@@ -143,14 +142,6 @@ export const formatNumber = (value: number | string): string => {
 
   return new Intl.NumberFormat('en-US').format(number);
 };
-
-export function isBaseSection(section: SectionContent): section is BaseSection {
-  return (
-    'data' in section &&
-    Array.isArray(section.data) &&
-    'masonryConfig' in section
-  );
-}
 
 export function isColumnGroup(item: unknown): item is {
   child: { data: CardContent[]; col?: string };
