@@ -6,7 +6,7 @@ export const propjectChartOptions: ApexOptions = createChartOptions('bar', {
   chart: {
     id: 'project-chart',
     background: 'transparent',
-    height: 140,
+    // height: 140,
   },
   plotOptions: {
     bar: {

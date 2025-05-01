@@ -5,7 +5,7 @@ import { THEME_MODE_CONSTANT } from '@constant/index';
 export const customerChartOptions: ApexOptions = createChartOptions('area', {
   chart: {
     id: 'customer-chart',
-    height: 140,
+    // height: 100,
   },
   tooltip: {
     enabled: true,

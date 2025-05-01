@@ -21,7 +21,7 @@ export const mostVisitedChartSeries = [
 export const mostVisitedChartOptions: ApexOptions = createChartOptions('bar', {
   chart: {
     id: MOST_VISITED_ID,
-    height: 340,
+    height: 330,
     stacked: true,
     sparkline: {
       enabled: false,
