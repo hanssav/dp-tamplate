@@ -28,12 +28,14 @@ export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
 
         const isTop = item.imagePosition === 'top';
 
-        const wrapperClass = `flex flex-col ${isTop ? 'my-6' : 'py-0 md:flex-row-reverse'}`;
-        const imageWrapperClass = !isTop ? 'flex h-full items-end justify-end md:w-1/2' : '';
+        const wrapperClass = `flex flex-col ${isTop ? 'my-6' : 'md:flex-row-reverse'}`;
+        const imageWrapperClass = !isTop
+          ? 'flex h-full items-end justify-end md:w-1/2'
+          : '';
         const imageClass = isTop
           ? 'mx-auto my-5 w-full max-w-[150px] rounded-full'
           : 'w-full max-w-[250px] translate-y-[30px]';
-        const contentClass = `flex flex-col gap-y-6 p-4 ${isTop ? 'items-center text-center' : 'w-1/2'}`;
+        const contentClass = `flex flex-col gap-y-6 ${isTop ? 'items-center text-center' : 'w-1/2'}`;
         const buttonWrapperClass = `flex gap-2 ${
           isTop ? 'items-center justify-center' : 'items-start justify-start'
         }`;

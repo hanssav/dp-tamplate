@@ -1,7 +1,10 @@
 import { createTheme } from 'flowbite-react';
 
-// Mapping warna
-export const bgMap = {
+interface ColorMap {
+  [key: string]: string;
+}
+
+export const bgMap: ColorMap = {
   primary: 'bg-light-primary dark:bg-primary-dark',
   warning: 'bg-light-warning dark:bg-warning-dark',
   secondary: 'bg-light-secondary dark:bg-secondary-dark',
@@ -10,7 +13,7 @@ export const bgMap = {
   light: 'bg-white dark:bg-primary-dark',
 };
 
-export const textMap = {
+export const textMap: ColorMap = {
   primary: 'text-primary',
   warning: 'text-warning',
   secondary: 'text-secondary',
@@ -18,144 +21,134 @@ export const textMap = {
   success: 'text-success',
   light: 'text-current',
 };
-// Fungsi untuk membuat tema
-export const createBreadcrumbTheme = (bgClass: string) =>
-  createTheme({
+
+const baseCardConfig = {
+  shadow: {
+    soft: 'shadow-soft',
+    none: 'shadow-none',
+  },
+  border: 'border-none',
+  darkBg: 'dark:bg-primary-dark',
+  rounded: 'rounded-lg',
+  padding: 'p-6',
+  flexChildren: 'flex h-full flex-col justify-center',
+};
+
+export const createCardTheme = (
+  base: string,
+  children: string = '',
+  padding: boolean | string = false,
+  shadow: string = baseCardConfig.shadow.soft,
+  horizontal: { on?: string; off?: string } = {},
+  href: string = ''
+) => {
+  const paddingClass =
+    typeof padding === 'string'
+      ? padding
+      : padding
+        ? baseCardConfig.padding
+        : '';
+
+  return createTheme({
     card: {
       root: {
-        base: `rounded-xl p-1 shadow-none ${bgClass} border-none dark:bg-primary-dark`,
+        base: `${base} ${paddingClass} ${shadow}`,
+        children,
+        horizontal,
+        href,
       },
     },
   });
+};
+
+export const createBreadcrumbTheme = (bgClass: string) =>
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${bgClass} ${baseCardConfig.darkBg}`,
+    '',
+    true,
+    baseCardConfig.shadow.none
+  );
 
 export const createInfoTheme = (bgClass: string, textClass: string) =>
-  createTheme({
-    card: {
-      root: {
-        base: `rounded-xl shadow-none ${bgClass} ${textClass} flex items-center justify-center border-none dark:text-red-100`,
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} flex items-center justify-center ${bgClass} ${textClass}`,
+    '',
+    true,
+    baseCardConfig.shadow.none
+  );
 
 export const createPostTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: `cursor-pointer border-none shadow-soft transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-hard dark:bg-primary-dark dark:text-white`,
-        children: 'm-0 flex flex-col justify-center gap-4 p-4',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} transition-transform duration-200 ease-in-out cursor-pointer hover:scale-[1.02] hover:shadow-lg ${baseCardConfig.darkBg} dark:text-white`,
+    'm-0 flex flex-col justify-center gap-4 p-4'
+  );
 
 export const createProductTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: `cursor-pointer border-none shadow-soft dark:bg-primary-dark`,
-        children: 'm-0 flex flex-col justify-center gap-4 p-4',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} cursor-pointer ${baseCardConfig.darkBg}`,
+    'm-0 flex flex-col justify-center gap-4 p-4'
+  );
 
 export const createMusicTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'flex rounded-lg border-none bg-white shadow-soft dark:border-gray-700 dark:bg-gray-800 dark:bg-primary-dark',
-        children: 'w-full max-w-md justify-center gap-4 p-6',
-        horizontal: {
-          off: 'flex-col',
-          on: 'flex-row md:flex-row-reverse',
-        },
-        href: 'hover:bg-gray-100 dark:hover:bg-gray-700',
-      },
-      img: {
-        base: 'h-48 w-full object-cover md:h-auto md:w-48',
-        horizontal: {
-          on: 'rounded-r-lg md:rounded-l-lg',
-          off: 'rounded-t-lg',
-        },
-      },
-      content: {
-        base: 'flex min-w-0 flex-1 flex-col',
-      },
+  createCardTheme(
+    `flex ${baseCardConfig.rounded} ${baseCardConfig.border} bg-white dark:border-gray-700 dark:bg-gray-800 ${baseCardConfig.darkBg}`,
+    'w-full max-w-md justify-center gap-4',
+    true,
+    baseCardConfig.shadow.soft,
+    {
+      off: 'flex-col',
+      on: 'flex-row md:flex-row-reverse',
     },
-  });
+    'hover:bg-gray-100 dark:hover:bg-gray-700'
+  );
 
 export const createFollowTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    '',
+    true
+  );
 
 export const createFriendSuggestionTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    '',
+    true
+  );
 
 export const createFriendTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
-        children: 'flex h-full flex-col justify-center p-0',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    baseCardConfig.flexChildren
+  );
 
 export const createGiftTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'rounded-lg border-none shadow-soft dark:bg-primary-dark',
-        children: 'flex h-full flex-col justify-center p-0',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    baseCardConfig.flexChildren
+  );
 
 export const createPaymentTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'rounded-lg border-none dark:bg-primary-dark',
-        children: 'flex h-full flex-col justify-center p-0',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    baseCardConfig.flexChildren
+  );
 
 export const createBannersTheme = (bgClass: string) =>
-  createTheme({
-    card: {
-      root: {
-        base: `rounded-lg border-none shadow-soft ${bgClass} px-5`,
-        children: 'flex h-full flex-col justify-center py-0',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${bgClass}`,
+    baseCardConfig.flexChildren,
+    'py-0 px-5'
+  );
 
 export const createChartsTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'shadow-soft rounded-lg border-none bg-white dark:bg-primary-dark ',
-        children: 'flex h-full flex-col justify-center p-0',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    baseCardConfig.flexChildren
+  );
 
 export const createDefaultTheme = () =>
-  createTheme({
-    card: {
-      root: {
-        base: 'shadow-soft rounded-lg border-none px-0 dark:bg-primary-dark',
-        children: 'flex h-full flex-col justify-center px-0',
-      },
-    },
-  });
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} px-0 ${baseCardConfig.darkBg}`,
+    baseCardConfig.flexChildren
+  );

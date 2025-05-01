@@ -7,7 +7,7 @@ interface RouteIconProps {
 }
 
 const RouteIcon: React.FC<RouteIconProps> = ({
-  size = 24,
+  size = 22,
   strokeColor = 'currentColor',
   className = '',
 }) => {
@@ -18,7 +18,7 @@ const RouteIcon: React.FC<RouteIconProps> = ({
       viewBox="0 0 24 24"
       fill="none"
       stroke={strokeColor}
-      strokeWidth="2"
+      strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
       xmlns="http://www.w3.org/2000/svg"

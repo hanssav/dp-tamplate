@@ -22,11 +22,18 @@ export function InfoCardContent({ content }: InfoCardContentProps) {
     <Box className="justify-items-center">
       <Avatar img={content.img} alt={content.title} size="md" rounded />
 
-      <Typography textStyle="subtitle" className="mt-3 text-current">
+      <Typography
+        textStyle="subtitle"
+        className="mt-3 text-current dark:text-current"
+      >
         {content?.title}
       </Typography>
 
-      <Typography as="h6" textStyle="heading-md" className="text-current">
+      <Typography
+        as="h6"
+        textStyle="heading-md"
+        className="text-current dark:text-current"
+      >
         {content?.count}
       </Typography>
     </Box>

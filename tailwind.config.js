@@ -3,18 +3,6 @@ import flowbite from 'flowbite-react/tailwind';
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', flowbite.content()],
-  // safelist: [
-  //   'bg-light-primary',
-  //   'text-text-light-primary',
-  //   'bg-light-warning',
-  //   'text-text-light-warning',
-  //   'bg-light-secondary',
-  //   'text-text-light-secondary',
-  //   'bg-light-error',
-  //   'text-text-light-error',
-  //   'bg-light-success',
-  //   'text-text-light-success',
-  // ],
   theme: {
     extend: {
       colors: {
