@@ -1,6 +1,5 @@
 import Box from '@components/Box';
 import { GridItem } from '@components/Box/boxTheme';
-import { MasonrySection } from '@components/UiRenderer/components/MasonrySection';
 import {
   renderCard,
   renderChildItem,
@@ -11,8 +10,6 @@ import {
   NestedContent,
   CardContent,
 } from '@datas/pages/config';
-import { useMasonry } from '@hooks/useMasonry';
-import { isBaseSection } from '@utils/function';
 
 type UiSectionProps = {
   section: SectionContent;
@@ -23,19 +20,6 @@ const UiSection = ({ section }: UiSectionProps) => {
 
   const { data, variant } = section;
   const col = 'col' in section ? section.col : undefined;
-  const masonryConfig = isBaseSection(section)
-    ? section.masonryConfig
-    : undefined;
-
-  if (col?.includes('masonry')) {
-    const masonryData = useMasonry(
-      data.map((item: any) => ({ ...item, variant: variant as CardVariant })),
-      masonryConfig?.columnCount,
-      masonryConfig?.columnWidths
-    );
-
-    return <MasonrySection data={masonryData} />;
-  }
 
   const renderGroupLayout = (
     index: number,
@@ -84,7 +68,7 @@ const UiSection = ({ section }: UiSectionProps) => {
     section: SectionContent
   ) => {
     if ('data' in item && Array.isArray(item.data)) {
-      return renderGroupLayout(index, item as NestedContent, variant, section);
+      return renderGroupLayout(index, item, variant, section);
     }
     return renderCard(
       item as CardContent,
