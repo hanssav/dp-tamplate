@@ -31,8 +31,8 @@ const SidebarMenu: React.FC<SidebarProps> = ({
 
   const getSidebarBaseClasses = () =>
     twMerge(
-      'fixed inset-y-0 left-0 z-50 h-screen bg-white p-3 transition-all md:relative md:translate-x-0',
-      'border-grey-900 border-r dark:border-none dark:bg-gray-900 dark:text-white',
+      'fixed inset-y-0 left-0 z-50 h-screen p-3 transition-all md:relative md:translate-x-0',
+      'border-grey-900 border-r dark:border-none',
       isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full',
       getSidebarWidth()
     );
