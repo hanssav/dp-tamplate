@@ -67,7 +67,7 @@ export const menuItems: MenuCategory[] = [
         label: 'Form Elements',
         subItems: [
           {
-            href: '/forms/forms-elements/autocomplete',
+            href: '/forms/forms-elements/auto-complete',
             label: 'Autocomplete',
           },
           {
