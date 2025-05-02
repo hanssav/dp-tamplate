@@ -29,7 +29,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         toggleMobileSidebar={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
       />
       <div
-        ref={scrollableRef} // ✅ pasang ref di elemen scrollable
+        ref={scrollableRef}
         className="flex flex-1 flex-col overflow-y-scroll"
       >
         <NavbarMenu

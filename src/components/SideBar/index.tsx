@@ -2,12 +2,15 @@ import { useThemeMode, Sidebar, SidebarItems } from 'flowbite-react';
 import { HiX, HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import { menuItems } from '@datas/components/menuItems';
 import { twMerge } from 'tailwind-merge';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation } from 'react-router';
 import { useSidebarContext } from '@context/sidebarContext';
 import DotIcon from '@assets/icons/RouteIcon';
 import IMAGE_CONSTANTS from '@constant/images';
 import { customButtonTheme } from '@components/Button/buttonTheme';
 import SidebarLogo from '@components/SideBar/SidebarLogo';
+import Typography from '@components/Typography';
+import Box from '@components/Box';
+import Button from '@components/Button';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -21,18 +24,53 @@ const SidebarMenu: React.FC<SidebarProps> = ({
   toggleMobileSidebar,
 }) => {
   const { mode } = useThemeMode();
-
   const { open, setOpen } = useSidebarContext();
+  const location = useLocation();
 
-  const imageSrc =
+  const getSidebarWidth = () => (isSidebarOpen ? 'w-64' : 'w-24');
+
+  const getSidebarBaseClasses = () =>
+    twMerge(
+      'fixed inset-y-0 left-0 z-50 h-screen bg-white p-3 transition-all md:relative md:translate-x-0',
+      'border-grey-900 border-r dark:border-none dark:bg-gray-900 dark:text-white',
+      isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full',
+      getSidebarWidth()
+    );
+
+  const getImageSrc = () =>
     mode === 'dark'
       ? IMAGE_CONSTANTS.DARK_LOGO_URL
       : IMAGE_CONSTANTS.LIGHT_LOGO_URL;
 
+  const getIconClass = () => 'h-5 w-5';
+
+  const getNavLinkClass = (isActive: boolean) =>
+    twMerge(
+      'flex items-center gap-x-2 rounded-lg p-3 text-sm',
+      isSidebarOpen ? 'pl-5' : 'grid justify-items-center',
+      isActive
+        ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
+        : 'hover:text-grey-900 text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:bg-primary-dark'
+    );
+
+  const getCollapseClass = (isActive: boolean) =>
+    twMerge(
+      'py-3 text-sm transition-all',
+      isSidebarOpen ? 'pl-5' : 'grid justify-items-center',
+      isActive
+        ? 'bg-blue-100 text-blue-500 dark:bg-blue-800 dark:text-blue-300'
+        : 'text-gray-700 dark:text-white'
+    );
+
+  const getChevronIcon = (isOpen: boolean) => {
+    const Chevron = isOpen ? HiChevronUp : HiChevronDown;
+    return <Chevron aria-hidden className={getIconClass()} />;
+  };
+
   const customTheme = {
     root: {
       inner:
-        'h-full overflow-y-auto overflow-x-hidden rounded bg-white px-3 py-4 dark:bg-gray-900',
+        'h-full overflow-y-auto overflow-x-hidden rounded py-4 dark:bg-gray-900',
     },
   };
 
@@ -40,106 +78,90 @@ const SidebarMenu: React.FC<SidebarProps> = ({
     <Sidebar
       aria-label="Sidebar"
       theme={customTheme}
-      className={`transition-all ${isSidebarOpen ? 'w-64' : 'w-24'} fixed inset-y-0 left-0 z-50 h-screen transition-transform dark:bg-gray-900 dark:text-white ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}  -wrap border-grey-900 border-r pr-2 dark:border-none md:relative md:translate-x-0 `}
+      className={getSidebarBaseClasses()}
     >
-      {/* can change use Col */}
-      <div
-        className={
-          'fixed left-0 top-0 z-50 flex h-[60px] w-full items-center justify-between bg-white px-4 pt-1 dark:bg-gray-900'
-        }
+      <Box
+        col="col-2"
+        justify="between"
+        align="center"
+        className="fixed left-0 top-0 z-50 flex h-[60px] w-full bg-white px-4 pt-1 dark:bg-gray-900"
       >
         <SidebarLogo
-          imageSrc={imageSrc}
+          imageSrc={getImageSrc()}
           isSidebarOpen={isSidebarOpen}
           isMobileSidebarOpen={isMobileSidebarOpen}
         />
         {isMobileSidebarOpen && (
-          // Change use Button
-          <button
+          <Button
+            color="light"
+            size="icon"
             onClick={toggleMobileSidebar}
             className="text-gray-900 dark:text-white md:hidden"
           >
             <HiX size={20} />
-          </button>
+          </Button>
         )}
-      </div>
+      </Box>
 
-      <SidebarItems className="mt-[60px]">
+      <SidebarItems className="mr-3 mt-[60px]">
         {menuItems.map(({ category, items }) => (
           <Sidebar.ItemGroup key={category}>
-            {/* Create Typografy and change this */}
-            <h4 className="p-2 text-xs font-bold text-gray-600 dark:text-gray-300">
+            <Typography
+              as="h2"
+              textStyle="title"
+              className="p-2 text-xs font-bold"
+            >
               {category}
-            </h4>
-            {items.map(({ href, icon: Icon, label, subItems }) => (
-              // div can change use Col
-              <div key={label}>
-                {subItems ? (
-                  <Sidebar.Collapse
-                    className={twMerge(
-                      !isSidebarOpen
-                        ? 'grid justify-items-center text-sm'
-                        : 'ml-3 text-sm'
-                    )}
-                    icon={(props) => <Icon {...props} className="h-5 w-5" />}
-                    label={isSidebarOpen ? label : undefined}
-                    renderChevronIcon={(theme, isOpen) => {
-                      if (!isSidebarOpen) return <></>;
-                      const IconComponent = isOpen
-                        ? HiChevronUp
-                        : HiChevronDown;
-                      return (
-                        <IconComponent
-                          aria-hidden
-                          className={twMerge(
-                            theme.label.icon.open[isOpen ? 'on' : 'off'],
-                            'h-5 w-5 rotate-0'
-                          )}
-                        />
-                      );
-                    }}
-                    open={open.includes(label)}
-                    onClick={() => setOpen(open.includes(label) ? null : label)}
-                  >
-                    {subItems.map(({ href, label: subLabel }) => (
-                      <NavLink
-                        key={subLabel}
-                        to={href}
-                        className={({ isActive }) =>
-                          twMerge(
-                            'ml-3 flex items-center gap-x-1 p-2 text-sm',
-                            isActive
-                              ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
-                              : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:bg-primary-dark'
-                          )
-                        }
-                        end
-                      >
-                        <DotIcon />
-                        {isSidebarOpen && <span>{subLabel}</span>}
-                      </NavLink>
-                    ))}
-                  </Sidebar.Collapse>
-                ) : (
-                  <NavLink
-                    to={href}
-                    className={({ isActive }) =>
-                      twMerge(
-                        'flex items-center gap-x-2 p-2 text-sm',
-                        isActive
-                          ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
-                          : 'hover:text-grey-900 rounded-lg text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:bg-primary-dark',
-                        !isSidebarOpen ? 'grid justify-items-center' : 'ml-3'
-                      )
-                    }
-                    end
-                  >
-                    <Icon className="h-5 w-5" />
-                    {isSidebarOpen && <span>{label}</span>}
-                  </NavLink>
-                )}
-              </div>
-            ))}
+            </Typography>
+
+            {items.map(({ href, icon: Icon, label, subItems }) => {
+              const isAnySubItemActive =
+                subItems?.some((sub) =>
+                  location.pathname.startsWith(sub.href)
+                ) ?? false;
+
+              const isOpen = open.includes(label);
+
+              return (
+                <Box key={label}>
+                  {subItems ? (
+                    <Sidebar.Collapse
+                      className={getCollapseClass(isAnySubItemActive)}
+                      icon={(props) => (
+                        <Icon {...props} className={getIconClass()} />
+                      )}
+                      label={isSidebarOpen ? label : undefined}
+                      renderChevronIcon={() => getChevronIcon(isOpen)}
+                      open={isOpen}
+                      onClick={() => setOpen(isOpen ? null : label)}
+                    >
+                      {subItems.map(({ href, label: subLabel }) => (
+                        <NavLink
+                          key={subLabel}
+                          to={href}
+                          className={({ isActive }) =>
+                            getNavLinkClass(isActive)
+                          }
+                          end
+                        >
+                          <DotIcon />
+                          {isSidebarOpen && <span>{subLabel}</span>}
+                        </NavLink>
+                      ))}
+                    </Sidebar.Collapse>
+                  ) : (
+                    <NavLink
+                      to={href}
+                      className={({ isActive }) => getNavLinkClass(isActive)}
+                      end
+                    >
+                      <Icon className={getIconClass()} />
+                      {isSidebarOpen && <span>{label}</span>}
+                    </NavLink>
+                  )}
+                </Box>
+              );
+            })}
           </Sidebar.ItemGroup>
         ))}
       </SidebarItems>

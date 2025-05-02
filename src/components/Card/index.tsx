@@ -21,7 +21,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   {
     children,
     content,
-    variant = 'breadcrumb',
+    variant = 'default',
     horizontal = false,
     className = '',
     ...rest
