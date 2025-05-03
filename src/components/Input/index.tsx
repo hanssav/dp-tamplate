@@ -91,7 +91,7 @@ export const Input: React.FC<InputProps> = ({
                 <li
                   key={opt.value}
                   className={getListItemClassNames()}
-                  onClick={(e) => handleSelect(opt)}
+                  onClick={() => handleSelect(opt)}
                 >
                   {opt.label}
                 </li>
