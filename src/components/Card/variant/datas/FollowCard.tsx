@@ -1,5 +1,5 @@
 import { FollowContentProps } from '@components/_types/Card';
-import { HiLocationMarker } from 'react-icons/hi';
+import { MapPin } from 'lucide-react';
 import { Avatar } from 'flowbite-react';
 import Button from '@components/Button';
 import Typography from '@components/Typography';
@@ -37,7 +37,7 @@ export const FollowCardContent: React.FC<FollowContentProps> = ({
           </Typography>
 
           <Box align="center" className="flex gap-1">
-            <HiLocationMarker className="mr-1 h-3.5 w-3.5" />
+            <MapPin className="mr-1 h-3.5 w-3.5" /> 
             <Typography as="span" textStyle="desc">
               {content?.location}
             </Typography>

@@ -2,11 +2,15 @@ import Button from '@components/Button';
 import Box from '@components/Box';
 import Typography from '@components/Typography';
 import { SectionButton } from '@datas/pages/config';
+import HR from '@components/HR';
+import { twMerge } from 'tailwind-merge';
+import { Tabs } from '@components/Tabs';
 
 interface DefaultContentProps {
   content: {
     title: string;
     button?: SectionButton[];
+    [key: string]: any;
   };
   children?: React.ReactNode;
 }
@@ -15,12 +19,22 @@ export const DefaultContent: React.FC<DefaultContentProps> = ({
   content,
   children,
 }) => {
-  const { title, button = [] } = content;
+  const { title, button = [], config, tabData = [] } = content;
+  const headerLine = config?.headerLine ?? false;
+  const border = config?.border ?? 'border-none';
+  const padding = config?.padding ?? 'p-0';
+  const componentType = config?.componentType ?? null;
+  const usePaddingInContent = config?.usePaddingInContent ?? false;
 
   return (
-    <Box className="gap-5 p-5">
-      <Box col="col-2" justify="between" align="center" className="flex">
-        <Typography as="h2" textStyle="heading-md">
+    <Box className={twMerge('rounded-lg', border)}>
+      <Box
+        col="col-2"
+        justify="between"
+        align="center"
+        className={twMerge('mt-3 flex', padding)}
+      >
+        <Typography as="h2" textStyle="title">
           {title}
         </Typography>
         <Box className="flex gap-2">
@@ -35,7 +49,17 @@ export const DefaultContent: React.FC<DefaultContentProps> = ({
             ))}
         </Box>
       </Box>
-      {children}
+      {headerLine && <HR />}
+      <Box className={twMerge(usePaddingInContent ? padding : '')}>
+        {componentType === 'tabs' && (
+          <Tabs
+            tabs={tabData}
+            className={twMerge('gap-x-5')}
+            paddingContent={padding}
+          />
+        )}
+        {children}
+      </Box>
     </Box>
   );
 };

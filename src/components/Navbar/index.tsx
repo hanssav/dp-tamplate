@@ -1,5 +1,5 @@
 import { Navbar, useThemeMode } from 'flowbite-react';
-import { HiViewGrid, HiOutlineMoon, HiOutlineBell } from 'react-icons/hi';
+import { LayoutGrid, Moon, Bell } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { navLinks } from '@datas/components/navLinks';
 import Button from '@components/Button';
@@ -61,7 +61,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
             size="icon"
             rounded={true}
           >
-            <HiViewGrid size={24} />
+            <LayoutGrid size={24} />
           </Button>
 
           <Button
@@ -76,7 +76,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
             size="icon"
             rounded
           >
-            <HiOutlineMoon size={24} />
+            <Moon size={24} />
           </Button>
 
           <div className="relative">
@@ -87,7 +87,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
               onClick={() => {}}
               className="relative"
             >
-              <HiOutlineBell size={24} />
+              <Bell size={24} />
             </Button>
 
             <span className="absolute right-2 top-2 z-20 -mr-1 -mt-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-xs text-white">

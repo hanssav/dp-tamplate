@@ -3,7 +3,7 @@ import {
   CardContent,
   SectionContent,
 } from '@datas/pages/config';
-import { IconType } from 'react-icons';
+import { LucideIcon } from 'lucide-react'; 
 
 export type CardVariant =
   | 'breadcrumb'
@@ -114,7 +114,7 @@ export interface PaymentItem {
   name: string;
   description: string;
   amount: string;
-  icon?: string | IconType;
+  icon?: string | LucideIcon;
   bg?: string;
   textColor?: string;
 }

@@ -28,7 +28,6 @@ import {
   ProductContentProps,
 } from '@components/_types/Card';
 import { BannersSectionProps } from '@datas/pages/config';
-import { BreadcrumbComponentProps } from 'flowbite-react';
 import Card from '@components/Card';
 
 const cardRenderMap: Record<
@@ -36,7 +35,7 @@ const cardRenderMap: Record<
   (content: any, children: React.ReactNode) => JSX.Element | null
 > = {
   breadcrumb: (content) => (
-    <BreadcrumbCardContent content={content as BreadcrumbComponentProps} />
+    <BreadcrumbCardContent content={content} />
   ),
   info: (content) => (
     <InfoCardContent content={content as InfoCardContentProps['content']} />

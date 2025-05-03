@@ -1,10 +1,11 @@
 import {
-  HiLocationMarker,
-  HiArchive,
-  HiUsers,
-  HiClipboardCheck,
-  HiMail,
-} from 'react-icons/hi';
+  MapPin,
+  Archive,
+  Users,
+  ClipboardCheck,
+  Mail,
+} from 'lucide-react';
+
 import { PaymentCardProps } from '@components/_types/Card';
 import IMAGE_CONSTANTS from '@constant/images';
 
@@ -52,7 +53,7 @@ export const paymentData: PaymentCardProps[] = [
     desc: 'In New year',
     content: [
       {
-        icon: HiLocationMarker,
+        icon: MapPin,
         name: 'Trip to Singapore',
         description: 'working on',
         amount: '5 mins',
@@ -60,7 +61,7 @@ export const paymentData: PaymentCardProps[] = [
         textColor: 'text-blue-600',
       },
       {
-        icon: HiArchive,
+        icon: Archive,
         name: 'Archived Data',
         description: 'working on',
         amount: '10 mins',
@@ -68,7 +69,7 @@ export const paymentData: PaymentCardProps[] = [
         textColor: 'text-purple-600',
       },
       {
-        icon: HiUsers,
+        icon: Users,
         name: 'Meeting with Client',
         description: 'pending',
         amount: '15 mins',
@@ -76,7 +77,7 @@ export const paymentData: PaymentCardProps[] = [
         textColor: 'text-yellow-600',
       },
       {
-        icon: HiClipboardCheck,
+        icon: ClipboardCheck,
         name: 'Screening Task Team',
         description: 'pending',
         amount: '20 mins',
@@ -84,7 +85,7 @@ export const paymentData: PaymentCardProps[] = [
         textColor: 'text-red-600',
       },
       {
-        icon: HiMail,
+        icon: Mail,
         name: 'Send envelope to John',
         description: 'done',
         amount: '20 mins',

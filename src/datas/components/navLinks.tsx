@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { HiChevronDown, HiMenu, HiOutlineSearch } from 'react-icons/hi';
+import { ChevronDown, Menu, Search } from 'lucide-react';
 
 export type NavLink = {
   href?: string;
@@ -20,14 +20,14 @@ export const navLinks = (
   return [
     {
       active: true,
-      icon: <HiMenu size={20} />,
+      icon: <Menu size={20} />,
       size: 'icon',
       rounded: true,
       onClick: isMobile ? toggleMobileSidebar : toggleSidebar,
     },
     {
       active: true,
-      icon: <HiOutlineSearch size={20} />,
+      icon: <Search size={20} />,
       size: 'icon',
       rounded: true,
       onClick: () => {},
@@ -37,7 +37,7 @@ export const navLinks = (
       label: 'Apps',
       active: true,
       size: 'md',
-      icon: <HiChevronDown size={20} />,
+      icon: <ChevronDown size={20} />,
       className: 'hidden md:block',
     },
     {

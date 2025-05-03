@@ -1,5 +1,9 @@
-import { useThemeMode, Sidebar, SidebarItems } from 'flowbite-react';
-import { HiX, HiChevronDown, HiChevronUp } from 'react-icons/hi';
+import { useThemeMode, Sidebar, SidebarItemGroup, SidebarCollapse, SidebarItems } from 'flowbite-react';
+import {
+  X,
+  ChevronDown,
+  ChevronUp,
+} from 'lucide-react';
 import { menuItems } from '@datas/components/menuItems';
 import { twMerge } from 'tailwind-merge';
 import { NavLink, useLocation } from 'react-router';
@@ -31,7 +35,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
 
   const getSidebarBaseClasses = () =>
     twMerge(
-      'fixed inset-y-0 left-0 z-50 h-screen p-3 transition-all md:relative md:translate-x-0',
+      'fixed inset-y-0 left-0 z-50 h-screen p-3 md:relative md:translate-x-0 bg-white  dark:bg-gray-900',
       'border-grey-900 border-r dark:border-none',
       isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full',
       getSidebarWidth()
@@ -62,10 +66,13 @@ const SidebarMenu: React.FC<SidebarProps> = ({
         : 'text-gray-700 dark:text-white'
     );
 
-  const getChevronIcon = (isOpen: boolean) => {
-    const Chevron = isOpen ? HiChevronUp : HiChevronDown;
-    return <Chevron aria-hidden className={getIconClass()} />;
-  };
+    const getChevronIcon = (isOpen: boolean) => {
+      if (!isSidebarOpen) return <></>; ; 
+    
+      const Chevron = isOpen ? ChevronUp : ChevronDown;
+      return <Chevron aria-hidden className={getIconClass()} />;
+    };
+    
 
   const customTheme = {
     root: {
@@ -98,14 +105,14 @@ const SidebarMenu: React.FC<SidebarProps> = ({
             onClick={toggleMobileSidebar}
             className="text-gray-900 dark:text-white md:hidden"
           >
-            <HiX size={20} />
+            <X size={20} />
           </Button>
         )}
       </Box>
 
       <SidebarItems className="mr-3 mt-[60px]">
         {menuItems.map(({ category, items }) => (
-          <Sidebar.ItemGroup key={category}>
+          <SidebarItemGroup key={category}>
             <Typography
               as="h2"
               textStyle="title"
@@ -125,7 +132,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
               return (
                 <Box key={label}>
                   {subItems ? (
-                    <Sidebar.Collapse
+                    <SidebarCollapse
                       className={getCollapseClass(isAnySubItemActive)}
                       icon={(props) => (
                         <Icon {...props} className={getIconClass()} />
@@ -148,7 +155,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                           {isSidebarOpen && <span>{subLabel}</span>}
                         </NavLink>
                       ))}
-                    </Sidebar.Collapse>
+                    </SidebarCollapse>
                   ) : (
                     <NavLink
                       to={href}
@@ -162,7 +169,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
                 </Box>
               );
             })}
-          </Sidebar.ItemGroup>
+          </SidebarItemGroup>
         ))}
       </SidebarItems>
     </Sidebar>

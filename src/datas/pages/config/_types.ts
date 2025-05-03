@@ -3,6 +3,7 @@ import { ButtonColor } from '@components/Button';
 import { ColKey } from '@components/Box/boxTheme';
 import { CardVariant } from '@components/_types/Card';
 import { POSITIONS } from '@datas/pages/charts/constants';
+import { ReactNode } from 'react';
 
 //
 // 🔹 Shared Types
@@ -76,6 +77,14 @@ export interface ChartCardGroup {
   data: ChartCardGroupItem[];
 }
 
+export type TabData = {
+  title: string;
+  content: ReactNode;
+  active?: boolean;
+  disabled?: boolean;
+  classNameContent?: string;
+};
+
 //
 // 🔹 General Card Type
 //
@@ -96,6 +105,7 @@ export interface CardContent {
     style?: string;
     as?: keyof JSX.IntrinsicElements;
   };
+  tabData?: TabData[];
 }
 
 //

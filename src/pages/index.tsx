@@ -1,4 +1,4 @@
-import { HiMenu } from 'react-icons/hi';
+import { Menu } from 'lucide-react';
 import Button from '../components/Button';
 import DashboardLayout from '../components/DashboardLayout';
 
@@ -18,7 +18,7 @@ const Home = () => {
         </Button>
 
         <Button color="light" onClick={() => {}} rounded={true}>
-          <HiMenu size={20} />
+          <Menu size={20} />
         </Button>
       </div>
     </DashboardLayout>

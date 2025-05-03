@@ -1,4 +1,4 @@
-import { IconType } from 'react-icons';
+import { LucideIcon } from 'lucide-react'; // Importing LucideIcon
 import Button from '@components/Button';
 import React from 'react';
 import { TimelineItemType, PaymentItem } from '@components/_types/Card';
@@ -6,7 +6,7 @@ import Typography from '@components/Typography';
 import Box from '@components/Box';
 
 interface UpcomingActivityItemProps {
-  icon: IconType;
+  icon: LucideIcon; // Change from IconType to LucideIcon
   name: string;
   description: string;
   amount: string;
@@ -89,7 +89,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 );
 
 interface TransactionItemProps {
-  icon?: string | IconType;
+  icon?: string | LucideIcon; // Change from IconType to LucideIcon
   name: string;
   description: string;
   amount: string;
@@ -105,7 +105,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
   bg = 'bg-gray-200',
   textColor = 'text-gray-700',
 }) => {
-  const Icon = icon as IconType;
+  const Icon = icon as LucideIcon;
 
   return (
     <Box align="center" className="flex py-2">
@@ -114,7 +114,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
         className={`flex h-10 w-10 items-center justify-center rounded ${bg} ${textColor}`}
       >
         {typeof icon === 'string' ? (
-          <Typography as='img' src={icon} alt={name} className="h-5 w-5" />
+          <Typography as="img" src={icon} alt={name} className="h-5 w-5" />
         ) : icon ? (
           <Icon className="h-5 w-5" />
         ) : null}
@@ -151,7 +151,7 @@ const badgeColorMap: Record<TimelineItemType['type'], string> = {
 interface PaymentCardProps {
   title: string;
   desc: string;
-  content: (PaymentItem | TimelineItemType)[];
+  content: (PaymentItem | TimelineItemType)[]; // Content can contain PaymentItem or TimelineItem
 }
 
 export const PaymentCard: React.FC<PaymentCardProps> = ({
@@ -177,7 +177,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
             return (
               <UpcomingActivityItem
                 key={index}
-                icon={paymentItem.icon as IconType}
+                icon={paymentItem.icon as LucideIcon}
                 name={paymentItem.name}
                 description={paymentItem.description}
                 amount={paymentItem.amount}

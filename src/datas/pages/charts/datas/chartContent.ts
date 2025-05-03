@@ -42,8 +42,7 @@ import {
   yearlyBackupChartOptions,
   yearlyBackupChartSeries,
 } from '@datas/pages/charts/options/yearlyBackupChartOptions';
-import { HiArrowSmUp } from 'react-icons/hi';
-import { Grip } from 'lucide-react';
+import { Grip, ArrowUp } from 'lucide-react';
 import {
   yearlyChartOptions,
   yearlyChartSeries,
@@ -187,7 +186,7 @@ export const chartContentData3: SectionContent[] = [
         },
         additionalContent: {
           summaryPercent: ' +9%',
-          summaryIcon: HiArrowSmUp,
+          summaryIcon: ArrowUp,
           bgIcon: 'text-green-500',
           legends: [
             { year: '2025', color: 'bg-blue-500' },
@@ -208,7 +207,7 @@ export const chartContentData3: SectionContent[] = [
         },
         additionalContent: {
           summaryPercent: ' +9%',
-          summaryIcon: HiArrowSmUp,
+          summaryIcon: ArrowUp,
           bgIcon: 'text-green-500',
           summaryYears: ['2025', '2023'],
         },
@@ -313,7 +312,7 @@ export const chartContentData4: SectionContent[] = [
           desc: '(Change Yesterday)',
           value: '$456,120',
           summaryPercent: ' -9%',
-          summaryIcon: HiArrowSmUp,
+          summaryIcon: ArrowUp,
           bgIcon: 'text-red-500',
         },
         chartColor: [
@@ -345,7 +344,7 @@ export const chartContentData4: SectionContent[] = [
             percentageColor: 'text-red-400 dark:text-red-400',
             additionalContent: {
               title: 'Customers',
-              summaryIcon: HiArrowSmUp,
+              summaryIcon: ArrowUp,
             },
             chartColor: ['#64C8FF'],
             series: customerChartSeries,
@@ -363,7 +362,7 @@ export const chartContentData4: SectionContent[] = [
             percentageColor: 'text-green-400 dark:text-green-400',
             additionalContent: {
               title: 'Customers',
-              summaryIcon: HiArrowSmUp,
+              summaryIcon: ArrowUp,
             },
             chartColor: ['#64C8FF'],
             series: projectChartSeries,

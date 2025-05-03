@@ -1,17 +1,18 @@
 import IconLayoutGridAdd from '@assets/icons/IconGridAdd';
 import {
-  HiOutlineHome,
-  HiOutlineChartPie,
-  HiOutlineViewBoards,
-  HiOutlineShoppingCart,
-  HiOutlineUsers,
-  HiOutlineUserGroup,
-  HiOutlineBell,
-  HiOutlineCog,
-  HiOutlineCreditCard,
-  HiOutlineLogout,
-  HiOutlineTemplate,
-} from 'react-icons/hi';
+  Home,
+  PieChart,
+  LayoutGrid,
+  ShoppingCart,
+  Users,
+  UserPlus,
+  Bell,
+  Settings,
+  CreditCard,
+  LogOut,
+  LayoutTemplate,
+} from 'lucide-react';
+
 
 interface MenuItem {
   href: string;
@@ -29,9 +30,9 @@ export const menuItems: MenuCategory[] = [
   {
     category: 'HOME',
     items: [
-      { href: '/', icon: HiOutlineHome, label: 'Home' },
-      { href: '/analytical', icon: HiOutlineChartPie, label: 'Analytical' },
-      { href: '/ecommerce', icon: HiOutlineShoppingCart, label: 'eCommerce' },
+      { href: '/', icon: Home, label: 'Home' },
+      { href: '/analytical', icon: PieChart, label: 'Analytical' },
+      { href: '/ecommerce', icon: ShoppingCart, label: 'eCommerce' },
     ],
   },
   {
@@ -39,21 +40,12 @@ export const menuItems: MenuCategory[] = [
     items: [
       {
         href: '/widgets',
-        icon: HiOutlineTemplate,
+        icon: LayoutTemplate,
         label: 'Widgets',
         subItems: [
-          {
-            href: '/widgets/cards',
-            label: 'Cards',
-          },
-          {
-            href: '/widgets/banners',
-            label: 'Banners',
-          },
-          {
-            href: '/widgets/charts',
-            label: 'Charts',
-          },
+          { href: '/widgets/cards', label: 'Cards' },
+          { href: '/widgets/banners', label: 'Banners' },
+          { href: '/widgets/charts', label: 'Charts' },
         ],
       },
     ],
@@ -66,26 +58,11 @@ export const menuItems: MenuCategory[] = [
         icon: IconLayoutGridAdd,
         label: 'Form Elements',
         subItems: [
-          {
-            href: '/forms/forms-elements/auto-complete',
-            label: 'Autocomplete',
-          },
-          {
-            href: '/forms/forms-elements/Button',
-            label: 'Button',
-          },
-          {
-            href: '/forms/forms-elements/Ceckbox',
-            label: 'Checkbox',
-          },
-          {
-            href: '/forms/forms-elements/Radio',
-            label: 'Radio',
-          },
-          {
-            href: '/forms/forms-elements/Datepicker',
-            label: 'Datepicker',
-          },
+          { href: '/forms/forms-elements/auto-complete', label: 'Autocomplete' },
+          { href: '/forms/forms-elements/Button', label: 'Button' },
+          { href: '/forms/forms-elements/Ceckbox', label: 'Checkbox' },
+          { href: '/forms/forms-elements/Radio', label: 'Radio' },
+          { href: '/forms/forms-elements/Datepicker', label: 'Datepicker' },
         ],
       },
     ],
@@ -93,22 +70,10 @@ export const menuItems: MenuCategory[] = [
   {
     category: 'ORDERS',
     items: [
-      { href: '/orders', icon: HiOutlineShoppingCart, label: 'All Orders' },
-      {
-        href: '/orders/pending',
-        icon: HiOutlineViewBoards,
-        label: 'Pending Orders',
-      },
-      {
-        href: '/orders/completed',
-        icon: HiOutlineViewBoards,
-        label: 'Completed Orders',
-      },
-      {
-        href: '/orders/canceled',
-        icon: HiOutlineViewBoards,
-        label: 'Canceled Orders',
-      },
+      { href: '/orders', icon: ShoppingCart, label: 'All Orders' },
+      { href: '/orders/pending', icon: LayoutGrid, label: 'Pending Orders' },
+      { href: '/orders/completed', icon: LayoutGrid, label: 'Completed Orders' },
+      { href: '/orders/canceled', icon: LayoutGrid, label: 'Canceled Orders' },
     ],
   },
   {
@@ -116,52 +81,34 @@ export const menuItems: MenuCategory[] = [
     items: [
       {
         href: '/products',
-        icon: HiOutlineViewBoards,
+        icon: LayoutGrid,
         label: 'Product List',
         subItems: [
-          {
-            href: '/products/featured',
-            label: 'Featured Products',
-          },
-          {
-            href: '/products/on-sale',
-            label: 'On Sale Products',
-          },
+          { href: '/products/featured', label: 'Featured Products' },
+          { href: '/products/on-sale', label: 'On Sale Products' },
         ],
       },
-      {
-        href: '/products/add',
-        icon: HiOutlineViewBoards,
-        label: 'Add Product',
-      },
-      {
-        href: '/categories',
-        icon: HiOutlineViewBoards,
-        label: 'Categories',
-      },
+      { href: '/products/add', icon: LayoutGrid, label: 'Add Product' },
+      { href: '/categories', icon: LayoutGrid, label: 'Categories' },
     ],
   },
   {
     category: 'APPS',
     items: [
-      { href: '/dashboard', icon: HiOutlineHome, label: 'Dashboard' },
+      { href: '/dashboard', icon: Home, label: 'Dashboard' },
       {
         href: '#',
-        icon: HiOutlineChartPie,
+        icon: PieChart,
         label: 'Analytics',
         subItems: [
           { href: '/reports', label: 'Reports' },
           { href: '/traffic', label: 'Traffic' },
-          {
-            href: '/conversions',
-
-            label: 'Conversions',
-          },
+          { href: '/conversions', label: 'Conversions' },
         ],
       },
       {
         href: '#',
-        icon: HiOutlineShoppingCart,
+        icon: ShoppingCart,
         label: 'E-commerce',
         subItems: [
           { href: '/orders', label: 'Orders' },
@@ -174,74 +121,44 @@ export const menuItems: MenuCategory[] = [
   {
     category: 'CUSTOMERS',
     items: [
-      { href: '/customers', icon: HiOutlineUsers, label: 'Customer List' },
-      {
-        href: '/customers/add',
-        icon: HiOutlineUserGroup,
-        label: 'Add Customer',
-      },
-      {
-        href: '/customers/loyalty',
-        icon: HiOutlineUserGroup,
-        label: 'Loyalty Program',
-      },
+      { href: '/customers', icon: Users, label: 'Customer List' },
+      { href: '/customers/add', icon: UserPlus, label: 'Add Customer' },
+      { href: '/customers/loyalty', icon: UserPlus, label: 'Loyalty Program' },
     ],
   },
   {
     category: 'USER MANAGEMENT',
     items: [
-      { href: '/users', icon: HiOutlineUsers, label: 'Users' },
-      {
-        href: '/roles',
-        icon: HiOutlineCog,
-        label: 'Roles & Permissions',
-      },
+      { href: '/users', icon: Users, label: 'Users' },
+      { href: '/roles', icon: Settings, label: 'Roles & Permissions' },
     ],
   },
   {
     category: 'NOTIFICATIONS',
     items: [
-      {
-        href: '/notifications',
-        icon: HiOutlineBell,
-        label: 'All Notifications',
-      },
-      {
-        href: '/notifications/settings',
-        icon: HiOutlineCog,
-        label: 'Notification Settings',
-      },
+      { href: '/notifications', icon: Bell, label: 'All Notifications' },
+      { href: '/notifications/settings', icon: Settings, label: 'Notification Settings' },
     ],
   },
   {
     category: 'SETTINGS',
     items: [
-      { href: '/account', icon: HiOutlineCog, label: 'Account Settings' },
-      {
-        href: '/billing',
-        icon: HiOutlineCreditCard,
-        label: 'Billing & Payments',
-      },
-      { href: '/integrations', icon: HiOutlineCog, label: 'Integrations' },
+      { href: '/account', icon: Settings, label: 'Account Settings' },
+      { href: '/billing', icon: CreditCard, label: 'Billing & Payments' },
+      { href: '/integrations', icon: Settings, label: 'Integrations' },
       {
         href: '/Account',
-        icon: HiOutlineCog,
+        icon: Settings,
         label: 'Account',
         subItems: [
-          {
-            href: '/settings/privacy',
-            label: 'Privacy Settings',
-          },
-          {
-            href: '/settings/security',
-            label: 'Security Settings',
-          },
+          { href: '/settings/privacy', label: 'Privacy Settings' },
+          { href: '/settings/security', label: 'Security Settings' },
         ],
       },
     ],
   },
   {
     category: 'LOGOUT',
-    items: [{ href: '/logout', icon: HiOutlineLogout, label: 'Logout' }],
+    items: [{ href: '/logout', icon: LogOut, label: 'Logout' }],
   },
 ];
