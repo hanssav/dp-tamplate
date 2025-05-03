@@ -119,6 +119,11 @@ export const chartContentDatas2: SectionContent[] = [
     variant: 'default',
     type: 'columnGroup',
     title: 'Current Value',
+    config: {
+      border: 'border-none',
+      padding: 'px-5 py-2',
+      usePaddingInContent: true,
+    },
     button: [
       { color: 'primary', label: 'Buy', onclick: () => {} },
       { color: 'secondary', label: 'Sell', onclick: () => {} },

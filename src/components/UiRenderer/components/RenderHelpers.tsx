@@ -6,6 +6,7 @@ import { CardContent, SectionContent } from '@datas/pages/config';
 import { isNestedColContent } from '@utils/function';
 import React from 'react';
 import { DynamicCard } from '@components/Card/CardContent';
+import { twMerge } from 'tailwind-merge';
 
 export const renderNestedCol = (
   item: SectionContent,
@@ -38,6 +39,7 @@ export const renderCard = (
   const childContent = React.isValidElement(children)
     ? children
     : ((children as any)?.content ?? null);
+  const margin = (item as any).config?.margin ?? 'm-0';
 
   return {
     content: (
@@ -46,6 +48,7 @@ export const renderCard = (
         variant={item.variant || variant}
         content={item}
         horizontal={horizontal}
+        className={twMerge(margin)}
       >
         {childContent}
       </DynamicCard>

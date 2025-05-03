@@ -1,42 +1,26 @@
-import {
-  previewContent,
-} from '@datas/pages/autocomplete/helpers'; // Ensure correct import
-import {
-  htmlContent,
-  typescriptContent,
-} from '@datas/pages/autocomplete/helpers';
-import { SectionContent } from '@datas/pages/config/_types';
-import { ReactNode } from 'react';
+import { FirstAutocompleteOption } from '@datas/pages/autocomplete/helpers';
+import { SectionContent, TabData } from '@datas/pages/config/_types';
 
 export const tabsDataAutoCompleteOptions: TabData[] = [
   {
     title: 'Preview',
     active: true,
-    content: previewContent,
+    content: FirstAutocompleteOption.preview,
     classNameContent: 'p-4 bg-white dark:bg-gray-800',
   },
   {
     title: 'HTML',
-    content: htmlContent, // This is a ReactNode
+    content: FirstAutocompleteOption.html,
     classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
   {
     title: 'Typescript',
-    content: typescriptContent, // This is a ReactNode
+    content: FirstAutocompleteOption.typescript,
     classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
 ];
 
-// Make sure that the TabData type reflects JSX.Element (React component type)
-export type TabData = {
-  title: string;
-  content: JSX.Element | ReactNode; // This will cover both JSX and ReactNode
-  active?: boolean;
-  disabled?: boolean;
-  classNameContent?: string;
-};
-
-export const autoComplete: SectionContent[] = [
+export const autocomplete: SectionContent[] = [
   {
     col: 'col-1',
     variant: 'default',
@@ -65,6 +49,7 @@ export const autoComplete: SectionContent[] = [
               headerLine: true,
               border: 'border dark:border-gray-700',
               padding: 'px-5 py-2',
+              margin: 'mb-5',
             },
             tabData: tabsDataAutoCompleteOptions,
           },
@@ -75,6 +60,7 @@ export const autoComplete: SectionContent[] = [
             config: {
               border: 'border dark:border-gray-700',
               headerLine: true,
+              margin: 'mb-5',
               padding: 'px-5 py-2',
             },
           },
@@ -84,6 +70,7 @@ export const autoComplete: SectionContent[] = [
             type: 'option',
             config: {
               border: 'border dark:border-gray-700',
+              margin: 'mb-5',
               padding: 'px-5 py-2',
               headerLine: true,
             },
@@ -94,6 +81,7 @@ export const autoComplete: SectionContent[] = [
             type: 'option',
             config: {
               border: 'border dark:border-gray-700',
+              margin: 'mb-5',
               padding: 'px-5 py-2',
               headerLine: true,
             },

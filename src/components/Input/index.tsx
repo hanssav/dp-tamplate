@@ -72,7 +72,6 @@ export const Input: React.FC<InputProps> = ({
     }
   };
 
-  console.log(isFocus, 'onFocus');
   return (
     <div ref={wrapperRef} className={getWrapperClassNames()}>
       {isSelect ? (

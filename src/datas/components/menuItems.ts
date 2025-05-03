@@ -18,7 +18,7 @@ interface MenuItem {
   href: string;
   icon: React.ElementType;
   label: string;
-  subItems?: { href: string; label: string }[]; // Optional subItems
+  subItems?: { href: string; label: string }[];
 }
 
 interface MenuCategory {
@@ -58,11 +58,11 @@ export const menuItems: MenuCategory[] = [
         icon: IconLayoutGridAdd,
         label: 'Form Elements',
         subItems: [
-          { href: '/forms/forms-elements/auto-complete', label: 'Autocomplete' },
-          { href: '/forms/forms-elements/Button', label: 'Button' },
-          { href: '/forms/forms-elements/Ceckbox', label: 'Checkbox' },
-          { href: '/forms/forms-elements/Radio', label: 'Radio' },
-          { href: '/forms/forms-elements/Datepicker', label: 'Datepicker' },
+          { href: '/forms/forms-elements/autocomplete', label: 'Autocomplete' },
+          { href: '/forms/forms-elements/button', label: 'Button' },
+          { href: '/forms/forms-elements/ceckbox', label: 'Checkbox' },
+          { href: '/forms/forms-elements/radio', label: 'Radio' },
+          { href: '/forms/forms-elements/datepicker', label: 'Datepicker' },
         ],
       },
     ],
@@ -72,7 +72,11 @@ export const menuItems: MenuCategory[] = [
     items: [
       { href: '/orders', icon: ShoppingCart, label: 'All Orders' },
       { href: '/orders/pending', icon: LayoutGrid, label: 'Pending Orders' },
-      { href: '/orders/completed', icon: LayoutGrid, label: 'Completed Orders' },
+      {
+        href: '/orders/completed',
+        icon: LayoutGrid,
+        label: 'Completed Orders',
+      },
       { href: '/orders/canceled', icon: LayoutGrid, label: 'Canceled Orders' },
     ],
   },
@@ -137,7 +141,11 @@ export const menuItems: MenuCategory[] = [
     category: 'NOTIFICATIONS',
     items: [
       { href: '/notifications', icon: Bell, label: 'All Notifications' },
-      { href: '/notifications/settings', icon: Settings, label: 'Notification Settings' },
+      {
+        href: '/notifications/settings',
+        icon: Settings,
+        label: 'Notification Settings',
+      },
     ],
   },
   {
