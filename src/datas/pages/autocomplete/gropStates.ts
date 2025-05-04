@@ -1,4 +1,4 @@
-export const GROUP_STATES = [
+export const gropStates = [
   {
     label: 'A',
     options: [
@@ -130,5 +130,32 @@ export const GROUP_STATES = [
       { label: 'Wisconsin', value: 'WI' },
       { label: 'Wyoming', value: 'WY' },
     ],
+  },
+];
+
+export const overviewState = [
+  {
+    label: 'Arkansas',
+    value: 'arkansas',
+    population: '2.978M',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg',
+  },
+  {
+    label: 'California',
+    value: 'california',
+    population: '39.14M',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg',
+  },
+  {
+    label: 'Florida',
+    value: 'florida',
+    population: '20.27M',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Florida.svg',
+  },
+  {
+    label: 'Texas',
+    value: 'texas',
+    population: '27.47M',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg',
   },
 ];

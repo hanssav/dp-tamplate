@@ -2,6 +2,7 @@ import {
   Filter,
   FirstAutocompleteOption,
   OptionGroup,
+  Overview,
 } from '@datas/pages/autocomplete/helpers';
 import { SectionContent, TabData } from '@datas/pages/config/_types';
 
@@ -71,6 +72,28 @@ export const tabsDataOptionGroup: TabData[] = [
   },
 ];
 
+export const tabsDataOverview: TabData[] = [
+  {
+    id: 'filter',
+    title: 'Preview',
+    active: true,
+    content: Overview.preview,
+    classNameContent: 'p-4 bg-white dark:bg-gray-800',
+  },
+  {
+    id: 'autocomplete',
+    title: 'HTML',
+    content: Overview.html,
+    classNameContent: 'bg-gray-900 rounded-lg p-4',
+  },
+  {
+    id: 'autocomplete',
+    title: 'Typescript',
+    content: Overview.typescript,
+    classNameContent: 'bg-gray-900 rounded-lg p-4',
+  },
+];
+
 export const autocomplete: SectionContent[] = [
   {
     col: 'col-1',
@@ -133,13 +156,15 @@ export const autocomplete: SectionContent[] = [
           {
             title: 'Overview',
             variant: 'default',
-            type: 'option',
             config: {
               border: 'border dark:border-gray-700',
               margin: 'mb-5',
+              componentType: 'tabs',
               padding: 'px-5 py-2',
               headerLine: true,
+              inputType: 'option',
             },
+            tabData: tabsDataOverview,
           },
         ],
       },

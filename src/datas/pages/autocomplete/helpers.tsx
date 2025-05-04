@@ -1,7 +1,11 @@
 import { CodeBlock } from '@components/CodeBlock';
 import { Input } from '@components/Input';
-import { GROUP_STATES } from '@datas/pages/autocomplete/gropStates';
+import {
+  gropStates,
+  overviewState,
+} from '@datas/pages/autocomplete/gropStates';
 import { ReactNode, useState } from 'react';
+import { Check } from 'lucide-react';
 
 const PreviewOptions = ({ id }: { id: string }) => {
   const [number, setNumber] = useState('');
@@ -27,26 +31,59 @@ const PreviewOptions = ({ id }: { id: string }) => {
 const PreviewGroupOptions = ({ id }: { id: string }) => {
   const [selectedState, setSelectedState] = useState<string | number>('');
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    if (e.target instanceof HTMLInputElement) {
-      console.log('Input value:', e.target.value);
-    } else if (e.target instanceof HTMLSelectElement) {
-      console.log('Select value:', e.target.value);
-    }
-  };
-
   return (
     <div className="mb-6">
       <Input
         id={`state-select ${id}`}
-        label="Select a State"
+        label="States Group"
         type="select"
         value={selectedState}
-        onChange={handleChange}
-        groupOptions={GROUP_STATES}
+        onChange={(e) => setSelectedState(e.target.value)}
+        groupOptions={gropStates}
       />
+    </div>
+  );
+};
+
+const PreviewOverview = ({ id }: { id: string }) => {
+  const [number, setNumber] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  return (
+    <div>
+      <Input
+        id={`State ${id}`}
+        label="State"
+        type="select"
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+        options={overviewState}
+        disabled={isDisabled}
+      />
+      <div className="flex flex-col items-start gap-4 py-4">
+        {/* Switch */}
+        <label className="flex cursor-pointer items-center gap-2">
+          <div
+            onClick={() => setIsDisabled(!isDisabled)}
+            className={`relative flex h-6 w-12 items-center rounded-full transition-colors duration-300 ${
+              isDisabled ? 'bg-blue-500' : 'bg-gray-300'
+            }`}
+          >
+            <div
+              className={`absolute left-0 top-0 flex h-6 w-6 transform items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 ${
+                isDisabled ? 'translate-x-6' : 'translate-x-0'
+              }`}
+            >
+              {isDisabled && (
+                <Check className="h-4 w-4 text-blue-600" strokeWidth={3} />
+              )}
+            </div>
+          </div>
+          <span className="text-sm text-gray-700 dark:text-gray-300">
+            Disable Input?
+          </span>
+        </label>
+      </div>
     </div>
   );
 };
@@ -141,7 +178,20 @@ export const OptionGroup: {
   typescript: ReactNode;
 } = {
   preview: (() => {
-    return <PreviewGroupOptions id="filter" />;
+    return <PreviewGroupOptions id="options-group" />;
+  })(),
+
+  html: htmlPreview,
+  typescript: typescriptPreview,
+};
+
+export const Overview: {
+  preview: ReactNode;
+  html: ReactNode;
+  typescript: ReactNode;
+} = {
+  preview: (() => {
+    return <PreviewOverview id="overview" />;
   })(),
 
   html: htmlPreview,

@@ -20,6 +20,7 @@ interface InputProps {
     label: string;
     options: { label: string; value: string | number }[];
   }[];
+  disabled?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -30,6 +31,7 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   options = [],
   groupOptions = [],
+  disabled = false,
 }) => {
   const isSelect = type === 'select';
   const [query, setQuery] = useState('');
@@ -54,7 +56,7 @@ export const Input: React.FC<InputProps> = ({
         )
       );
     }
-  }, [query, options, groupOptions]);
+  }, [query]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -88,6 +90,18 @@ export const Input: React.FC<InputProps> = ({
     }
   };
 
+  const renderOptions = (opt: any) => {
+    if (opt.img) {
+      return (
+        <div className="flex items-center">
+          <img src={opt.img} alt={opt.label} className="mr-2 h-8 w-12" />
+          {opt.label} | population: {opt.population}
+        </div>
+      );
+    }
+    return opt.label;
+  };
+
   return (
     <div ref={wrapperRef} className={getWrapperClassNames()}>
       {isSelect ? (
@@ -99,14 +113,15 @@ export const Input: React.FC<InputProps> = ({
             onChange={(e) => handleSelectOnChage(e)}
             placeholder=" "
             onFocus={() => setIsFocus(true)}
-            className={getInputClassNames(isSelect)}
+            className={getInputClassNames(isSelect, disabled)}
+            disabled={disabled}
           />
           {isFocus && filteredOptions.length > 0 && (
             <ul className={getDropdownClassNames()}>
               {groupOptions.length > 0
                 ? groupOptions.map((group) => (
                     <li key={group.label}>
-                      <div className="p-2 font-bold">{group.label}</div>
+                      <div className="p-2">{group.label}</div>
                       <ul>
                         {group.options.map((opt, index) => (
                           <li
@@ -126,7 +141,7 @@ export const Input: React.FC<InputProps> = ({
                       className={getListItemClassNames()}
                       onClick={() => handleSelect(opt)}
                     >
-                      {opt.label}
+                      {renderOptions(opt)}
                     </li>
                   ))}
             </ul>
@@ -139,8 +154,9 @@ export const Input: React.FC<InputProps> = ({
           value={value}
           onChange={onChange}
           placeholder=" "
-          className={getInputClassNames(isSelect)}
+          className={getInputClassNames(isSelect, disabled)}
           inputMode={type === 'number' ? 'numeric' : undefined}
+          disabled={disabled}
         />
       )}
 
