@@ -16,6 +16,10 @@ interface InputProps {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
   options?: { label: string; value: string | number }[];
+  groupOptions?: {
+    label: string;
+    options: { label: string; value: string | number }[];
+  }[];
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -25,20 +29,32 @@ export const Input: React.FC<InputProps> = ({
   value,
   onChange,
   options = [],
+  groupOptions = [],
 }) => {
   const isSelect = type === 'select';
   const [query, setQuery] = useState('');
   const [isFocus, setIsFocus] = useState(false);
-  const [filteredOptions, setFilteredOptions] = useState(options);
+  const [filteredOptions, setFilteredOptions] = useState<
+    { label: string; value: string | number }[]
+  >([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setFilteredOptions(
-      options.filter((opt) =>
-        opt.label.toLowerCase().includes(query.toLowerCase())
-      )
-    );
-  }, [query, options]);
+    if (groupOptions.length > 0) {
+      const flattenedOptions = groupOptions
+        .map((group) => group.options)
+        .flat()
+        .filter((opt) => opt.label.toLowerCase().includes(query.toLowerCase()));
+
+      setFilteredOptions(flattenedOptions);
+    } else {
+      setFilteredOptions(
+        options.filter((opt) =>
+          opt.label.toLowerCase().includes(query.toLowerCase())
+        )
+      );
+    }
+  }, [query, options, groupOptions]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -87,15 +103,32 @@ export const Input: React.FC<InputProps> = ({
           />
           {isFocus && filteredOptions.length > 0 && (
             <ul className={getDropdownClassNames()}>
-              {filteredOptions.map((opt) => (
-                <li
-                  key={opt.value}
-                  className={getListItemClassNames()}
-                  onClick={() => handleSelect(opt)}
-                >
-                  {opt.label}
-                </li>
-              ))}
+              {groupOptions.length > 0
+                ? groupOptions.map((group) => (
+                    <li key={group.label}>
+                      <div className="p-2 font-bold">{group.label}</div>
+                      <ul>
+                        {group.options.map((opt, index) => (
+                          <li
+                            key={index}
+                            className={getListItemClassNames()}
+                            onClick={() => handleSelect(opt)}
+                          >
+                            {opt.label}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))
+                : filteredOptions.map((opt) => (
+                    <li
+                      key={opt.value}
+                      className={getListItemClassNames()}
+                      onClick={() => handleSelect(opt)}
+                    >
+                      {opt.label}
+                    </li>
+                  ))}
             </ul>
           )}
         </>

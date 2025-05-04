@@ -78,6 +78,7 @@ export interface ChartCardGroup {
 }
 
 export type TabData = {
+  id: any;
   title: string;
   content: JSX.Element | ReactNode;
   active?: boolean;
