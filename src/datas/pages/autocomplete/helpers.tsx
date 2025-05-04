@@ -1,3 +1,4 @@
+import { CodeBlock } from '@components/CodeBlock';
 import { Input } from '@components/Input';
 import { ReactNode, useState } from 'react';
 
@@ -32,38 +33,40 @@ export const FirstAutocompleteOption: {
   })(),
 
   html: (
-    <pre className="overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-white">
-      {`<div class="relative">
-  <input
-    type="text"
-    id="number"
-    placeholder=" "
-    class="w-full rounded-md border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-800"
-  />
-  <label
-    for="number"
-    class="absolute left-2 top-2 text-sm text-gray-700 dark:text-gray-300"
-  >
-    Number
-  </label>
-  <ul class="absolute z-10 mt-1 w-full rounded-md border bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
-    <li class="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-      One
-    </li>
-    <li class="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-      Two
-    </li>
-    <li class="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-      Three
-    </li>
-  </ul>
-</div>`}
-    </pre>
+    <CodeBlock
+      language="html"
+      code={`<div class="relative">
+    <input
+      type="text"
+      id="number"
+      placeholder=" "
+      class="w-full rounded-md border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-800"
+    />
+    <label
+      for="number"
+      class="absolute left-2 top-2 text-sm text-gray-700 dark:text-gray-300"
+    >
+      Number
+    </label>
+    <ul class="absolute z-10 mt-1 w-full rounded-md border bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
+      <li class="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+        One
+      </li>
+      <li class="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+        Two
+      </li>
+      <li class="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+        Three
+      </li>
+    </ul>
+  </div>`}
+    />
   ),
 
   typescript: (
-    <pre className="overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-white">
-      {`import { useState } from 'react';
+    <CodeBlock
+      language="tsx"
+      code={`import { useState } from 'react';
 import { Input } from '@components/Input';
 
 const Example = () => {
@@ -84,6 +87,6 @@ const Example = () => {
     />
   );
 };`}
-    </pre>
+    />
   ),
 };
