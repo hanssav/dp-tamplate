@@ -12,16 +12,23 @@ export const getInputClassNames = (isSelect: any, disabled: boolean) => {
   return twMerge(
     'peer w-full border-none bg-transparent text-black placeholder-transparent outline-none focus:outline-none focus:ring-0 dark:text-white dark:focus:bg-gray-800 dark:focus:text-white',
     isSelect && 'focus:outline-none focus:ring-0 dark:text-white',
-    disabled && 'border-gray-200 text-gray-200'
+    disabled ? 'border-gray-700 text-gray-700' : ''
   );
 };
 
-export const getLabelClassNames = (query: any, isFocus: any) => {
+export const getLabelClassNames = (
+  query: any,
+  isFocus: any,
+  disabled: boolean
+) => {
   return twMerge(
-    'absolute left-2 bg-white px-1 text-sm dark:bg-gray-900',
+    'absolute left-2 bg-white px-1 text-sm text-black dark:bg-gray-900',
     query || isFocus
       ? '-top-2 text-xs text-blue-600 dark:text-blue-400'
-      : 'left-2 top-2 bg-transparent text-gray-500 dark:bg-transparent dark:text-gray-400'
+      : 'left-2 top-2 bg-transparent text-gray-500 dark:bg-transparent dark:text-gray-400',
+    disabled
+      ? 'border-gray-300 text-gray-300 dark:border-gray-600 dark:text-gray-500 '
+      : 'dark:text-white'
   );
 };
 

@@ -102,6 +102,18 @@ export const Input: React.FC<InputProps> = ({
     return opt.label;
   };
 
+  const ListItems = ({ opt, index }: { opt: any; index: number }) => {
+    return (
+      <li
+        key={index}
+        className={getListItemClassNames()}
+        onClick={() => handleSelect(opt)}
+      >
+        {renderOptions(opt)}
+      </li>
+    );
+  };
+
   return (
     <div ref={wrapperRef} className={getWrapperClassNames()}>
       {isSelect ? (
@@ -124,25 +136,13 @@ export const Input: React.FC<InputProps> = ({
                       <div className="p-2">{group.label}</div>
                       <ul>
                         {group.options.map((opt, index) => (
-                          <li
-                            key={index}
-                            className={getListItemClassNames()}
-                            onClick={() => handleSelect(opt)}
-                          >
-                            {opt.label}
-                          </li>
+                          <ListItems opt={opt} index={index} />
                         ))}
                       </ul>
                     </li>
                   ))
-                : filteredOptions.map((opt) => (
-                    <li
-                      key={opt.value}
-                      className={getListItemClassNames()}
-                      onClick={() => handleSelect(opt)}
-                    >
-                      {renderOptions(opt)}
-                    </li>
+                : filteredOptions.map((opt, index) => (
+                    <ListItems opt={opt} index={index} />
                   ))}
             </ul>
           )}
@@ -160,7 +160,10 @@ export const Input: React.FC<InputProps> = ({
         />
       )}
 
-      <label htmlFor={id} className={getLabelClassNames(query, isFocus)}>
+      <label
+        htmlFor={id}
+        className={getLabelClassNames(query, isFocus, disabled)}
+      >
         {label}
       </label>
     </div>
