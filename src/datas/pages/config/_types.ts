@@ -83,7 +83,6 @@ export type TabData = {
   content: JSX.Element | ReactNode;
   active?: boolean;
   disabled?: boolean;
-  classNameContent?: string;
 };
 
 //

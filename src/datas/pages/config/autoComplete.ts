@@ -12,19 +12,16 @@ export const tabsDataAutoCompleteOptions: TabData[] = [
     title: 'Preview',
     active: true,
     content: FirstAutocompleteOption.preview,
-    classNameContent: 'p-4 bg-white dark:bg-gray-800',
   },
   {
     id: 'autocomplete',
     title: 'HTML',
     content: FirstAutocompleteOption.html,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
   {
     id: 'autocomplete',
     title: 'Typescript',
     content: FirstAutocompleteOption.typescript,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
 ];
 
@@ -34,63 +31,54 @@ export const tabsDataFilter: TabData[] = [
     title: 'Preview',
     active: true,
     content: Filter.preview,
-    classNameContent: 'p-4 bg-white dark:bg-gray-800',
   },
   {
     id: 'autocomplete',
     title: 'HTML',
     content: Filter.html,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
   {
     id: 'autocomplete',
     title: 'Typescript',
     content: Filter.typescript,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
 ];
 
 export const tabsDataOptionGroup: TabData[] = [
   {
-    id: 'filter',
+    id: 'optionGroup',
     title: 'Preview',
     active: true,
     content: OptionGroup.preview,
-    classNameContent: 'p-4 bg-white dark:bg-gray-800',
   },
   {
-    id: 'autocomplete',
+    id: 'optionGroup',
     title: 'HTML',
     content: OptionGroup.html,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
   {
-    id: 'autocomplete',
+    id: 'optionGroup',
     title: 'Typescript',
     content: OptionGroup.typescript,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
 ];
 
 export const tabsDataOverview: TabData[] = [
   {
-    id: 'filter',
+    id: 'overview',
     title: 'Preview',
     active: true,
     content: Overview.preview,
-    classNameContent: 'p-4 bg-white dark:bg-gray-800',
   },
   {
-    id: 'autocomplete',
+    id: 'overview',
     title: 'HTML',
     content: Overview.html,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
   {
-    id: 'autocomplete',
+    id: 'overview',
     title: 'Typescript',
     content: Overview.typescript,
-    classNameContent: 'bg-gray-900 rounded-lg p-4',
   },
 ];
 
