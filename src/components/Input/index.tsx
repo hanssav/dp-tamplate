@@ -1,8 +1,8 @@
+import { ListItems } from '@components/Input/ListItem';
 import {
   getDropdownClassNames,
   getInputClassNames,
   getLabelClassNames,
-  getListItemClassNames,
   getWrapperClassNames,
 } from '@components/Input/style';
 import React, { useState, useEffect, useRef } from 'react';
@@ -56,7 +56,12 @@ export const Input: React.FC<InputProps> = ({
         )
       );
     }
-  }, [query]);
+
+    console.log(query, 'query');
+    if (disabled) {
+      setQuery('');
+    }
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -90,30 +95,6 @@ export const Input: React.FC<InputProps> = ({
     }
   };
 
-  const renderOptions = (opt: any) => {
-    if (opt.img) {
-      return (
-        <div className="flex items-center">
-          <img src={opt.img} alt={opt.label} className="mr-2 h-8 w-12" />
-          {opt.label} | population: {opt.population}
-        </div>
-      );
-    }
-    return opt.label;
-  };
-
-  const ListItems = ({ opt, index }: { opt: any; index: number }) => {
-    return (
-      <li
-        key={index}
-        className={getListItemClassNames()}
-        onClick={() => handleSelect(opt)}
-      >
-        {renderOptions(opt)}
-      </li>
-    );
-  };
-
   return (
     <div ref={wrapperRef} className={getWrapperClassNames()}>
       {isSelect ? (
@@ -136,13 +117,23 @@ export const Input: React.FC<InputProps> = ({
                       <div className="p-2">{group.label}</div>
                       <ul>
                         {group.options.map((opt, index) => (
-                          <ListItems opt={opt} index={index} />
+                          <ListItems
+                            key={index}
+                            opt={opt}
+                            index={index}
+                            handleSelect={handleSelect}
+                          />
                         ))}
                       </ul>
                     </li>
                   ))
                 : filteredOptions.map((opt, index) => (
-                    <ListItems opt={opt} index={index} />
+                    <ListItems
+                      key={index}
+                      opt={opt}
+                      index={index}
+                      handleSelect={handleSelect}
+                    />
                   ))}
             </ul>
           )}

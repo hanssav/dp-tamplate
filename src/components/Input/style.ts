@@ -12,7 +12,9 @@ export const getInputClassNames = (isSelect: any, disabled: boolean) => {
   return twMerge(
     'peer w-full border-none bg-transparent text-black placeholder-transparent outline-none focus:outline-none focus:ring-0 dark:text-white dark:focus:bg-gray-800 dark:focus:text-white',
     isSelect && 'focus:outline-none focus:ring-0 dark:text-white',
-    disabled ? 'border-gray-700 text-gray-700' : ''
+    disabled
+      ? 'border-gray-300 text-gray-300 dark:border-gray-600 dark:text-gray-500 '
+      : ''
   );
 };
 
