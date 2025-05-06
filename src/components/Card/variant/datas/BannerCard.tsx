@@ -1,5 +1,5 @@
 import Box from '@components/Box';
-import Button, { ButtonColor } from '@components/Button';
+import Button from '@components/Button';
 import Typography, { TextStyle } from '@components/Typography';
 import {
   BannersSectionProps,
@@ -58,7 +58,7 @@ export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
                 <Button
                   key={idx}
                   onClick={btn.onclick}
-                  color={btn.color as ButtonColor}
+                  color={btn.color}
                   size="md"
                 >
                   {btn.label}

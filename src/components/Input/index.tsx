@@ -57,7 +57,6 @@ export const Input: React.FC<InputProps> = ({
       );
     }
 
-    console.log(query, 'query');
     if (disabled) {
       setQuery('');
     }

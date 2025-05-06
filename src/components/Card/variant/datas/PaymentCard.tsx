@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react'; // Importing LucideIcon
+import { LucideIcon } from 'lucide-react';
 import Button from '@components/Button';
 import React from 'react';
 import { TimelineItemType, PaymentItem } from '@components/_types/Card';
@@ -164,7 +164,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
   const isPaymentGateway = title === 'Payment Gateways';
 
   return (
-    <Box className="shadow-soft w-full rounded-xl p-6 dark:text-white">
+    <Box className="w-full rounded-xl p-6 shadow-soft dark:text-white">
       <Typography textStyle="title">{title}</Typography>
       <Typography textStyle="desc" className="mb-6">
         {desc}
@@ -218,7 +218,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
               textColor={item.textColor}
             />
           ))}
-          <Button color="secondary" className="mt-6 w-full">
+          <Button color="outline" className="mt-6 w-full">
             View all Transactions
           </Button>
         </Box>

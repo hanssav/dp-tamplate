@@ -39,13 +39,13 @@ const NavbarMenu: React.FC<NavbarProps> = ({
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-x-1">
           {navLinks(isMobile, toggleMobileSidebar, toggleSidebar).map(
-            ({ label, icon, onClick, size, className, rounded }, index) => (
+            ({ label, icon, onClick, size, className, pill }, index) => (
               <Button
                 key={label || index}
-                color="light"
+                color="basic"
                 onClick={onClick}
                 size={size}
-                rounded={rounded}
+                pill={pill}
                 className={`${className}`}
               >
                 {label} {icon}
@@ -55,17 +55,12 @@ const NavbarMenu: React.FC<NavbarProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <Button
-            color="light"
-            onClick={handleRightSidebar}
-            size="icon"
-            rounded={true}
-          >
+          <Button color="basic" onClick={handleRightSidebar} size="icon" pill>
             <LayoutGrid size={24} />
           </Button>
 
           <Button
-            color="light"
+            color="basic"
             onClick={() =>
               setMode(
                 mode === THEME_MODE_CONSTANT.DARK
@@ -74,16 +69,16 @@ const NavbarMenu: React.FC<NavbarProps> = ({
               )
             }
             size="icon"
-            rounded
+            pill
           >
             <Moon size={24} />
           </Button>
 
           <div className="relative">
             <Button
-              color="light"
+              color="basic"
               size="icon"
-              rounded
+              pill
               onClick={() => {}}
               className="relative"
             >

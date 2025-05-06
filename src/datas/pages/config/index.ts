@@ -3,3 +3,4 @@ export * from '@datas/pages/config/cards';
 export * from '@datas/pages/config/banners';
 export * from '@datas/pages/config/charts';
 export * from '@datas/pages/config/autocomplete';
+export * from '@datas/pages/config/button';

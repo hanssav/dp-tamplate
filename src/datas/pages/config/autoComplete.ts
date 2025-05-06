@@ -4,83 +4,8 @@ import {
   OptionGroup,
   Overview,
 } from '@datas/pages/autocomplete/helpers';
-import { SectionContent, TabData } from '@datas/pages/config/_types';
-
-export const tabsDataAutoCompleteOptions: TabData[] = [
-  {
-    id: 'autocomplete',
-    title: 'Preview',
-    active: true,
-    content: FirstAutocompleteOption.preview,
-  },
-  {
-    id: 'autocomplete',
-    title: 'HTML',
-    content: FirstAutocompleteOption.html,
-  },
-  {
-    id: 'autocomplete',
-    title: 'Typescript',
-    content: FirstAutocompleteOption.typescript,
-  },
-];
-
-export const tabsDataFilter: TabData[] = [
-  {
-    id: 'filter',
-    title: 'Preview',
-    active: true,
-    content: Filter.preview,
-  },
-  {
-    id: 'autocomplete',
-    title: 'HTML',
-    content: Filter.html,
-  },
-  {
-    id: 'autocomplete',
-    title: 'Typescript',
-    content: Filter.typescript,
-  },
-];
-
-export const tabsDataOptionGroup: TabData[] = [
-  {
-    id: 'optionGroup',
-    title: 'Preview',
-    active: true,
-    content: OptionGroup.preview,
-  },
-  {
-    id: 'optionGroup',
-    title: 'HTML',
-    content: OptionGroup.html,
-  },
-  {
-    id: 'optionGroup',
-    title: 'Typescript',
-    content: OptionGroup.typescript,
-  },
-];
-
-export const tabsDataOverview: TabData[] = [
-  {
-    id: 'overview',
-    title: 'Preview',
-    active: true,
-    content: Overview.preview,
-  },
-  {
-    id: 'overview',
-    title: 'HTML',
-    content: Overview.html,
-  },
-  {
-    id: 'overview',
-    title: 'Typescript',
-    content: Overview.typescript,
-  },
-];
+import { SectionContent } from '@datas/pages/config/_types';
+import { createTabs } from '@utils/tabHelpers';
 
 export const autocomplete: SectionContent[] = [
   {
@@ -113,7 +38,7 @@ export const autocomplete: SectionContent[] = [
               padding: 'px-5 py-2',
               margin: 'mb-5',
             },
-            tabData: tabsDataAutoCompleteOptions,
+            tabData: createTabs('autocomplete', FirstAutocompleteOption),
           },
           {
             title: 'Option Group',
@@ -126,7 +51,7 @@ export const autocomplete: SectionContent[] = [
               padding: 'px-5 py-2',
               margin: 'mb-5',
             },
-            tabData: tabsDataOptionGroup,
+            tabData: createTabs('optionGroup', OptionGroup),
           },
           {
             title: 'Filter',
@@ -139,7 +64,7 @@ export const autocomplete: SectionContent[] = [
               headerLine: true,
               inputType: 'option',
             },
-            tabData: tabsDataFilter,
+            tabData: createTabs('filter', Filter),
           },
           {
             title: 'Overview',
@@ -152,7 +77,7 @@ export const autocomplete: SectionContent[] = [
               headerLine: true,
               inputType: 'option',
             },
-            tabData: tabsDataOverview,
+            tabData: createTabs('overview', Overview),
           },
         ],
       },

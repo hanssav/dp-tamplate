@@ -6,27 +6,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#5D87FF',
+        primary: '#5d87ff',
+        'primary-hover': '#6c94ff',
         'light-primary': '#E7EDFF',
         'primary-dark': '#1C252E',
+        'soft-blue': '#F2F6FF', // actually for hover when outline
 
         warning: '#ffae1f',
-        'light-warning': '#FFEAC7',
+        'warning-hover': '#ffba3d',
+        'light-warning': '#FFEAC7', // actually for hover when outline
         'warning-dark': '#4F3E21',
 
+        secondary: '#44b7f7 ',
+        'secondary-hover': '#65c5f9',
         'light-secondary': '#E3F4FE',
-        secondary: '#44b9f7', // ✅ perbaiki ini
         'secondary-dark': '#1B3141',
 
-        error: '#fa896b', // optional: kalau kamu mau pakai text-error
+        error: 'rgb(250, 137, 107)', // optional: kalau kamu mau pakai text-error
+        'error-hover': 'rgb(252, 153, 125)',
         'light-error': '#FEE3E6',
         'error-dark': '#362029',
 
-        success: '#35e4c7',
+        success: '#13deb9',
+        'success-hover': '#2eeecd',
         'light-success': '#C4F7ED',
         'success-dark': '#144B47',
 
-        'soft-blue': '#F2F6FF',
         'dark-hover': '#212D3E',
         'bg-dark': '#1C252E',
         'dark-breadcrumb-bg': '#1F2A42',

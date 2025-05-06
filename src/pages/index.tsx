@@ -1,3 +1,4 @@
+import ToggleButtonGroup from '@components/ToggleButtonGroup';
 import { Menu } from 'lucide-react';
 import Button from '../components/Button';
 import DashboardLayout from '../components/DashboardLayout';
@@ -17,9 +18,13 @@ const Home = () => {
           Secondary Button
         </Button>
 
-        <Button color="light" onClick={() => {}} rounded={true}>
+        <Button color="light" onClick={() => {}} rounded="md">
           <Menu size={20} />
         </Button>
+        <ToggleButtonGroup
+          options={['Bold', 'Italic', 'Underline']}
+          multiple={false}
+        />
       </div>
     </DashboardLayout>
   );

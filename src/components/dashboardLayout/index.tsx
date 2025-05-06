@@ -1,5 +1,5 @@
 import NavbarMenu from '@components/Navbar';
-import SidebarMenu from '@components/SideBar';
+import SidebarMenu from '@components/pages/Button/SideBar';
 import { getTitleFromPath } from '@utils/function';
 import { useState, ReactNode, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router';

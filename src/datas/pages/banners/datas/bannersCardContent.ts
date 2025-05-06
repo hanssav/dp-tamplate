@@ -122,7 +122,7 @@ export const BannersCardContent: SectionContent[] = [
           {
             label: 'Remove',
             onclick: () => {},
-            color: 'secondary',
+            color: 'outline',
           },
         ],
         bgImage: IMAGE_CONSTANTS.POST_USER_IMG_1,

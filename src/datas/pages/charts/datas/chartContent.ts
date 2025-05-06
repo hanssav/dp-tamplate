@@ -126,7 +126,7 @@ export const chartContentDatas2: SectionContent[] = [
     },
     button: [
       { color: 'primary', label: 'Buy', onclick: () => {} },
-      { color: 'secondary', label: 'Sell', onclick: () => {} },
+      { color: 'outline', label: 'Sell', onclick: () => {} },
     ],
     col: 'col-3',
     childOptions: {

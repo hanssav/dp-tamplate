@@ -1,46 +1,40 @@
-import { customButtonTheme } from '@components/Button/buttonTheme';
-// import { theme } from './GetButtonStyle';
-
-const buttonTheme = {
-  color: customButtonTheme.color,
-  size: customButtonTheme.size,
-  rounded: 'rounded-full',
-};
-
-export type ButtonColor = keyof typeof buttonTheme.color;
-type ButtonSize = keyof typeof buttonTheme.size;
-
 import {
-  Button as ButtonFlowbite,
-  ButtonProps as FlowbiteButtonProps,
-} from 'flowbite-react';
-
-interface ButtonProps extends FlowbiteButtonProps {
-  color?: ButtonColor | string;
-  size?: ButtonSize;
-  rounded?: boolean;
-  onClick?: () => void;
-  children?: React.ReactNode;
-  label?: string;
-  className?: any;
-}
+  ButtonProps,
+  customButtonTheme,
+  getDynamicButtonTheme,
+} from '@components/Button/buttonTheme';
+import { Button as ButtonFlowbite } from 'flowbite-react';
 
 export default function Button({
   color = 'primary',
   size = 'md',
-  rounded = false,
+  rounded,
   onClick,
   children,
   label,
   className = '',
+  link = false,
+  raised = false,
+  outlineColor,
   ...props
 }: ButtonProps) {
+  //dynamic theme
+  const theme = getDynamicButtonTheme({
+    link,
+    raised,
+    disabled: props.disabled,
+    outlineColor,
+    color,
+    customButtonTheme,
+    rounded,
+  });
+
   return (
     <ButtonFlowbite
-      theme={customButtonTheme}
+      theme={theme}
       color={color}
       size={size}
-      className={`${className} ${rounded ? buttonTheme.rounded : ''}`}
+      className={`${className}`}
       onClick={onClick}
       {...props}
     >

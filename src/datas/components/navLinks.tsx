@@ -6,10 +6,10 @@ export type NavLink = {
   size?: 'icon' | 'xs' | 'sm' | 'md' | 'lg';
   label?: string;
   active?: boolean;
-  rounded?: boolean;
   icon?: ReactNode;
   className?: string;
   onClick?: () => void;
+  pill?: boolean;
 };
 
 export const navLinks = (
@@ -22,14 +22,14 @@ export const navLinks = (
       active: true,
       icon: <Menu size={20} />,
       size: 'icon',
-      rounded: true,
+      pill: true,
       onClick: isMobile ? toggleMobileSidebar : toggleSidebar,
     },
     {
       active: true,
       icon: <Search size={20} />,
+      pill: true,
       size: 'icon',
-      rounded: true,
       onClick: () => {},
     },
     {

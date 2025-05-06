@@ -65,7 +65,7 @@ const PreviewOverview = ({ id }: { id: string }) => {
         <label className="flex cursor-pointer items-center gap-2">
           <div
             onClick={() => setIsDisabled(!isDisabled)}
-            className={`relative flex h-6 w-12 items-center rounded-full transition-colors duration-300 ${
+            className={`relative flex h-6 w-12 items-center rounded-full transition-colors duration-300  ${
               isDisabled ? 'bg-blue-500' : 'bg-gray-300'
             }`}
           >
@@ -145,55 +145,30 @@ return (
 };`}
   />
 );
-
-export const FirstAutocompleteOption: {
+interface TabContent {
   preview: ReactNode;
   html: ReactNode;
   typescript: ReactNode;
-} = {
-  preview: (() => {
-    return <PreviewOptions id="firstAutocompleteOption" />;
-  })(),
+}
 
+const createTabContent = (previewComponent: ReactNode): TabContent => ({
+  preview: previewComponent,
   html: htmlPreview,
   typescript: typescriptPreview,
-};
+});
 
-export const Filter: {
-  preview: ReactNode;
-  html: ReactNode;
-  typescript: ReactNode;
-} = {
-  preview: (() => {
-    return <PreviewOptions id="filter" />;
-  })(),
+export const FirstAutocompleteOption: TabContent = createTabContent(
+  <PreviewOptions id="firstAutocompleteOption" />
+);
 
-  html: htmlPreview,
-  typescript: typescriptPreview,
-};
+export const Filter: TabContent = createTabContent(
+  <PreviewOptions id="filter" />
+);
 
-export const OptionGroup: {
-  preview: ReactNode;
-  html: ReactNode;
-  typescript: ReactNode;
-} = {
-  preview: (() => {
-    return <PreviewGroupOptions id="options-group" />;
-  })(),
+export const OptionGroup: TabContent = createTabContent(
+  <PreviewGroupOptions id="options-group" />
+);
 
-  html: htmlPreview,
-  typescript: typescriptPreview,
-};
-
-export const Overview: {
-  preview: ReactNode;
-  html: ReactNode;
-  typescript: ReactNode;
-} = {
-  preview: (() => {
-    return <PreviewOverview id="overview" />;
-  })(),
-
-  html: htmlPreview,
-  typescript: typescriptPreview,
-};
+export const Overview: TabContent = createTabContent(
+  <PreviewOverview id="overview" />
+);

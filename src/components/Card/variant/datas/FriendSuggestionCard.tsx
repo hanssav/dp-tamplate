@@ -56,7 +56,7 @@ export const FriendSuggestionCardContent: React.FC<
 
       <Box margin="mt-5" className="w-full gap-2">
         <Button>Add Friend</Button>
-        <Button color="secondary">Remove</Button>
+        <Button color="outline">Remove</Button>
       </Box>
     </Box>
   );

@@ -1,9 +1,11 @@
-import { useThemeMode, Sidebar, SidebarItemGroup, SidebarCollapse, SidebarItems } from 'flowbite-react';
 import {
-  X,
-  ChevronDown,
-  ChevronUp,
-} from 'lucide-react';
+  useThemeMode,
+  Sidebar,
+  SidebarItemGroup,
+  SidebarCollapse,
+  SidebarItems,
+} from 'flowbite-react';
+import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import { menuItems } from '@datas/components/menuItems';
 import { twMerge } from 'tailwind-merge';
 import { NavLink, useLocation } from 'react-router';
@@ -11,7 +13,7 @@ import { useSidebarContext } from '@context/sidebarContext';
 import DotIcon from '@assets/icons/RouteIcon';
 import IMAGE_CONSTANTS from '@constant/images';
 import { customButtonTheme } from '@components/Button/buttonTheme';
-import SidebarLogo from '@components/SideBar/SidebarLogo';
+import SidebarLogo from '@components/pages/Button/SideBar/SidebarLogo';
 import Typography from '@components/Typography';
 import Box from '@components/Box';
 import Button from '@components/Button';
@@ -35,7 +37,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
 
   const getSidebarBaseClasses = () =>
     twMerge(
-      'fixed inset-y-0 left-0 z-50 h-screen p-3 md:relative md:translate-x-0 bg-white  dark:bg-gray-900',
+      'fixed inset-y-0 left-0 z-50 h-screen bg-white p-3 dark:bg-gray-900 md:relative  md:translate-x-0',
       'border-grey-900 border-r dark:border-none',
       isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full',
       getSidebarWidth()
@@ -66,13 +68,12 @@ const SidebarMenu: React.FC<SidebarProps> = ({
         : 'text-gray-700 dark:text-white'
     );
 
-    const getChevronIcon = (isOpen: boolean) => {
-      if (!isSidebarOpen) return <></>; ; 
-    
-      const Chevron = isOpen ? ChevronUp : ChevronDown;
-      return <Chevron aria-hidden className={getIconClass()} />;
-    };
-    
+  const getChevronIcon = (isOpen: boolean) => {
+    if (!isSidebarOpen) return <></>;
+
+    const Chevron = isOpen ? ChevronUp : ChevronDown;
+    return <Chevron aria-hidden className={getIconClass()} />;
+  };
 
   const customTheme = {
     root: {
