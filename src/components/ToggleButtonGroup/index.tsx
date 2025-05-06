@@ -56,7 +56,7 @@ export default function ToggleButtonGroup({
         const isDisabled = disabledList[index];
 
         const buttonClass = twMerge(
-          `flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700${
+          `flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 ${
             isActive
               ? 'bg-soft-blue text-blue-700 dark:bg-gray-600 dark:text-white'
               : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-primary-dark dark:text-gray-300 dark:hover:bg-gray-700'
