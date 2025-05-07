@@ -216,7 +216,7 @@ export const button: SectionContent[] = [
             tabData: createTabs(ID_REACTIVE_FORM, toggleReactiveFormTab(ID_REACTIVE_FORM)),
           },
           {
-            title: 'Reactive Form',
+            title: 'Exclusive Selection',
             variant: 'default',
             config: {
               componentType: 'tabs',
