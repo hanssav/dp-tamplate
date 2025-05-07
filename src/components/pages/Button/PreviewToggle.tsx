@@ -1,7 +1,7 @@
 import Box from '@components/Box';
 import ToggleButtonGroup from '@components/ToggleButtonGroup';
 import Typography from '@components/Typography';
-import { toggleConfigs, ToggleVariant } from '@datas/pages/button/toggleConfig';
+import { toggleConfigs, ToggleVariant } from '@datas/pages/button/config/toggleConfig';
 import React from 'react';
 
 interface PreviewToggleProps {

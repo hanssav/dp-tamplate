@@ -1,6 +1,6 @@
 import Box from '@components/Box';
 import Button from '@components/Button';
-import { buttonConfigs, Variant } from '@datas/pages/button/ButtonConfig';
+import { buttonConfigs, Variant } from '@datas/pages/button/config/buttonConfig';
 
 export const PreviewButtonGroup = ({
   id,

@@ -1,5 +1,5 @@
-import { Variant } from '@datas/pages/button/ButtonConfig';
-import { ToggleVariant } from '@datas/pages/button/toggleConfig';
+import { Variant } from '@datas/pages/button/config/buttonConfig';
+import { ToggleVariant } from '@datas/pages/button/config/toggleConfig';
 import React, { ElementType, ReactNode } from 'react';
 
 // Tipe untuk konten tab
