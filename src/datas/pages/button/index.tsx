@@ -1,6 +1,6 @@
 import { PreviewButtonGroup } from '@components/pages/Button/PreviewButton';
 import { PreviewToggle } from '@components/pages/Button/PreviewToggle';
-import { generateTab, TabContent } from '@datas/pages/button/generateTabs';
+import { generateTab, TabContent } from '@datas/pages/helpers/generateTabs';
 import {
   BasicHtmlPreview,
   BasicToggleHtmlPreview,

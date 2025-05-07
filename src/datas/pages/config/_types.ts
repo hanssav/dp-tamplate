@@ -1,9 +1,9 @@
 import { ApexOptions } from 'apexcharts';
-import { ButtonColor } from '@components/Button';
 import { ColKey } from '@components/Box/boxTheme';
 import { CardVariant } from '@components/_types/Card';
 import { POSITIONS } from '@datas/pages/charts/constants';
 import { ReactNode } from 'react';
+import { ButtonColor } from '@components/Button/buttonTheme';
 
 //
 // 🔹 Shared Types
