@@ -26,7 +26,6 @@ export const BasicToggleHtmlPreview = () => {
         selected.push(option);
       }
   
-      console.log(selected);
     }
   </script>`}
     />
@@ -78,7 +77,7 @@ export const BasicToggleTypescriptPreview = () => {
   
   const basic = {
     options: ['bold', 'italic', 'underline'],
-    onChange: (selected: string[]) => console.log(selected),
+    onChange: (selected: string[]) => selected,
   };
   
   const BasicToggle = () => <ToggleButtonGroup {...basic} />;

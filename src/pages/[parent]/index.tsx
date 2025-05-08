@@ -19,6 +19,10 @@ const ParentMenu = () => {
   const title = getTitleFromPath(location.pathname);
 
   useEffect(() => {
+    document.title = title + ' - Admin';
+  }, [title]);
+
+  useEffect(() => {
     const configKey = toCamelCase(title);
     const selectedConfig = UiConfig[configKey as keyof typeof UiConfig];
 

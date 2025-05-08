@@ -26,7 +26,6 @@ export const ReactiveFormHtmlPreview = () => {
   function handleChange(option) {
     selected = [option]; // Updating selected value
     document.getElementById('selected-text').textContent = option; // Display the selected value
-    console.log('Selected Option:', selected);
   }
 </script>`}
     />
@@ -49,7 +48,6 @@ export const ReactiveFormTypescriptPreview = () => {
         : [...selected, option];
   
       setSelected(updated);
-      console.log(updated);
     };
   
     return (

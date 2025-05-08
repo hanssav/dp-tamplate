@@ -5,7 +5,7 @@ import {
   Overview,
 } from '@datas/pages/autocomplete/helpers';
 import { SectionContent } from '@datas/pages/config/_types';
-import { createTabs } from '@utils/tabHelpers';
+import { createTabs } from '@datas/pages/helpers/tabHelpers';
 
 export const autocomplete: SectionContent[] = [
   {

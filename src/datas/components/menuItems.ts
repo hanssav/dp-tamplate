@@ -60,7 +60,7 @@ export const menuItems: MenuCategory[] = [
         subItems: [
           { href: '/forms/forms-elements/autocomplete', label: 'Autocomplete' },
           { href: '/forms/forms-elements/button', label: 'Button' },
-          { href: '/forms/forms-elements/ceckbox', label: 'Checkbox' },
+          { href: '/forms/forms-elements/checkbox', label: 'Checkbox' },
           { href: '/forms/forms-elements/radio', label: 'Radio' },
           { href: '/forms/forms-elements/datepicker', label: 'Datepicker' },
         ],

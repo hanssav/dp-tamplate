@@ -29,7 +29,6 @@ export const ExclusiveSelectionHtmlPreview = () => {
   function handleChange(option) {
     selected = [option]; // Updating selected value
     document.getElementById('selected-text').textContent = option; // Display the selected value
-    console.log('Selected Option:', selected);
   }
 </script>`}
     />
@@ -51,7 +50,6 @@ const ExclusiveSelection = () => {
 
   const handleChange = (option: string) => {
     setSelected([option]); // Only allow one option selected
-    console.log('Selected Option:', [option]);
   };
 
   return (

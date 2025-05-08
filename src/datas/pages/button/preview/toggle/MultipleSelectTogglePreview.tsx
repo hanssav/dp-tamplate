@@ -29,7 +29,6 @@ export const MultipleSelectHtmlPreview = () => {
       selected.push(option);
     }
 
-    console.log(selected);
   }
 </script>`}
     />
@@ -52,7 +51,6 @@ export const MultipleSelectTypescriptPreview = () => {
         : [...selected, option];
   
       setSelected(updated);
-      console.log(updated);
     };
   
     return (

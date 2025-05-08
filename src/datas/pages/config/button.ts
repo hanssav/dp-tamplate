@@ -13,7 +13,7 @@ import {
   toggleexclusiveSelectionTab,
 } from '@datas/pages/button';
 import { SectionContent } from '@datas/pages/config/_types';
-import { createTabs } from '@utils/tabHelpers';
+import { createTabs } from '@datas/pages/helpers/tabHelpers';
 
 export const ID_BASIC = 'basic';
 export const ID_RAISED = 'raised';
