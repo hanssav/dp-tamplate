@@ -10,9 +10,9 @@ import {
   Accessibility,
 } from 'lucide-react';
 
-export type Variant = 'basic' | 'raised' | 'outline' | 'flat' | 'icon' | 'fab' | 'mini-fab' | 'extended-fab';
+export type ButtonVariant = 'basic' | 'raised' | 'outline' | 'flat' | 'icon' | 'fab' | 'mini-fab' | 'extended-fab';
 
-export const buttonConfigs: Record<Variant, any[]> = {
+export const buttonConfigs: Record<ButtonVariant, any[]> = {
   basic: [
     { label: 'Basic', props: { color: 'basic' } },
     { label: 'Disabled', props: { color: 'basic', disabled: true } },

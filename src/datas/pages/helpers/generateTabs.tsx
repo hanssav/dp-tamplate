@@ -1,6 +1,7 @@
-import { Variant } from '@datas/pages/button/config/buttonConfig';
+import { ElementType, ReactNode, Suspense } from 'react';
+import { ButtonVariant } from '@datas/pages/button/config/buttonConfig';
 import { ToggleVariant } from '@datas/pages/button/config/toggleConfig';
-import { ReactNode, ElementType } from 'react';
+import { CheckboxVariant } from '@datas/pages/checkbox/config/checkboxConfig';
 
 // Tipe untuk konten tab
 export interface TabContent {
@@ -9,9 +10,7 @@ export interface TabContent {
   typescript: ReactNode;
 }
 
-const DefaultHtmlPreview = () => <div>Default HTML Preview</div>;
-const DefaultTypescriptPreview = () => <div>Default TypeScript Preview</div>;
-
+// Preview component props interface
 interface PreviewProps {
   id: string;
 }
@@ -19,11 +18,21 @@ interface PreviewProps {
 export const generateTab = (
   Component: ElementType,
   id: string,
-  variant: Variant | ToggleVariant,
-  HtmlPreview: ElementType<PreviewProps> = DefaultHtmlPreview,
-  TypeScriptPreview: ElementType<PreviewProps> = DefaultTypescriptPreview
-): TabContent => ({
-  preview: <Component id={id} variant={variant} />,
-  html: <HtmlPreview id={id} />,
-  typescript: <TypeScriptPreview id={id} />,
-});
+  variant: ButtonVariant | ToggleVariant | CheckboxVariant,
+  HtmlComponent: React.ComponentType<PreviewProps>,
+  TsComponent: React.ComponentType<PreviewProps>
+): TabContent => {
+  return {
+    preview: <Component id={id} variant={variant} />,
+    html: (
+      <Suspense fallback={<div>Loading HTML Preview...</div>}>
+        <HtmlComponent id={id} />
+      </Suspense>
+    ),
+    typescript: (
+      <Suspense fallback={<div>Loading TypeScript Preview...</div>}>
+        <TsComponent id={id} />
+      </Suspense>
+    ),
+  };
+};

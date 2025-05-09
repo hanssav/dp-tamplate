@@ -25,38 +25,23 @@ export const DefaultContent: React.FC<DefaultContentProps> = ({
   const padding = config?.padding ?? 'p-0';
   const componentType = config?.componentType ?? null;
   const usePaddingInContent = config?.usePaddingInContent ?? false;
+  const id = config.id ?? title;
 
   return (
     <Box className={twMerge('rounded-lg', border)}>
-      <Box
-        col="col-2"
-        justify="between"
-        align="center"
-        className={twMerge('mt-3 flex', padding)}
-      >
+      <Box col="col-2" justify="between" align="center" className={twMerge('mt-3 flex', padding)}>
         <Typography as="h2" textStyle="title">
           {title}
         </Typography>
         <Box className="flex gap-2">
           {button.length > 0 &&
-            button.map((btn, idx) => (
-              <Button
-                key={idx}
-                color={btn.color}
-                label={btn.label}
-                onClick={btn.onclick}
-              />
-            ))}
+            button.map((btn, idx) => <Button key={idx} color={btn.color} label={btn.label} onClick={btn.onclick} />)}
         </Box>
       </Box>
       {headerLine && <HR />}
       <Box className={twMerge(usePaddingInContent ? padding : '')}>
         {componentType === 'tabs' && (
-          <Tabs
-            tabs={tabData}
-            className={twMerge('gap-x-5')}
-            paddingContent={padding}
-          />
+          <Tabs key={id} tabs={tabData} className={twMerge('gap-x-5')} paddingContent={padding} />
         )}
         {children}
       </Box>

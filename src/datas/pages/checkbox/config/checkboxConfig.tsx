@@ -1,7 +1,7 @@
-export type Variant = 'basic';
+export type CheckboxVariant = 'basic-checkbox';
 
-export const checkboxConfig: Record<Variant, any[]> = {
-  basic: [
+export const checkboxConfig: Record<CheckboxVariant, any[]> = {
+  'basic-checkbox': [
     {
       label: 'Audit Logs',
       value: 'audit_logs',
@@ -29,24 +29,6 @@ export const checkboxConfig: Record<Variant, any[]> = {
         { label: 'Add Items', value: 'add_items' },
         { label: 'Update Stock', value: 'update_stock' },
         { label: 'Remove Items', value: 'remove_items' },
-      ],
-    },
-    {
-      label: 'Sales Management',
-      value: 'sales_management',
-      childItem: [
-        { label: 'View Sales', value: 'view_sales' },
-        { label: 'Create Invoices', value: 'create_invoices' },
-        { label: 'Apply Discounts', value: 'apply_discounts' },
-      ],
-    },
-    {
-      label: 'Settings',
-      value: 'settings',
-      childItem: [
-        { label: 'General Settings', value: 'general_settings' },
-        { label: 'Security Settings', value: 'security_settings' },
-        { label: 'Notification Settings', value: 'notification_settings' },
       ],
     },
   ],

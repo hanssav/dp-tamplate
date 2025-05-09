@@ -1,16 +1,27 @@
 import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import hljs from 'highlight.js/lib/core';
+import typescript from 'highlight.js/lib/languages/typescript';
+import javascript from 'highlight.js/lib/languages/javascript';
+import html from 'highlight.js/lib/languages/xml';
+import 'highlight.js/styles/atom-one-dark.css';
+
+// Register only needed languages
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('tsx', typescript);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('js', javascript);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('html', html);
 
 interface CodeBlockProps {
   language: string;
   code: string;
   customClassName?: string;
-  customStyle?: React.CSSProperties; // To support custom inline styles
-  showLineNumbers?: boolean; // To show line numbers
-  wrapLines?: boolean; // To wrap lines of code
-  lineNumberStyle?: React.CSSProperties; // To style line numbers
-  showLanguage?: boolean; // To optionally show the language name
+  customStyle?: React.CSSProperties;
+  showLineNumbers?: boolean;
+  wrapLines?: boolean;
+  lineNumberStyle?: React.CSSProperties;
+  showLanguage?: boolean;
 }
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({
@@ -19,34 +30,47 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   customClassName = '',
   customStyle = {},
   showLineNumbers = true,
-  wrapLines = true,
+  wrapLines = false,
   lineNumberStyle = {},
   showLanguage = false,
 }) => {
+  const codeLines = code.trimEnd().split('\n');
+
   return (
-    <div className={`${customClassName}`}>
-      {showLanguage && (
-        <div className="mb-2 text-xl font-semibold text-blue-600">
-          {language}
-        </div>
-      )}
-      <SyntaxHighlighter
-        language={language}
-        style={oneDark}
-        customStyle={{
-          borderRadius: '0.5rem',
-          padding: '1rem',
-          overflowX: 'auto',
-          scrollbarWidth: 'thin',
-          scrollbarColor: '#4B5563 #1F2937',
-          ...customStyle,
+    <div className={`relative text-sm ${customClassName}`} style={{ fontFamily: 'monospace', ...customStyle }}>
+      {showLanguage && <div className="mb-2 text-xl font-semibold text-blue-500">{language}</div>}
+      <pre
+        className="hljs overflow-x-auto rounded-md p-4"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: showLineNumbers ? '3rem 1fr' : '1fr',
+          whiteSpace: wrapLines ? 'pre-wrap' : 'pre',
+          lineHeight: '1.5',
         }}
-        showLineNumbers={showLineNumbers}
-        wrapLines={wrapLines}
-        lineNumberStyle={lineNumberStyle}
       >
-        {code}
-      </SyntaxHighlighter>
+        {codeLines.map((line, i) => (
+          <React.Fragment key={i}>
+            {showLineNumbers && (
+              <div
+                style={{
+                  color: '#999',
+                  textAlign: 'right',
+                  paddingRight: '0.5rem',
+                  ...lineNumberStyle,
+                }}
+              >
+                {i + 1}
+              </div>
+            )}
+            <code
+              dangerouslySetInnerHTML={{
+                __html: hljs.highlight(line || ' ', { language }).value,
+              }}
+              style={{ lineHeight: '1.5' }}
+            />
+          </React.Fragment>
+        ))}
+      </pre>
     </div>
   );
 };

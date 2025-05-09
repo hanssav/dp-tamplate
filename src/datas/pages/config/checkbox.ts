@@ -2,7 +2,7 @@ import { basicCheckbox } from '@datas/pages/checkbox';
 import { SectionContent } from '@datas/pages/config/_types';
 import { createTabs } from '@datas/pages/helpers/tabHelpers';
 
-export const ID_BASIC_CHECKBOX = 'basic';
+export const ID_BASIC_CHECKBOX = 'basic-checkbox';
 export const checkbox: SectionContent[] = [
   {
     variant: 'default',
@@ -26,6 +26,7 @@ export const checkbox: SectionContent[] = [
             title: 'Basic',
             variant: 'default',
             config: {
+              id: ID_BASIC_CHECKBOX,
               componentType: 'tabs',
               inputType: 'option',
               headerLine: true,
@@ -35,7 +36,20 @@ export const checkbox: SectionContent[] = [
             },
             tabData: createTabs(ID_BASIC_CHECKBOX, basicCheckbox(ID_BASIC_CHECKBOX)),
           },
-          {},
+          {
+            title: 'Basic',
+            variant: 'default',
+            config: {
+              id: ID_BASIC_CHECKBOX,
+              componentType: 'tabs',
+              inputType: 'option',
+              headerLine: true,
+              border: 'border dark:border-gray-700',
+              padding: 'px-5 py-2',
+              margin: 'mb-5',
+            },
+            tabData: createTabs(ID_BASIC_CHECKBOX, basicCheckbox(ID_BASIC_CHECKBOX)),
+          },
         ],
       },
     ],

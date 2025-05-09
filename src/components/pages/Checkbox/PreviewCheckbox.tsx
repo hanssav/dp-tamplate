@@ -1,12 +1,12 @@
 import Box from '@components/Box';
 import Checkbox from '@components/Checkbox';
-import { checkboxConfig, Variant } from '@datas/pages/checkbox/config/checkboxConfig';
+import { checkboxConfig, CheckboxVariant } from '@datas/pages/checkbox/config/checkboxConfig';
 import { useState } from 'react';
 
 const getChildValues = (item: any) => item.childItem?.map((c: any) => c.value) || [];
 const exclude = (arr: string[], toRemove: string[]) => arr.filter(val => !toRemove.includes(val));
 
-export const PreviewCheckbox = ({ id, variant }: { id: string; variant: Variant }) => {
+export const PreviewCheckbox = ({ id, variant }: { id: string; variant: CheckboxVariant }) => {
   const [checkedParents, setCheckedParents] = useState<string[]>([]);
   const [checkedChildren, setCheckedChildren] = useState<string[]>([]);
 
