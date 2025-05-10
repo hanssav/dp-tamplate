@@ -42,13 +42,13 @@ export const reactiveFormCheckbox = (id: string): TabContent =>
     id,
     'reactive-form-checkbox',
     lazy(() =>
-      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
-        default: mod['CheckboxConfigurationPreviewHtml'],
+      import('@datas/pages/checkbox/preview/reactiveFormPreview').then(mod => ({
+        default: mod['CheckboxReactiveFormPreviewHtml'],
       }))
     ),
     lazy(() =>
-      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
-        default: mod['CheckboxConfigurationPreviewTsx'],
+      import('@datas/pages/checkbox/preview/reactiveFormPreview').then(mod => ({
+        default: mod['CheckboxReactiveFormPreviewTsx'],
       }))
     )
   );

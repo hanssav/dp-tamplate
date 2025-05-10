@@ -1,0 +1,43 @@
+import Box from '@components/Box';
+import Checkbox from '@components/Checkbox';
+import Typography from '@components/Typography';
+
+const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
+  const allKeys = ['pepperoni', 'extraCheese', 'mushroom'];
+
+  const resultsDatas = allKeys.reduce(
+    (acc, key) => {
+      acc[key] = checkedChildren.includes(key);
+      return acc;
+    },
+    {} as Record<string, boolean>
+  );
+
+  const resultsString = `{ ${Object.entries(resultsDatas)
+    .map(([key, value]) => `"${key}": ${value}`)
+    .join(', ')} }`;
+
+  return (
+    <Box className="shodow-none gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7">
+      <Typography as="h4" textStyle="body" className="font-bold">
+        {item.title}:
+      </Typography>
+
+      {item.label ? (
+        <Checkbox
+          label={item.label}
+          disabled={checkedRadio.config === 'disabled'}
+          align={checkedRadio.align}
+          checked={checkedRadio.config === 'checked'}
+          indeterminate={checkedRadio.config === 'indeterminate'}
+        />
+      ) : (
+        <div className="text-sm text-gray-800">
+          <span>{resultsString}</span>
+        </div>
+      )}
+    </Box>
+  );
+};
+
+export default ResultDisplay;
