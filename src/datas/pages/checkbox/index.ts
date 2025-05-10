@@ -18,3 +18,37 @@ export const basicCheckbox = (id: string): TabContent =>
       }))
     )
   );
+
+export const configurationCheckbox = (id: string): TabContent =>
+  generateTab(
+    PreviewCheckbox,
+    id,
+    'configuration-checkbox',
+    lazy(() =>
+      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
+        default: mod['CheckboxConfigurationPreviewHtml'],
+      }))
+    ),
+    lazy(() =>
+      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
+        default: mod['CheckboxConfigurationPreviewTsx'],
+      }))
+    )
+  );
+
+export const reactiveFormCheckbox = (id: string): TabContent =>
+  generateTab(
+    PreviewCheckbox,
+    id,
+    'reactive-form-checkbox',
+    lazy(() =>
+      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
+        default: mod['CheckboxConfigurationPreviewHtml'],
+      }))
+    ),
+    lazy(() =>
+      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
+        default: mod['CheckboxConfigurationPreviewTsx'],
+      }))
+    )
+  );
