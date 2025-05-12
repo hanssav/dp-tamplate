@@ -20,7 +20,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   indeterminate = false,
   radio = false,
   align = 'after',
-  name, // menambahkan name untuk radio button
+  name, // name for radio button
   onChange,
   className = '',
 }) => {
@@ -37,17 +37,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
     onChange?.(!checked);
   };
 
-  const baseClass = 'h-5 w-5 border-gray-300 text-blue-600 disabled:opacity-50 disabled:cursor-not-allowed ';
+  const baseClass =
+    'h-5 w-5 border-gray-300 text-blue-600 disabled:opacity-50 disabled:cursor-not-allowed dark:border-gray-700 dark:bg-bg-dark dark:checked:bg-blue-500 dark:disabled:border-gray-100 dark:checked:bg-blue-600';
 
   const shapeClass = radio
     ? `
-      appearance-none rounded-full border border-blue-500
-      checked:bg-blue-600 checked:border-blue-600
-      checked:ring-2 checked:ring-blue-300
-      relative
-      before:content-[''] before:absolute before:inset-1 before:rounded-full 
-      before:bg-white
-      checked:before:bg-white
+    text-blue-600 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-bg-dark dark:border-gray-600
     `
     : 'form-checkbox rounded';
 
@@ -57,12 +52,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
     <label className={twMerge('flex w-fit cursor-pointer gap-2', disabled && 'cursor-not-allowed opacity-50')}>
       {align === 'before' && label && <span>{label}</span>}
       <input
-        type={radio ? 'radio' : 'checkbox'} // Menentukan tipe input (checkbox atau radio)
+        type={radio ? 'radio' : 'checkbox'}
         ref={checkboxRef}
         checked={checked}
         disabled={disabled}
         onChange={handleChange}
-        name={radio ? name : undefined} // Hanya memberi name jika itu radio button
+        name={radio ? name : undefined}
         className={inputClass}
       />
       {align === 'after' && label && <span>{label}</span>}

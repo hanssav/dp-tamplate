@@ -18,7 +18,7 @@ const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
     .join(', ')} }`;
 
   return (
-    <Box className="shodow-none gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7">
+    <Box className="shodow-none gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7 dark:border-gray-700 dark:bg-[#232e39]">
       <Typography as="h4" textStyle="body" className="font-bold">
         {item.title}:
       </Typography>
@@ -32,7 +32,7 @@ const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
           indeterminate={checkedRadio.config === 'indeterminate'}
         />
       ) : (
-        <div className="text-sm text-gray-800">
+        <div className="text-sm text-gray-800 dark:text-current">
           <span>{resultsString}</span>
         </div>
       )}

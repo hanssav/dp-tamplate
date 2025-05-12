@@ -45,7 +45,7 @@ export const PreviewCheckbox = ({ id, variant }: { id: string; variant: Checkbox
   };
 
   return (
-    <Box id={id} margin="mb-3" className="mb-3 space-y-4">
+    <Box id={id} margin="mb-3" className="space-y-4">
       {checkboxConfig[variant].map((item, index) => {
         if (item.type === 'radio') {
           return (
