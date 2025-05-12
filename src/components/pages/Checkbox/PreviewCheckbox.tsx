@@ -3,13 +3,22 @@ import CheckboxGroup from '@components/pages/Checkbox/CheckboxGroup';
 import RadioGroup from '@components/pages/Checkbox/RadioGroup';
 import ResultDisplay from '@components/pages/Checkbox/ResultDisplay';
 import { checkboxConfig, CheckboxVariant } from '@datas/pages/checkbox/config/checkboxConfig';
+import { radioConfg, RadioVariant } from '@datas/pages/radio/config/radioConfig';
 import { useState } from 'react';
 import { getChildValues, exclude } from './utils';
 
-export const PreviewCheckbox = ({ id, variant }: { id: string; variant: CheckboxVariant }) => {
+type Variant = CheckboxVariant | RadioVariant;
+const checkboxVariants = Object.keys(checkboxConfig) as CheckboxVariant[];
+function isCheckboxVariant(v: Variant): v is CheckboxVariant {
+  return checkboxVariants.includes(v as CheckboxVariant);
+}
+
+export const PreviewCheckbox = ({ id, variant }: { id: string; variant: Variant }) => {
   const [checkedParents, setCheckedParents] = useState<string[]>([]);
   const [checkedChildren, setCheckedChildren] = useState<string[]>([]);
   const [checkedRadio, setCheckedRadio] = useState<Record<string, string>>({});
+
+  const datas = isCheckboxVariant(variant) ? checkboxConfig[variant] : radioConfg[variant];
 
   const toggleParent = (item: any) => {
     const childValues = getChildValues(item);
@@ -46,7 +55,7 @@ export const PreviewCheckbox = ({ id, variant }: { id: string; variant: Checkbox
 
   return (
     <Box id={id} margin="mb-3" className="space-y-4">
-      {checkboxConfig[variant].map((item, index) => {
+      {datas?.map((item, index) => {
         if (item.type === 'radio') {
           return (
             <RadioGroup

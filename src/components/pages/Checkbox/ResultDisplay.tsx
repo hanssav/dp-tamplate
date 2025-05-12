@@ -1,6 +1,7 @@
 import Box from '@components/Box';
 import Checkbox from '@components/Checkbox';
 import Typography from '@components/Typography';
+import { twMerge } from 'tailwind-merge';
 
 const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
   const allKeys = ['pepperoni', 'extraCheese', 'mushroom'];
@@ -18,9 +19,14 @@ const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
     .join(', ')} }`;
 
   return (
-    <Box className="shodow-none gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7 dark:border-gray-700 dark:bg-[#232e39]">
+    <Box
+      className={twMerge(
+        item.parentName && 'flex',
+        'shodow-none gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7 dark:border-gray-700 dark:bg-[#232e39]'
+      )}
+    >
       <Typography as="h4" textStyle="body" className="font-bold">
-        {item.title}:
+        {item.title}
       </Typography>
 
       {item.label ? (
@@ -31,10 +37,12 @@ const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
           checked={checkedRadio.config === 'checked'}
           indeterminate={checkedRadio.config === 'indeterminate'}
         />
-      ) : (
+      ) : item.showMultiple ? (
         <div className="text-sm text-gray-800 dark:text-current">
           <span>{resultsString}</span>
         </div>
+      ) : (
+        <span className="font-bold">&nbsp;{checkedRadio[item.parentName]}</span>
       )}
     </Box>
   );

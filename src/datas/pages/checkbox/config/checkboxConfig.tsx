@@ -74,6 +74,7 @@ export const checkboxConfig: Record<CheckboxVariant, any[]> = {
     {
       title: 'You Chose: ',
       result: true,
+      showMultiple: true,
     },
   ],
 };
