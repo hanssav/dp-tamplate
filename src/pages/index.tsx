@@ -1,4 +1,5 @@
 import ToggleButtonGroup from '@components/ToggleButtonGroup';
+import { Datepicker } from 'flowbite-react';
 import { Menu } from 'lucide-react';
 import Button from '../components/Button';
 import DashboardLayout from '../components/DashboardLayout';
@@ -21,10 +22,8 @@ const Home = () => {
         <Button color="light" onClick={() => {}} rounded="md">
           <Menu size={20} />
         </Button>
-        <ToggleButtonGroup
-          options={['Bold', 'Italic', 'Underline']}
-          multiple={false}
-        />
+        <ToggleButtonGroup options={['Bold', 'Italic', 'Underline']} multiple={false} />
+        <Datepicker />
       </div>
     </DashboardLayout>
   );
