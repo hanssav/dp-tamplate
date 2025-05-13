@@ -24,13 +24,7 @@ export const FriendSuggestionCardContent: React.FC<
 > = ({ content }) => {
   return (
     <Box align="start" className="flex flex-col">
-      <Avatar
-        img={content.mainImage}
-        alt={content.name}
-        size="lg"
-        rounded
-        className="mb-4"
-      />
+      <Avatar img={content.mainImage} alt={content.name} size="lg" rounded className="mb-4" />
 
       <Typography as="h5" textStyle="body" className="font-semibold">
         {content.name}
@@ -56,7 +50,7 @@ export const FriendSuggestionCardContent: React.FC<
 
       <Box margin="mt-5" className="w-full gap-2">
         <Button>Add Friend</Button>
-        <Button color="outline">Remove</Button>
+        <Button outlineColor="primary">Remove</Button>
       </Box>
     </Box>
   );

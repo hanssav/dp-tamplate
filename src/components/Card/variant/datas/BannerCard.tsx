@@ -55,12 +55,7 @@ export const BannersCard: React.FC<BannersSectionProps> = ({ content }) => {
           item.button?.length ? (
             <Box className={buttonWrapperClass}>
               {item.button.map((btn, idx) => (
-                <Button
-                  key={idx}
-                  onClick={btn.onclick}
-                  color={btn.color}
-                  size="md"
-                >
+                <Button key={idx} onClick={btn.onclick} color={btn.color} size="md" {...btn.props}>
                   {btn.label}
                 </Button>
               ))}

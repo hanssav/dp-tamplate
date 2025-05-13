@@ -5,12 +5,12 @@ interface ColorMap {
 }
 
 export const bgMap: ColorMap = {
-  primary: 'bg-light-primary dark:bg-primary-dark',
-  warning: 'bg-light-warning dark:bg-warning-dark',
-  secondary: 'bg-light-secondary dark:bg-secondary-dark',
-  error: 'bg-light-error dark:bg-error-dark',
-  success: 'bg-light-success dark:bg-success-dark',
-  light: 'bg-white dark:bg-primary-dark',
+  primary: 'bg-light-primary dark:bg-dark-primary',
+  warning: 'bg-light-warning dark:bg-dark-warning',
+  secondary: 'bg-light-secondary dark:bg-dark-secondary',
+  error: 'bg-light-error dark:bg-dark-error',
+  success: 'bg-light-success dark:bg-dark-success',
+  light: 'bg-white dark:bg-dark-primary',
 };
 
 export const textMap: ColorMap = {
@@ -28,7 +28,7 @@ const baseCardConfig = {
     none: 'shadow-none',
   },
   border: 'border-none',
-  darkBg: 'dark:bg-primary-dark',
+  darkBg: 'dark:bg-dark-primary',
   rounded: 'rounded-lg',
   padding: 'p-6',
   flexChildren: 'flex h-full flex-col justify-center',

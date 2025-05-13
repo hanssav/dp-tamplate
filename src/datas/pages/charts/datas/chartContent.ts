@@ -126,7 +126,7 @@ export const chartContentDatas2: SectionContent[] = [
     },
     button: [
       { color: 'primary', label: 'Buy', onclick: () => {} },
-      { color: 'outline', label: 'Sell', onclick: () => {} },
+      { props: {outlineColor: 'primary', color: 'outline'}, label: 'Sell', onclick: () => {} },
     ],
     col: 'col-3',
     childOptions: {
@@ -239,33 +239,23 @@ export const chartContentData3: SectionContent[] = [
           label: 'Salary',
           value: '$36,358',
           icon: Grip,
-          iconColor:
-            'text-primary hover:text-white dark:text-primary dark:hover:text-white',
+          iconColor: 'text-primary hover:text-white dark:text-primary dark:hover:text-white',
           bgIcon:
-            'bg-light-primary enabled:hover:bg-[#7599FF] enabled:dark:bg-primary-dark dark:enabled:hover:bg-[#7599FF] ',
+            'bg-light-primary enabled:hover:bg-[#7599FF] enabled:dark:bg-dark-primary dark:enabled:hover:bg-[#7599FF] ',
         },
         {
           label: 'Expance',
           value: '$5,296',
           icon: Grip,
-          bgIcon:
-            'bg-light-secondary enabled:hover:bg-[#64C8FF] dark:bg-secondary-dark',
-          iconColor:
-            'text-secondary  hover:text-white dark:text-primary dark:hover:text-white',
+          bgIcon: 'bg-light-secondary enabled:hover:bg-[#64C8FF] dark:bg-dark-secondary',
+          iconColor: 'text-secondary  hover:text-white dark:text-primary dark:hover:text-white',
         },
       ],
       title: 'Yearly Sales',
       desc: 'Every month',
     },
     title: 'Yearly Sales',
-    chartColor: [
-      '#E7EDFF',
-      '#E7EDFF',
-      '#7599FF',
-      '#E7EDFF',
-      '#E7EDFF',
-      '#E7EDFF',
-    ],
+    chartColor: ['#E7EDFF', '#E7EDFF', '#7599FF', '#E7EDFF', '#E7EDFF', '#E7EDFF'],
     series: yearlyChartSeries,
     options: yearlyChartOptions,
     span: 1,
@@ -320,14 +310,7 @@ export const chartContentData4: SectionContent[] = [
           summaryIcon: ArrowUp,
           bgIcon: 'text-red-500',
         },
-        chartColor: [
-          '#E7EDFF',
-          '#E7EDFF',
-          '#64C8FF',
-          '#E7EDFF',
-          '#E7EDFF',
-          '#E7EDFF',
-        ],
+        chartColor: ['#E7EDFF', '#E7EDFF', '#64C8FF', '#E7EDFF', '#E7EDFF', '#E7EDFF'],
         series: pageImpressionChartSeries,
         options: pageImpressionChartOptions,
       },
@@ -388,19 +371,16 @@ export const chartContentData4: SectionContent[] = [
           label: 'Profit',
           value: '$36,358',
           icon: Grip,
-          iconColor:
-            'text-primary hover:text-white dark:text-primary dark:hover:text-white',
+          iconColor: 'text-primary hover:text-white dark:text-primary dark:hover:text-white',
           bgIcon:
-            'bg-light-primary enabled:hover:bg-[#7599FF] enabled:dark:bg-primary-dark dark:enabled:hover:bg-[#7599FF] ',
+            'bg-light-primary enabled:hover:bg-[#7599FF] enabled:dark:bg-dark-primary dark:enabled:hover:bg-[#7599FF] ',
         },
         {
           label: 'Expance',
           value: '$5,296',
           icon: Grip,
-          bgIcon:
-            'bg-light-secondary enabled:hover:bg-[#64C8FF] dark:bg-secondary-dark',
-          iconColor:
-            'text-secondary  hover:text-white dark:text-primary dark:hover:text-white',
+          bgIcon: 'bg-light-secondary enabled:hover:bg-[#64C8FF] dark:bg-dark-secondary',
+          iconColor: 'text-secondary  hover:text-white dark:text-primary dark:hover:text-white',
         },
       ],
       title: 'Sales Overview',

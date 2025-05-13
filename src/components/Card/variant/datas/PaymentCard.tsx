@@ -218,7 +218,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({
               textColor={item.textColor}
             />
           ))}
-          <Button color="outline" className="mt-6 w-full">
+          <Button outlineColor="primary" className="mt-6">
             View all Transactions
           </Button>
         </Box>

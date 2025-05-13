@@ -8,7 +8,7 @@ export const PreviewButtonGroup = ({ id, variant }: { id: string; variant: Butto
       {buttonConfigs[variant].map(({ label, props, icon }, index) => (
         <Button key={index} {...props}>
           {icon && label ? (
-            <Box className="flex gap-2">
+            <Box className="flex items-center justify-center gap-1">
               {icon} {label}
             </Box>
           ) : icon ? (

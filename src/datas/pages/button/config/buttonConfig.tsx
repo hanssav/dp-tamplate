@@ -24,7 +24,7 @@ export const buttonConfigs: Record<ButtonVariant, any[]> = {
     { label: 'Link', props: { color: 'basic', raised: true, link: true } },
   ],
   outline: [
-    { label: 'Primary', props: { color: 'outline' } },
+    { label: 'Primary', props: { color: 'outline', outlineColor: 'primary' } },
     {
       label: 'Secondary',
       props: { color: 'outline', outlineColor: 'secondary' },
@@ -32,7 +32,7 @@ export const buttonConfigs: Record<ButtonVariant, any[]> = {
     { label: 'Warning', props: { color: 'outline', outlineColor: 'warning' } },
     { label: 'Error', props: { color: 'outline', outlineColor: 'error' } },
     { label: 'Success', props: { color: 'outline', outlineColor: 'success' } },
-    { label: 'Disabled', props: { color: 'outline', disabled: true } },
+    { label: 'Disabled', props: { color: 'basic', disabled: true } },
     { label: 'Link', props: { color: 'outline', outlineColor: 'link' } },
   ],
   flat: [
@@ -45,18 +45,18 @@ export const buttonConfigs: Record<ButtonVariant, any[]> = {
     { label: 'Link', props: { color: 'primary' } },
   ],
   icon: [
-    { props: { color: 'icon', pill: true, size: 'icon' }, icon: <Home /> },
+    { props: { color: 'basic', pill: true, size: 'icon' }, icon: <Home /> },
     {
-      props: { color: 'icon', pill: true, size: 'icon' },
+      props: { color: 'basic', pill: true, size: 'icon' },
       icon: <SlidersHorizontal />,
     },
     {
-      props: { color: 'icon', pill: true, size: 'icon' },
+      props: { color: 'basic', pill: true, size: 'icon' },
       icon: <LayoutGrid />,
     },
-    { props: { color: 'icon', pill: true, size: 'icon' }, icon: <Heart /> },
+    { props: { color: 'basic', pill: true, size: 'icon' }, icon: <Heart /> },
     {
-      props: { color: 'icon', pill: true, size: 'icon', disabled: true },
+      props: { color: 'basic', pill: true, size: 'icon', disabled: true },
       icon: <MessageSquare />,
     },
   ],
@@ -100,22 +100,40 @@ export const buttonConfigs: Record<ButtonVariant, any[]> = {
   'extended-fab': [
     {
       label: 'Delete',
-      props: { color: 'extended-fab', rounded: 'xl' },
+      props: {
+        color: 'basic',
+        size: 'lg',
+        rounded: 'lg',
+        className:
+          'rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-800 dark:text-white dark:hover:bg-blue-700',
+      },
       icon: <Trash2 />,
     },
     {
       label: 'Bookmark',
-      props: { color: 'extended-fab', rounded: 'xl' },
+      props: {
+        color: 'basic',
+        size: 'lg',
+        rounded: 'lg',
+        className:
+          'rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-800 dark:text-white dark:hover:bg-blue-700',
+      },
       icon: <Bookmark />,
     },
     {
       label: 'Home',
-      props: { color: 'extended-fab', rounded: 'xl' },
+      props: {
+        color: 'basic',
+        size: 'lg',
+        rounded: 'lg',
+        className:
+          'rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-800 dark:text-white dark:hover:bg-blue-700',
+      },
       icon: <Home />,
     },
     {
       label: 'Heart',
-      props: { color: 'extended-fab', rounded: 'xl', disabled: true },
+      props: { color: 'basic', size: 'lg', rounded: 'xl', disabled: true },
       icon: <Heart />,
     },
   ],

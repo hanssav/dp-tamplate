@@ -5,12 +5,12 @@ import { twMerge } from 'tailwind-merge';
 import { NavLink, useLocation } from 'react-router';
 import DotIcon from '@assets/icons/RouteIcon';
 import IMAGE_CONSTANTS from '@constant/images';
-import { customButtonTheme } from '@components/Button/buttonTheme';
 import SidebarLogo from '@components/SideBar/SidebarLogo';
 import Typography from '@components/Typography';
 import Box from '@components/Box';
 import Button from '@components/Button';
 import { useSidebar } from '@context/useSidebar';
+import { themes } from '@assets/themes';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -37,13 +37,14 @@ const SidebarMenu: React.FC<SidebarProps> = ({ isSidebarOpen, isMobileSidebarOpe
 
   const getIconClass = () => 'h-5 w-5';
 
+  const { button: btnTheme } = themes;
   const getNavLinkClass = (isActive: boolean) =>
     twMerge(
       'flex items-center gap-x-2 rounded-lg p-3 text-sm',
       isSidebarOpen ? 'pl-5' : 'grid justify-items-center',
       isActive
-        ? `${customButtonTheme.color.primary} ${customButtonTheme.rounded.lg}`
-        : 'hover:text-grey-900 text-gray-900 hover:bg-soft-blue dark:text-white dark:hover:bg-primary-dark'
+        ? `${btnTheme.color.bg.primary} ${btnTheme.rounded.lg}`
+        : 'hover:text-grey-900 dark:hover:bg-dark-primary text-gray-900 hover:bg-soft-blue dark:text-white'
     );
 
   const getCollapseClass = (isActive: boolean) =>

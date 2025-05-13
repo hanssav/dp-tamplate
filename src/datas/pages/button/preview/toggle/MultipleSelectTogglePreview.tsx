@@ -63,7 +63,7 @@ export const MultipleSelectTypescriptPreview = () => {
               key={index}
               type="button"
               onClick={() => handleToggle(option)}
-              className={\`flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 \${isActive ? 'bg-soft-blue text-blue-700 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-700' : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-primary-dark dark:text-gray-300 dark:hover:bg-gray-700'}\`}
+              className={\`flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 \${isActive ? 'bg-soft-blue text-blue-700 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-700' : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-primary dark:text-gray-300 dark:hover:bg-gray-700'}\`}
             >
               {isActive && <span className="mr-2 text-lg">✓</span>}
               {option}

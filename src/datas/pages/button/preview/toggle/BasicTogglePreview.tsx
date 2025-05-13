@@ -5,13 +5,13 @@ export const BasicToggleHtmlPreview = () => {
     <CodeBlock
       language="html"
       code={`<div class="flex overflow-hidden rounded-md border border-gray-300 dark:border-gray-700">
-    <button type="button" class="flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 bg-white text-gray-700 hover:bg-gray-50 dark:bg-primary-dark dark:text-gray-300 dark:hover:bg-gray-700" onclick="handleToggle('bold')">
+    <button type="button" class="flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-primary dark:text-gray-300 dark:hover:bg-gray-700" onclick="handleToggle('bold')">
       <span class="mr-2 text-lg">✓</span>bold
     </button>
-    <button type="button" class="flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 bg-white text-gray-700 hover:bg-gray-50 dark:bg-primary-dark dark:text-gray-300 dark:hover:bg-gray-700" onclick="handleToggle('italic')">
+    <button type="button" class="flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-primary dark:text-gray-300 dark:hover:bg-gray-700" onclick="handleToggle('italic')">
       <span class="mr-2 text-lg">✓</span>italic
     </button>
-    <button type="button" class="flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 bg-white text-gray-700 hover:bg-gray-50 dark:bg-primary-dark dark:text-gray-300 dark:hover:bg-gray-700" onclick="handleToggle('underline')">
+    <button type="button" class="flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-primary dark:text-gray-300 dark:hover:bg-gray-700" onclick="handleToggle('underline')">
       <span class="mr-2 text-lg">✓</span>underline
     </button>
   </div>
@@ -56,7 +56,7 @@ export const BasicToggleTypescriptPreview = () => {
           const isActive = selected.includes(option);
   
           const buttonClass = twMerge(
-            \`flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 \${isActive ? 'bg-soft-blue text-blue-700 dark:bg-gray-600 dark:text-white' : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-primary-dark dark:text-gray-300 dark:hover:bg-gray-700'}\`
+            \`flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 \${isActive ? 'bg-soft-blue text-blue-700 dark:bg-gray-600 dark:text-white' : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-primary dark:text-gray-300 dark:hover:bg-gray-700'}\`
           );
   
           return (

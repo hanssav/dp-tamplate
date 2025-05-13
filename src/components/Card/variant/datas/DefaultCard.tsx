@@ -35,7 +35,11 @@ export const DefaultContent: React.FC<DefaultContentProps> = ({
         </Typography>
         <Box className="flex gap-2">
           {button.length > 0 &&
-            button.map((btn, idx) => <Button key={idx} color={btn.color} label={btn.label} onClick={btn.onclick} />)}
+            button.map((btn, idx) => (
+              <Button key={idx} color={btn.color} label={btn.label} onClick={btn.onclick} {...btn.props}>
+                {btn.label}
+              </Button>
+            ))}
         </Box>
       </Box>
       {headerLine && <HR />}

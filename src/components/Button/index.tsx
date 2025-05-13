@@ -1,8 +1,4 @@
-import {
-  ButtonProps,
-  customButtonTheme,
-  getDynamicButtonTheme,
-} from '@components/Button/buttonTheme';
+import { ButtonProps, buttonTheme } from '@components/Button/theme';
 import { Button as ButtonFlowbite } from 'flowbite-react';
 
 export default function Button({
@@ -11,34 +7,30 @@ export default function Button({
   rounded,
   onClick,
   children,
-  label,
   className = '',
   link = false,
   raised = false,
   outlineColor,
   ...props
 }: ButtonProps) {
-  //dynamic theme
-  const theme = getDynamicButtonTheme({
-    link,
-    raised,
-    disabled: props.disabled,
-    outlineColor,
-    color,
-    customButtonTheme,
-    rounded,
-  });
-
   return (
     <ButtonFlowbite
-      theme={theme}
+      theme={buttonTheme({
+        link,
+        raised,
+        disabled: props.disabled,
+        outlineColor,
+        color,
+        size,
+        rounded,
+      })}
       color={color}
       size={size}
-      className={`${className}`}
+      className={className}
       onClick={onClick}
       {...props}
     >
-      {label ?? children}
+      {children}
     </ButtonFlowbite>
   );
 }

@@ -102,11 +102,7 @@ const MonthlyEarningContent: React.FC<{ content: ChartCardContent }> = ({
             {title}
           </Typography>
         </Box>
-        <Box
-          margin=" "
-          className="rounded-lg bg-light-secondary dark:bg-secondary-dark"
-          align="center"
-        >
+        <Box margin=" " className="dark:bg-dark-secondary rounded-lg bg-light-secondary" align="center">
           <Button color="light" size="icon" />
         </Box>
       </Box>

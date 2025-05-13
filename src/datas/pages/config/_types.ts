@@ -3,7 +3,7 @@ import { ColKey } from '@components/Box/boxTheme';
 import { CardVariant } from '@components/_types/Card';
 import { POSITIONS } from '@datas/pages/charts/constants';
 import { ReactNode } from 'react';
-import { ButtonColor } from '@components/Button/buttonTheme';
+import { ButtonColor } from '@components/Button/theme';
 
 //
 // 🔹 Shared Types
@@ -12,6 +12,7 @@ export interface SectionButton {
   label: string;
   onclick: () => void;
   color?: ButtonColor;
+  [key: string]: any;
 }
 
 export type MasonryConfig = {

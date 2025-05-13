@@ -40,7 +40,7 @@ export const datepickerTheme = createTheme({
       base: 'mt-2 flex space-x-2',
       button: {
         base: 'w-full rounded-lg px-5 py-2 text-center text-sm font-medium focus:ring-4 focus:ring-cyan-300',
-        today: 'dark:primary bg-primary text-white hover:bg-primary-hover dark:hover:bg-primary-hover',
+        today: 'dark:primary hover:bg-hover-primary dark:hover:bg-hover-primary bg-primary text-white',
         clear:
           'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600',
       },
@@ -57,7 +57,7 @@ export const datepickerTheme = createTheme({
         item: {
           // item date of the day
           base: 'block flex-1 cursor-pointer rounded-full border-0 text-center text-sm font-semibold leading-9 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600',
-          selected: 'bg-primary text-white hover:bg-primary-hover dark:hover:bg-primary-hover',
+          selected: 'hover:bg-hover-primary dark:hover:bg-hover-primary bg-primary text-white',
           disabled: 'text-gray-500',
         },
       },
@@ -67,7 +67,7 @@ export const datepickerTheme = createTheme({
         base: 'grid w-64 grid-cols-4',
         item: {
           base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600',
-          selected: 'bg-primary text-white hover:bg-primary-hover',
+          selected: 'hover:bg-hover-primary bg-primary text-white',
           disabled: 'text-gray-500',
         },
       },
@@ -77,7 +77,7 @@ export const datepickerTheme = createTheme({
         base: 'grid w-64 grid-cols-4',
         item: {
           base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600',
-          selected: 'bg-primary text-white hover:bg-primary-hover',
+          selected: 'hover:bg-hover-primary bg-primary text-white',
           disabled: 'text-gray-500',
         },
       },
@@ -87,7 +87,7 @@ export const datepickerTheme = createTheme({
         base: 'grid w-64 grid-cols-4',
         item: {
           base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600',
-          selected: 'bg-primary text-white hover:bg-primary-hover',
+          selected: 'hover:bg-hover-primary bg-primary text-white',
           disabled: 'text-gray-500',
         },
       },

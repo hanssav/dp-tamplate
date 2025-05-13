@@ -7,30 +7,31 @@ export default {
     extend: {
       colors: {
         primary: '#5d87ff',
-        'primary-hover': '#6c94ff',
+        'hover-primary': '#6c94ff',
         'light-primary': '#E7EDFF',
-        'primary-dark': '#1C252E',
+        'dark-hover-light-primary': '#2A3541',
+        'dark-primary': '#1C252E',
         'soft-blue': '#F2F6FF', // actually for hover when outline
 
         warning: '#ffae1f',
-        'warning-hover': '#ffba3d',
+        'hover-warning': '#ffba3d',
         'light-warning': '#FFEAC7', // actually for hover when outline
-        'warning-dark': '#4F3E21',
+        'dark-warning': '#4F3E21',
 
         secondary: '#44b7f7 ',
-        'secondary-hover': '#65c5f9',
+        'hover-secondary': '#65c5f9',
         'light-secondary': '#E3F4FE',
-        'secondary-dark': '#1B3141',
+        'dark-secondary': '#1B3141',
 
         error: 'rgb(250, 137, 107)', // optional: kalau kamu mau pakai text-error
-        'error-hover': 'rgb(252, 153, 125)',
+        'hover-error': 'rgb(252, 153, 125)',
         'light-error': '#FEE3E6',
-        'error-dark': '#362029',
+        'dark-error': '#362029',
 
         success: '#13deb9',
-        'success-hover': '#2eeecd',
+        'hover-success': '#2eeecd',
         'light-success': '#C4F7ED',
-        'success-dark': '#144B47',
+        'dark-success': '#144B47',
 
         'dark-hover': '#212D3E',
         'bg-dark': '#1C252E',
