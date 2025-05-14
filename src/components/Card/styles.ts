@@ -6,10 +6,10 @@ interface ColorMap {
 
 export const bgMap: ColorMap = {
   primary: 'bg-light-primary dark:bg-dark-primary',
-  warning: 'bg-light-warning dark:bg-dark-warning',
-  secondary: 'bg-light-secondary dark:bg-dark-secondary',
-  error: 'bg-light-error dark:bg-dark-error',
-  success: 'bg-light-success dark:bg-dark-success',
+  warning: 'bg-light-warning dark:bg-dark-hover-light-warning',
+  secondary: 'bg-light-secondary dark:bg-dark-hover-light-secondary',
+  error: 'bg-light-error dark:bg-dark-hover-light-error',
+  success: 'bg-light-success dark:bg-dark-hover-light-success',
   light: 'bg-white dark:bg-dark-primary',
 };
 

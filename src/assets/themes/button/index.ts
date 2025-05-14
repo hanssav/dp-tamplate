@@ -23,10 +23,10 @@ export const button = {
     defaultText: 'text-current',
     outline: {
       primary: 'hover:bg-light-primary dark:hover:bg-dark-hover-light-primary',
-      secondary: 'hover:bg-light-secondary dark:hover:bg-dark-secondary',
-      warning: 'hover:bg-light-warning dark:hover:bg-dark-warning',
-      error: 'hover:bg-light-error dark:hover:bg-dark-error',
-      success: 'hover:bg-light-success dark:hover:bg-dark-success',
+      secondary: 'hover:bg-light-secondary dark:hover:bg-dark-hover-light-secondary',
+      warning: 'hover:bg-light-warning dark:hover:bg-dark-hover-light-warning',
+      error: 'hover:bg-light-error dark:hover:bg-dark-hover-light-error',
+      success: 'hover:bg-light-success dark:hover:bg-dark-hover-light-success',
       link: 'hover:bg-light-primary dark:hover:bg-dark-hover-light-primary',
     },
     disabled: {

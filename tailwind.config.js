@@ -16,22 +16,22 @@ export default {
         warning: '#ffae1f',
         'hover-warning': '#ffba3d',
         'light-warning': '#FFEAC7', // actually for hover when outline
-        'dark-warning': '#4F3E21',
+        'dark-hover-light-warning': '#4F3E21',
 
         secondary: '#44b7f7 ',
         'hover-secondary': '#65c5f9',
         'light-secondary': '#E3F4FE',
-        'dark-secondary': '#1B3141',
+        'dark-hover-light-secondary': '#1B3141',
 
         error: 'rgb(250, 137, 107)', // optional: kalau kamu mau pakai text-error
         'hover-error': 'rgb(252, 153, 125)',
         'light-error': '#FEE3E6',
-        'dark-error': '#362029',
+        'dark-hover-light-error': '#362029',
 
         success: '#13deb9',
         'hover-success': '#2eeecd',
         'light-success': '#C4F7ED',
-        'dark-success': '#144B47',
+        'dark-hover-light-success': '#144B47',
 
         'dark-hover': '#212D3E',
         'bg-dark': '#1C252E',
