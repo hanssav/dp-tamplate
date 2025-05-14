@@ -50,7 +50,6 @@ export const Input: React.FC<InputProps> = ({
         setIsFocus(false);
       }
       if (inputRef.current) {
-        console.log('Ref is ready:', inputRef.current);
         inputRef.current.value = '2025-05-12';
       }
     };

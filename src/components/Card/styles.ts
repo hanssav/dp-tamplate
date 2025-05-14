@@ -44,13 +44,7 @@ export const createCardTheme = (
   img?: any,
   content?: any
 ) => {
-  // Conditional padding class based on input
-  const paddingClass =
-    typeof padding === 'string'
-      ? padding
-      : padding
-        ? baseCardConfig.padding
-        : '';
+  const paddingClass = typeof padding === 'string' ? padding : padding ? baseCardConfig.padding : '';
 
   // Conditional shadow class based on input
   const shadowClass = shadow ? shadow : baseCardConfig.shadow.soft;
@@ -58,13 +52,13 @@ export const createCardTheme = (
   return createTheme({
     card: {
       root: {
-        base: `${base} ${paddingClass} ${shadowClass}`, // Apply padding and shadow dynamically
+        base: `${base} ${paddingClass} ${shadowClass}`,
         children,
         horizontal,
         href,
       },
-      img: img, // Allow image customization
-      content: content, // Allow content customization
+      img: img,
+      content: content,
     },
   });
 };
@@ -135,21 +129,11 @@ export const createMusicTheme = () =>
     }
   );
 
-
-
 export const createFollowTheme = () =>
-  createCardTheme(
-    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
-    '',
-    true
-  );
+  createCardTheme(`${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`, '', true);
 
 export const createFriendSuggestionTheme = () =>
-  createCardTheme(
-    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
-    '',
-    true
-  );
+  createCardTheme(`${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`, '', true);
 
 export const createFriendTheme = () =>
   createCardTheme(
@@ -182,8 +166,10 @@ export const createChartsTheme = () =>
     baseCardConfig.flexChildren
   );
 
-export const createDefaultTheme = () =>
+export const createDefaultTheme = (style: any) =>
   createCardTheme(
-    `${baseCardConfig.rounded} ${baseCardConfig.border} px-0 ${baseCardConfig.darkBg}`,
-    baseCardConfig.flexChildren
+    `${baseCardConfig.rounded} ${style?.border ? style?.border : baseCardConfig.border} px-0 ${baseCardConfig.darkBg}`,
+    baseCardConfig.flexChildren,
+    '',
+    style?.shadow
   );

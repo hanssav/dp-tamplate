@@ -18,6 +18,7 @@ import {
   createProductTheme,
   textMap,
 } from '@components/Card/styles';
+import { hasConfig } from '@utils/function';
 
 // Key aman untuk theme type
 type BgMapKey = keyof typeof bgMap;
@@ -41,18 +42,12 @@ interface ImageTheme {
   };
 }
 // Main function
-export const getCardStyle = ({
-  variant = 'breadcrumb',
-  type = 'primary',
-  bgImg,
-  content,
-}: GetCardStyleProps) => {
+export const getCardStyle = ({ variant = 'breadcrumb', type = 'primary', bgImg, content }: GetCardStyleProps) => {
   const rawType = (content as CardContent)?.bgColor ?? type;
+  const config = hasConfig(content) && content?.config;
 
   const validTypes = Object.keys(bgMap) as BgMapKey[];
-  const safeType: BgMapKey = validTypes.includes(rawType as BgMapKey)
-    ? (rawType as BgMapKey)
-    : 'primary';
+  const safeType: BgMapKey = validTypes.includes(rawType as BgMapKey) ? (rawType as BgMapKey) : 'primary';
 
   const bgClass = bgMap[safeType];
   const textClass = textMap[safeType];
@@ -71,7 +66,7 @@ export const getCardStyle = ({
     payment: createPaymentTheme(),
     banners: createBannersTheme(bgClass),
     chart: createChartsTheme(),
-    default: createDefaultTheme(),
+    default: createDefaultTheme(config),
   };
 
   // Optional background style
@@ -86,18 +81,10 @@ export const getCardStyle = ({
   }
 
   // Optional image render
-  let renderImage:
-    | ((theme: ImageTheme, horizontal: boolean) => React.ReactElement)
-    | undefined;
+  let renderImage: ((theme: ImageTheme, horizontal: boolean) => React.ReactElement) | undefined;
 
-  if (
-    (variant === 'post' || variant === 'product' || variant === 'music') &&
-    bgImg
-  ) {
-    renderImage = (
-      theme: ImageTheme,
-      horizontal: boolean
-    ): React.ReactElement => {
+  if ((variant === 'post' || variant === 'product' || variant === 'music') && bgImg) {
+    renderImage = (theme: ImageTheme, horizontal: boolean): React.ReactElement => {
       const imgClass = `${theme.img?.base ?? ''} ${
         horizontal ? theme.img?.horizontal?.on : theme.img?.horizontal?.off
       }`;

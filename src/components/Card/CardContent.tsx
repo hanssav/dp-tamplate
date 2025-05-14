@@ -30,43 +30,20 @@ import {
 import { BannersSectionProps } from '@datas/pages/config';
 import Card from '@components/Card';
 
-const cardRenderMap: Record<
-  string,
-  (content: any, children: React.ReactNode) => JSX.Element | null
-> = {
-  breadcrumb: (content) => (
-    <BreadcrumbCardContent content={content} />
-  ),
-  info: (content) => (
-    <InfoCardContent content={content as InfoCardContentProps['content']} />
-  ),
-  post: (content) => (
-    <PostCardContent content={content as PostCardContentProps['content']} />
-  ),
-  product: (content) => (
-    <ProductCardContent content={content as ProductContentProps['content']} />
-  ),
-  music: (content) => (
-    <MusicCardContent content={content as MusicContentProps['content']} />
-  ),
-  follow: (content) => (
-    <FollowCardContent content={content as FollowContentProps['content']} />
-  ),
-  friendSuggestion: (content) => (
-    <FriendSuggestionCardContent content={content as FriendSuggestionContent} />
-  ),
-  friend: (content) => <FriendCard content={content as FriendCardData} />,
-  gift: (content) => (
-    <FriendGiftCard content={content as FriendGiftCardProps['content']} />
-  ),
-  payment: (content) => <PaymentCard {...(content as PaymentCardProps)} />,
-  banners: (content) => (
-    <BannersCard content={content as BannersSectionProps['content']} />
-  ),
-  chart: (content) => <ChartCard content={content} />,
-  default: (content, children) => (
-    <DefaultContent content={content}>{children}</DefaultContent>
-  ),
+const cardRenderMap: Record<string, (content: any, children: React.ReactNode) => JSX.Element | null> = {
+  breadcrumb: content => <BreadcrumbCardContent content={content} />,
+  info: content => <InfoCardContent content={content as InfoCardContentProps['content']} />,
+  post: content => <PostCardContent content={content as PostCardContentProps['content']} />,
+  product: content => <ProductCardContent content={content as ProductContentProps['content']} />,
+  music: content => <MusicCardContent content={content as MusicContentProps['content']} />,
+  follow: content => <FollowCardContent content={content as FollowContentProps['content']} />,
+  friendSuggestion: content => <FriendSuggestionCardContent content={content as FriendSuggestionContent} />,
+  friend: content => <FriendCard content={content as FriendCardData} />,
+  gift: content => <FriendGiftCard content={content as FriendGiftCardProps['content']} />,
+  payment: content => <PaymentCard {...(content as PaymentCardProps)} />,
+  banners: content => <BannersCard content={content as BannersSectionProps['content']} />,
+  chart: content => <ChartCard content={content} />,
+  default: (content, children) => <DefaultContent content={content}>{children}</DefaultContent>,
 };
 
 export function renderCardContent({
@@ -99,13 +76,7 @@ export function DynamicCard({
   });
 
   return (
-    <Card
-      variant={variant}
-      content={content}
-      horizontal={horizontal}
-      className={className}
-      {...rest}
-    >
+    <Card variant={variant} content={content} horizontal={horizontal} className={className} {...rest}>
       {rendered}
     </Card>
   );

@@ -107,6 +107,7 @@ export interface CardContent {
     as?: keyof JSX.IntrinsicElements;
   };
   tabData?: TabData[];
+  config?: any;
 }
 
 //

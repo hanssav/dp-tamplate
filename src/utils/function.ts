@@ -1,10 +1,6 @@
 import { CardVariant } from '@components/_types/Card';
 import { menuItems } from '@datas/components/menuItems';
-import {
-  CardContent,
-  NestedContent,
-  SectionContent,
-} from '@datas/pages/config';
+import { CardContent, NestedContent, SectionContent } from '@datas/pages/config';
 
 /**
  * Extracts a readable title from a URL path.
@@ -17,7 +13,7 @@ export function getTitleFromPath(pathname: string): string {
   const withSpaces = lastSegment.replace(/-/g, ' ');
   return withSpaces
     .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
 
@@ -57,7 +53,7 @@ export function toCamelCase(input: string): string {
     words[0].toLowerCase() +
     words
       .slice(1)
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join('')
   );
 }
@@ -84,10 +80,7 @@ export function splitIntoColumns<T>(data: T[], columnCount: number): T[][] {
  * @param {number[]} [customWidths] - Optional array of custom widths.
  * @returns {number[]} - An array of widths in percentages.
  */
-export function getColumnWidths(
-  count: number,
-  customWidths?: number[]
-): number[] {
+export function getColumnWidths(count: number, customWidths?: number[]): number[] {
   if (customWidths && customWidths.length === count) return customWidths;
   const evenWidth = 100 / count;
   return Array(count).fill(evenWidth);
@@ -107,9 +100,7 @@ export const isCardContent = (item: SectionContent): item is CardContent => {
  * @param {SectionContent} item - The item to check.
  * @returns {item is NestedContent} - True if item is NestedContent.
  */
-export const isNestedColContent = (
-  item: SectionContent
-): item is NestedContent => {
+export const isNestedColContent = (item: SectionContent): item is NestedContent => {
   return 'col' in item && 'data' in item;
 };
 
@@ -125,9 +116,7 @@ export const isNestedColContent = (
  */
 
 export const getValidSectionContent = (data: any[]): SectionContent[] => {
-  return data.filter(
-    (item): item is SectionContent => typeof item === 'object' && item !== null
-  );
+  return data.filter((item): item is SectionContent => typeof item === 'object' && item !== null);
 };
 
 export const formatNumber = (value: number | string): string => {
@@ -149,10 +138,9 @@ export function isColumnGroup(item: unknown): item is {
   horizontal?: boolean;
   span?: number;
 } {
-  return (
-    typeof item === 'object' &&
-    item !== null &&
-    'child' in item &&
-    Array.isArray((item as any).child?.data)
-  );
+  return typeof item === 'object' && item !== null && 'child' in item && Array.isArray((item as any).child?.data);
+}
+
+export function hasConfig(content: any): content is { config: any } {
+  return content && content.config !== undefined;
 }
