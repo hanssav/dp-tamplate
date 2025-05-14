@@ -1,26 +1,10 @@
 import { themes } from '@assets/themes';
+import { ButtonProps } from '@components/_types/button';
 import { createTheme } from 'flowbite-react';
-import { ButtonProps as FlowbiteButtonProps } from 'flowbite-react';
 import { twMerge } from 'tailwind-merge';
 
-const { button: btnTheme } = themes;
-export type ButtonColor = keyof typeof btnTheme.color.bg;
-type OutlineColorKey = keyof typeof btnTheme.color.outline;
-export type ButtonSize = keyof typeof btnTheme.size;
-
-export interface ButtonProps extends FlowbiteButtonProps {
-  color?: ButtonColor;
-  size?: ButtonSize;
-  rounded?: 'full' | 'md' | 'lg';
-  onClick?: () => void;
-  children?: React.ReactNode;
-  className?: any;
-  link?: boolean;
-  raised?: boolean;
-  outlineColor?: OutlineColorKey;
-}
-
 export function buttonTheme({ link, raised, disabled, outlineColor, color, size, rounded }: ButtonProps) {
+  const { button: btnTheme } = themes;
   const { color: themeColors, shadow, border, size: themeSizes, rounded: themeRounded } = btnTheme;
   const { bg, outlineText, outline, disabled: disabledColor } = themeColors;
 
