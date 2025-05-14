@@ -35,6 +35,7 @@ export const autocomplete: SectionContent[] = [
               inputType: 'option',
               headerLine: true,
               border: 'border dark:border-gray-700',
+              shadow: 'shadow-none',
               padding: 'px-5 py-2',
               margin: 'mb-5',
             },
@@ -48,6 +49,7 @@ export const autocomplete: SectionContent[] = [
               inputType: 'option',
               headerLine: true,
               border: 'border dark:border-gray-700',
+              shadow: 'shadow-none',
               padding: 'px-5 py-2',
               margin: 'mb-5',
             },
@@ -58,6 +60,7 @@ export const autocomplete: SectionContent[] = [
             variant: 'default',
             config: {
               border: 'border dark:border-gray-700',
+              shadow: 'shadow-none',
               margin: 'mb-5',
               componentType: 'tabs',
               padding: 'px-5 py-2',
@@ -71,6 +74,7 @@ export const autocomplete: SectionContent[] = [
             variant: 'default',
             config: {
               border: 'border dark:border-gray-700',
+              shadow: 'shadow-none',
               margin: 'mb-5',
               componentType: 'tabs',
               padding: 'px-5 py-2',
