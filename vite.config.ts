@@ -16,4 +16,7 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, 'src/hooks'),
     },
   },
+  optimizeDeps: {
+    include: ['react-day-picker'],
+  },
 });

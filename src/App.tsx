@@ -1,6 +1,6 @@
 import { SectionProvider } from '@context/useSection';
+import { SidebarProvider } from '@context/useSidebar';
 import { Routes, Route, useLocation } from 'react-router';
-import { SidebarProvider } from './context/useSidebar';
 import Home from './pages';
 import NotFoundPage from './pages/404';
 import ParentMenu from './pages/[parent]';

@@ -9,8 +9,8 @@ import SidebarLogo from '@components/SideBar/SidebarLogo';
 import Typography from '@components/Typography';
 import Box from '@components/Box';
 import Button from '@components/Button';
-import { useSidebar } from '@context/useSidebar';
 import { themes } from '@assets/themes';
+import { useSidebar } from '@context/useSidebar';
 
 interface SidebarProps {
   isSidebarOpen: boolean;

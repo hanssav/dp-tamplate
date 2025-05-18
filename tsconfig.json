@@ -33,6 +33,6 @@
       "@themes/*": ["src/themes/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/context"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
