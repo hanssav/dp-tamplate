@@ -11,7 +11,6 @@ type Props = {
   setViewMode: (mode: 'day' | 'month' | 'year') => void;
   selectedDate?: Date;
   mappingOfYears: number[];
-  setViewDate: (date: Date) => void;
 };
 
 const MonthGrid: React.FC<MonthGridProps & Props> = ({
@@ -21,10 +20,8 @@ const MonthGrid: React.FC<MonthGridProps & Props> = ({
   setViewMode,
   selectedDate,
   mappingOfYears,
-  setViewDate,
 }) => {
   const renderYearGrid = () => {
-    console.log(mappingOfYears, 'mappingOfYears');
     return (
       <div className="grid w-full grid-cols-4 gap-2">
         {mappingOfYears.map(year => {
@@ -40,7 +37,6 @@ const MonthGrid: React.FC<MonthGridProps & Props> = ({
               onClick={() => {
                 const updatedDate = new Date(year, focusedDate.getMonth(), 1);
                 setFocusedDate(updatedDate);
-                setViewDate(updatedDate);
                 setViewMode('month');
               }}
             />
@@ -75,7 +71,6 @@ const MonthGrid: React.FC<MonthGridProps & Props> = ({
                   1
                 );
                 setFocusedDate(updatedDate);
-                setViewDate(updatedDate);
                 setViewMode('day');
               }}
             />
