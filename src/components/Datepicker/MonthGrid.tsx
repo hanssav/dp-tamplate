@@ -1,4 +1,3 @@
-// components/CustomMonthGrid.tsx
 import React from 'react';
 import { MonthGridProps } from 'react-day-picker';
 import { format as formatFn } from 'date-fns';
@@ -15,7 +14,7 @@ type Props = {
   setViewDate: (date: Date) => void;
 };
 
-const CustomMonthGrid: React.FC<MonthGridProps & Props> = ({
+const MonthGrid: React.FC<MonthGridProps & Props> = ({
   viewMode,
   focusedDate,
   setFocusedDate,
@@ -120,4 +119,4 @@ const GridButton: React.FC<GridButtonProps> = ({
   );
 };
 
-export default CustomMonthGrid;
+export default MonthGrid;

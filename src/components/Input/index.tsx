@@ -17,13 +17,16 @@ export const Input: React.FC<InputProps> = ({
   options = [],
   groupOptions = [],
   disabled = false,
+  ...props
 }) => {
   const isSelect = type === INPUT_TYPES.SELECT;
   const isDatepicker = type === INPUT_TYPES.DATEPICKER;
 
   const [query, setQuery] = useState('');
   const [isFocus, setIsFocus] = useState(false);
-  const [filteredOptions, setFilteredOptions] = useState<{ label: string; value: string | number }[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState<
+    { label: string; value: string | number }[]
+  >([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -36,7 +39,11 @@ export const Input: React.FC<InputProps> = ({
 
       setFilteredOptions(flattenedOptions);
     } else {
-      setFilteredOptions(options.filter(opt => opt.label.toLowerCase().includes(query.toLowerCase())));
+      setFilteredOptions(
+        options.filter(opt =>
+          opt.label.toLowerCase().includes(query.toLowerCase())
+        )
+      );
     }
 
     if (disabled) {
@@ -46,7 +53,10 @@ export const Input: React.FC<InputProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
         setIsFocus(false);
       }
       if (inputRef.current) {
@@ -65,7 +75,7 @@ export const Input: React.FC<InputProps> = ({
     } as React.ChangeEvent<HTMLInputElement>;
     setQuery(option.label);
     setIsFocus(false);
-    onChange(fakeEvent);
+    onChange?.(fakeEvent)
   };
 
   const handleSelectOnChage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,6 +99,7 @@ export const Input: React.FC<InputProps> = ({
             onFocus={() => setIsFocus(true)}
             className={getInputClassNames(isSelect, disabled)}
             disabled={disabled}
+            {...props}
           />
           {isFocus && filteredOptions.length > 0 && (
             <ul className={getDropdownClassNames()}>
@@ -98,13 +109,23 @@ export const Input: React.FC<InputProps> = ({
                       <div className="p-2">{group.label}</div>
                       <ul>
                         {group.options.map((opt, index) => (
-                          <ListItems key={index} opt={opt} index={index} handleSelect={handleSelect} />
+                          <ListItems
+                            key={index}
+                            opt={opt}
+                            index={index}
+                            handleSelect={handleSelect}
+                          />
                         ))}
                       </ul>
                     </li>
                   ))
                 : filteredOptions.map((opt, index) => (
-                    <ListItems key={index} opt={opt} index={index} handleSelect={handleSelect} />
+                    <ListItems
+                      key={index}
+                      opt={opt}
+                      index={index}
+                      handleSelect={handleSelect}
+                    />
                   ))}
             </ul>
           )}
@@ -143,10 +164,14 @@ export const Input: React.FC<InputProps> = ({
           className={getInputClassNames(isSelect, disabled)}
           inputMode={type === 'number' ? 'numeric' : undefined}
           disabled={disabled}
+          onFocus={() => setIsFocus(true)}
+          {...props}
         />
       )}
-
-      <label htmlFor={id} className={getLabelClassNames(query, isFocus, disabled)}>
+      <label
+        htmlFor={id}
+        className={getLabelClassNames(value, isFocus, disabled)}
+      >
         {label}
       </label>
     </div>
