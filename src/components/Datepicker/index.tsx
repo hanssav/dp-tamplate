@@ -38,11 +38,45 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(value);
   const [isOpen, setIsOpen] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>('day');
-  const [focusedDate, setFocusedDate] = useState(new Date());
-  const [viewDate, setViewDate] = useState(new Date());
+  const [focusedDate, setFocusedDate] = useState(value ?? new Date());
 
-  const startYear = Math.floor((viewDate.getFullYear() - 8) / 4) * 4;
+  const [startYear, setStartYear] = useState(() => {
+    const year = focusedDate.getFullYear();
+    return Math.floor((year - 8) / 4) * 4;
+  });
+
   const mappingOfYears = Array.from({ length: 24 }, (_, i) => startYear + i);
+
+  const handlePrevClick = () => {
+    if (viewMode === 'year') {
+      setStartYear(prev => prev - 24);
+    } else if (viewMode === 'month') {
+      setFocusedDate(
+        new Date(focusedDate.getFullYear() - 1, focusedDate.getMonth(), 1)
+      );
+    } else {
+      setFocusedDate(
+        new Date(focusedDate.getFullYear(), focusedDate.getMonth() - 1, 1)
+      );
+    }
+  };
+
+  const handleNextClick = () => {
+    if (viewMode === 'year') {
+      setStartYear(prev => prev + 24);
+    } else if (viewMode === 'month') {
+      setFocusedDate(
+        new Date(focusedDate.getFullYear() + 1, focusedDate.getMonth(), 1)
+      );
+    } else {
+      setFocusedDate(
+        new Date(focusedDate.getFullYear(), focusedDate.getMonth() + 1, 1)
+      );
+    }
+  };
+
+  console.log(startYear, 'startYear');
+  console.log(mappingOfYears, 'mappingOfYears');
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -75,39 +109,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   const togglePicker = () => {
     if (disabled) return;
     setIsOpen(prev => !prev);
-    setViewDate(selectedDate ?? new Date());
-  };
-
-  const handlePrevClick = () => {
-    if (viewMode === 'year') {
-      setViewDate(new Date(startYear - 24, 0, 1));
-    } else if (viewMode === 'month') {
-      setViewDate(new Date(viewDate.getFullYear() - 1, viewDate.getMonth(), 1));
-    } else {
-      const newDate = new Date(
-        viewDate.getFullYear(),
-        viewDate.getMonth() - 1,
-        1
-      );
-      setViewDate(newDate);
-      setFocusedDate(newDate);
-    }
-  };
-
-  const handleNextClick = () => {
-    if (viewMode === 'year') {
-      setViewDate(new Date(startYear + 24, 0, 1));
-    } else if (viewMode === 'month') {
-      setViewDate(new Date(viewDate.getFullYear() + 1, viewDate.getMonth(), 1));
-    } else {
-      const newDate = new Date(
-        viewDate.getFullYear(),
-        viewDate.getMonth() + 1,
-        1
-      );
-      setViewDate(newDate);
-      setFocusedDate(newDate);
-    }
+    setFocusedDate(selectedDate ?? new Date());
   };
 
   return (
@@ -129,7 +131,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
             mode="single"
             selected={selectedDate}
             onSelect={handleSelect}
-            month={viewDate}
+            month={focusedDate}
             onMonthChange={setFocusedDate}
             modifiersClassNames={{
               selected: 'bg-primary rounded-full text-white',
@@ -158,9 +160,12 @@ export const Datepicker: React.FC<DatepickerProps> = ({
                   viewMode={viewMode}
                   startYear={startYear}
                   focusedDate={focusedDate}
-                  onCaptionClick={() =>
-                    setViewMode(current => (current === 'day' ? 'year' : 'day'))
-                  }
+                  onCaptionClick={() => {
+                    setViewMode(current =>
+                      current === 'day' ? 'year' : 'day'
+                    );
+                    console.log(focusedDate, 'focusedDate');
+                  }}
                 />
               ),
               ...(viewMode !== 'day' && {
@@ -172,7 +177,6 @@ export const Datepicker: React.FC<DatepickerProps> = ({
                     setViewMode={setViewMode}
                     selectedDate={selectedDate}
                     mappingOfYears={mappingOfYears}
-                    setViewDate={setViewDate}
                   />
                 ),
                 DayButton: () => <></>,
