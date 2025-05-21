@@ -1,27 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format as formatFn } from 'date-fns';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 import Box from '@components/Box';
 import Typography from '@components/Typography';
-import MonthCaption from '@components/Datepicker/MonthCaption';
-import MonthGrid from '@components/Datepicker/MonthGrid';
-
 import 'react-day-picker/dist/style.css';
 import { Input } from '@components/Input';
 import { INPUT_TYPES } from '@constant/components/InputTypes';
-
-type ViewMode = 'day' | 'month' | 'year';
-
-type DatepickerProps = {
-  value?: Date;
-  onChange?: (date: Date | undefined) => void;
-  placeholder?: string;
-  format?: string;
-  className?: string;
-  id: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+import { createDayPickerProps } from '@components/Datepicker/daypickerProps';
+import {
+  DatepickerProps,
+  MODE,
+  ViewMode,
+  VIEW_MODE,
+} from '@components/Datepicker/types';
 
 export const Datepicker: React.FC<DatepickerProps> = ({
   value,
@@ -31,13 +22,14 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   className = '',
   disabled = false,
   id,
+  mode = MODE.SINGGLE,
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(value);
   const [isOpen, setIsOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>('day');
+  const [viewMode, setViewMode] = useState<ViewMode>(VIEW_MODE.DAY);
   const [focusedDate, setFocusedDate] = useState(value ?? new Date());
 
   const [startYear, setStartYear] = useState(() => {
@@ -48,9 +40,9 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   const mappingOfYears = Array.from({ length: 24 }, (_, i) => startYear + i);
 
   const handlePrevClick = () => {
-    if (viewMode === 'year') {
+    if (viewMode === VIEW_MODE.YEAR) {
       setStartYear(prev => prev - 24);
-    } else if (viewMode === 'month') {
+    } else if (viewMode === VIEW_MODE.MONTH) {
       setFocusedDate(
         new Date(focusedDate.getFullYear() - 1, focusedDate.getMonth(), 1)
       );
@@ -62,9 +54,9 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   };
 
   const handleNextClick = () => {
-    if (viewMode === 'year') {
+    if (viewMode === VIEW_MODE.YEAR) {
       setStartYear(prev => prev + 24);
-    } else if (viewMode === 'month') {
+    } else if (viewMode === VIEW_MODE.MONTH) {
       setFocusedDate(
         new Date(focusedDate.getFullYear() + 1, focusedDate.getMonth(), 1)
       );
@@ -74,9 +66,6 @@ export const Datepicker: React.FC<DatepickerProps> = ({
       );
     }
   };
-
-  console.log(startYear, 'startYear');
-  console.log(mappingOfYears, 'mappingOfYears');
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -90,11 +79,11 @@ export const Datepicker: React.FC<DatepickerProps> = ({
 
   const closePicker = () => {
     setIsOpen(false);
-    setViewMode('day');
+    setViewMode(VIEW_MODE.DAY);
   };
 
   const handleSelect = (date: Date | undefined) => {
-    if (viewMode === 'day' && date) {
+    if (viewMode === VIEW_MODE.DAY && date) {
       const newDate = new Date(
         focusedDate.getFullYear(),
         focusedDate.getMonth(),
@@ -112,6 +101,19 @@ export const Datepicker: React.FC<DatepickerProps> = ({
     setFocusedDate(selectedDate ?? new Date());
   };
 
+  const dayPickerProps = createDayPickerProps({
+    selectedDate,
+    handleSelect,
+    focusedDate,
+    setFocusedDate,
+    handlePrevClick,
+    handleNextClick,
+    viewMode,
+    setViewMode,
+    startYear,
+    mappingOfYears,
+  });
+
   return (
     <div className="relative w-full" ref={containerRef}>
       <Input
@@ -127,62 +129,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
 
       {isOpen && (
         <div className="absolute z-10 rounded bg-white p-4 shadow-soft dark:bg-gray-800 dark:text-white">
-          <DayPicker
-            mode="single"
-            selected={selectedDate}
-            onSelect={handleSelect}
-            month={focusedDate}
-            onMonthChange={setFocusedDate}
-            modifiersClassNames={{
-              selected: 'bg-primary rounded-full text-white',
-              today: 'text-blue-700',
-            }}
-            className="w-full rounded bg-white dark:bg-gray-800"
-            classNames={{
-              day: 'hover:bg-gray-300 rounded-full cursor-pointer dark:hover:bg-gray-700',
-              table: 'w-full table-fixed',
-              cell: 'text-center',
-            }}
-            components={{
-              PreviousMonthButton: props => (
-                <button {...props} onClick={handlePrevClick}>
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-              ),
-              NextMonthButton: props => (
-                <button {...props} onClick={handleNextClick}>
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              ),
-              CaptionLabel: p => (
-                <MonthCaption
-                  {...p}
-                  viewMode={viewMode}
-                  startYear={startYear}
-                  focusedDate={focusedDate}
-                  onCaptionClick={() => {
-                    setViewMode(current =>
-                      current === 'day' ? 'year' : 'day'
-                    );
-                    console.log(focusedDate, 'focusedDate');
-                  }}
-                />
-              ),
-              ...(viewMode !== 'day' && {
-                MonthGrid: () => (
-                  <MonthGrid
-                    viewMode={viewMode}
-                    focusedDate={focusedDate}
-                    setFocusedDate={setFocusedDate}
-                    setViewMode={setViewMode}
-                    selectedDate={selectedDate}
-                    mappingOfYears={mappingOfYears}
-                  />
-                ),
-                DayButton: () => <></>,
-              }),
-            }}
-          />
+          <DayPicker {...dayPickerProps} />
         </div>
       )}
 
