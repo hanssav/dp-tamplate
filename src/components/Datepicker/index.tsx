@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { DayPicker } from 'react-day-picker';
+import { DateRange, DayPicker } from 'react-day-picker';
 import { format as formatFn } from 'date-fns';
 import Box from '@components/Box';
 import Typography from '@components/Typography';
@@ -10,6 +10,7 @@ import { createDayPickerProps } from '@components/Datepicker/daypickerProps';
 import {
   DatepickerProps,
   MODE,
+  SelectDate,
   ViewMode,
   VIEW_MODE,
 } from '@components/Datepicker/types';
@@ -22,12 +23,12 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   className = '',
   disabled = false,
   id,
-  mode = MODE.SINGGLE,
+  mode = MODE.SINGLE,
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(value);
+  const [selectedDate, setSelectedDate] = useState<SelectDate>(value);
   const [isOpen, setIsOpen] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>(VIEW_MODE.DAY);
   const [focusedDate, setFocusedDate] = useState(value ?? new Date());
@@ -82,23 +83,73 @@ export const Datepicker: React.FC<DatepickerProps> = ({
     setViewMode(VIEW_MODE.DAY);
   };
 
-  const handleSelect = (date: Date | undefined) => {
-    if (viewMode === VIEW_MODE.DAY && date) {
-      const newDate = new Date(
-        focusedDate.getFullYear(),
-        focusedDate.getMonth(),
-        date.getDate()
-      );
-      setSelectedDate(newDate);
-      onChange?.(newDate);
+  const isDateRange = (date: any): date is DateRange =>
+    date && typeof date === 'object' && 'from' in date;
+
+  const handleSelect = (date: SelectDate) => {
+    if (viewMode !== VIEW_MODE.DAY || !date) return;
+
+    switch (mode) {
+      case MODE.SINGLE:
+        if (date instanceof Date) {
+          const newDate = new Date(
+            focusedDate.getFullYear(),
+            focusedDate.getMonth(),
+            date.getDate()
+          );
+          setSelectedDate(newDate);
+          onChange?.(newDate);
+          closePicker();
+        }
+        break;
+
+      case MODE.RANGE:
+        if (isDateRange(date)) {
+          if (
+            selectedDate &&
+            isDateRange(selectedDate) &&
+            selectedDate.from !== selectedDate.to
+          ) {
+            closePicker();
+          }
+          setSelectedDate(date);
+          onChange?.(date);
+          closePicker();
+        }
+        break;
+
+      case MODE.MULTIPLE:
+        if (Array.isArray(date)) {
+          setSelectedDate(date);
+          onChange?.(date);
+          closePicker();
+        }
+        break;
+
+      default:
+        break;
     }
-    closePicker();
   };
 
   const togglePicker = () => {
     if (disabled) return;
+
+    let date: Date = new Date();
+
+    if (selectedDate instanceof Date) {
+      date = selectedDate;
+    } else if (Array.isArray(selectedDate) && selectedDate.length > 0) {
+      date = selectedDate[0];
+    } else if (
+      selectedDate &&
+      'from' in selectedDate &&
+      selectedDate.from instanceof Date
+    ) {
+      date = selectedDate.from;
+    }
+
     setIsOpen(prev => !prev);
-    setFocusedDate(selectedDate ?? new Date());
+    setFocusedDate(date);
   };
 
   const dayPickerProps = createDayPickerProps({
@@ -112,6 +163,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
     setViewMode,
     startYear,
     mappingOfYears,
+    mode,
   });
 
   return (
@@ -122,7 +174,15 @@ export const Datepicker: React.FC<DatepickerProps> = ({
         type={INPUT_TYPES.TEXT}
         disabled={disabled}
         onClick={togglePicker}
-        value={selectedDate ? formatFn(selectedDate, format) : ''}
+        value={
+          selectedDate instanceof Date
+            ? formatFn(selectedDate, format)
+            : Array.isArray(selectedDate) && selectedDate[0]
+              ? formatFn(selectedDate[0], format)
+              : selectedDate && 'from' in selectedDate && selectedDate.from
+                ? `${formatFn(selectedDate.from, format)} - ${formatFn(selectedDate.from, format)}`
+                : ''
+        }
         label="Select Date"
         {...props}
       />

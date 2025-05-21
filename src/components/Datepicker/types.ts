@@ -7,7 +7,7 @@ export const VIEW_MODE = {
 export type ViewMode = (typeof VIEW_MODE)[keyof typeof VIEW_MODE];
 
 export const MODE = {
-  SINGGLE: 'single',
+  SINGLE: 'single',
   RANGE: 'range',
   MULTIPLE: 'multiple',
 } as const;
@@ -22,7 +22,7 @@ export type SelectDate =
 
 export type DatepickerProps = {
   value?: Date;
-  onChange?: (date: Date | undefined) => void;
+  onChange?: (date: SelectDate) => void;
   placeholder?: string;
   format?: string;
   className?: string;
@@ -32,7 +32,7 @@ export type DatepickerProps = {
 
 export interface CreateDayPickerPropsArgs {
   mode?: Mode;
-  selectedDate: Date | undefined;
+  selectedDate: SelectDate;
   handleSelect: (date: Date | undefined) => void;
   focusedDate: Date;
   setFocusedDate: (date: Date) => void;

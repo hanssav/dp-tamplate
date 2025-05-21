@@ -1,4 +1,4 @@
-import { DayPickerProps } from 'react-day-picker';
+import { DateRange, DayPickerProps } from 'react-day-picker';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import MonthCaption from './MonthCaption';
 import MonthGrid from './MonthGrid';
@@ -6,6 +6,13 @@ import {
   CreateDayPickerPropsArgs,
   VIEW_MODE,
 } from '@components/Datepicker/types';
+
+export const MODE = {
+  SINGLE: 'single',
+  RANGE: 'range',
+  MULTIPLE: 'multiple',
+} as const;
+export type ModeType = (typeof MODE)[keyof typeof MODE];
 
 export function createDayPickerProps({
   selectedDate,
@@ -18,15 +25,13 @@ export function createDayPickerProps({
   setViewMode,
   startYear,
   mappingOfYears,
+  mode,
 }: CreateDayPickerPropsArgs): DayPickerProps {
-  return {
-    mode: 'single',
-    selected: selectedDate,
-    onSelect: handleSelect,
+  const baseProps = {
     month: focusedDate,
     onMonthChange: setFocusedDate,
     modifiersClassNames: {
-      selected: 'bg-primary text-white  hover:!bg-hover-primary',
+      selected: 'bg-primary text-white hover:!bg-hover-primary',
       today:
         'border border-primary rounded-full flex items-center justify-center',
     },
@@ -37,17 +42,17 @@ export function createDayPickerProps({
       cell: 'text-center',
     },
     components: {
-      PreviousMonthButton: props => (
+      PreviousMonthButton: (props: any) => (
         <button {...props} onClick={handlePrevClick}>
           <ChevronLeft className="h-5 w-5" />
         </button>
       ),
-      NextMonthButton: props => (
+      NextMonthButton: (props: any) => (
         <button {...props} onClick={handleNextClick}>
           <ChevronRight className="h-5 w-5" />
         </button>
       ),
-      CaptionLabel: p => (
+      CaptionLabel: (p: any) => (
         <MonthCaption
           {...p}
           viewMode={viewMode}
@@ -57,23 +62,57 @@ export function createDayPickerProps({
             setViewMode(current =>
               current === VIEW_MODE.DAY ? VIEW_MODE.YEAR : VIEW_MODE.DAY
             );
-            console.log(focusedDate, 'focusedDate');
           }}
         />
       ),
-      ...(viewMode !== 'day' && {
+      ...(viewMode !== VIEW_MODE.DAY && {
         MonthGrid: () => (
           <MonthGrid
             viewMode={viewMode}
             focusedDate={focusedDate}
             setFocusedDate={setFocusedDate}
             setViewMode={setViewMode}
-            selectedDate={selectedDate}
+            selectedDate={
+              mode === MODE.SINGLE && selectedDate instanceof Date
+                ? selectedDate
+                : undefined
+            }
             mappingOfYears={mappingOfYears}
           />
         ),
+
         DayButton: () => <></>,
       }),
     },
   };
+
+  if (mode === MODE.SINGLE) {
+    return {
+      ...baseProps,
+      mode: 'single',
+      selected: selectedDate as Date | undefined,
+      onSelect: handleSelect as (date: Date | undefined) => void,
+    };
+  }
+
+  if (mode === MODE.RANGE) {
+    return {
+      ...baseProps,
+      mode: 'range',
+      required: false,
+      selected: selectedDate as DateRange | undefined,
+      onSelect: handleSelect as (range: DateRange | undefined) => void,
+    };
+  }
+
+  if (mode === MODE.MULTIPLE) {
+    return {
+      ...baseProps,
+      mode: 'multiple',
+      selected: selectedDate as Date[] | undefined,
+      onSelect: handleSelect as (dates: Date[] | undefined) => void,
+    };
+  }
+
+  return baseProps;
 }
