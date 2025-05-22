@@ -15,7 +15,9 @@ export const PreviewDatepicker = ({
   return (
     <Box id={id}>
       {datepickerConfig[variant].map((item, index) => {
-        return <Datepicker key={index} id={item.id} mode={item?.mode} />;
+        return (
+          <Datepicker key={index} id={item.id} mode={item?.mode} {...item} />
+        );
       })}
     </Box>
   );

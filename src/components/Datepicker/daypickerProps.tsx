@@ -4,15 +4,9 @@ import MonthCaption from './MonthCaption';
 import MonthGrid from './MonthGrid';
 import {
   CreateDayPickerPropsArgs,
+  MODE,
   VIEW_MODE,
 } from '@components/Datepicker/types';
-
-export const MODE = {
-  SINGLE: 'single',
-  RANGE: 'range',
-  MULTIPLE: 'multiple',
-} as const;
-export type ModeType = (typeof MODE)[keyof typeof MODE];
 
 export function createDayPickerProps({
   selectedDate,

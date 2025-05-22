@@ -10,6 +10,7 @@ export const MODE = {
   SINGLE: 'single',
   RANGE: 'range',
   MULTIPLE: 'multiple',
+  AUTO_RANGE: 'autoRange',
 } as const;
 
 export type Mode = (typeof MODE)[keyof typeof MODE];
@@ -28,6 +29,7 @@ export type DatepickerProps = {
   className?: string;
   id: string;
   mode?: Mode;
+  autoRange?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export interface CreateDayPickerPropsArgs {
