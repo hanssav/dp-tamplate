@@ -1,12 +1,12 @@
 import { DateRange, DayPickerProps } from 'react-day-picker';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import MonthCaption from './MonthCaption';
-import MonthGrid from './MonthGrid';
+import MonthCaption from '../component/MonthCaption';
+import MonthGrid from '@components/Datepicker/component/MonthGrid';
 import {
   CreateDayPickerPropsArgs,
   MODE,
   VIEW_MODE,
-} from '@components/Datepicker/types';
+} from '@components/Datepicker/helpers/types';
 
 export function createDayPickerProps({
   selectedDate,

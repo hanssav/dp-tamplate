@@ -1,4 +1,4 @@
-import { MODE } from '@components/Datepicker/types';
+import { MODE } from '@components/Datepicker/helpers/types';
 
 export type DatepickerVariant = 'basic-datepicker' | 'custom-selection';
 
@@ -10,13 +10,12 @@ export const datepickerConfig: Record<DatepickerVariant, any[]> = {
       placeholder: 'Choose a date',
       format: 'MM/dd/yyyy',
       mode: MODE.SINGLE,
-      //   props: {datepicker, datepicker-buttons, datepicker-autoselect-today}
     },
   ],
   'custom-selection': [
     {
       id: 'custom-selection',
-      label: 'Custom selection',
+      label: 'Enter a date range',
       placeholder: 'Choose a date',
       mode: MODE.SINGLE,
       autoRange: true,

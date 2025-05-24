@@ -24,7 +24,7 @@ export const getLabelClassNames = (
   disabled: boolean
 ) => {
   return twMerge(
-    'absolute left-2 bg-white px-1 text-sm text-black dark:bg-gray-900',
+    'pointer-events-none absolute left-2 bg-white px-1 text-sm text-black dark:bg-gray-900',
     query || isFocus
       ? '-top-2 text-xs text-blue-600 dark:text-blue-400'
       : 'left-2 top-2 bg-transparent text-gray-500 dark:bg-transparent dark:text-gray-400',

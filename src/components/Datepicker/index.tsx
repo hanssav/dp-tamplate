@@ -1,16 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import { format as formatFn } from 'date-fns';
-import { DayPicker } from 'react-day-picker';
+import React, { useEffect, useRef, useState } from 'react';
 import 'react-day-picker/dist/style.css';
 import Box from '@components/Box';
 import Typography from '@components/Typography';
-import { Input } from '@components/Input';
-import { INPUT_TYPES } from '@constant/components/InputTypes';
-import { DatepickerProps, MODE } from '@components/Datepicker/types';
-import { useDaypickerController } from '@components/Datepicker/useDaypickerController';
+import { DatepickerProps, MODE } from '@components/Datepicker/helpers/types';
+import { useNavigateDate } from '@components/Datepicker/hooks/useNavigateDate';
+import { useSelectDate } from '@components/Datepicker/hooks/useSelectDate';
+import { useClosePicker } from '@components/Datepicker/hooks/useClosePicker';
+import { useTogglePicker } from '@components/Datepicker/hooks/useTogglePicker';
+import { DatepickerInput } from '@components/Datepicker/component/Input';
+import { DaypickerPopUp } from '@components/Datepicker/component/DaypickerPopUp';
 
 export const Datepicker: React.FC<DatepickerProps> = ({
-  value,
   onChange,
   placeholder = 'Select a date',
   format = 'MM/dd/yyyy',
@@ -18,25 +18,29 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   disabled = false,
   id,
   mode = MODE.SINGLE,
+  autoRange = false,
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { autoRange } = props;
-
-  const { selectedDate, isOpen, togglePicker, dayPickerProps, closePicker } =
-    useDaypickerController({ value, onChange, mode, autoRange });
-
-  let inputValue = '';
-
-  if (selectedDate instanceof Date) {
-    inputValue = formatFn(selectedDate, format);
-  } else if (Array.isArray(selectedDate) && selectedDate[0]) {
-    inputValue = formatFn(selectedDate[0], format);
-  } else if (selectedDate && 'from' in selectedDate && selectedDate.from) {
-    const from = selectedDate.from;
-    const to = selectedDate.to ?? from;
-    inputValue = `${formatFn(from, format)} - ${formatFn(to, format)}`;
-  }
+  const {
+    setViewMode,
+    viewMode,
+    focusedDate,
+    setFocusedDate,
+    startYear,
+    handleNextClick,
+    handlePrevClick,
+  } = useNavigateDate();
+  const [isOpen, setIsOpen] = useState(false);
+  const { closePicker } = useClosePicker(setIsOpen, setViewMode);
+  const selectProps = { mode, autoRange, onChange, closePicker, focusedDate };
+  const { selectedDate, handleSelect } = useSelectDate(selectProps);
+  const { togglePicker } = useTogglePicker(
+    isOpen,
+    setIsOpen,
+    selectedDate,
+    setFocusedDate
+  );
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -49,22 +53,28 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   }, []);
 
   return (
-    <div className="relative w-full" ref={containerRef}>
-      <Input
-        readOnly
+    <div id={id} className="relative w-full" ref={containerRef}>
+      <DatepickerInput
         id={id}
-        type={INPUT_TYPES.TEXT}
         disabled={disabled}
-        onClick={togglePicker}
-        value={inputValue}
-        label="Select Date"
+        selectedDate={selectedDate}
+        format={format}
+        togglePicker={togglePicker}
         {...props}
       />
-
       {isOpen && (
-        <div className="absolute z-10 rounded bg-white p-4 shadow-soft dark:bg-gray-800 dark:text-white">
-          <DayPicker {...dayPickerProps} />
-        </div>
+        <DaypickerPopUp
+          selectedDate={selectedDate}
+          handleSelect={handleSelect}
+          focusedDate={focusedDate}
+          setFocusedDate={setFocusedDate}
+          handlePrevClick={handlePrevClick}
+          handleNextClick={handleNextClick}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+          startYear={startYear}
+          mode={mode}
+        />
       )}
 
       <Box className="mx-2">

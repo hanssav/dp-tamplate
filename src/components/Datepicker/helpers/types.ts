@@ -10,15 +10,15 @@ export const MODE = {
   SINGLE: 'single',
   RANGE: 'range',
   MULTIPLE: 'multiple',
-  AUTO_RANGE: 'autoRange',
+  AUTO_RANGE: 'autorange',
 } as const;
 
 export type Mode = (typeof MODE)[keyof typeof MODE];
 
 export type SelectDate =
-  | Date // for 'single'
-  | Date[] // for 'multiple'
-  | { from?: Date; to?: Date } // for 'range'
+  | Date // single
+  | Date[] // multiple
+  | { from?: Date; to?: Date }
   | undefined;
 
 export type DatepickerProps = {
@@ -44,4 +44,25 @@ export interface CreateDayPickerPropsArgs {
   setViewMode: React.Dispatch<React.SetStateAction<ViewMode>>;
   startYear: number;
   mappingOfYears: number[];
+}
+
+export interface UseSelectProps {
+  mode: Mode;
+  autoRange: boolean;
+  onChange?: (value: SelectDate) => void;
+  closePicker: () => void;
+  focusedDate?: Date;
+}
+
+export interface DaypickerPopUpProps {
+  selectedDate: SelectDate;
+  handleSelect: (date: SelectDate) => void;
+  focusedDate?: Date;
+  setFocusedDate: (date: Date) => void;
+  handlePrevClick: () => void;
+  handleNextClick: () => void;
+  viewMode: ViewMode;
+  setViewMode: React.Dispatch<React.SetStateAction<ViewMode>>;
+  startYear?: number;
+  mode: Mode;
 }

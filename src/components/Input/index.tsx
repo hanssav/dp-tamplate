@@ -20,7 +20,7 @@ export const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   const isSelect = type === INPUT_TYPES.SELECT;
-  const isDatepicker = type === INPUT_TYPES.DATEPICKER;
+  const inputValue = value instanceof Date ? value.toISOString() : value;
 
   const [query, setQuery] = useState('');
   const [isFocus, setIsFocus] = useState(false);
@@ -75,7 +75,7 @@ export const Input: React.FC<InputProps> = ({
     } as React.ChangeEvent<HTMLInputElement>;
     setQuery(option.label);
     setIsFocus(false);
-    onChange?.(fakeEvent)
+    onChange?.(fakeEvent);
   };
 
   const handleSelectOnChage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,41 +130,18 @@ export const Input: React.FC<InputProps> = ({
             </ul>
           )}
         </div>
-      ) : isDatepicker ? (
-        <div className="relative max-w-sm">
-          <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-            <svg
-              className="h-4 w-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-            </svg>
-          </div>
-          <input
-            id={id}
-            ref={inputRef}
-            type="text"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder="select-date"
-            data-datepicker
-            data-datepicker-buttons
-            data-datepicker-autoselect-today
-          />
-        </div>
       ) : (
         <input
           id={id}
           type={type}
-          value={value}
+          value={inputValue}
           onChange={onChange}
           placeholder=" "
           className={getInputClassNames(isSelect, disabled)}
           inputMode={type === 'number' ? 'numeric' : undefined}
           disabled={disabled}
           onFocus={() => setIsFocus(true)}
+          readOnly={props.readOnly}
           {...props}
         />
       )}
