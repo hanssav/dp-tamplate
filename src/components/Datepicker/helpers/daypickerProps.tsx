@@ -7,6 +7,7 @@ import {
   MODE,
   VIEW_MODE,
 } from '@components/Datepicker/helpers/types';
+import { DayButton } from '@components/Datepicker/component/DayButton';
 
 export function createDayPickerProps({
   selectedDate,
@@ -21,21 +22,32 @@ export function createDayPickerProps({
   mappingOfYears,
   mode,
 }: CreateDayPickerPropsArgs): DayPickerProps {
+  const modifierClassNames = {
+    selected: 'bg-primary text-white hover:!bg-hover-primary rounded-full',
+    today:
+      'border border-primary rounded-full flex items-center justify-center',
+    range_start:
+      'rounded-full rounded-r bg-blue-100 text-white dark:bg-blue-700 dark:hover:bg-blue-600',
+    range_end:
+      'rounded-full rounded-l bg-blue-100 text-white dark:bg-blue-700 dark:hover:bg-blue-600',
+    range_middle:
+      'bg-blue-100 rounded-none dark:text-white dark:bg-blue-700 dark:hover:bg-blue-600',
+  };
+
   const baseProps = {
     month: focusedDate,
     onMonthChange: setFocusedDate,
-    modifiersClassNames: {
-      selected: 'bg-primary text-white hover:!bg-hover-primary',
-      today:
-        'border border-primary rounded-full flex items-center justify-center',
-    },
-    className: 'w-full rounded bg-white dark:bg-gray-800',
+    modifiersClassNames: modifierClassNames,
+    className: 'w-full rounded bg-white dark:bg-gray-800 ',
     classNames: {
-      day: 'hover:bg-gray-100 rounded-full cursor-pointer dark:hover:bg-gray-700',
+      day: 'cursor-pointer dark:hover:bg-gray-700 rounded-full',
       table: 'gap-2',
       cell: 'text-center',
     },
     components: {
+      DayButton: (props: any) => (
+        <DayButton props={props} handleSelect={handleSelect} />
+      ),
       PreviousMonthButton: (props: any) => (
         <button {...props} onClick={handlePrevClick}>
           <ChevronLeft className="h-5 w-5" />

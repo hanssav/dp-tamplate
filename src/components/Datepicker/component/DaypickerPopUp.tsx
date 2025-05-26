@@ -50,6 +50,7 @@ export function DaypickerPopUp({
     mode,
   ]);
 
+
   return (
     <div className="absolute z-10 rounded bg-white p-4 shadow-soft dark:bg-gray-800 dark:text-white">
       <DayPicker {...dayPickerProps} />

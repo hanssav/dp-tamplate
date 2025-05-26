@@ -105,7 +105,9 @@ const GridButton: React.FC<GridButtonProps> = ({
       size="md"
       className={twMerge(
         'rounded-lg',
-        !isSelected && isFocused && 'bg-gray-200 text-black hover:bg-gray-300'
+        !isSelected &&
+          isFocused &&
+          'bg-gray-200 text-black hover:bg-gray-300 dark:bg-gray-700 dark:text-white'
       )}
       onClick={onClick}
     >
