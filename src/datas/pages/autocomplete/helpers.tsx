@@ -14,10 +14,10 @@ const PreviewOptions = ({ id }: { id: string }) => {
     <div className="mb-6">
       <Input
         id={`number ${id}`}
-        label="Number"
+        placeholder="Number"
         type="select"
         value={number}
-        onChange={(e) => setNumber(e.target.value)}
+        onChange={e => setNumber(e.target.value)}
         options={[
           { label: 'One', value: 'one' },
           { label: 'Two', value: 'two' },
@@ -35,10 +35,10 @@ const PreviewGroupOptions = ({ id }: { id: string }) => {
     <div className="mb-6">
       <Input
         id={`state-select ${id}`}
-        label="States Group"
+        placeholder="States Group"
         type="select"
         value={selectedState}
-        onChange={(e) => setSelectedState(e.target.value)}
+        onChange={e => setSelectedState(e.target.value)}
         groupOptions={gropStates}
       />
     </div>
@@ -53,10 +53,10 @@ const PreviewOverview = ({ id }: { id: string }) => {
     <div>
       <Input
         id={`State ${id}`}
-        label="State"
+        placeholder="State"
         type="select"
         value={number}
-        onChange={(e) => setNumber(e.target.value)}
+        onChange={e => setNumber(e.target.value)}
         options={overviewState}
         disabled={isDisabled}
       />
@@ -64,7 +64,10 @@ const PreviewOverview = ({ id }: { id: string }) => {
         {/* Switch */}
         <label className="flex cursor-pointer items-center gap-2">
           <div
-            onClick={() => setIsDisabled(!isDisabled)}
+            onClick={() => {
+              setIsDisabled(!isDisabled);
+              setNumber('');
+            }}
             className={`relative flex h-6 w-12 items-center rounded-full transition-colors duration-300  ${
               isDisabled ? 'bg-blue-500' : 'bg-gray-300'
             }`}
@@ -131,7 +134,7 @@ const [number, setNumber] = useState('');
 return (
   <Input
     id="number"
-    label="Number"
+    placeholder="Number"
     type="select"
     value={number}
     onChange={(e) => setNumber(e.target.value)}

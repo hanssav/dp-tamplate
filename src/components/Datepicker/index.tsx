@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import 'react-day-picker/dist/style.css';
 import Box from '@components/Box';
 import Typography from '@components/Typography';
@@ -9,6 +9,7 @@ import { useClosePicker } from '@components/Datepicker/hooks/useClosePicker';
 import { useTogglePicker } from '@components/Datepicker/hooks/useTogglePicker';
 import { DatepickerInput } from '@components/Datepicker/component/Input';
 import { DaypickerPopUp } from '@components/Datepicker/component/DaypickerPopUp';
+import { useClickOutside } from '@hooks/useClickOutside';
 
 export const Datepicker: React.FC<DatepickerProps> = ({
   onChange,
@@ -22,6 +23,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const {
     setViewMode,
     viewMode,
@@ -42,15 +44,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
     setFocusedDate
   );
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        closePicker();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  useClickOutside(containerRef, () => setIsOpen(false));
 
   return (
     <div id={id} className="relative w-full" ref={containerRef}>
@@ -60,6 +54,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
         selectedDate={selectedDate}
         format={format}
         togglePicker={togglePicker}
+        placeholder={placeholder}
         {...props}
       />
       {isOpen && (

@@ -1,5 +1,5 @@
+import { classes } from '@components/Input/style';
 import React from 'react';
-import { getListItemClassNames } from '@components/Input/style';
 
 interface ListItemsProps {
   opt: {
@@ -20,7 +20,7 @@ export const ListItems: React.FC<ListItemsProps> = ({
   return (
     <li
       key={index}
-      className={getListItemClassNames()}
+      className={classes.listItem}
       onClick={() => handleSelect(opt)}
     >
       {opt.img ? (

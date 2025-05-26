@@ -21,6 +21,7 @@ export const PreviewDatepicker = ({
             id={item.id}
             mode={item?.mode}
             autoRange={item.autoRange}
+            placeholder={item.placeholder}
             {...item}
           />
         );

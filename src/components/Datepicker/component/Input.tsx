@@ -11,7 +11,7 @@ type DatepickerInputProps = {
   disabled?: boolean;
   selectedDate?: SelectDate;
   togglePicker: () => void;
-  label?: string;
+  placeholder?: string;
 };
 export function DatepickerInput({
   id,
@@ -44,7 +44,7 @@ export function DatepickerInput({
       disabled={disabled}
       onClick={togglePicker}
       value={inputValue}
-      label={props.label}
+      placeholder={props.placeholder}
       {...props}
     />
   );

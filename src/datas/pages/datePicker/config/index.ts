@@ -6,7 +6,6 @@ export const datepickerConfig: Record<DatepickerVariant, any[]> = {
   'basic-datepicker': [
     {
       id: 'basic-datepicker',
-      label: 'Choose a date',
       placeholder: 'Choose a date',
       format: 'MM/dd/yyyy',
       mode: MODE.SINGLE,
@@ -15,8 +14,7 @@ export const datepickerConfig: Record<DatepickerVariant, any[]> = {
   'custom-selection': [
     {
       id: 'custom-selection',
-      label: 'Enter a date range',
-      placeholder: 'Choose a date',
+      placeholder: 'Enter a date range',
       mode: MODE.SINGLE,
       autoRange: true,
       format: 'MM/dd/yyyy',
