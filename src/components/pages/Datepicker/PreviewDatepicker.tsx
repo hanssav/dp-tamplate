@@ -17,25 +17,25 @@ export const PreviewDatepicker = ({
   id: string;
   variant: DatepickerVariant;
 }) => {
-  const [selectedDate, setSelectedDate] = useState<SelectDate>({
-    from: null,
-    to: null,
-  });
+  const [selectedDates, setSelectedDates] = useState<
+    Record<string, SelectDate>
+  >({});
 
   const isoFormatted = useMemo(() => {
+    const current = selectedDates[id];
     if (
-      selectedDate &&
-      typeof selectedDate === 'object' &&
-      !Array.isArray(selectedDate) &&
-      'from' in selectedDate
+      current &&
+      typeof current === 'object' &&
+      !Array.isArray(current) &&
+      'from' in current
     ) {
       return {
-        from: selectedDate.from ? formatISO(selectedDate.from) : null,
-        to: selectedDate.to ? formatISO(selectedDate.to) : null,
+        from: current.from ? formatISO(current.from) : null,
+        to: current.to ? formatISO(current.to) : null,
       };
     }
     return null;
-  }, [selectedDate]);
+  }, [selectedDates]);
 
   return (
     <Box id={id}>
@@ -43,10 +43,13 @@ export const PreviewDatepicker = ({
         return (
           <div key={index}>
             <Datepicker
+              key={index}
               id={item.id}
               item={item}
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
+              selectedDate={selectedDates[item.id] || { from: null, to: null }}
+              setSelectedDate={(value: SelectDate) =>
+                setSelectedDates(prev => ({ ...prev, [item.id]: value }))
+              }
             />
 
             {item.result && (

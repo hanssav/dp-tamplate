@@ -1,3 +1,9 @@
+export type SelectDate =
+  | Date // single
+  | Date[] // multiple
+  | { from?: Date | null; to?: Date | null }
+  | undefined;
+
 export const VIEW_MODE = {
   DAY: 'day',
   MONTH: 'month',
@@ -15,17 +21,13 @@ export const MODE = {
 
 export type Mode = (typeof MODE)[keyof typeof MODE];
 
-export type SelectDate =
-  | Date // single
-  | Date[] // multiple
-  | { from?: Date | null; to?: Date | null }
-  | undefined;
+type SetSelectedDate = (date: SelectDate) => void;
 
 export type DatepickerProps = {
   onChange?: (date: SelectDate) => void;
   id: string;
   selectedDate: SelectDate;
-  setSelectedDate: React.Dispatch<React.SetStateAction<SelectDate>>;
+  setSelectedDate: SetSelectedDate;
   [key: string]: any; // for props
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -49,7 +51,7 @@ export interface UseSelectProps {
   closePicker: () => void;
   focusedDate?: Date;
   selectedDate: SelectDate;
-  setSelectedDate: React.Dispatch<React.SetStateAction<SelectDate>>;
+  setSelectedDate: SetSelectedDate;
 }
 
 export interface DaypickerPopUpProps {
