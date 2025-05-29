@@ -2,11 +2,14 @@ import { SectionContent } from '@datas/pages/config/_types';
 import {
   basicDatepicker,
   customSelectionDatepicker,
+  formIntegrationsDatepicker,
 } from '@datas/pages/datePicker';
+import {
+  ID_BASIC_DATEPICKER,
+  ID_CUSTOM_SELECTION_DATEPICKER,
+  ID_FORM_INTEGRATION_DATEPICKER,
+} from '@datas/pages/datePicker/config';
 import { createTabs } from '@datas/pages/helpers/tabHelpers';
-
-export const ID_BASIC_DATEPICKER = 'basic-datepicker';
-export const ID_CUSTOM_SELECTION_DATEPICKER = 'custom-selection';
 
 export const datepicker: SectionContent[] = [
   {
@@ -61,6 +64,24 @@ export const datepicker: SectionContent[] = [
             tabData: createTabs(
               ID_CUSTOM_SELECTION_DATEPICKER,
               customSelectionDatepicker(ID_CUSTOM_SELECTION_DATEPICKER)
+            ),
+          },
+          {
+            title: 'Form Integration',
+            variant: 'default',
+            config: {
+              id: ID_FORM_INTEGRATION_DATEPICKER,
+              componentType: 'tabs',
+              inputType: 'option',
+              headerLine: true,
+              border: 'border dark:border-gray-700',
+              padding: 'px-5 py-2',
+              shadow: 'shadow-none',
+              margin: 'mb-5',
+            },
+            tabData: createTabs(
+              ID_FORM_INTEGRATION_DATEPICKER,
+              formIntegrationsDatepicker(ID_FORM_INTEGRATION_DATEPICKER)
             ),
           },
         ],

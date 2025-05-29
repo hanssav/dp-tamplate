@@ -13,15 +13,17 @@ import { useClickOutside } from '@hooks/useClickOutside';
 
 export const Datepicker: React.FC<DatepickerProps> = ({
   onChange,
-  placeholder = 'Select a date',
-  format = 'MM/dd/yyyy',
-  className = '',
   disabled = false,
   id,
-  mode = MODE.SINGLE,
-  autoRange = false,
+  selectedDate,
+  setSelectedDate,
   ...props
 }) => {
+  const item = props.item;
+  const placeholder = item.placeholder ?? 'Select a date';
+  const mode = item.mode ?? MODE.SINGLE;
+  const format = item.format ?? 'MM/dd/yyyy';
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -35,8 +37,15 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   } = useNavigateDate();
   const [isOpen, setIsOpen] = useState(false);
   const { closePicker } = useClosePicker(setIsOpen, setViewMode);
-  const selectProps = { mode, autoRange, onChange, closePicker, focusedDate };
-  const { selectedDate, handleSelect } = useSelectDate(selectProps);
+  const selectProps = {
+    item,
+    onChange,
+    closePicker,
+    focusedDate,
+    selectedDate,
+    setSelectedDate,
+  };
+  const { handleSelect } = useSelectDate(selectProps);
   const { togglePicker } = useTogglePicker(
     isOpen,
     setIsOpen,
@@ -72,9 +81,9 @@ export const Datepicker: React.FC<DatepickerProps> = ({
         />
       )}
 
-      <Box className="mx-2">
+      <Box className="mx-2 mb-5">
         <Typography textStyle="body" as="p">
-          {format}
+          {props.labelFormat ?? format}
         </Typography>
       </Box>
     </div>

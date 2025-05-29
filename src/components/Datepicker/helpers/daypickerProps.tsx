@@ -34,62 +34,66 @@ export function createDayPickerProps({
       'bg-blue-100 rounded-none dark:text-white dark:bg-blue-700 dark:hover:bg-blue-600',
   };
 
+  const classNames = {
+    day: 'cursor-pointer dark:hover:bg-gray-700 rounded-full',
+    table: 'gap-2',
+    cell: 'text-center',
+  };
+
+  const components = {
+    DayButton: (props: any) => (
+      <DayButton props={props} handleSelect={handleSelect} />
+    ),
+    PreviousMonthButton: (props: any) => (
+      <button {...props} onClick={handlePrevClick}>
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+    ),
+    NextMonthButton: (props: any) => (
+      <button {...props} onClick={handleNextClick}>
+        <ChevronRight className="h-5 w-5" />
+      </button>
+    ),
+    CaptionLabel: (p: any) => (
+      <MonthCaption
+        {...p}
+        viewMode={viewMode}
+        startYear={startYear}
+        focusedDate={focusedDate}
+        onCaptionClick={() => {
+          setViewMode(current =>
+            current === VIEW_MODE.DAY ? VIEW_MODE.YEAR : VIEW_MODE.DAY
+          );
+        }}
+      />
+    ),
+    ...(viewMode !== VIEW_MODE.DAY && {
+      MonthGrid: () => (
+        <MonthGrid
+          viewMode={viewMode}
+          focusedDate={focusedDate}
+          setFocusedDate={setFocusedDate}
+          setViewMode={setViewMode}
+          selectedDate={
+            mode === MODE.SINGLE && selectedDate instanceof Date
+              ? selectedDate
+              : undefined
+          }
+          mappingOfYears={mappingOfYears}
+        />
+      ),
+
+      DayButton: () => <></>,
+    }),
+  };
+
   const baseProps = {
     month: focusedDate,
     onMonthChange: setFocusedDate,
     modifiersClassNames: modifierClassNames,
     className: 'w-full rounded bg-white dark:bg-gray-800 ',
-    classNames: {
-      day: 'cursor-pointer dark:hover:bg-gray-700 rounded-full',
-      table: 'gap-2',
-      cell: 'text-center',
-    },
-    components: {
-      DayButton: (props: any) => (
-        <DayButton props={props} handleSelect={handleSelect} />
-      ),
-      PreviousMonthButton: (props: any) => (
-        <button {...props} onClick={handlePrevClick}>
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-      ),
-      NextMonthButton: (props: any) => (
-        <button {...props} onClick={handleNextClick}>
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      ),
-      CaptionLabel: (p: any) => (
-        <MonthCaption
-          {...p}
-          viewMode={viewMode}
-          startYear={startYear}
-          focusedDate={focusedDate}
-          onCaptionClick={() => {
-            setViewMode(current =>
-              current === VIEW_MODE.DAY ? VIEW_MODE.YEAR : VIEW_MODE.DAY
-            );
-          }}
-        />
-      ),
-      ...(viewMode !== VIEW_MODE.DAY && {
-        MonthGrid: () => (
-          <MonthGrid
-            viewMode={viewMode}
-            focusedDate={focusedDate}
-            setFocusedDate={setFocusedDate}
-            setViewMode={setViewMode}
-            selectedDate={
-              mode === MODE.SINGLE && selectedDate instanceof Date
-                ? selectedDate
-                : undefined
-            }
-            mappingOfYears={mappingOfYears}
-          />
-        ),
-
-        DayButton: () => <></>,
-      }),
-    },
+    classNames: classNames,
+    components: components,
   };
 
   if (mode === MODE.SINGLE) {

@@ -18,18 +18,15 @@ export type Mode = (typeof MODE)[keyof typeof MODE];
 export type SelectDate =
   | Date // single
   | Date[] // multiple
-  | { from?: Date; to?: Date }
+  | { from?: Date | null; to?: Date | null }
   | undefined;
 
 export type DatepickerProps = {
-  value?: Date;
   onChange?: (date: SelectDate) => void;
-  placeholder?: string;
-  format?: string;
-  className?: string;
   id: string;
-  mode?: Mode;
-  autoRange?: boolean;
+  selectedDate: SelectDate;
+  setSelectedDate: React.Dispatch<React.SetStateAction<SelectDate>>;
+  [key: string]: any; // for props
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export interface CreateDayPickerPropsArgs {
@@ -47,11 +44,12 @@ export interface CreateDayPickerPropsArgs {
 }
 
 export interface UseSelectProps {
-  mode: Mode;
-  autoRange: boolean;
+  item: any;
   onChange?: (value: SelectDate) => void;
   closePicker: () => void;
   focusedDate?: Date;
+  selectedDate: SelectDate;
+  setSelectedDate: React.Dispatch<React.SetStateAction<SelectDate>>;
 }
 
 export interface DaypickerPopUpProps {

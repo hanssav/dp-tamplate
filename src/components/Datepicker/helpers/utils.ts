@@ -16,3 +16,13 @@ export const extractFocusedDate = (value?: SelectDate): Date => {
   if ('from' in value && value.from instanceof Date) return value.from;
   return new Date();
 };
+
+export const getRangeDate = (date: Date) => {
+  const from = new Date(date);
+  from.setDate(from.getDate() - 2);
+
+  const to = new Date(date);
+  to.setDate(to.getDate() + 2);
+
+  return { from, to };
+};

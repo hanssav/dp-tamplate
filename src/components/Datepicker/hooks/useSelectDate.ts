@@ -1,3 +1,4 @@
+import { getRangeDate } from './../helpers/utils';
 import { UseSelectProps } from './../helpers/types';
 import { useNavigateDate } from '@components/Datepicker/hooks/useNavigateDate';
 import {
@@ -6,33 +7,27 @@ import {
   SelectDate,
 } from '@components/Datepicker/helpers/types';
 import { isDateRange } from '@components/Datepicker/helpers/utils';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 export function useSelectDate({
-  mode,
-  autoRange,
+  item,
   onChange,
   closePicker,
   focusedDate,
+  selectedDate,
+  setSelectedDate,
 }: UseSelectProps) {
   const { viewMode } = useNavigateDate();
-  const [selectedDate, setSelectedDate] = useState<SelectDate>();
 
   const handleSelect = useCallback(
     (date: SelectDate) => {
       if (viewMode !== VIEW_MODE.DAY || !date || !focusedDate) return;
 
-      switch (mode) {
+      switch (item.mode) {
         case MODE.SINGLE:
           if (date instanceof Date) {
-            if (autoRange) {
-              const from = new Date(date);
-              from.setDate(from.getDate() - 2);
-
-              const to = new Date(date);
-              to.setDate(to.getDate() + 2);
-
-              const range = { from, to };
+            if (item.autoRange) {
+              const range = getRangeDate(date);
               setSelectedDate(range);
               onChange?.(range);
               closePicker();
@@ -66,7 +61,7 @@ export function useSelectDate({
           break;
       }
     },
-    [mode, viewMode, focusedDate, onChange, closePicker, isDateRange]
+    [item.mode, viewMode, focusedDate, onChange, closePicker, isDateRange]
   );
 
   return { selectedDate, setSelectedDate, handleSelect };

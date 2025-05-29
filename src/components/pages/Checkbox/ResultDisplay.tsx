@@ -1,7 +1,6 @@
-import Box from '@components/Box';
 import Checkbox from '@components/Checkbox';
-import Typography from '@components/Typography';
-import { twMerge } from 'tailwind-merge';
+import Result from '@components/pages/Result';
+import { convertToObjectStirng } from '@utils/function';
 
 const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
   const allKeys = ['pepperoni', 'extraCheese', 'mushroom'];
@@ -14,21 +13,8 @@ const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
     {} as Record<string, boolean>
   );
 
-  const resultsString = `{ ${Object.entries(resultsDatas)
-    .map(([key, value]) => `"${key}": ${value}`)
-    .join(', ')} }`;
-
   return (
-    <Box
-      className={twMerge(
-        item.parentName && 'flex',
-        'shodow-none gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7 dark:border-gray-700 dark:bg-[#232e39]'
-      )}
-    >
-      <Typography as="h4" textStyle="body" className="font-bold">
-        {item.title}
-      </Typography>
-
+    <Result item={item}>
       {item.label ? (
         <Checkbox
           label={item.label}
@@ -39,12 +25,12 @@ const ResultDisplay = ({ item, checkedChildren, checkedRadio }: any) => {
         />
       ) : item.showMultiple ? (
         <div className="text-sm text-gray-800 dark:text-current">
-          <span>{resultsString}</span>
+          <span>{convertToObjectStirng(resultsDatas)}</span>
         </div>
       ) : (
         <span className="font-bold">&nbsp;{checkedRadio[item.parentName]}</span>
       )}
-    </Box>
+    </Result>
   );
 };
 
