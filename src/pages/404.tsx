@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import DashboardLayout from '../components/DashboardLayout';
+import DashboardLayout from '../components/UI/DashboardLayout';
 
 const NotFoundPage = () => {
   return (

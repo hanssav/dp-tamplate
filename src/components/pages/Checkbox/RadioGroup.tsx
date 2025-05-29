@@ -1,6 +1,6 @@
-import Box from '@components/Box';
-import Checkbox from '@components/Checkbox';
-import Typography from '@components/Typography';
+import Box from '@components/UI/Box';
+import Checkbox from '@components/UI/Checkbox';
+import Typography from '@components/UI/Typography';
 
 const RadioGroup = ({ item, selectedValue, onChange }: any) => (
   <Box className="flex gap-4">

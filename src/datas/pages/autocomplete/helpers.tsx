@@ -1,5 +1,5 @@
-import { CodeBlock } from '@components/CodeBlock';
-import { Input } from '@components/Input';
+import { CodeBlock } from '@components/UI/CodeBlock';
+import { Input } from '@components/UI/Input';
 import {
   gropStates,
   overviewState,
@@ -126,7 +126,7 @@ const typescriptPreview = (
   <CodeBlock
     language="tsx"
     code={`import { useState } from 'react';
-import { Input } from '@components/Input';
+import { Input } from '@components/UI/Input';
 
 const Example = () => {
 const [number, setNumber] = useState('');

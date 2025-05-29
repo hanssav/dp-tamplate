@@ -1,4 +1,4 @@
-import DashboardLayout from '@components/DashboardLayout';
+import DashboardLayout from '@components/UI/DashboardLayout';
 import { menuItems } from '@datas/components/menuItems';
 import { useLocation, Navigate } from 'react-router'; // or 'react-router-dom' if using it
 

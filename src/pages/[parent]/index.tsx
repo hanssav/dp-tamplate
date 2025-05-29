@@ -1,13 +1,13 @@
 import { Navigate, useLocation } from 'react-router';
-import DashboardLayout from '@components/DashboardLayout';
+import DashboardLayout from '@components/UI/DashboardLayout';
 import IMAGE_CONSTANTS from '@constant/images';
 import { checkValidPath, getTitleFromPath, toCamelCase } from '@utils/function';
 import * as UiConfig from '@datas/pages/config';
 import { useEffect } from 'react';
-import UiSection from '@components/UiRenderer/UiSection';
-import Box from '@components/Box';
-import { DynamicCard } from '@components/Card/CardContent';
+import Box from '@components/UI/Box';
+import { DynamicCard } from '@components/UI/Card/CardContent';
 import { useSection } from '@context/useSection';
+import UiSection from '@components/UI/UiRenderer/UiSection';
 
 const ParentMenu = () => {
   const location = useLocation();

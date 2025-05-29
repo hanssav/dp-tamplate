@@ -1,5 +1,5 @@
 import { ApexOptions } from 'apexcharts';
-import { ColKey } from '@components/Box/boxTheme';
+import { ColKey } from '@components/UI/Box/boxTheme';
 import { CardVariant } from '@components/_types/Card';
 import { POSITIONS } from '@datas/pages/charts/constants';
 import { ReactNode } from 'react';

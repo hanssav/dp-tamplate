@@ -1,9 +1,15 @@
-import Box from '@components/Box';
+import Box from '@components/UI/Box';
 import CheckboxGroup from '@components/pages/Checkbox/CheckboxGroup';
 import RadioGroup from '@components/pages/Checkbox/RadioGroup';
 import ResultDisplay from '@components/pages/Checkbox/ResultDisplay';
-import { checkboxConfig, CheckboxVariant } from '@datas/pages/checkbox/config/checkboxConfig';
-import { radioConfg, RadioVariant } from '@datas/pages/radio/config/radioConfig';
+import {
+  checkboxConfig,
+  CheckboxVariant,
+} from '@datas/pages/checkbox/config/checkboxConfig';
+import {
+  radioConfg,
+  RadioVariant,
+} from '@datas/pages/radio/config/radioConfig';
 import { useState } from 'react';
 import { getChildValues, exclude } from './utils';
 
@@ -13,19 +19,33 @@ function isCheckboxVariant(v: Variant): v is CheckboxVariant {
   return checkboxVariants.includes(v as CheckboxVariant);
 }
 
-export const PreviewCheckbox = ({ id, variant }: { id: string; variant: Variant }) => {
+export const PreviewCheckbox = ({
+  id,
+  variant,
+}: {
+  id: string;
+  variant: Variant;
+}) => {
   const [checkedParents, setCheckedParents] = useState<string[]>([]);
   const [checkedChildren, setCheckedChildren] = useState<string[]>([]);
   const [checkedRadio, setCheckedRadio] = useState<Record<string, string>>({});
 
-  const datas = isCheckboxVariant(variant) ? checkboxConfig[variant] : radioConfg[variant];
+  const datas = isCheckboxVariant(variant)
+    ? checkboxConfig[variant]
+    : radioConfg[variant];
 
   const toggleParent = (item: any) => {
     const childValues = getChildValues(item);
     const isChecked = checkedParents.includes(item.value);
 
-    setCheckedParents(prev => (isChecked ? exclude(prev, [item.value]) : [...prev, item.value]));
-    setCheckedChildren(prev => (isChecked ? exclude(prev, childValues) : [...new Set([...prev, ...childValues])]));
+    setCheckedParents(prev =>
+      isChecked ? exclude(prev, [item.value]) : [...prev, item.value]
+    );
+    setCheckedChildren(prev =>
+      isChecked
+        ? exclude(prev, childValues)
+        : [...new Set([...prev, ...childValues])]
+    );
   };
 
   const toggleChild = (item: any, value: string) => {
@@ -43,8 +63,12 @@ export const PreviewCheckbox = ({ id, variant }: { id: string; variant: Variant 
 
     setCheckedChildren(updatedChildren);
 
-    const allChecked = childValues.every((val: any) => updatedChildren.includes(val));
-    const allUnchecked = childValues.every((val: any) => !updatedChildren.includes(val));
+    const allChecked = childValues.every((val: any) =>
+      updatedChildren.includes(val)
+    );
+    const allUnchecked = childValues.every(
+      (val: any) => !updatedChildren.includes(val)
+    );
 
     if (allChecked) {
       setCheckedParents(prev => [...new Set([...prev, item.value])]);
@@ -69,7 +93,12 @@ export const PreviewCheckbox = ({ id, variant }: { id: string; variant: Variant 
 
         if (item.result)
           return (
-            <ResultDisplay key={item.title} item={item} checkedChildren={checkedChildren} checkedRadio={checkedRadio} />
+            <ResultDisplay
+              key={item.title}
+              item={item}
+              checkedChildren={checkedChildren}
+              checkedRadio={checkedRadio}
+            />
           );
 
         return (

@@ -1,12 +1,21 @@
-import Box from '@components/Box';
-import Checkbox from '@components/Checkbox';
+import Box from '@components/UI/Box';
+import Checkbox from '@components/UI/Checkbox';
 import { getChildValues } from '@components/pages/Checkbox/utils';
-import Typography from '@components/Typography';
+import Typography from '@components/UI/Typography';
 
-const CheckboxGroup = ({ item, isParentChecked, checkedChildren, onToggleParent, onToggleChild }: any) => {
+const CheckboxGroup = ({
+  item,
+  isParentChecked,
+  checkedChildren,
+  onToggleParent,
+  onToggleChild,
+}: any) => {
   const childValues = getChildValues(item);
-  const checkedChildCount = childValues.filter((val: any) => checkedChildren.includes(val)).length;
-  const isIndeterminate = checkedChildCount > 0 && checkedChildCount < childValues.length;
+  const checkedChildCount = childValues.filter((val: any) =>
+    checkedChildren.includes(val)
+  ).length;
+  const isIndeterminate =
+    checkedChildCount > 0 && checkedChildCount < childValues.length;
 
   return (
     <div className="gap-4">

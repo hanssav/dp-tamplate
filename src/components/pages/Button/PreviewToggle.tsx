@@ -1,7 +1,10 @@
-import Box from '@components/Box';
-import ToggleButtonGroup from '@components/ToggleButtonGroup';
-import Typography from '@components/Typography';
-import { toggleConfigs, ToggleVariant } from '@datas/pages/button/config/toggleConfig';
+import Box from '@components/UI/Box';
+import ToggleButtonGroup from '@components/UI/ToggleButtonGroup';
+import Typography from '@components/UI/Typography';
+import {
+  toggleConfigs,
+  ToggleVariant,
+} from '@datas/pages/button/config/toggleConfig';
 import React from 'react';
 
 interface PreviewToggleProps {
@@ -11,7 +14,11 @@ interface PreviewToggleProps {
 
 export const PreviewToggle = ({ id, variant }: PreviewToggleProps) => {
   const selected = toggleConfigs[variant].selected;
-  const initialValue: string[] = Array.isArray(selected) ? selected : selected ? [selected] : [];
+  const initialValue: string[] = Array.isArray(selected)
+    ? selected
+    : selected
+      ? [selected]
+      : [];
 
   const [value, setValue] = React.useState<string[]>(initialValue);
   return (

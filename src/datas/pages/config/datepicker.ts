@@ -1,10 +1,12 @@
 import { SectionContent } from '@datas/pages/config/_types';
 import {
+  actionButtonDatepicker,
   basicDatepicker,
   customSelectionDatepicker,
   formIntegrationsDatepicker,
 } from '@datas/pages/datePicker';
 import {
+  ID_ACTION_BUTTONS_DATEPICKER,
   ID_BASIC_DATEPICKER,
   ID_CUSTOM_SELECTION_DATEPICKER,
   ID_FORM_INTEGRATION_DATEPICKER,
@@ -82,6 +84,24 @@ export const datepicker: SectionContent[] = [
             tabData: createTabs(
               ID_FORM_INTEGRATION_DATEPICKER,
               formIntegrationsDatepicker(ID_FORM_INTEGRATION_DATEPICKER)
+            ),
+          },
+          {
+            title: 'Actions Buttons',
+            variant: 'default',
+            config: {
+              id: ID_ACTION_BUTTONS_DATEPICKER,
+              componentType: 'tabs',
+              inputType: 'option',
+              headerLine: true,
+              border: 'border dark:border-gray-700',
+              padding: 'px-5 py-2',
+              shadow: 'shadow-none',
+              margin: 'mb-5',
+            },
+            tabData: createTabs(
+              ID_ACTION_BUTTONS_DATEPICKER,
+              actionButtonDatepicker(ID_ACTION_BUTTONS_DATEPICKER)
             ),
           },
         ],

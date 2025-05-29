@@ -1,7 +1,7 @@
-import Box from '@components/Box';
+import Box from '@components/UI/Box';
 import { formatISO } from 'date-fns';
-import { Datepicker } from '@components/Datepicker';
-import { SelectDate } from '@components/Datepicker/helpers/types';
+import { Datepicker } from '@components/UI/Datepicker';
+import { SelectDate } from '@components/UI/Datepicker/helpers/types';
 import Result from '@components/pages/Result';
 import {
   datepickerConfig,
@@ -60,4 +60,3 @@ export const PreviewDatepicker = ({
     </Box>
   );
 };
-    

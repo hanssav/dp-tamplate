@@ -1,4 +1,4 @@
-import Checkbox from '@components/Checkbox';
+import Checkbox from '@components/UI/Checkbox';
 import Result from '@components/pages/Result';
 import { convertToObjectStirng } from '@utils/function';
 

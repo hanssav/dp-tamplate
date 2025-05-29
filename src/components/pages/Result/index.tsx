@@ -1,5 +1,5 @@
-import Box from '@components/Box';
-import Typography from '@components/Typography';
+import Box from '@components/UI/Box';
+import Typography from '@components/UI/Typography';
 import { twMerge } from 'tailwind-merge';
 
 const Result = ({ item, children }: any) => {

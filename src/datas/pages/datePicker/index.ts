@@ -1,6 +1,7 @@
 import { PreviewDatepicker } from '@components/pages/Datepicker/PreviewDatepicker';
 import {
   ID_BASIC_DATEPICKER,
+  ID_ACTION_BUTTONS_DATEPICKER,
   ID_CUSTOM_SELECTION_DATEPICKER,
   ID_FORM_INTEGRATION_DATEPICKER,
 } from '@datas/pages/datePicker/config';
@@ -46,6 +47,23 @@ export const formIntegrationsDatepicker = (id: string): TabContent =>
     PreviewDatepicker,
     id,
     ID_FORM_INTEGRATION_DATEPICKER,
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewHtml'],
+      }))
+    ),
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewTsx'],
+      }))
+    )
+  );
+
+export const actionButtonDatepicker = (id: string): TabContent =>
+  generateTab(
+    PreviewDatepicker,
+    id,
+    ID_ACTION_BUTTONS_DATEPICKER,
     lazy(() =>
       import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
         default: mod['BasicRadioPreviewHtml'],
