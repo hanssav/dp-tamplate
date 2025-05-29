@@ -47,18 +47,20 @@ export const datepickerConfig: Record<DatepickerVariant, any[]> = {
   ],
   [ID_ACTION_BUTTONS_DATEPICKER]: [
     {
-      // id: ID_BASIC_DATEPICKER,
+      id: `${ID_ACTION_BUTTONS_DATEPICKER}-singgle`,
       placeholder: 'Choose a date',
       format: 'MM/dd/yyyy',
       mode: MODE.SINGLE,
+      isUseAction: true,
     },
     {
-      id: ID_FORM_INTEGRATION_DATEPICKER,
+      id: `${ID_ACTION_BUTTONS_DATEPICKER}-range`,
       placeholder: 'Enter a date range',
       mode: MODE.SINGLE,
       autoRange: true,
       format: 'MM/dd/yyyy',
       labelFormat: 'MM/dd/yyyy - MM/dd/yyyy',
+      isUseAction: true,
     },
   ],
 };

@@ -1,3 +1,4 @@
+import { ButtonActions } from '@components/UI/Datepicker/component/ButtonActions';
 import { createDayPickerProps } from '@components/UI/Datepicker/helpers/daypickerProps';
 import { DaypickerPopUpProps } from '@components/UI/Datepicker/helpers/types';
 import { useMemo } from 'react';
@@ -14,6 +15,9 @@ export function DaypickerPopUp({
   setViewMode,
   startYear,
   mode,
+  isUseAction,
+  onApply,
+  onCancel,
 }: DaypickerPopUpProps) {
   const mappingOfYears = useMemo(() => {
     if (!startYear) return;
@@ -53,6 +57,8 @@ export function DaypickerPopUp({
   return (
     <div className="absolute z-10 rounded bg-white p-4 shadow-soft dark:bg-gray-800 dark:text-white">
       <DayPicker {...dayPickerProps} />
+
+      {isUseAction && <ButtonActions onApply={onApply} onCancel={onCancel} />}
     </div>
   );
 }

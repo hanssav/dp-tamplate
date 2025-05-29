@@ -21,25 +21,25 @@ export const PreviewDatepicker = ({
     Record<string, SelectDate>
   >({});
 
-  const isoFormatted = useMemo(() => {
-    const current = selectedDates[id];
-    if (
-      current &&
-      typeof current === 'object' &&
-      !Array.isArray(current) &&
-      'from' in current
-    ) {
-      return {
-        from: current.from ? formatISO(current.from) : null,
-        to: current.to ? formatISO(current.to) : null,
-      };
-    }
-    return null;
-  }, [selectedDates]);
-
   return (
     <Box id={id}>
       {datepickerConfig[variant].map((item, index) => {
+        const isoFormatted = useMemo(() => {
+          const current = selectedDates[item.id];
+          if (
+            current &&
+            typeof current === 'object' &&
+            !Array.isArray(current) &&
+            'from' in current
+          ) {
+            return {
+              from: current.from ? formatISO(current.from) : null,
+              to: current.to ? formatISO(current.to) : null,
+            };
+          }
+          return null;
+        }, [selectedDates]);
+
         return (
           <div key={index}>
             <Datepicker

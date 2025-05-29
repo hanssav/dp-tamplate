@@ -2,7 +2,11 @@ import React, { useRef, useState } from 'react';
 import 'react-day-picker/dist/style.css';
 import Box from '@components/UI/Box';
 import Typography from '@components/UI/Typography';
-import { DatepickerProps, MODE } from '@components/UI/Datepicker/helpers/types';
+import {
+  DatepickerProps,
+  MODE,
+  SelectDate,
+} from '@components/UI/Datepicker/helpers/types';
 import { useNavigateDate } from '@components/UI/Datepicker/hooks/useNavigateDate';
 import { useSelectDate } from '@components/UI/Datepicker/hooks/useSelectDate';
 import { useClosePicker } from '@components/UI/Datepicker/hooks/useClosePicker';
@@ -10,6 +14,7 @@ import { useTogglePicker } from '@components/UI/Datepicker/hooks/useTogglePicker
 import { DatepickerInput } from '@components/UI/Datepicker/component/Input';
 import { DaypickerPopUp } from '@components/UI/Datepicker/component/DaypickerPopUp';
 import { useClickOutside } from '@hooks/useClickOutside';
+import { useButtonAction } from '@components/UI/Datepicker/hooks/useButtonAction';
 
 export const Datepicker: React.FC<DatepickerProps> = ({
   onChange,
@@ -23,6 +28,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   const placeholder = item.placeholder ?? 'Select a date';
   const mode = item.mode ?? MODE.SINGLE;
   const format = item.format ?? 'MM/dd/yyyy';
+  const isUseAction = item.isUseAction ?? false;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -44,6 +50,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
     focusedDate,
     selectedDate,
     setSelectedDate,
+    isUseAction,
   };
   const { handleSelect } = useSelectDate(selectProps);
   const { togglePicker } = useTogglePicker(
@@ -55,6 +62,11 @@ export const Datepicker: React.FC<DatepickerProps> = ({
 
   useClickOutside(containerRef, () => setIsOpen(false));
 
+  const { onApply, onCancel } = useButtonAction(
+    closePicker,
+    setSelectedDate,
+    selectedDate
+  );
   return (
     <div id={id} className="relative w-full" ref={containerRef}>
       <DatepickerInput
@@ -78,6 +90,9 @@ export const Datepicker: React.FC<DatepickerProps> = ({
           setViewMode={setViewMode}
           startYear={startYear}
           mode={mode}
+          isUseAction={isUseAction}
+          onApply={onApply}
+          onCancel={onCancel}
         />
       )}
 

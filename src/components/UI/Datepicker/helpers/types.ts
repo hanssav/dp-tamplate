@@ -2,7 +2,8 @@ export type SelectDate =
   | Date // single
   | Date[] // multiple
   | { from?: Date | null; to?: Date | null }
-  | undefined;
+  | undefined
+  | null;
 
 export const VIEW_MODE = {
   DAY: 'day',
@@ -52,6 +53,7 @@ export interface UseSelectProps {
   focusedDate?: Date;
   selectedDate: SelectDate;
   setSelectedDate: SetSelectedDate;
+  isUseAction?: boolean;
 }
 
 export interface DaypickerPopUpProps {
@@ -65,4 +67,7 @@ export interface DaypickerPopUpProps {
   setViewMode: React.Dispatch<React.SetStateAction<ViewMode>>;
   startYear?: number;
   mode: Mode;
+  isUseAction?: boolean;
+  onApply?: () => void;
+  onCancel?: () => void;
 }

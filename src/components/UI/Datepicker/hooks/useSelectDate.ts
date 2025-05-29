@@ -16,6 +16,7 @@ export function useSelectDate({
   focusedDate,
   selectedDate,
   setSelectedDate,
+  isUseAction,
 }: UseSelectProps) {
   const { viewMode } = useNavigateDate();
 
@@ -30,7 +31,7 @@ export function useSelectDate({
               const range = getRangeDate(date);
               setSelectedDate(range);
               onChange?.(range);
-              closePicker();
+              if (!isUseAction) closePicker();
             } else {
               const newDate = new Date(
                 focusedDate.getFullYear(),
@@ -39,8 +40,8 @@ export function useSelectDate({
               );
 
               setSelectedDate(newDate);
+              if (!isUseAction) closePicker();
               onChange?.(newDate);
-              closePicker();
             }
           }
           break;
@@ -49,14 +50,14 @@ export function useSelectDate({
           if (isDateRange(date)) {
             setSelectedDate(date);
             onChange?.(date);
-            if (date.from !== date.to) closePicker();
+            if (date.from !== date.to && !isUseAction) closePicker();
           }
           break;
         case MODE.MULTIPLE:
           if (Array.isArray(date)) {
             setSelectedDate(date);
             onChange?.(date);
-            closePicker();
+            if (!isUseAction) closePicker();
           }
           break;
       }
