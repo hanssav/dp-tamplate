@@ -2,11 +2,7 @@ import React, { useRef, useState } from 'react';
 import 'react-day-picker/dist/style.css';
 import Box from '@components/UI/Box';
 import Typography from '@components/UI/Typography';
-import {
-  DatepickerProps,
-  MODE,
-  SelectDate,
-} from '@components/UI/Datepicker/helpers/types';
+import { DatepickerProps, MODE } from '@components/UI/Datepicker/helpers/types';
 import { useNavigateDate } from '@components/UI/Datepicker/hooks/useNavigateDate';
 import { useSelectDate } from '@components/UI/Datepicker/hooks/useSelectDate';
 import { useClosePicker } from '@components/UI/Datepicker/hooks/useClosePicker';
@@ -62,11 +58,9 @@ export const Datepicker: React.FC<DatepickerProps> = ({
 
   useClickOutside(containerRef, () => setIsOpen(false));
 
-  const { onApply, onCancel } = useButtonAction(
-    closePicker,
-    setSelectedDate,
-    selectedDate
-  );
+  const actionProps = { closePicker, setSelectedDate, selectedDate, isOpen };
+  const { onApply, onCancel } = useButtonAction(actionProps);
+
   return (
     <div id={id} className="relative w-full" ref={containerRef}>
       <DatepickerInput

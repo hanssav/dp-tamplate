@@ -35,7 +35,7 @@ export function createDayPickerProps({
   };
 
   const classNames = {
-    day: 'cursor-pointer dark:hover:bg-gray-700 rounded-full',
+    day: 'cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full',
     table: 'gap-2',
     cell: 'text-center',
   };

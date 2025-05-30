@@ -13,7 +13,7 @@ export function DayButton({
   const base_class =
     'h-10 w-10 rounded-full group-aria-selected:bg-orange-700 ';
 
-  const default_class = 'rounded-full hover:bg-gray-300 hover:dark:bg-gray-700';
+  const default_class = 'rounded-full  hover:dark:bg-gray-700';
   const range_start_class =
     'rounded-full bg-primary text-white hover:bg-hover-primary';
   const range_end_class =
