@@ -11,8 +11,13 @@ import {
   CreditCard,
   LogOut,
   LayoutTemplate,
+  FileText,
+  Files,
+  FilePenLine,
+  MessageSquareDot,
+  GalleryHorizontalEnd,
+  GalleryVerticalEnd,
 } from 'lucide-react';
-
 
 interface MenuItem {
   href: string;
@@ -65,6 +70,20 @@ export const menuItems: MenuCategory[] = [
           { href: '/forms/forms-elements/datepicker', label: 'Datepicker' },
         ],
       },
+      { href: '/form-layout', icon: FileText, label: 'Form Layout' },
+      {
+        href: '/form-horizontal',
+        icon: GalleryVerticalEnd,
+        label: 'Form Horizontal',
+      },
+      {
+        href: '/form-vertical',
+        icon: GalleryHorizontalEnd,
+        label: 'Form Vertical',
+      },
+      { href: '/form-wizard', icon: Files, label: 'Form Wizard' },
+      { href: '/toastr', icon: MessageSquareDot, label: 'Toastr' },
+      { href: '/editor', icon: FilePenLine, label: 'Editor' },
     ],
   },
   {
@@ -170,3 +189,4 @@ export const menuItems: MenuCategory[] = [
     items: [{ href: '/logout', icon: LogOut, label: 'Logout' }],
   },
 ];
+

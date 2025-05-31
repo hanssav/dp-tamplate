@@ -8,21 +8,18 @@ interface InputElementProps {
   classNameLabel?: string;
 }
 
-export function InputElement({
-  id,
-  placeholder,
-  inputProps,
-  classNameInput,
-  classNameLabel,
-}: InputElementProps) {
+export const InputElement = React.forwardRef<
+  HTMLInputElement,
+  InputElementProps
+>(({ id, placeholder, inputProps, classNameInput, classNameLabel }, ref) => {
   return (
     <>
-      <input {...inputProps} id={id} className={classNameInput} />
-
-      {/* label as placeholder /custom placeholder */}
+      <input {...inputProps} ref={ref} id={id} className={classNameInput} />
       <label htmlFor={id} className={classNameLabel}>
         {placeholder}
       </label>
     </>
   );
-}
+});
+
+InputElement.displayName = 'InputElement';
