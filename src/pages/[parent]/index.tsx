@@ -26,9 +26,10 @@ const ParentMenu = () => {
     const configKey = toCamelCase(title);
     const selectedConfig = UiConfig[configKey as keyof typeof UiConfig];
 
+    if (!selectedConfig) return;
+
     updateSection(Array.isArray(selectedConfig) ? selectedConfig : []);
   }, [location]);
-
   return (
     <DashboardLayout>
       <Box margin="mb-6">

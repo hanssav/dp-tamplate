@@ -7,3 +7,4 @@ export * from '@datas/pages/config/button';
 export * from '@datas/pages/config/checkbox';
 export * from '@datas/pages/config/radio';
 export * from '@datas/pages/config/datepicker';
+export * from '@datas/pages/config/formLayout';

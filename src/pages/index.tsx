@@ -1,13 +1,13 @@
 import Box from '@components/UI/Box';
 import Button from '@components/UI/Button';
 import {
-  Form,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
+  Form,
 } from '@components/UI/Form';
 
 import { useForm } from 'react-hook-form';
@@ -18,7 +18,13 @@ import { Datepicker } from 'flowbite-react';
 import { Menu } from 'lucide-react';
 import DashboardLayout from '../components/UI/DashboardLayout';
 import { z } from 'zod';
-import { useNavigate } from 'react-router';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@components/UI/Form/Select';
 
 export const onboardingSchema = z.object({
   username: z.string().min(3).max(20),
@@ -27,28 +33,32 @@ export const onboardingSchema = z.object({
   password: z.string().min(8).max(20),
   repeatPassword: z.string().min(8).max(20),
   terms: z.boolean().refine(data => data),
+  role: z.union([z.literal('editor'), z.literal('viewer')]),
 });
 
 const onboardingNameSchema = onboardingSchema.pick({
   firstName: true,
   lastName: true,
+  role: true,
 });
 
 type OnboardingNameSchema = z.infer<typeof onboardingNameSchema>;
 
 const Home = () => {
-  const navigate = useNavigate();
+  // we can use navigate from useNavigate from reactrouter
+  // const navigate = useNavigate();
 
   const form = useForm<OnboardingNameSchema>({
     resolver: zodResolver(onboardingNameSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
+      role: 'editor',
     },
   });
 
   const onSubmit = (data: OnboardingNameSchema) => {
-    console.log(data);
+    return data;
     // navigate('/404');
   };
 
@@ -90,7 +100,7 @@ const Home = () => {
                 <FormItem>
                   <FormLabel>First Name</FormLabel>
                   <FormControl>
-                    <Input id="name" placeholder="John" {...field} />
+                    <Input id="firstName" placeholder="John" {...field} />
                   </FormControl>
                   <FormDescription>This is your first name.</FormDescription>
                   <FormMessage />
@@ -111,6 +121,29 @@ const Home = () => {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Role</FormLabel>
+                  <FormControl>
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Role" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="viewer">Viewer</SelectItem>
+                        <SelectItem value="editor">Editor</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormDescription>Select your role.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <Button type="submit">Next</Button>
           </form>
         </Form>

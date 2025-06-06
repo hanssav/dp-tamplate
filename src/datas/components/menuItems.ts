@@ -70,7 +70,7 @@ export const menuItems: MenuCategory[] = [
           { href: '/forms/forms-elements/datepicker', label: 'Datepicker' },
         ],
       },
-      { href: '/form-layout', icon: FileText, label: 'Form Layout' },
+      { href: '/forms/form-layout', icon: FileText, label: 'Form Layout' },
       {
         href: '/form-horizontal',
         icon: GalleryVerticalEnd,

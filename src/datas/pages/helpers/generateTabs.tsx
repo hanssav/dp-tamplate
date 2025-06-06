@@ -4,6 +4,7 @@ import { ToggleVariant } from '@datas/pages/button/config/toggleConfig';
 import { CheckboxVariant } from '@datas/pages/checkbox/config/checkboxConfig';
 import { RadioVariant } from '@datas/pages/radio/config/radioConfig';
 import { DatepickerVariant } from '@datas/pages/datePicker/config';
+import { FormLayoutVariant } from '@datas/pages/formLayout/config';
 
 // Tipe untuk konten tab
 export interface TabContent {
@@ -17,10 +18,18 @@ interface PreviewProps {
   id: string;
 }
 
+type Variant =
+  | ButtonVariant
+  | ToggleVariant
+  | CheckboxVariant
+  | RadioVariant
+  | DatepickerVariant
+  | FormLayoutVariant;
+
 export const generateTab = (
   Component: ElementType,
   id: string,
-  variant: ButtonVariant | ToggleVariant | CheckboxVariant | RadioVariant | DatepickerVariant,
+  variant: Variant,
   HtmlComponent: React.ComponentType<PreviewProps>,
   TsComponent: React.ComponentType<PreviewProps>
 ): TabContent => {
