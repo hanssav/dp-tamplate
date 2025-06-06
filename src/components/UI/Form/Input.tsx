@@ -3,6 +3,8 @@ import { cn } from '@utils/cn';
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
   ({ className, type, ...props }, ref) => {
+
+    console.log(props, 'props');
     return (
       <input
         ref={ref}

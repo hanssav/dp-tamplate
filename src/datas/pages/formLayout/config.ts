@@ -1,6 +1,11 @@
 const ID_ORDINARY_FORM = 'ordinary-form';
 const ID_INPUT_VARIANT_FORM = 'input-variant-form';
-type FormLayoutVariant = typeof ID_ORDINARY_FORM | typeof ID_INPUT_VARIANT_FORM;
+const ID_DEFAULT_FORM = 'default-form';
+
+type FormLayoutVariant =
+  | typeof ID_ORDINARY_FORM
+  | typeof ID_INPUT_VARIANT_FORM
+  | typeof ID_DEFAULT_FORM;
 
 const formLayoutConfig: Record<FormLayoutVariant, any[]> = {
   [ID_ORDINARY_FORM]: [
@@ -24,10 +29,32 @@ const formLayoutConfig: Record<FormLayoutVariant, any[]> = {
   ],
   [ID_INPUT_VARIANT_FORM]: [
     {
+      id: 'error',
+      type: 'email',
+      label: 'Error',
+      placeholder: 'Pat@example.com',
+    },
+  ],
+  [ID_DEFAULT_FORM]: [
+    {
+      id: 'default-text',
+      type: 'text',
+      label: 'Default Text',
+    },
+    {
       id: 'email',
       type: 'email',
       label: 'Email',
-      placeholder: 'Pat@example.com',
+    },
+    {
+      id: 'password',
+      type: 'password',
+      label: 'Password',
+    },
+    {
+      id: 'textarea',
+      type: 'textarea',
+      label: 'Textarea',
     },
   ],
 };
@@ -35,18 +62,26 @@ const formLayoutConfig: Record<FormLayoutVariant, any[]> = {
 const buttonFormConfig: any = {
   [ID_ORDINARY_FORM]: [
     {
-      id: 'submit',
+      id: `${ID_ORDINARY_FORM}-submit`,
       type: 'submit',
       label: 'Submit',
     },
   ],
   [ID_INPUT_VARIANT_FORM]: [],
+  [ID_DEFAULT_FORM]: [
+    {
+      id: `${ID_DEFAULT_FORM}-submit`,
+      type: 'submit',
+      label: 'Submit',
+    },
+  ],
 };
 
 export {
   type FormLayoutVariant,
   ID_ORDINARY_FORM,
   ID_INPUT_VARIANT_FORM,
+  ID_DEFAULT_FORM,
   formLayoutConfig,
   buttonFormConfig,
 };

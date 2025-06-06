@@ -1,5 +1,6 @@
 import { PreviewFormLayout } from '@components/pages/FormLayout';
 import {
+  ID_DEFAULT_FORM,
   ID_INPUT_VARIANT_FORM,
   ID_ORDINARY_FORM,
 } from '@datas/pages/formLayout/config';
@@ -39,4 +40,22 @@ const inputVariantFrom = (id: string): TabContent =>
       }))
     )
   );
-export { ordinaryForm, inputVariantFrom };
+
+const defaultForm = (id: string): TabContent =>
+  generateTab(
+    PreviewFormLayout,
+    id,
+    ID_DEFAULT_FORM,
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewHtml'],
+      }))
+    ),
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewTsx'],
+      }))
+    )
+  );
+
+export { ordinaryForm, inputVariantFrom, defaultForm };

@@ -20,19 +20,19 @@ const CheckboxItem = ({ item, field, variant }: any) => {
 CheckboxItem.displayName = 'CheckboxItem';
 
 const InputItem = ({ item, field, variant }: any) => {
-  return (
-    <>
-      <FormLabel>{item.label}</FormLabel>
-      <FormControl>
-        <Input
-          id={`${item.id}-${variant}`}
-          type={item.type}
-          placeholder={item.placeholder}
-          {...field}
-        />
-      </FormControl>
-    </>
-  );
+    return (
+      <>
+        <FormLabel className="font-bold">{item.label}</FormLabel>
+        <FormControl>
+          <Input
+            id={`${item.id}-${variant}`}
+            type={item.type}
+            placeholder={item.placeholder}
+            {...field}
+          />
+        </FormControl>
+      </>
+    );
 };
 InputItem.displayName = 'InputItem';
 

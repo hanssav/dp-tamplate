@@ -1,9 +1,14 @@
 import {
+  ID_DEFAULT_FORM,
   ID_INPUT_VARIANT_FORM,
   ID_ORDINARY_FORM,
 } from '@datas/pages/formLayout/config';
 import { SectionContent } from '@datas/pages/config/_types';
-import { ordinaryForm, inputVariantFrom } from '@datas/pages/formLayout';
+import {
+  ordinaryForm,
+  inputVariantFrom,
+  defaultForm,
+} from '@datas/pages/formLayout';
 import { createTabs } from '@datas/pages/helpers/tabHelpers';
 
 const config = {
@@ -44,6 +49,17 @@ const formLayout: SectionContent[] = [
           ID_INPUT_VARIANT_FORM,
           inputVariantFrom(ID_INPUT_VARIANT_FORM)
         ),
+      },
+      {
+        variant: 'default',
+        type: 'columnGroup',
+        config: {
+          id: ID_DEFAULT_FORM,
+          ...config,
+        },
+        title: 'Default Form',
+        col: 'col-1',
+        tabData: createTabs(ID_DEFAULT_FORM, defaultForm(ID_DEFAULT_FORM)),
       },
     ],
   },
