@@ -10,6 +10,7 @@ export const inputVariantFormSchema = ordinaryFormSchema.pick({
 export type InputVariantFormNameSchema = z.infer<typeof inputVariantFormSchema>;
 export function useInputVariantForm() {
   const form = useForm<InputVariantFormNameSchema>({
+    mode: 'onBlur',
     resolver: zodResolver(inputVariantFormSchema),
     defaultValues: {
       email: '',
@@ -17,7 +18,7 @@ export function useInputVariantForm() {
   });
 
   const onSubmit = (data: InputVariantFormNameSchema) => {
-    console.log('Input variant form submitted:', data);
+    return data;
   };
 
   return { form, onSubmit };

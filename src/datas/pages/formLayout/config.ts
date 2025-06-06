@@ -27,7 +27,7 @@ const formLayoutConfig: Record<FormLayoutVariant, any[]> = {
       id: 'email',
       type: 'email',
       label: 'Email',
-      placeholder: 'Please Enter Email',
+      placeholder: 'Pat@example.com',
     },
   ],
 };

@@ -21,7 +21,7 @@ export function useOrdinaryForm() {
   });
 
   const onSubmit = (data: OrdinaryFormNameSchema) => {
-    console.log('Ordinary form submitted:', data);
+    return data;
   };
 
   return { form, onSubmit };
