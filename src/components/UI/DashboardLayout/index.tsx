@@ -30,7 +30,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       />
       <div
         ref={scrollableRef}
-        className="flex flex-1 flex-col overflow-y-scroll"
+        className="flex h-screen flex-1 flex-col overflow-y-scroll"
       >
         <NavbarMenu
           toggleMobileSidebar={() =>
@@ -38,7 +38,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           }
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
         />
-        <main className="container my-5">{children}</main>
+        <main className="container relative isolate my-5">{children}</main>
       </div>
     </div>
   );
