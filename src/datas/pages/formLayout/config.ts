@@ -179,6 +179,7 @@ export type {
   SingleCheckboxField,
   CheckboxGroupField,
   ButtonFormType,
+  CheckboxItem,
 };
 
 export {
