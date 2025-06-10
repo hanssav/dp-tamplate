@@ -8,6 +8,8 @@ export const defaultFormNameSchema = defaultFormSchema.pick({
   email: true,
   password: true,
   textarea: true,
+  'checkbox-group': true,
+  'checkbox-group-2': true,
 });
 export type DefaultFormNameSchema = z.infer<typeof defaultFormNameSchema>;
 
@@ -19,10 +21,14 @@ export function useDefaultForm() {
       email: '',
       password: '',
       textarea: '',
+      'checkbox-group': [],
+      'checkbox-group-2': [],
     },
   });
 
-  const onSubmit = () => {};
+  const onSubmit = (data: DefaultFormNameSchema) => {
+    return data;
+  };
 
   return { form, onSubmit };
 }

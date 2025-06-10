@@ -1,3 +1,5 @@
+import { ColKey } from '@components/UI/Box/boxTheme';
+
 const ID_ORDINARY_FORM = 'ordinary-form';
 const ID_INPUT_VARIANT_FORM = 'input-variant-form';
 const ID_DEFAULT_FORM = 'default-form';
@@ -7,7 +9,50 @@ type FormLayoutVariant =
   | typeof ID_INPUT_VARIANT_FORM
   | typeof ID_DEFAULT_FORM;
 
-const formLayoutConfig: Record<FormLayoutVariant, any[]> = {
+// Define supported form input types
+type FormFieldType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'checkbox'
+  | 'textarea'
+  | 'radio';
+
+// Type for checkbox item
+interface CheckboxItem {
+  id: string;
+  label: string;
+}
+
+// Base field
+interface BaseFormField {
+  id: string;
+  type: FormFieldType;
+  label?: string;
+  placeholder?: string;
+  description?: string;
+}
+
+interface CheckboxGroupField extends BaseFormField {
+  type: FormFieldType;
+  options: CheckboxItem[];
+}
+
+interface SingleCheckboxField extends BaseFormField {
+  type: FormFieldType;
+}
+
+type FormField = BaseFormField | CheckboxGroupField | SingleCheckboxField;
+
+interface FormFieldGroup {
+  col: ColKey;
+  id: string;
+  child: (FormField | FormFieldGroup)[];
+}
+
+type FormSection = (FormField | FormFieldGroup)[];
+
+const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
   [ID_ORDINARY_FORM]: [
     {
       id: 'email',
@@ -29,7 +74,7 @@ const formLayoutConfig: Record<FormLayoutVariant, any[]> = {
   ],
   [ID_INPUT_VARIANT_FORM]: [
     {
-      id: 'error',
+      id: 'email',
       type: 'email',
       label: 'Error',
       placeholder: 'Pat@example.com',
@@ -56,10 +101,59 @@ const formLayoutConfig: Record<FormLayoutVariant, any[]> = {
       type: 'textarea',
       label: 'Textarea',
     },
+    {
+      col: 'col-2',
+      id: 'box-id-1',
+
+      child: [
+        {
+          id: 'checkbox-group',
+          type: 'checkbox',
+          options: [
+            {
+              id: 'checkbox-group1',
+              label: 'Check this custom checkbox',
+            },
+            {
+              id: 'checkbox-group2',
+              label: 'Check this custom checkbox',
+            },
+            {
+              id: 'checkbox-group3',
+              label: 'Check this custom checkbox',
+            },
+          ],
+        },
+        {
+          id: 'checkbox-group-2',
+          type: 'checkbox',
+          options: [
+            {
+              id: 'checkbox-group-1',
+              label: 'Check this nomer 22',
+            },
+            {
+              id: 'checkbox-group-2',
+              label: 'Check this nomer 22',
+            },
+            {
+              id: 'checkbox-group-3',
+              label: 'Check this nomer 22',
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
 
-const buttonFormConfig: any = {
+interface ButtonFormType {
+  id: string;
+  type: 'submit';
+  label: string;
+}
+
+const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
   [ID_ORDINARY_FORM]: [
     {
       id: `${ID_ORDINARY_FORM}-submit`,
@@ -77,8 +171,17 @@ const buttonFormConfig: any = {
   ],
 };
 
+export type {
+  FormLayoutVariant,
+  FormFieldGroup,
+  BaseFormField,
+  FormField,
+  SingleCheckboxField,
+  CheckboxGroupField,
+  ButtonFormType,
+};
+
 export {
-  type FormLayoutVariant,
   ID_ORDINARY_FORM,
   ID_INPUT_VARIANT_FORM,
   ID_DEFAULT_FORM,
