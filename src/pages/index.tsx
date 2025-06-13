@@ -25,7 +25,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@components/UI/Form/Select';
+import { Radio, RadioGroupItem } from '@components/UI/Form/Radio';
 
+// Define positions as a readonly tuple
+export const positions = [
+  'Software Engineer',
+  'Product Manager',
+  'Designer',
+  'Data Scientist',
+] as const;
+
+// Optional: Also define roles as enum
+export const roles = ['editor', 'viewer'] as const;
+
+// Zod schema using enums
 export const onboardingSchema = z.object({
   username: z.string().min(3).max(20),
   firstName: z.string().min(3).max(20),
@@ -33,16 +46,20 @@ export const onboardingSchema = z.object({
   password: z.string().min(8).max(20),
   repeatPassword: z.string().min(8).max(20),
   terms: z.boolean().refine(data => data),
-  role: z.union([z.literal('editor'), z.literal('viewer')]),
+  role: z.enum(roles),
+  position: z.enum(positions),
 });
 
-const onboardingNameSchema = onboardingSchema.pick({
+// Schema for just name-related fields
+export const onboardingNameSchema = onboardingSchema.pick({
   firstName: true,
   lastName: true,
   role: true,
+  position: true,
 });
 
-type OnboardingNameSchema = z.infer<typeof onboardingNameSchema>;
+// Type for use in form
+export type OnboardingNameSchema = z.infer<typeof onboardingNameSchema>;
 
 const Home = () => {
   // we can use navigate from useNavigate from reactrouter
@@ -54,13 +71,11 @@ const Home = () => {
       firstName: '',
       lastName: '',
       role: 'editor',
+      position: 'Software Engineer',
     },
   });
 
-  const onSubmit = (data: OnboardingNameSchema) => {
-    return data;
-    // navigate('/404');
-  };
+  const onSubmit = (data: OnboardingNameSchema) => data;
 
   return (
     <DashboardLayout>
@@ -139,6 +154,31 @@ const Home = () => {
                     </Select>
                   </FormControl>
                   <FormDescription>Select your role.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="position"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Position</FormLabel>
+                  <FormControl>
+                    <Radio
+                      onValueChange={field.onChange} // ✔️ Bind form updates
+                      value={field.value} // ✔️ Controlled value
+                      className="space-y-2"
+                    >
+                      {positions.map(pos => (
+                        <div key={pos} className="flex items-center space-x-2">
+                          <RadioGroupItem value={pos} id={pos} />{' '}
+                          {/* ✔️ Use value that matches Zod */}
+                          <FormLabel htmlFor={pos}>{pos}</FormLabel>
+                        </div>
+                      ))}
+                    </Radio>
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}

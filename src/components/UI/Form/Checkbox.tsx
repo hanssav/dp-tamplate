@@ -14,7 +14,7 @@ const Checkbox = React.forwardRef<
       ref={ref}
       className={cn(
         props.checked ? 'bg-primary text-white' : 'bg-transparent',
-        'flex size-[25px] items-center justify-center rounded border border-gray-300 dark:border-gray-600',
+        'flex size-[1.5rem] items-center justify-center rounded border border-gray-300 dark:border-gray-600',
         className
       )}
       {...props}
@@ -60,20 +60,23 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
       onChange: onValueChange,
     });
 
-    const handleChange =
-      (val: string) => (checked: boolean | 'indeterminate') => {
+    const handleChange = React.useCallback(
+      (val: string) => (checked: CheckboxPrimitive.CheckedState) => {
+        //checked value take from event onCheckedChange
         const updated =
           checked === true ? [...value, val] : value.filter(v => v !== val);
         setValue(updated);
-      };
+      },
+      [setValue]
+    );
 
     return (
       <>
         {options.map(opt => (
           <div
             ref={ref}
-            key={opt.id}
-            className="flex flex-row-reverse items-center justify-end space-x-2 space-x-reverse"
+            key={opt.value}
+            className="flex flex-row-reverse items-center justify-end space-x-3 space-x-reverse"
           >
             <FormLabel>{opt.label}</FormLabel>
             <Checkbox
