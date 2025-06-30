@@ -49,7 +49,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const inputClass = twMerge(baseClass, shapeClass, className);
 
   return (
-    <label className={twMerge('flex w-fit cursor-pointer gap-2', disabled && 'cursor-not-allowed opacity-50')}>
+    <label
+      className={twMerge(
+        'flex w-fit cursor-pointer gap-2',
+        disabled && 'cursor-not-allowed opacity-50'
+      )}
+    >
       {align === 'before' && label && <span>{label}</span>}
       <input
         type={radio ? 'radio' : 'checkbox'}

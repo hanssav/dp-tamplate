@@ -20,9 +20,9 @@ export function ProductCardContent({ content }: ProductContentProps) {
       <Box
         align="center"
         justify="center"
-        className="flex h-8 w-8 translate-x-[-10px] translate-y-[-10px] rounded-full bg-primary text-white"
+        className="flex size-8 translate-x-[-10px] translate-y-[-10px] rounded-full bg-primary text-white"
       >
-        <ShoppingBag className="h-4 w-4" />
+        <ShoppingBag className="size-4" />
       </Box>
 
       <Typography as="h2" textStyle="subtitle" className="my-2">
@@ -39,9 +39,9 @@ export function ProductCardContent({ content }: ProductContentProps) {
           </Typography>
         </Box>
 
-        <Box className="flex gap-[1px] text-yellow-400">
+        <Box className="flex gap-px text-yellow-400">
           {Array.from({ length: content?.rating || 0 }).map((_, index) => (
-            <Star key={index} className="h-4 w-4 fill-current" />
+            <Star key={index} className="size-4 fill-current" />
           ))}
         </Box>
       </Box>

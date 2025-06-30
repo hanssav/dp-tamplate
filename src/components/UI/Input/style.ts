@@ -9,15 +9,16 @@ export const classes = {
 
   input: (isSelect: boolean, disabled: boolean) =>
     twMerge([
-      'peer w-full border-none bg-transparent text-black placeholder-transparent outline-none focus:outline-none focus:ring-0 dark:text-white dark:focus:bg-gray-800 dark:focus:text-white',
+      'peer w-full border-none bg-transparent text-black outline-none placeholder:text-transparent focus:outline-none focus:ring-0 dark:text-white dark:focus:bg-gray-800 dark:focus:text-white',
       isSelect && 'focus:outline-none focus:ring-0 dark:text-white',
-      disabled && 'border-gray-300 text-gray-300 dark:border-gray-600 dark:text-gray-500',
+      disabled &&
+        'border-gray-300 text-gray-300 dark:border-gray-600 dark:text-gray-500',
     ]),
 
   label: (hasValue: any, isFocus: boolean, disabled: boolean) =>
     twMerge([
       'pointer-events-none absolute left-2 bg-white px-1 text-sm text-black dark:bg-gray-900',
-      (hasValue || isFocus)
+      hasValue || isFocus
         ? '-top-2 text-xs text-blue-600 dark:text-blue-400'
         : 'left-2 top-2 bg-transparent text-gray-500 dark:bg-transparent dark:text-gray-400',
       disabled

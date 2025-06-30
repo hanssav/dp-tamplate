@@ -106,7 +106,10 @@ export const button: SectionContent[] = [
             title: 'Extended Fab',
             variant: 'default',
             config: configData,
-            tabData: createTabs(ID_EXTENDED_FAB, extendedFabTab(ID_EXTENDED_FAB)),
+            tabData: createTabs(
+              ID_EXTENDED_FAB,
+              extendedFabTab(ID_EXTENDED_FAB)
+            ),
           },
         ],
       },
@@ -136,25 +139,37 @@ export const button: SectionContent[] = [
             title: 'Basic',
             variant: 'default',
             config: configData,
-            tabData: createTabs(ID_TOGGLE_BASIC, toggleBasicTab(ID_TOGGLE_BASIC)),
+            tabData: createTabs(
+              ID_TOGGLE_BASIC,
+              toggleBasicTab(ID_TOGGLE_BASIC)
+            ),
           },
           {
             title: 'Multiple Select',
             variant: 'default',
             config: configData,
-            tabData: createTabs(ID_MULTIPLE_SELECT, toggleMultipleSelectTab(ID_MULTIPLE_SELECT)),
+            tabData: createTabs(
+              ID_MULTIPLE_SELECT,
+              toggleMultipleSelectTab(ID_MULTIPLE_SELECT)
+            ),
           },
           {
             title: 'Reactive Form',
             variant: 'default',
             config: configData,
-            tabData: createTabs(ID_REACTIVE_FORM, toggleReactiveFormTab(ID_REACTIVE_FORM)),
+            tabData: createTabs(
+              ID_REACTIVE_FORM,
+              toggleReactiveFormTab(ID_REACTIVE_FORM)
+            ),
           },
           {
             title: 'Exclusive Selection',
             variant: 'default',
             config: configData,
-            tabData: createTabs(ID_EXCLUSIVE_SELECTION, toggleexclusiveSelectionTab(ID_EXCLUSIVE_SELECTION)),
+            tabData: createTabs(
+              ID_EXCLUSIVE_SELECTION,
+              toggleexclusiveSelectionTab(ID_EXCLUSIVE_SELECTION)
+            ),
           },
         ],
       },

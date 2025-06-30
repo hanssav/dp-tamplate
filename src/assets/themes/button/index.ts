@@ -9,8 +9,10 @@ export const button = {
       error: 'bg-error hover:bg-hover-error text-white',
       success: 'bg-success hover:bg-hover-success text-white',
       link: 'hover:opacity-80',
-      light: 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-600',
-      basic: 'bg-white hover:bg-soft-blue dark:bg-transparent dark:hover:bg-gray-700',
+      light:
+        'bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-600',
+      basic:
+        'bg-white hover:bg-soft-blue dark:bg-transparent dark:hover:bg-gray-700',
     },
     outlineText: {
       primary: 'text-primary',
@@ -23,14 +25,16 @@ export const button = {
     defaultText: 'text-current',
     outline: {
       primary: 'hover:bg-light-primary dark:hover:bg-dark-hover-light-primary',
-      secondary: 'hover:bg-light-secondary dark:hover:bg-dark-hover-light-secondary',
+      secondary:
+        'hover:bg-light-secondary dark:hover:bg-dark-hover-light-secondary',
       warning: 'hover:bg-light-warning dark:hover:bg-dark-hover-light-warning',
       error: 'hover:bg-light-error dark:hover:bg-dark-hover-light-error',
       success: 'hover:bg-light-success dark:hover:bg-dark-hover-light-success',
       link: 'hover:bg-light-primary dark:hover:bg-dark-hover-light-primary',
     },
     disabled: {
-      default: 'disabled:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-200 border-none',
+      default:
+        'disabled:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-200 border-none',
     },
   },
   border: {

@@ -29,7 +29,7 @@ const UpcomingActivityItem: React.FC<UpcomingActivityItemProps> = ({
       color="light"
       className={`rounded-full ${bg} ${textColor}`}
     >
-      <Icon className="h-5 w-5" />
+      <Icon className="size-5" />
     </Button>
 
     {/* Text content */}
@@ -66,7 +66,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     <Box align="center" className="relative flex">
       <Typography
         as="span"
-        className={`mb-6 mt-2 h-4 w-4 rounded-full border-4 ${badgeColor}`}
+        className={`mb-6 mt-2 size-4 rounded-full border-4 ${badgeColor}`}
       />
       {!isLast && (
         <Typography
@@ -111,12 +111,12 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     <Box align="center" className="flex py-2">
       <Typography
         as="span"
-        className={`flex h-10 w-10 items-center justify-center rounded ${bg} ${textColor}`}
+        className={`flex size-10 items-center justify-center rounded ${bg} ${textColor}`}
       >
         {typeof icon === 'string' ? (
-          <Typography as="img" src={icon} alt={name} className="h-5 w-5" />
+          <Typography as="img" src={icon} alt={name} className="size-5" />
         ) : icon ? (
-          <Icon className="h-5 w-5" />
+          <Icon className="size-5" />
         ) : null}
       </Typography>
       <Box margin="ml-4 mr-auto">

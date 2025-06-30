@@ -85,7 +85,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
               <Bell size={24} />
             </Button>
 
-            <span className="absolute right-2 top-2 z-20 -mr-1 -mt-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-xs text-white">
+            <span className="absolute right-2 top-2 z-20 -mr-1 -mt-1 flex size-4 items-center justify-center rounded-full bg-primary text-xs text-white">
               1
             </span>
           </div>
@@ -101,7 +101,7 @@ const NavbarMenu: React.FC<NavbarProps> = ({
           onClick={handleRightSidebar}
         >
           <div
-            className="absolute right-0 top-0 h-full w-64 translate-x-0 transform bg-white p-4 shadow-soft transition-transform dark:bg-gray-800"
+            className="absolute right-0 top-0 h-full w-64 translate-x-0 bg-white p-4 shadow-soft transition-transform dark:bg-gray-800"
             onClick={e => e.stopPropagation()}
           >
             <h2 className="border-b pb-2 text-lg font-semibold">

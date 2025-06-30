@@ -44,7 +44,12 @@ export const createCardTheme = (
   img?: any,
   content?: any
 ) => {
-  const paddingClass = typeof padding === 'string' ? padding : padding ? baseCardConfig.padding : '';
+  const paddingClass =
+    typeof padding === 'string'
+      ? padding
+      : padding
+        ? baseCardConfig.padding
+        : '';
 
   // Conditional shadow class based on input
   const shadowClass = shadow ? shadow : baseCardConfig.shadow.soft;
@@ -130,10 +135,18 @@ export const createMusicTheme = () =>
   );
 
 export const createFollowTheme = () =>
-  createCardTheme(`${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`, '', true);
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    '',
+    true
+  );
 
 export const createFriendSuggestionTheme = () =>
-  createCardTheme(`${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`, '', true);
+  createCardTheme(
+    `${baseCardConfig.rounded} ${baseCardConfig.border} ${baseCardConfig.darkBg}`,
+    '',
+    true
+  );
 
 export const createFriendTheme = () =>
   createCardTheme(

@@ -60,7 +60,7 @@ export const Tabs = ({
                     }
                   `}
                 >
-                  {Icon && <Icon className="mr-2 inline h-4 w-4" />}
+                  {Icon && <Icon className="mr-2 inline size-4" />}
                   {tab.title}
                 </button>
               </li>

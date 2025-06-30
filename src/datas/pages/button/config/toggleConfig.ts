@@ -1,7 +1,11 @@
 import { AlignLeft, AlignCenter, AlignRight, AlignJustify } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 
-export type ToggleVariant = 'basic' | 'multiple-select' | 'reactive-form' | 'exclusive-selection';
+export type ToggleVariant =
+  | 'basic'
+  | 'multiple-select'
+  | 'reactive-form'
+  | 'exclusive-selection';
 
 // Can be a string or a Lucide icon component
 

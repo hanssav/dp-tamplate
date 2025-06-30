@@ -37,8 +37,15 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   const codeLines = code.trimEnd().split('\n');
 
   return (
-    <div className={`relative text-sm ${customClassName}`} style={{ fontFamily: 'monospace', ...customStyle }}>
-      {showLanguage && <div className="mb-2 text-xl font-semibold text-blue-500">{language}</div>}
+    <div
+      className={`relative text-sm ${customClassName}`}
+      style={{ fontFamily: 'monospace', ...customStyle }}
+    >
+      {showLanguage && (
+        <div className="mb-2 text-xl font-semibold text-blue-500">
+          {language}
+        </div>
+      )}
       <pre
         className="hljs overflow-x-auto rounded-md p-4"
         style={{

@@ -33,9 +33,9 @@ export const MusicCardContent: React.FC<MusicContentProps> = ({ content }) => {
 
       {/* Music Controls */}
       <Box margin="center" className="mt-2 flex gap-4">
-        <SkipBack className="h-4 w-4 text-black dark:text-white" />
-        <Play className="h-4 w-4 text-black dark:text-white" />
-        <SkipForward className="h-4 w-4 text-black dark:text-white" />
+        <SkipBack className="size-4 text-black dark:text-white" />
+        <Play className="size-4 text-black dark:text-white" />
+        <SkipForward className="size-4 text-black dark:text-white" />
       </Box>
     </Box>
   );

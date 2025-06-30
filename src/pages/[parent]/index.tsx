@@ -33,7 +33,10 @@ const ParentMenu = () => {
   return (
     <DashboardLayout>
       <Box margin="mb-6">
-        <DynamicCard variant="breadcrumb" content={{ title, bgImg: IMAGE_CONSTANTS.BREADCRUMB_BG }} />
+        <DynamicCard
+          variant="breadcrumb"
+          content={{ title, bgImg: IMAGE_CONSTANTS.BREADCRUMB_BG }}
+        />
       </Box>
 
       {section.sectionData.map((sec, idx) => (

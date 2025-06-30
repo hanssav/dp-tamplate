@@ -3,9 +3,23 @@ import { ButtonProps } from '@components/_types/button';
 import { createTheme } from 'flowbite-react';
 import { twMerge } from 'tailwind-merge';
 
-export function buttonTheme({ link, raised, disabled, outlineColor, color, size, rounded }: ButtonProps) {
+export function buttonTheme({
+  link,
+  raised,
+  disabled,
+  outlineColor,
+  color,
+  size,
+  rounded,
+}: ButtonProps) {
   const { button: btnTheme } = themes;
-  const { color: themeColors, shadow, border, size: themeSizes, rounded: themeRounded } = btnTheme;
+  const {
+    color: themeColors,
+    shadow,
+    border,
+    size: themeSizes,
+    rounded: themeRounded,
+  } = btnTheme;
   const { bg, outlineText, outline, disabled: disabledColor } = themeColors;
 
   if (!color) return {};
@@ -13,7 +27,11 @@ export function buttonTheme({ link, raised, disabled, outlineColor, color, size,
   const backgroundStyle = !outlineColor ? bg[color] : '';
   const outlineStyle =
     outlineColor && color && outlineColor in outline
-      ? twMerge(outline[outlineColor], outlineText[outlineColor], border[outlineColor])
+      ? twMerge(
+          outline[outlineColor],
+          outlineText[outlineColor],
+          border[outlineColor]
+        )
       : '';
 
   const dynamicValue = twMerge(

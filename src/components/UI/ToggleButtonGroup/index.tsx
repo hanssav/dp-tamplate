@@ -44,7 +44,9 @@ export default function ToggleButtonGroup({
         }))
       : options;
 
-  const disabledList = Array.isArray(disabled) ? disabled : options.map(() => disabled ?? false);
+  const disabledList = Array.isArray(disabled)
+    ? disabled
+    : options.map(() => disabled ?? false);
 
   return (
     <div className="flex overflow-hidden rounded-md border border-gray-300 dark:border-gray-700">
@@ -59,7 +61,7 @@ export default function ToggleButtonGroup({
           `flex items-center border-r px-4 py-2 text-sm font-medium last:border-r-0 dark:border-gray-700 ${
             isActive
               ? 'bg-soft-blue text-blue-700 dark:bg-gray-600 dark:text-white'
-              : 'dark:bg-dark-primary bg-white text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700'
+              : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-primary dark:text-gray-300 dark:hover:bg-gray-700'
           } ${isDisabled ? 'border-none disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-50 disabled:shadow-none' : ''}`
         );
         return (

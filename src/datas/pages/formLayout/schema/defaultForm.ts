@@ -8,5 +8,4 @@ export const defaultFormSchema = z.object({
   'checkbox-group': z.array(z.string()),
   // 'checkbox-group-2': z.array(z.string()),
   'checkbox-group-2': z.unknown(),
-
 });

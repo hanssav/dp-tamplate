@@ -1,10 +1,4 @@
-import {
-  MapPin,
-  Archive,
-  Users,
-  ClipboardCheck,
-  Mail,
-} from 'lucide-react';
+import { MapPin, Archive, Users, ClipboardCheck, Mail } from 'lucide-react';
 
 import { PaymentCardProps } from '@components/_types/Card';
 import IMAGE_CONSTANTS from '@constant/images';

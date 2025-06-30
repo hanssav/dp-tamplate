@@ -10,7 +10,9 @@ type SectionContextValue = {
   updateSection: (newSection: SectionContent[]) => void;
 };
 
-const SectionContext = createContext<SectionContextValue | undefined>(undefined);
+const SectionContext = createContext<SectionContextValue | undefined>(
+  undefined
+);
 
 export const SectionProvider = ({ children }: { children: ReactNode }) => {
   const [section, setSection] = useState<Section>({
@@ -21,7 +23,11 @@ export const SectionProvider = ({ children }: { children: ReactNode }) => {
     setSection({ sectionData: data });
   };
 
-  return <SectionContext.Provider value={{ section, updateSection }}>{children}</SectionContext.Provider>;
+  return (
+    <SectionContext.Provider value={{ section, updateSection }}>
+      {children}
+    </SectionContext.Provider>
+  );
 };
 
 export const useSection = () => {

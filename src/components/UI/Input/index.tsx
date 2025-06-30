@@ -59,7 +59,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className: classes.input(isSelect, disabled),
         disabled: disabled,
         onFocus: () => setIsFocus(true),
-        inputMode: type === 'number' ? ('numeric' as 'numeric') : undefined,
+        inputMode: type === 'number' ? ('numeric' as const) : undefined,
         readOnly: props.readOnly,
         ...props,
       },
@@ -102,4 +102,3 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-

@@ -20,7 +20,7 @@ const IconWithPercentage: React.FC<{
     className={`flex items-center ${iconClass}`}
   >
     <span
-      className={`mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-light-${
+      className={`bg-light- mr-2 flex size-6 items-center justify-center rounded-full${
         iconClass === 'text-green-500' ? 'success' : 'error'
       } ${rotateClass}`}
     >
@@ -62,7 +62,7 @@ const RightCardContent: React.FC<{ content: ChartCardContent }> = ({
             </Typography>
           )}
           <IconWithPercentage
-            Icon={Icon && <Icon className={`h-5 w-5 ${bgIcon}`} />}
+            Icon={Icon && <Icon className={`size-5 ${bgIcon}`} />}
             percentageText={`${summaryPercent} ${isYearlyBackupChart ? 'last year' : ''}`}
             iconClass={bgIcon}
             rotateClass={`rotate-${bgIcon === 'text-green-500' ? '[20deg]' : '[-20deg]'}`}
@@ -78,7 +78,7 @@ const RightCardContent: React.FC<{ content: ChartCardContent }> = ({
       >
         {legends.map((legend: any) => (
           <div key={legend.year} className="flex items-center space-x-2">
-            <span className={`h-3 w-3 rounded-full ${legend.color}`}></span>
+            <span className={`size-3 rounded-full ${legend.color}`}></span>
             <span>{legend.year}</span>
           </div>
         ))}
@@ -115,7 +115,7 @@ const MonthlyEarningContent: React.FC<{ content: ChartCardContent }> = ({
           {value}
         </Typography>
         <IconWithPercentage
-          Icon={Icon && <Icon className="h-5 w-5 text-green-500" />}
+          Icon={Icon && <Icon className="size-5 text-green-500" />}
           percentageText="+9%"
           iconClass="text-green-500"
           rotateClass="rotate-[-20deg]"

@@ -1,4 +1,8 @@
-import { basicCheckbox, configurationCheckbox, reactiveFormCheckbox } from '@datas/pages/checkbox';
+import {
+  basicCheckbox,
+  configurationCheckbox,
+  reactiveFormCheckbox,
+} from '@datas/pages/checkbox';
 import { SectionContent } from '@datas/pages/config/_types';
 import { createTabs } from '@datas/pages/helpers/tabHelpers';
 
@@ -37,7 +41,10 @@ export const checkbox: SectionContent[] = [
               shadow: 'shadow-none',
               margin: 'mb-5',
             },
-            tabData: createTabs(ID_BASIC_CHECKBOX, basicCheckbox(ID_BASIC_CHECKBOX)),
+            tabData: createTabs(
+              ID_BASIC_CHECKBOX,
+              basicCheckbox(ID_BASIC_CHECKBOX)
+            ),
           },
           {
             title: 'Configuration',
@@ -52,7 +59,10 @@ export const checkbox: SectionContent[] = [
               margin: 'mb-5',
               shadow: 'shadow-none',
             },
-            tabData: createTabs(ID_CONFIGURATION_CHECKBOX, configurationCheckbox(ID_CONFIGURATION_CHECKBOX)),
+            tabData: createTabs(
+              ID_CONFIGURATION_CHECKBOX,
+              configurationCheckbox(ID_CONFIGURATION_CHECKBOX)
+            ),
           },
           {
             title: 'Reactive Form',
@@ -67,7 +77,10 @@ export const checkbox: SectionContent[] = [
               margin: 'mb-5',
               shadow: 'shadow-none',
             },
-            tabData: createTabs(ID_REACTIVE_FORM_CHECKBOX, reactiveFormCheckbox(ID_REACTIVE_FORM_CHECKBOX)),
+            tabData: createTabs(
+              ID_REACTIVE_FORM_CHECKBOX,
+              reactiveFormCheckbox(ID_REACTIVE_FORM_CHECKBOX)
+            ),
           },
         ],
       },

@@ -8,14 +8,18 @@ export const basicCheckbox = (id: string): TabContent =>
     id,
     'basic-checkbox',
     lazy(() =>
-      import('@datas/pages/checkbox/preview/basicCheckboxPreview').then(mod => ({
-        default: mod['BasicCheckboxHtmlPreview'],
-      }))
+      import('@datas/pages/checkbox/preview/basicCheckboxPreview').then(
+        mod => ({
+          default: mod['BasicCheckboxHtmlPreview'],
+        })
+      )
     ),
     lazy(() =>
-      import('@datas/pages/checkbox/preview/basicCheckboxPreview').then(mod => ({
-        default: mod['BasicCheckboxTypescriptPreview'],
-      }))
+      import('@datas/pages/checkbox/preview/basicCheckboxPreview').then(
+        mod => ({
+          default: mod['BasicCheckboxTypescriptPreview'],
+        })
+      )
     )
   );
 
@@ -25,14 +29,18 @@ export const configurationCheckbox = (id: string): TabContent =>
     id,
     'configuration-checkbox',
     lazy(() =>
-      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
-        default: mod['CheckboxConfigurationPreviewHtml'],
-      }))
+      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(
+        mod => ({
+          default: mod['CheckboxConfigurationPreviewHtml'],
+        })
+      )
     ),
     lazy(() =>
-      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(mod => ({
-        default: mod['CheckboxConfigurationPreviewTsx'],
-      }))
+      import('@datas/pages/checkbox/preview/configurationCheckboxPreview').then(
+        mod => ({
+          default: mod['CheckboxConfigurationPreviewTsx'],
+        })
+      )
     )
   );
 

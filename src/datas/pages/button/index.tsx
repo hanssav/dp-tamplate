@@ -129,14 +129,18 @@ export const extendedFabTab = (id: string): TabContent =>
     id,
     'extended-fab',
     lazy(() =>
-      import('@datas/pages/button/preview/button/ExtendedFabPreview').then(mod => ({
-        default: mod['ExtendedFabHtmlPreview'],
-      }))
+      import('@datas/pages/button/preview/button/ExtendedFabPreview').then(
+        mod => ({
+          default: mod['ExtendedFabHtmlPreview'],
+        })
+      )
     ),
     lazy(() =>
-      import('@datas/pages/button/preview/button/ExtendedFabPreview').then(mod => ({
-        default: mod['ExtendedFabTypescriptPreview'],
-      }))
+      import('@datas/pages/button/preview/button/ExtendedFabPreview').then(
+        mod => ({
+          default: mod['ExtendedFabTypescriptPreview'],
+        })
+      )
     )
   );
 
@@ -147,14 +151,18 @@ export const toggleBasicTab = (id: string): TabContent =>
     id,
     'basic',
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/BasicTogglePreview').then(mod => ({
-        default: mod['BasicToggleHtmlPreview'],
-      }))
+      import('@datas/pages/button/preview/toggle/BasicTogglePreview').then(
+        mod => ({
+          default: mod['BasicToggleHtmlPreview'],
+        })
+      )
     ),
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/BasicTogglePreview').then(mod => ({
-        default: mod['BasicToggleTypescriptPreview'],
-      }))
+      import('@datas/pages/button/preview/toggle/BasicTogglePreview').then(
+        mod => ({
+          default: mod['BasicToggleTypescriptPreview'],
+        })
+      )
     )
   );
 
@@ -164,12 +172,16 @@ export const toggleMultipleSelectTab = (id: string): TabContent =>
     id,
     'multiple-select',
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/MultipleSelectTogglePreview').then(mod => ({
+      import(
+        '@datas/pages/button/preview/toggle/MultipleSelectTogglePreview'
+      ).then(mod => ({
         default: mod['MultipleSelectHtmlPreview'],
       }))
     ),
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/MultipleSelectTogglePreview').then(mod => ({
+      import(
+        '@datas/pages/button/preview/toggle/MultipleSelectTogglePreview'
+      ).then(mod => ({
         default: mod['MultipleSelectTypescriptPreview'],
       }))
     )
@@ -181,12 +193,16 @@ export const toggleReactiveFormTab = (id: string): TabContent =>
     id,
     'reactive-form',
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/ReactiveFormTogglePreview').then(mod => ({
+      import(
+        '@datas/pages/button/preview/toggle/ReactiveFormTogglePreview'
+      ).then(mod => ({
         default: mod['ReactiveFormHtmlPreview'],
       }))
     ),
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/ReactiveFormTogglePreview').then(mod => ({
+      import(
+        '@datas/pages/button/preview/toggle/ReactiveFormTogglePreview'
+      ).then(mod => ({
         default: mod['ReactiveFormTypescriptPreview'],
       }))
     )
@@ -198,12 +214,16 @@ export const toggleexclusiveSelectionTab = (id: string): TabContent =>
     id,
     'exclusive-selection',
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/ExclusiveSelectionTogglePreview').then(mod => ({
+      import(
+        '@datas/pages/button/preview/toggle/ExclusiveSelectionTogglePreview'
+      ).then(mod => ({
         default: mod['ExclusiveSelectionHtmlPreview'],
       }))
     ),
     lazy(() =>
-      import('@datas/pages/button/preview/toggle/ExclusiveSelectionTogglePreview').then(mod => ({
+      import(
+        '@datas/pages/button/preview/toggle/ExclusiveSelectionTogglePreview'
+      ).then(mod => ({
         default: mod['ExclusiveSelectionTypescriptPreview'],
       }))
     )

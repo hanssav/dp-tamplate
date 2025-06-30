@@ -35,7 +35,7 @@ const CheckboxItem = ({
   field: FormContextType['field'];
 }) => {
   const { variant } = useFormLayout();
-  
+
   const options = isCheckboxGroup(item)
     ? item.options.map(optionItem => {
         const newOption: OptionsType = {

@@ -25,7 +25,7 @@ export const FriendGiftCard: React.FC<FriendGiftCardProps> = ({ content }) => {
         <Typography as="h3" textStyle="body" className="font-medium">
           {content?.name}
         </Typography>
-        <Gift className="h-5 w-5 text-blue-600" />
+        <Gift className="size-5 text-blue-600" />
       </Box>
 
       {/* Image */}

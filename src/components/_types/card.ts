@@ -1,4 +1,8 @@
-import { BannersSectionProps, CardContent, SectionContent } from '@datas/pages/config';
+import {
+  BannersSectionProps,
+  CardContent,
+  SectionContent,
+} from '@datas/pages/config';
 import { LucideIcon } from 'lucide-react';
 
 export type CardVariant =
@@ -30,7 +34,13 @@ export interface InfoCardContentProps {
   };
 }
 
-export const validInfoCardTypes = ['primary', 'warning', 'secondary', 'error', 'success'] as const;
+export const validInfoCardTypes = [
+  'primary',
+  'warning',
+  'secondary',
+  'error',
+  'success',
+] as const;
 export type BgMapKey = (typeof validInfoCardTypes)[number];
 
 export interface PostCardContentProps {

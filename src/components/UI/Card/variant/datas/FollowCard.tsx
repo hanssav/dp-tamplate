@@ -37,7 +37,7 @@ export const FollowCardContent: React.FC<FollowContentProps> = ({
           </Typography>
 
           <Box align="center" className="flex gap-1">
-            <MapPin className="mr-1 h-3.5 w-3.5" />
+            <MapPin className="mr-1 size-3.5" />
             <Typography as="span" textStyle="desc">
               {content?.location}
             </Typography>

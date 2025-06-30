@@ -46,12 +46,12 @@ export function createDayPickerProps({
     ),
     PreviousMonthButton: (props: any) => (
       <button {...props} onClick={handlePrevClick}>
-        <ChevronLeft className="h-5 w-5" />
+        <ChevronLeft className="size-5" />
       </button>
     ),
     NextMonthButton: (props: any) => (
       <button {...props} onClick={handleNextClick}>
-        <ChevronRight className="h-5 w-5" />
+        <ChevronRight className="size-5" />
       </button>
     ),
     CaptionLabel: (p: any) => (

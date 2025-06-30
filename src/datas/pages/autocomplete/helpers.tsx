@@ -73,12 +73,12 @@ const PreviewOverview = ({ id }: { id: string }) => {
             }`}
           >
             <div
-              className={`absolute left-0 top-0 flex h-6 w-6 transform items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 ${
+              className={`absolute left-0 top-0 flex size-6 items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300${
                 isDisabled ? 'translate-x-6' : 'translate-x-0'
               }`}
             >
               {isDisabled && (
-                <Check className="h-4 w-4 text-blue-600" strokeWidth={3} />
+                <Check className="size-4 text-blue-600" strokeWidth={3} />
               )}
             </div>
           </div>

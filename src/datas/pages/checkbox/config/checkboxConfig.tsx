@@ -1,4 +1,7 @@
-export type CheckboxVariant = 'basic-checkbox' | 'configuration-checkbox' | 'reactive-form-checkbox';
+export type CheckboxVariant =
+  | 'basic-checkbox'
+  | 'configuration-checkbox'
+  | 'reactive-form-checkbox';
 
 export const checkboxConfig: Record<CheckboxVariant, any[]> = {
   'basic-checkbox': [

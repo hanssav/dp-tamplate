@@ -189,4 +189,3 @@ export const menuItems: MenuCategory[] = [
     items: [{ href: '/logout', icon: LogOut, label: 'Logout' }],
   },
 ];
-

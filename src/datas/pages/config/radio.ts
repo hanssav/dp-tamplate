@@ -52,7 +52,10 @@ export const radio: SectionContent[] = [
               shadow: 'shadow-none',
               margin: 'mb-5',
             },
-            tabData: createTabs(ID_NGMODEL_RADIO, ngModelRadio(ID_NGMODEL_RADIO)),
+            tabData: createTabs(
+              ID_NGMODEL_RADIO,
+              ngModelRadio(ID_NGMODEL_RADIO)
+            ),
           },
         ],
       },

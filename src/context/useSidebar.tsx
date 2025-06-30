@@ -56,14 +56,20 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
   const toggleOpen = (label: string) => {
     setOpenState(prevOpen => {
       const isOpen = prevOpen.includes(label);
-      const newOpenState = isOpen ? prevOpen.filter(item => item !== label) : [...prevOpen, label];
+      const newOpenState = isOpen
+        ? prevOpen.filter(item => item !== label)
+        : [...prevOpen, label];
 
       localStorage.setItem('sidebarOpen', JSON.stringify(newOpenState));
       return newOpenState;
     });
   };
 
-  return <SidebarContext.Provider value={{ open, setOpen, toggleOpen }}>{children}</SidebarContext.Provider>;
+  return (
+    <SidebarContext.Provider value={{ open, setOpen, toggleOpen }}>
+      {children}
+    </SidebarContext.Provider>
+  );
 };
 
 export const useSidebar = () => {

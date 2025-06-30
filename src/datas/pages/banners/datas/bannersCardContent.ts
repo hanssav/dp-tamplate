@@ -10,7 +10,8 @@ export const BannersCardContent: SectionContent[] = [
         span: 2,
         components: 'cards',
         title: 'Welcome back Mathew!',
-        subtitle: 'You have earned 54% more than last month which is great thing.',
+        subtitle:
+          'You have earned 54% more than last month which is great thing.',
         button: [
           {
             label: 'Check',
@@ -27,7 +28,8 @@ export const BannersCardContent: SectionContent[] = [
         span: 2,
         components: 'cards',
         title: 'Track your every Transaction Easily',
-        subtitle: 'Track and record your every income and expence easily to control your balance',
+        subtitle:
+          'Track and record your every income and expence easily to control your balance',
         button: [
           {
             label: 'Download',
