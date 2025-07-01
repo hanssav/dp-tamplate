@@ -1,7 +1,7 @@
 import Box from '@components/UI/Box';
 import Button from '@components/UI/Button';
 import Typography from '@components/UI/Typography';
-import { FriendGiftCardProps } from '@components/_types/Card';
+import { FriendGiftCardProps } from '@components/_types/card';
 import { Gift } from 'lucide-react';
 
 /**

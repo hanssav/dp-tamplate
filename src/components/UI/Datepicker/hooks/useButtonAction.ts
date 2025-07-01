@@ -20,7 +20,7 @@ export const useButtonAction = ({
     if (isOpen) {
       setTempDate(selectedDate);
     }
-  }, [isOpen]);
+  }, [isOpen, selectedDate]);
 
   const onApply = () => {
     closePicker();

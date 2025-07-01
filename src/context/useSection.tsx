@@ -1,5 +1,11 @@
 import { SectionContent } from '@datas/pages/config';
-import { createContext, useContext, useState, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useCallback,
+} from 'react';
 
 type Section = {
   sectionData: SectionContent[];
@@ -7,6 +13,7 @@ type Section = {
 
 type SectionContextValue = {
   section: Section;
+  // eslint-disable-next-line no-unused-vars
   updateSection: (newSection: SectionContent[]) => void;
 };
 
@@ -19,9 +26,9 @@ export const SectionProvider = ({ children }: { children: ReactNode }) => {
     sectionData: [],
   });
 
-  const updateSection = (data: SectionContent[]) => {
+  const updateSection = useCallback((data: SectionContent[]) => {
     setSection({ sectionData: data });
-  };
+  }, []);
 
   return (
     <SectionContext.Provider value={{ section, updateSection }}>

@@ -1,4 +1,4 @@
-import { FriendCardContent } from '@components/_types/Card';
+import { FriendCardContent } from '@components/_types/card';
 import IMAGE_CONSTANTS from '@constant/images';
 
 export const friendCardData: FriendCardContent[] = [

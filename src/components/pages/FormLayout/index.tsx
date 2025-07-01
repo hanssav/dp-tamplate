@@ -31,7 +31,9 @@ import { renderInput } from '@components/pages/FormLayout/Item';
 //   };
 
 type FormLayoutContextType = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form: any;
   variant: FormLayoutVariant;
 };
@@ -50,6 +52,7 @@ export const useFormLayout = () => {
   return context;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,
   [ID_INPUT_VARIANT_FORM]: useInputVariantForm,

@@ -1,4 +1,4 @@
-import { MusicContentProps } from '@components/_types/Card';
+import { MusicContentProps } from '@components/_types/card';
 import { SkipBack, Play, SkipForward } from 'lucide-react';
 import Typography from '@components/UI/Typography';
 import Box from '@components/UI/Box';

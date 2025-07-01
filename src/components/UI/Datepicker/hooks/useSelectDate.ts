@@ -62,7 +62,16 @@ export function useSelectDate({
           break;
       }
     },
-    [item.mode, viewMode, focusedDate, onChange, closePicker, isDateRange]
+    [
+      item.mode,
+      viewMode,
+      focusedDate,
+      onChange,
+      closePicker,
+      isUseAction,
+      setSelectedDate,
+      item.autoRange,
+    ]
   );
 
   return { selectedDate, setSelectedDate, handleSelect };

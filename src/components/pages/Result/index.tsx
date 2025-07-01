@@ -8,7 +8,7 @@ const Result = ({ item, children }: any) => {
     <Box
       className={twMerge(
         (item.parentName || results?.flex) && 'flex',
-        'shodow-none gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7 dark:border-gray-700 dark:bg-[#232e39]'
+        'gap-y-6 rounded-lg bg-[#f2f6fa] px-5 py-7 shadow-none dark:border-gray-700 dark:bg-[#232e39]'
       )}
     >
       <Typography as="h4" textStyle="body" className="font-bold">

@@ -18,5 +18,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react-day-picker'],
+    exclude: ['prettier.config.cjs'],
   },
 });

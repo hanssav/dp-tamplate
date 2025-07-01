@@ -1,4 +1,4 @@
-import { FollowContentProps } from '@components/_types/Card';
+import { FollowContentProps } from '@components/_types/card';
 import { MapPin } from 'lucide-react';
 import { Avatar } from 'flowbite-react';
 import Button from '@components/UI/Button';

@@ -14,10 +14,9 @@ const ParentMenu = () => {
   const { section, updateSection } = useSection();
 
   const isValid = checkValidPath(location.pathname);
-  if (isValid === '404') return <Navigate to="/404" replace />;
-
   const title = getTitleFromPath(location.pathname);
 
+  const NotFoundPage = () => <Navigate to="/404" replace />;
   useEffect(() => {
     document.title = title + ' - Admin';
   }, [title]);
@@ -26,10 +25,13 @@ const ParentMenu = () => {
     const configKey = toCamelCase(title);
     const selectedConfig = UiConfig[configKey as keyof typeof UiConfig];
 
-    if (!selectedConfig) return;
+    if (!selectedConfig) return updateSection([]);
 
     updateSection(Array.isArray(selectedConfig) ? selectedConfig : []);
-  }, [location]);
+  }, [location, title, updateSection]);
+
+  if (isValid === '404') return <NotFoundPage />;
+
   return (
     <DashboardLayout>
       <Box margin="mb-6">

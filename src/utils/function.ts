@@ -1,4 +1,4 @@
-import { CardVariant } from '@components/_types/Card';
+import { CardVariant } from '@components/_types/card';
 import { menuItems } from '@datas/components/menuItems';
 import {
   CardContent,

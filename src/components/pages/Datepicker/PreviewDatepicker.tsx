@@ -8,7 +8,26 @@ import {
   DatepickerVariant,
 } from '@datas/pages/datePicker/config';
 import { convertToObjectStirng } from '@utils/function';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
+
+const getIsoFormatted = (
+  item: { id: string },
+  selectedDates: Record<string, SelectDate>
+) => {
+  const current = selectedDates[item.id];
+  if (
+    current &&
+    typeof current === 'object' &&
+    !Array.isArray(current) &&
+    'from' in current
+  ) {
+    return {
+      from: current.from ? formatISO(current.from) : null,
+      to: current.to ? formatISO(current.to) : null,
+    };
+  }
+  return null;
+};
 
 export const PreviewDatepicker = ({
   id,
@@ -24,21 +43,7 @@ export const PreviewDatepicker = ({
   return (
     <Box id={id}>
       {datepickerConfig[variant].map((item, index) => {
-        const isoFormatted = useMemo(() => {
-          const current = selectedDates[item.id];
-          if (
-            current &&
-            typeof current === 'object' &&
-            !Array.isArray(current) &&
-            'from' in current
-          ) {
-            return {
-              from: current.from ? formatISO(current.from) : null,
-              to: current.to ? formatISO(current.to) : null,
-            };
-          }
-          return null;
-        }, [selectedDates]);
+        const isoFormatted = getIsoFormatted(item, selectedDates);
 
         return (
           <div key={index}>

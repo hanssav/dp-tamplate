@@ -20,7 +20,8 @@ const IconWithPercentage: React.FC<{
     className={`flex items-center ${iconClass}`}
   >
     <span
-      className={`bg-light- mr-2 flex size-6 items-center justify-center rounded-full${
+      // eslint-disable-next-line tailwindcss/no-custom-classname
+      className={`bg-light mr-2 flex size-6 items-center justify-center rounded-full${
         iconClass === 'text-green-500' ? 'success' : 'error'
       } ${rotateClass}`}
     >

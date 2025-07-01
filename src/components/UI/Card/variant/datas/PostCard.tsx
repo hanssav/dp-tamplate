@@ -1,6 +1,6 @@
 import { Avatar } from 'flowbite-react';
 import Typography from '@components/UI/Typography';
-import { PostCardContentProps } from '@components/_types/Card';
+import { PostCardContentProps } from '@components/_types/card';
 import Box from '@components/UI/Box';
 import Button from '@components/UI/Button';
 
@@ -39,7 +39,7 @@ export function PostCardContent({ content }: PostCardContentProps) {
         color="light"
         disabled
         size="md"
-        className="bg:transparant w-fit translate-y-[-25px] rounded-lg border border-gray-300"
+        className="w-fit translate-y-[-25px] rounded-lg border border-gray-300 bg-transparent"
       >
         {content?.category}
       </Button>

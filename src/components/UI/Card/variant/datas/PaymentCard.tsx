@@ -1,7 +1,7 @@
 import { LucideIcon } from 'lucide-react';
 import Button from '@components/UI/Button';
 import React from 'react';
-import { TimelineItemType, PaymentItem } from '@components/_types/Card';
+import { TimelineItemType, PaymentItem } from '@components/_types/card';
 import Typography from '@components/UI/Typography';
 import Box from '@components/UI/Box';
 

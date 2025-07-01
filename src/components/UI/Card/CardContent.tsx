@@ -26,7 +26,7 @@ import {
   InfoCardContentProps,
   PostCardContentProps,
   ProductContentProps,
-} from '@components/_types/Card';
+} from '@components/_types/card';
 import { BannersSectionProps } from '@datas/pages/config';
 import Card from '@components/UI/Card';
 

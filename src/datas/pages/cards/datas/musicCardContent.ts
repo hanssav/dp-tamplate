@@ -1,4 +1,4 @@
-import { MusicContentProps } from '@components/_types/Card';
+import { MusicContentProps } from '@components/_types/card';
 import IMAGE_CONSTANTS from '@constant/images';
 
 export const musicCardData: MusicContentProps['content'][] = [

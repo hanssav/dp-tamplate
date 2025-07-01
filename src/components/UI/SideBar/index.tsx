@@ -7,7 +7,6 @@ import {
 } from 'flowbite-react';
 import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import { menuItems } from '@datas/components/menuItems';
-import { twMerge } from 'tailwind-merge';
 import { NavLink, useLocation } from 'react-router';
 import DotIcon from '@assets/icons/RouteIcon';
 import IMAGE_CONSTANTS from '@constant/images';
@@ -17,6 +16,7 @@ import Box from '@components/UI/Box';
 import Button from '@components/UI/Button';
 import { themes } from '@assets/themes';
 import { useSidebar } from '@context/useSidebar';
+import { cn } from '@utils/cn';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -36,7 +36,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
   const getSidebarWidth = () => (isSidebarOpen ? 'w-64' : 'w-24');
 
   const getSidebarBaseClasses = () =>
-    twMerge(
+    cn(
       'fixed inset-y-0 left-0 z-50 h-screen bg-white p-3 dark:bg-gray-900 md:relative  md:translate-x-0',
       'border-grey-900 border-r dark:border-none',
       isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full',
@@ -52,7 +52,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
 
   const { button: btnTheme } = themes;
   const getNavLinkClass = (isActive: boolean) =>
-    twMerge(
+    cn(
       'flex items-center gap-x-2 rounded-lg p-3 text-sm',
       isSidebarOpen ? 'pl-5' : 'grid justify-items-center',
       isActive
@@ -61,7 +61,7 @@ const SidebarMenu: React.FC<SidebarProps> = ({
     );
 
   const getCollapseClass = (isActive: boolean) =>
-    twMerge(
+    cn(
       'py-3 text-sm transition-all',
       isSidebarOpen ? 'pl-5' : 'grid justify-items-center',
       isActive

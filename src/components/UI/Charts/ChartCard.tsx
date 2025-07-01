@@ -51,6 +51,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({ content }) => {
 
   const dynamicOptions = useMemo(() => {
     return applyThemeToOptions(options, themeMode, chartColor);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options]);
 
   const renderContent = () => {

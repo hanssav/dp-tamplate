@@ -23,6 +23,20 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        varsIgnorePattern: '^_',
+        argsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
+    'tailwindcss/no-custom-classname': [
+      'warn',
+      {
+        whitelist: ['hljs', 'language-js', 'language-ts', 'language-json'],
+      },
+    ],
     '@typescript-eslint/no-explicit-any': 'off',
     'prettier/prettier': ['error'],
     'no-unused-vars': 'warn',

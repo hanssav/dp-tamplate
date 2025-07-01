@@ -1,6 +1,6 @@
 import { createDefaultTheme } from './styles';
 import React from 'react';
-import { CardContentData, CardVariant } from '@components/_types/Card';
+import { CardContentData, CardVariant } from '@components/_types/card';
 import { CardContent } from '@datas/pages/config';
 import {
   bgMap,

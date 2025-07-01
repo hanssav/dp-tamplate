@@ -1,4 +1,4 @@
-import { InfoCardContentProps } from '@components/_types/Card';
+import { InfoCardContentProps } from '@components/_types/card';
 import Typography from '@components/UI/Typography';
 import Box from '@components/UI/Box';
 import { Avatar } from 'flowbite-react';
