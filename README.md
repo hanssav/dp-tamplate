@@ -37,3 +37,7 @@ export default {
   [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and
   add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends`
   list
+
+## USE THIS WHEN MISSING DEPENDENCIES IF USING NPM INSTALL
+
+npm install --loglevel verbose
