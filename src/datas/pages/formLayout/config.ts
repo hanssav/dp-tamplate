@@ -86,15 +86,15 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
           options: [
             {
               id: 'radio-group-1',
-              label: 'Check this nomer 22',
+              label: 'Toggle this custom radio',
             },
             {
               id: 'radio-group-2',
-              label: 'Check this nomer 22',
+              label: 'Toggle this custom radio',
             },
             {
               id: 'radio-group-3',
-              label: 'Check this nomer 22',
+              label: 'Toggle this custom radio',
             },
           ],
         },
