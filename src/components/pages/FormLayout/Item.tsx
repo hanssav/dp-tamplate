@@ -3,6 +3,13 @@ import { FormControl, FormLabel } from '@components/UI/Form';
 import { Checkbox, CheckboxGroup } from '@components/UI/Form/Checkbox';
 import { Input } from '@components/UI/Form/Input';
 import { Radio, RadioGroupItem } from '@components/UI/Form/Radio';
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+} from '@components/UI/Form/Select';
 import { Textarea } from '@components/UI/Form/TextArea';
 import {
   BaseFormField,
@@ -107,6 +114,33 @@ const RadioItem = ({
 };
 RadioItem.displayName = 'RadioItem';
 
+const SelectItemComp = ({
+  item,
+  field,
+}: {
+  item: any;
+  field: FormContextType['field'];
+}) => {
+  console.log('item', item);
+  return (
+    <>
+      <FormLabel className="font-bold">{item.label}</FormLabel>
+      <FormControl>
+        <Select defaultValue={field.value} onValueChange={field.onChange}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Role" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="viewer">Viewer</SelectItem>
+            <SelectItem value="editor">Editor</SelectItem>
+          </SelectContent>
+        </Select>
+      </FormControl>
+    </>
+  );
+};
+SelectItemComp.displayName = 'SelectItemComp';
+
 const InputItem = ({ item, field }: FormContextType) => {
   const { variant } = useFormLayout();
   return (
@@ -140,9 +174,12 @@ const renderInput = ({ item, field }: FormContextType) => {
       );
     case 'radio':
       return <RadioItem item={item} field={field} />;
+    case 'select':
+      return <SelectItemComp item={item} field={field} />;
+
     default:
       return <InputItem item={item} field={field} />;
   }
 };
 
-export { CheckboxItem, InputItem, renderInput };
+export { CheckboxItem, InputItem, renderInput, SelectItemComp, RadioItem };

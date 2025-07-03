@@ -100,6 +100,16 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
         },
       ],
     },
+    {
+      id: 'select-input',
+      type: 'select',
+      label: 'Select',
+      options: [
+        { id: 'option-1', label: 'Option 1' },
+        { id: 'option-2', label: 'Option 2' },
+        { id: 'option-3', label: 'Option 3' },
+      ],
+    },
   ],
 };
 

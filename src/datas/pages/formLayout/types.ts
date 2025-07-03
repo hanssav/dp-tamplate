@@ -1,4 +1,5 @@
 import { ColKey } from '@components/UI/Box/boxTheme';
+import { SelectItemProps } from '@radix-ui/react-select';
 
 const ID_ORDINARY_FORM = 'ordinary-form';
 const ID_INPUT_VARIANT_FORM = 'input-variant-form';
@@ -16,7 +17,8 @@ type FormFieldType =
   | 'password'
   | 'checkbox'
   | 'textarea'
-  | 'radio';
+  | 'radio'
+  | 'select';
 
 // Type for checkbox item
 interface Options {
@@ -43,7 +45,16 @@ interface SingleCheckboxField extends BaseFormField {
   type: FormFieldType;
 }
 
-type FormField = BaseFormField | CheckboxGroupField | SingleCheckboxField;
+interface SelectField extends BaseFormField {
+  type: FormFieldType;
+  options: SelectItemProps;
+}
+
+type FormField =
+  | BaseFormField
+  | CheckboxGroupField
+  | SingleCheckboxField
+  | SelectField;
 
 interface FormFieldGroup {
   col: ColKey;
