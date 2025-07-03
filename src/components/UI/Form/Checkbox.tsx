@@ -31,6 +31,7 @@ type Options = {
   value: string;
   label: string;
 };
+
 interface CheckboxGroupProps {
   name?: string;
   required?: React.ComponentPropsWithoutRef<
@@ -67,8 +68,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
           checked === true ? [...value, val] : value.filter(v => v !== val);
         setValue(updated);
       },
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [setValue]
+      [setValue, value]
     );
 
     return (

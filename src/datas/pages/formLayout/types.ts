@@ -19,7 +19,7 @@ type FormFieldType =
   | 'radio';
 
 // Type for checkbox item
-interface CheckboxItem {
+interface Options {
   id: string;
   label: string;
 }
@@ -36,7 +36,7 @@ interface BaseFormField {
 interface CheckboxGroupField extends BaseFormField {
   type: FormFieldType;
   name?: string;
-  options: CheckboxItem[];
+  options: Options[];
 }
 
 interface SingleCheckboxField extends BaseFormField {
@@ -68,6 +68,6 @@ export type {
   SingleCheckboxField,
   CheckboxGroupField,
   ButtonFormType,
-  CheckboxItem,
+  Options,
   FormSection,
 };

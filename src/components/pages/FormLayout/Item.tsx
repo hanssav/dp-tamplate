@@ -7,7 +7,7 @@ import { Textarea } from '@components/UI/Form/TextArea';
 import {
   BaseFormField,
   CheckboxGroupField,
-  CheckboxItem as CheckboxOption,
+  Options,
   SingleCheckboxField,
 } from '@datas/pages/formLayout/types';
 import { cn } from '@utils/cn';
@@ -18,8 +18,8 @@ interface FormContextType {
   field: ControllerRenderProps;
 }
 
-interface OptionsType extends CheckboxOption {
-  value: CheckboxOption['id'];
+interface OptionsType extends Options {
+  value: Options['id'];
 }
 
 const isCheckboxGroup = (
@@ -92,7 +92,7 @@ const RadioItem = ({
           value={field.value}
           className="space-y-2"
         >
-          {item.options?.map((option: CheckboxOption, index: number) => {
+          {item.options?.map((option: Options, index: number) => {
             return (
               <div key={index} className="flex items-center space-x-2">
                 <RadioGroupItem value={option.id} id={option.id} />{' '}
