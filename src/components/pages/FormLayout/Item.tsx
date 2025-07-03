@@ -84,9 +84,6 @@ const RadioItem = ({
   item: any;
   field: FormContextType['field'];
 }) => {
-  console.log(item, 'item in RadioItem');
-  console.log(field, 'field in RadioItem');
-
   return (
     <div>
       <FormControl>
