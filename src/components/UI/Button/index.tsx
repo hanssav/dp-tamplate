@@ -1,5 +1,5 @@
 import { buttonTheme } from '@components/UI/Button/theme';
-import { ButtonProps } from '@components/_types/button';
+import { ButtonProps } from '@components/types/button';
 import { Button as ButtonFlowbite } from 'flowbite-react';
 
 export default function Button({

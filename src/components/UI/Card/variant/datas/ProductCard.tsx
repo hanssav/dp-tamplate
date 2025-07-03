@@ -1,6 +1,6 @@
 import { ShoppingBag, Star } from 'lucide-react';
 import Typography from '@components/UI/Typography';
-import { ProductContentProps } from '@components/_types/card';
+import { ProductContentProps } from '@components/types/card';
 import Box from '@components/UI/Box';
 
 /**

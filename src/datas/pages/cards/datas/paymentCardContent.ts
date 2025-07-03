@@ -1,6 +1,6 @@
 import { MapPin, Archive, Users, ClipboardCheck, Mail } from 'lucide-react';
 
-import { PaymentCardProps } from '@components/_types/card';
+import { PaymentCardProps } from '@components/types/card';
 import IMAGE_CONSTANTS from '@constant/images';
 
 export const paymentData: PaymentCardProps[] = [

@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import FilledCircleIcon from '@assets/icons/FilledCircleIcon';
 import Box from '@components/UI/Box';
-import { BreadcrumbProps } from '@components/_types/card';
+import { BreadcrumbProps } from '@components/types/card';
 import Typography from '@components/UI/Typography';
 
 /**

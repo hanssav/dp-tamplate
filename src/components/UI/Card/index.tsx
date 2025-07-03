@@ -6,7 +6,7 @@ import {
   CardContentData,
   BgMapKey,
   validInfoCardTypes,
-} from '@components/_types/card';
+} from '@components/types/card';
 
 interface CardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {

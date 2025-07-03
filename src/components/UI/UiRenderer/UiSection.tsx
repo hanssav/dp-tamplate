@@ -4,7 +4,7 @@ import {
   renderCard,
   renderChildItem,
 } from '@components/UI/UiRenderer/components/RenderHelpers';
-import { CardVariant } from '@components/_types/card';
+import { CardVariant } from '@components/types/card';
 import {
   SectionContent,
   NestedContent,

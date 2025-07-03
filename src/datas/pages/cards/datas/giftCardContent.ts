@@ -1,4 +1,4 @@
-import { FriendGiftCardProps } from '@components/_types/card';
+import { FriendGiftCardProps } from '@components/types/card';
 import IMAGE_CONSTANTS from '@constant/images';
 
 export const giftCardData: FriendGiftCardProps['content'][] = [

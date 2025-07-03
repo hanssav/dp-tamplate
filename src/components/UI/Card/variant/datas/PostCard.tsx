@@ -1,6 +1,6 @@
 import { Avatar } from 'flowbite-react';
 import Typography from '@components/UI/Typography';
-import { PostCardContentProps } from '@components/_types/card';
+import { PostCardContentProps } from '@components/types/card';
 import Box from '@components/UI/Box';
 import Button from '@components/UI/Button';
 

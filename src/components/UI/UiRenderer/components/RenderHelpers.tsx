@@ -1,6 +1,6 @@
 import Box from '@components/UI/Box';
 import { GridItem } from '@components/UI/Box/boxTheme';
-import { CardVariant } from '@components/_types/card';
+import { CardVariant } from '@components/types/card';
 import { CardContent, SectionContent } from '@datas/pages/config';
 import { isNestedColContent } from '@utils/function';
 import React from 'react';

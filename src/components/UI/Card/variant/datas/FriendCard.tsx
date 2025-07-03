@@ -1,5 +1,5 @@
 import { Avatar } from 'flowbite-react';
-import { FriendCardProps } from '@components/_types/card';
+import { FriendCardProps } from '@components/types/card';
 import { Users, Globe, Code, Instagram } from 'lucide-react';
 import Typography from '@components/UI/Typography';
 import Button from '@components/UI/Button';

@@ -28,7 +28,7 @@ const RadioGroupItem = React.forwardRef<
         'flex items-center justify-center',
         'transition-colors',
         // Add visual checked state (important)
-        'data-[state=checked]:border-primary data-[state=checked]:bg-primary/20',
+        'data-[state=checked]:border-primary',
         className
       )}
       {...props}

@@ -2,13 +2,14 @@ import { useFormLayout } from '@components/pages/FormLayout';
 import { FormControl, FormLabel } from '@components/UI/Form';
 import { Checkbox, CheckboxGroup } from '@components/UI/Form/Checkbox';
 import { Input } from '@components/UI/Form/Input';
+import { Radio, RadioGroupItem } from '@components/UI/Form/Radio';
 import { Textarea } from '@components/UI/Form/TextArea';
 import {
   BaseFormField,
   CheckboxGroupField,
   CheckboxItem as CheckboxOption,
   SingleCheckboxField,
-} from '@datas/pages/formLayout/config';
+} from '@datas/pages/formLayout/types';
 import { cn } from '@utils/cn';
 import { ControllerRenderProps } from 'react-hook-form/dist/types';
 
@@ -76,6 +77,39 @@ const CheckboxItem = ({
 };
 CheckboxItem.displayName = 'CheckboxItem';
 
+const RadioItem = ({
+  item,
+  field,
+}: {
+  item: any;
+  field: FormContextType['field'];
+}) => {
+  console.log(item, 'item in RadioItem');
+  console.log(field, 'field in RadioItem');
+
+  return (
+    <div>
+      <FormControl>
+        <Radio
+          onValueChange={field.onChange}
+          value={field.value}
+          className="space-y-2"
+        >
+          {item.options?.map((option: CheckboxOption, index: number) => {
+            return (
+              <div key={index} className="flex items-center space-x-2">
+                <RadioGroupItem value={option.id} id={option.id} />{' '}
+                <FormLabel htmlFor={option.label}>{option.label}</FormLabel>
+              </div>
+            );
+          })}
+        </Radio>
+      </FormControl>
+    </div>
+  );
+};
+RadioItem.displayName = 'RadioItem';
+
 const InputItem = ({ item, field }: FormContextType) => {
   const { variant } = useFormLayout();
   return (
@@ -96,6 +130,7 @@ InputItem.displayName = 'InputItem';
 
 const renderInput = ({ item, field }: FormContextType) => {
   if (!item?.type) return;
+
   switch (item.type) {
     case 'checkbox':
       return <CheckboxItem item={item} field={field} />;
@@ -106,6 +141,8 @@ const renderInput = ({ item, field }: FormContextType) => {
           <Textarea {...field} />
         </>
       );
+    case 'radio':
+      return <RadioItem item={item} field={field} />;
     default:
       return <InputItem item={item} field={field} />;
   }

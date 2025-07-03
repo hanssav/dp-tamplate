@@ -1,5 +1,5 @@
 import { themes } from '@assets/themes';
-import { ButtonProps } from '@components/_types/button';
+import { ButtonProps } from '@components/types/button';
 import { createTheme } from 'flowbite-react';
 import { twMerge } from 'tailwind-merge';
 

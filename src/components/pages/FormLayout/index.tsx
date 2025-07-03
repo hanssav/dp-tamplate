@@ -13,7 +13,6 @@ import {
 import {
   buttonFormConfig,
   formLayoutConfig,
-  FormLayoutVariant,
   ID_DEFAULT_FORM,
   ID_INPUT_VARIANT_FORM,
   ID_ORDINARY_FORM,
@@ -23,6 +22,7 @@ import { useDefaultForm } from '@datas/pages/formLayout/hooks/useDefaultForm';
 import { useInputVariantForm } from '@datas/pages/formLayout/hooks/useInputVariantForm';
 import { useOrdinaryForm } from '@datas/pages/formLayout/hooks/useOrdinaryForm';
 import { renderInput } from '@components/pages/FormLayout/Item';
+import { FormLayoutVariant } from '@datas/pages/formLayout/types';
 
 // type FormLayoutContextType = {
 //     item: BaseFormField;
@@ -31,9 +31,7 @@ import { renderInput } from '@components/pages/FormLayout/Item';
 //   };
 
 type FormLayoutContextType = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form: any;
   variant: FormLayoutVariant;
 };
@@ -52,7 +50,6 @@ export const useFormLayout = () => {
   return context;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,
   [ID_INPUT_VARIANT_FORM]: useInputVariantForm,

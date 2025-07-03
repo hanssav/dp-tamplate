@@ -1,7 +1,7 @@
 import { Avatar } from 'flowbite-react';
 import Button from '@components/UI/Button';
 import Typography from '@components/UI/Typography';
-import { FriendSuggestionCardProps } from '@components/_types/card';
+import { FriendSuggestionCardProps } from '@components/types/card';
 import Box from '@components/UI/Box';
 
 /**

@@ -2,7 +2,7 @@ import { NestedContent } from '@datas/pages/config';
 import Box from '@components/UI/Box';
 import { GridItem } from '@components/UI/Box/boxTheme';
 import { isCardContent, isNestedColContent } from '@utils/function';
-import { CardVariant } from '@components/_types/card';
+import { CardVariant } from '@components/types/card';
 import { DynamicCard } from '@components/UI/Card/CardContent';
 
 const NestedCol = ({ col, data, horizontal, variant, span }: NestedContent) => {
