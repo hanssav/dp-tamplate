@@ -80,7 +80,7 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
           ],
         },
         {
-          id: 'radio-group-2',
+          id: 'radio-group',
           type: 'radio',
           name: 'radio-group',
           options: [
@@ -101,7 +101,7 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
       ],
     },
     {
-      id: 'select-input',
+      id: 'select',
       type: 'select',
       label: 'Select',
       options: [

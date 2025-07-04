@@ -75,9 +75,13 @@ const SelectContent = React.forwardRef<
         'cursor-pointer rounded-md border bg-white shadow-md focus:outline-none',
         'data-[state=open]:animate-in data-[state=closed]:animate-out',
         'data-[state=open]:fade-in data-[state=closed]:fade-out',
-        'data-[state=open]:slide-in-from-top-4 data-[state=closed]:slide-out-to-top-4',
-        'duration-1200 ease-out',
-        'dark:border-gray-600 dark:bg-dark-primary dark:text-white',
+
+        // ✅ Animate based on side (dynamic direction)
+        'data-[side=bottom]:slide-in-from-top-4 data-[side=bottom]:slide-out-to-top-4',
+        'data-[side=top]:slide-in-from-bottom-4 data-[side=top]:slide-out-to-bottom-4',
+
+        'duration-500 ease-out',
+        'dark:border-gray-600 dark:bg-dark-bg-main dark:text-white',
         className
       )}
       position={position}
@@ -118,18 +122,31 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'focus:bg-accent focus:text-accent-foreground relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'm-1 flex w-full cursor-pointer select-none items-center justify-between rounded-lg px-3 py-2 text-sm outline-none',
+
+      //base highlight styles (only apply if NOT checked)
+      'data-[highlighted]:bg-gray-100 data-[highlighted]:text-black',
+      'dark:data-[highlighted]:bg-gray-800 dark:data-[highlighted]:text-white',
+
+      // base checked styles (get overridden by highlighted)
+      'data-[state=checked]:bg-blue-100 data-[state=checked]:text-blue-600',
+      'dark:data-[state=checked]:bg-gray-600 dark:data-[state=checked]:text-white',
+
+      // handle the combo — checked + highlighted (ßoverride both)
+      'dark:data-[highlighted][data-state=checked]:bg-gray-600',
+
+      // Disabled
+      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+
       className
     )}
     {...props}
   >
-    <span className="absolute left-2 flex size-3.5 items-center justify-center">
-      <SelectPrimitive.ItemIndicator>
-        <Check className="size-4" />
-      </SelectPrimitive.ItemIndicator>
-    </span>
-
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+
+    <SelectPrimitive.ItemIndicator>
+      <Check className="size-4 text-blue-600 dark:text-blue-300" />
+    </SelectPrimitive.ItemIndicator>
   </SelectPrimitive.Item>
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;

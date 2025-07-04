@@ -92,24 +92,22 @@ const RadioItem = ({
   field: FormContextType['field'];
 }) => {
   return (
-    <div>
-      <FormControl>
-        <Radio
-          onValueChange={field.onChange}
-          value={field.value}
-          className="space-y-2"
-        >
-          {item.options?.map((option: Options, index: number) => {
-            return (
-              <div key={index} className="flex items-center space-x-2">
-                <RadioGroupItem value={option.id} id={option.id} />{' '}
-                <FormLabel htmlFor={option.label}>{option.label}</FormLabel>
-              </div>
-            );
-          })}
-        </Radio>
-      </FormControl>
-    </div>
+    <FormControl>
+      <Radio
+        onValueChange={field.onChange}
+        value={field.value}
+        className="space-y-2"
+      >
+        {item.options?.map((option: Options, index: number) => {
+          return (
+            <div key={index} className="flex items-center space-x-2">
+              <RadioGroupItem value={option.id} id={option.id} />{' '}
+              <FormLabel htmlFor={option.id}>{option.label}</FormLabel>
+            </div>
+          );
+        })}
+      </Radio>
+    </FormControl>
   );
 };
 RadioItem.displayName = 'RadioItem';
@@ -121,18 +119,20 @@ const SelectItemComp = ({
   item: any;
   field: FormContextType['field'];
 }) => {
-  console.log('item', item);
   return (
     <>
       <FormLabel className="font-bold">{item.label}</FormLabel>
       <FormControl>
         <Select defaultValue={field.value} onValueChange={field.onChange}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Role" />
+          <SelectTrigger>
+            <SelectValue placeholder="Choose Options" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="viewer">Viewer</SelectItem>
-            <SelectItem value="editor">Editor</SelectItem>
+            {item.options?.map((option: Options, index: number) => (
+              <SelectItem key={index} value={option.id}>
+                {option.label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </FormControl>
