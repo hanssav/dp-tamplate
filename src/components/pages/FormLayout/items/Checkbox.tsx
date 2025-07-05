@@ -1,4 +1,3 @@
-import { useFormLayout } from '@components/pages/FormLayout';
 import { FormControl, FormLabel } from '@components/UI/Form';
 import { Checkbox, CheckboxGroup } from '@components/UI/Form/Checkbox';
 import { cn } from '@utils/cn';
@@ -7,6 +6,7 @@ import {
   CheckboxGroupField,
 } from '@datas/pages/formLayout/types';
 import { ControllerRenderProps } from 'react-hook-form';
+import { useFormLayout } from '../../../../datas/pages/formLayout/context/FormContextLayout';
 
 interface Props {
   item: SingleCheckboxField | CheckboxGroupField;

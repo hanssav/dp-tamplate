@@ -1,5 +1,3 @@
-import { createContext, useContext } from 'react';
-
 import Box from '@components/UI/Box';
 import Button from '@components/UI/Button';
 import {
@@ -21,33 +19,14 @@ import {
 import { useDefaultForm } from '@datas/pages/formLayout/hooks/useDefaultForm';
 import { useInputVariantForm } from '@datas/pages/formLayout/hooks/useInputVariantForm';
 import { useOrdinaryForm } from '@datas/pages/formLayout/hooks/useOrdinaryForm';
+import { useBasicHeaderForm } from '@datas/pages/formLayout/hooks/useBacisHeaderForm';
+import { HeaderInfo, isHeader } from './items/HeaderInfo';
+import { renderInput } from './items';
 import {
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
 } from '@datas/pages/formLayout/types';
-import { useBasicHeaderForm } from '@datas/pages/formLayout/hooks/useBacisHeaderForm';
-import { HeaderInfo, isHeader } from './HeaderInfo';
-import { renderInput } from './items';
-
-type FormLayoutContextType = {
-  control: any;
-  form: any;
-  variant: FormLayoutVariant;
-};
-
-const FormLayoutContext = createContext<FormLayoutContextType | undefined>(
-  undefined
-);
-
-export const useFormLayout = () => {
-  const context = useContext(FormLayoutContext);
-  if (!context) {
-    throw new Error(
-      'useFormLayout must be used inside FormLayoutContext.Provider'
-    );
-  }
-  return context;
-};
+import { FormLayoutProvider } from '../../../datas/pages/formLayout/context/FormContextLayout';
 
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,
@@ -66,9 +45,7 @@ const PreviewFormLayout = ({
   const { form, onSubmit } = formHooksMap[variant]();
 
   return (
-    <FormLayoutContext.Provider
-      value={{ form, control: form.control, variant }}
-    >
+    <FormLayoutProvider value={{ form, control: form.control, variant }}>
       <Box id={id}>
         <Form {...form}>
           <form
@@ -139,9 +116,9 @@ const PreviewFormLayout = ({
           </form>
         </Form>
       </Box>
-    </FormLayoutContext.Provider>
+    </FormLayoutProvider>
   );
 };
 
-PreviewFormLayout.DisplayName = 'PreviewFormLayout';
+PreviewFormLayout.displayName = 'PreviewFormLayout';
 export { PreviewFormLayout };
