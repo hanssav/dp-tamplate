@@ -1,5 +1,4 @@
 import { ColKey } from '@components/UI/Box/boxTheme';
-import { SelectItemProps } from '@radix-ui/react-select';
 import { LucideIcon } from 'lucide-react';
 
 const ID_ORDINARY_FORM = 'ordinary-form';
@@ -50,7 +49,7 @@ interface SingleCheckboxField extends BaseFormField {
 
 interface SelectField extends BaseFormField {
   type: FormFieldType;
-  options: SelectItemProps;
+  options: Options[];
 }
 
 type FormField =
@@ -99,4 +98,5 @@ export type {
   FormSection,
   HeaderForm,
   HeaderFormItem,
+  SelectField,
 };

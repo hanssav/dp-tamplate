@@ -21,13 +21,13 @@ import {
 import { useDefaultForm } from '@datas/pages/formLayout/hooks/useDefaultForm';
 import { useInputVariantForm } from '@datas/pages/formLayout/hooks/useInputVariantForm';
 import { useOrdinaryForm } from '@datas/pages/formLayout/hooks/useOrdinaryForm';
-import { renderInput } from '@components/pages/FormLayout/Item';
 import {
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
 } from '@datas/pages/formLayout/types';
 import { useBasicHeaderForm } from '@datas/pages/formLayout/hooks/useBacisHeaderForm';
 import { HeaderInfo, isHeader } from './HeaderInfo';
+import { renderInput } from './items';
 
 type FormLayoutContextType = {
   control: any;
