@@ -24,16 +24,10 @@ import { useOrdinaryForm } from '@datas/pages/formLayout/hooks/useOrdinaryForm';
 import { renderInput } from '@components/pages/FormLayout/Item';
 import {
   FormLayoutVariant,
-  HeaderForm,
   ID_BASIC_HEADER_FORM,
 } from '@datas/pages/formLayout/types';
 import { useBasicHeaderForm } from '@datas/pages/formLayout/hooks/useBacisHeaderForm';
-
-// type FormLayoutContextType = {
-//     item: BaseFormField;
-//     variant: FormLayoutVariant;
-//     field: ControllerRenderProps;
-//   };
+import { HeaderInfo, isHeader } from './HeaderInfo';
 
 type FormLayoutContextType = {
   control: any;
@@ -62,14 +56,6 @@ const formHooksMap: Record<string, any> = {
   [ID_BASIC_HEADER_FORM]: useBasicHeaderForm,
 };
 
-function isHeader(item: any): item is HeaderForm {
-  return (
-    typeof item.label === 'string' &&
-    typeof item.id === 'string' &&
-    item.id.includes('header')
-  );
-}
-
 const PreviewFormLayout = ({
   id,
   variant,
@@ -93,20 +79,7 @@ const PreviewFormLayout = ({
               if (!item.id) return [];
 
               if (isHeader(item)) {
-                const HeaderIcon = item.icon;
-                return (
-                  <Box
-                    key={index}
-                    className="mb-4 flex items-center gap-2 rounded-lg bg-soft-blue p-4"
-                  >
-                    {HeaderIcon && (
-                      <HeaderIcon className="size-5 text-primary" />
-                    )}
-                    <h2 className="text-sm font-semibold text-primary">
-                      {item.label}
-                    </h2>
-                  </Box>
-                );
+                return <HeaderInfo key={index} item={item} index={index} />;
               }
 
               if ('child' in item) {
