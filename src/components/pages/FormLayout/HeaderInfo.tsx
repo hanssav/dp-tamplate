@@ -14,7 +14,7 @@ const HeaderInfo = ({ item, index }: { item: HeaderForm; index: number }) => {
   return (
     <Box
       key={index}
-      className="mb-4 flex items-center gap-2 rounded-lg bg-soft-blue p-4"
+      className="mb-4 flex items-center gap-2 rounded-lg bg-soft-blue p-4 dark:bg-primary/20"
     >
       {HeaderIcon && <HeaderIcon className="size-5 text-primary" />}
       <h2 className="text-sm font-semibold text-primary">{item.label}</h2>

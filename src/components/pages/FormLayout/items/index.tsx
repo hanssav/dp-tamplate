@@ -2,7 +2,7 @@ import { BaseFormField, SelectField } from '@datas/pages/formLayout/types';
 import { ControllerRenderProps } from 'react-hook-form/dist/types';
 import { TextareaItem } from './Textarea';
 import { InputItem } from './Input';
-import { SelectItemGroup } from './Select';
+import { SelectGroupItem } from './Select';
 import { RadioItem } from './Radio';
 import { CheckboxItem } from './Checkbox';
 
@@ -22,7 +22,7 @@ export const renderInput = ({ item, field }: FormContextType) => {
     case 'radio':
       return <RadioItem item={item} field={field} />;
     case 'select':
-      return <SelectItemGroup item={item as SelectField} field={field} />;
+      return <SelectGroupItem item={item as SelectField} field={field} />;
     default:
       return <InputItem item={item} field={field} />;
   }

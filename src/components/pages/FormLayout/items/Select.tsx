@@ -14,7 +14,7 @@ interface Props {
   field: ControllerRenderProps;
 }
 
-export const SelectItemGroup = ({ item, field }: Props) => {
+export const SelectGroupItem = ({ item, field }: Props) => {
   return (
     <>
       <FormLabel className="font-bold">{item.label}</FormLabel>
