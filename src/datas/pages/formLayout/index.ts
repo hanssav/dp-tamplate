@@ -6,6 +6,7 @@ import {
 } from '@datas/pages/formLayout/config';
 import { lazy } from 'react';
 import { generateTab, TabContent } from './../helpers/generateTabs';
+import { ID_BASIC_HEADER_FORM } from './types';
 
 const ordinaryForm = (id: string): TabContent =>
   generateTab(
@@ -58,4 +59,21 @@ const defaultForm = (id: string): TabContent =>
     )
   );
 
-export { ordinaryForm, inputVariantFrom, defaultForm };
+const basicHeadertForm = (id: string): TabContent =>
+  generateTab(
+    PreviewFormLayout,
+    id,
+    ID_BASIC_HEADER_FORM,
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewHtml'],
+      }))
+    ),
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewTsx'],
+      }))
+    )
+  );
+
+export { ordinaryForm, inputVariantFrom, defaultForm, basicHeadertForm };

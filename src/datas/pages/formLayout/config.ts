@@ -1,7 +1,9 @@
+import { Info } from 'lucide-react';
 import {
   ButtonFormType,
   FormLayoutVariant,
   FormSection,
+  ID_BASIC_HEADER_FORM,
   ID_DEFAULT_FORM,
   ID_INPUT_VARIANT_FORM,
   ID_ORDINARY_FORM,
@@ -59,7 +61,6 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
     {
       col: 'col-2',
       id: 'box-id-1',
-
       child: [
         {
           id: 'checkbox-group',
@@ -111,6 +112,13 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
       ],
     },
   ],
+  [ID_BASIC_HEADER_FORM]: [
+    {
+      id: 'personal-info-header',
+      label: 'Personal Info',
+      icon: Info,
+    },
+  ],
 };
 
 const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
@@ -129,6 +137,7 @@ const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
       label: 'Submit',
     },
   ],
+  [ID_BASIC_HEADER_FORM]: [],
 };
 
 export {

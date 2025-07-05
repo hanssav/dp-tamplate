@@ -8,8 +8,10 @@ import {
   ordinaryForm,
   inputVariantFrom,
   defaultForm,
+  basicHeadertForm,
 } from '@datas/pages/formLayout';
 import { createTabs } from '@datas/pages/helpers/tabHelpers';
+import { ID_BASIC_HEADER_FORM } from '../formLayout/types';
 
 const config = {
   componentType: 'tabs',
@@ -60,6 +62,20 @@ const formLayout: SectionContent[] = [
         title: 'Default Form',
         col: 'col-1',
         tabData: createTabs(ID_DEFAULT_FORM, defaultForm(ID_DEFAULT_FORM)),
+      },
+      {
+        variant: 'default',
+        type: 'columnGroup',
+        config: {
+          id: ID_BASIC_HEADER_FORM,
+          ...config,
+        },
+        title: 'Default Form',
+        col: 'col-1',
+        tabData: createTabs(
+          ID_BASIC_HEADER_FORM,
+          basicHeadertForm(ID_BASIC_HEADER_FORM)
+        ),
       },
     ],
   },

@@ -1,14 +1,17 @@
 import { ColKey } from '@components/UI/Box/boxTheme';
 import { SelectItemProps } from '@radix-ui/react-select';
+import { LucideIcon } from 'lucide-react';
 
 const ID_ORDINARY_FORM = 'ordinary-form';
 const ID_INPUT_VARIANT_FORM = 'input-variant-form';
 const ID_DEFAULT_FORM = 'default-form';
+const ID_BASIC_HEADER_FORM = 'basic-header-form';
 
 type FormLayoutVariant =
   | typeof ID_ORDINARY_FORM
   | typeof ID_INPUT_VARIANT_FORM
-  | typeof ID_DEFAULT_FORM;
+  | typeof ID_DEFAULT_FORM
+  | typeof ID_BASIC_HEADER_FORM;
 
 // Define supported form input types
 type FormFieldType =
@@ -62,7 +65,15 @@ interface FormFieldGroup {
   child: (FormField | FormFieldGroup)[];
 }
 
-type FormSection = (FormField | FormFieldGroup)[];
+interface HeaderForm {
+  id: string;
+  label: string;
+  description?: string;
+  icon?: LucideIcon;
+}
+
+type HeaderFormItem = HeaderForm[];
+type FormSection = (FormField | FormFieldGroup | HeaderForm)[];
 
 interface ButtonFormType {
   id: string;
@@ -70,7 +81,12 @@ interface ButtonFormType {
   label: string;
 }
 
-export { ID_DEFAULT_FORM, ID_INPUT_VARIANT_FORM, ID_ORDINARY_FORM };
+export {
+  ID_DEFAULT_FORM,
+  ID_INPUT_VARIANT_FORM,
+  ID_ORDINARY_FORM,
+  ID_BASIC_HEADER_FORM,
+};
 export type {
   FormLayoutVariant,
   FormFieldGroup,
@@ -81,4 +97,6 @@ export type {
   ButtonFormType,
   Options,
   FormSection,
+  HeaderForm,
+  HeaderFormItem,
 };

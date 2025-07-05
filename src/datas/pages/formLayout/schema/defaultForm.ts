@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const defaultFormSchema = z.object({
+const defaultFormSchema = z.object({
   'default-text': z.string(),
   email: z.string().email(),
   password: z.string().min(8).max(20),
@@ -9,3 +9,13 @@ export const defaultFormSchema = z.object({
   'radio-group': z.string(),
   select: z.string(),
 });
+
+const basicHeaderForm = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  gender: z.string(),
+  dateOfBirth: z.string(),
+  membership: z.boolean(),
+});
+
+export { basicHeaderForm, defaultFormSchema };
