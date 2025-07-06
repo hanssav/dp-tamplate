@@ -61,7 +61,7 @@ const PreviewFormLayout = ({
 
               if ('child' in item) {
                 return (
-                  <Box col={item.col} key={index}>
+                  <Box col={item.col} key={index} className="gap-x-10">
                     {item.child.map((child: any, childIndex: number) => {
                       return (
                         <FormField
@@ -106,13 +106,15 @@ const PreviewFormLayout = ({
               }
             })}
 
-            {buttonFormConfig[variant].map((btn: any, index: number) =>
-              btn?.id ? (
-                <Button key={index} type={btn.type}>
-                  {btn.label}
-                </Button>
-              ) : null
-            )}
+            <Box className="mt-4 flex items-center justify-start space-x-2">
+              {buttonFormConfig[variant].map((btn: any, index: number) =>
+                btn?.id ? (
+                  <Button key={index} type={btn.type} color={btn.color}>
+                    {btn.label}
+                  </Button>
+                ) : null
+              )}
+            </Box>
           </form>
         </Form>
       </Box>

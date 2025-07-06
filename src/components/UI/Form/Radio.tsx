@@ -9,7 +9,7 @@ const Radio = React.forwardRef<
   return (
     <RadioPrimitive.Root
       ref={ref}
-      className={cn('flex flex-col gap-2.5', className)}
+      className={cn('gap-2.5', className)}
       {...props}
     />
   );

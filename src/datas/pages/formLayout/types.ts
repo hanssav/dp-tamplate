@@ -20,7 +20,8 @@ type FormFieldType =
   | 'checkbox'
   | 'textarea'
   | 'radio'
-  | 'select';
+  | 'select'
+  | 'date';
 
 // Type for checkbox item
 interface Options {
@@ -35,6 +36,9 @@ interface BaseFormField {
   label?: string;
   placeholder?: string;
   description?: string;
+  config?: {
+    [key: string]: any;
+  };
 }
 
 interface CheckboxGroupField extends BaseFormField {
@@ -76,7 +80,8 @@ type FormSection = (FormField | FormFieldGroup | HeaderForm)[];
 
 interface ButtonFormType {
   id: string;
-  type: 'submit';
+  type: 'submit' | 'cancel' | 'reset';
+  color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
   label: string;
 }
 

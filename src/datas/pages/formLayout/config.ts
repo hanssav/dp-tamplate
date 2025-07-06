@@ -84,6 +84,9 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
           id: 'radio-group',
           type: 'radio',
           name: 'radio-group',
+          config: {
+            flex: 'flex-col',
+          },
           options: [
             {
               id: 'radio-group-1',
@@ -114,9 +117,62 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
   ],
   [ID_BASIC_HEADER_FORM]: [
     {
-      id: 'personal-info-header',
-      label: 'Personal Info',
+      id: 'person-info-header',
+      label: 'Person Info',
       icon: Info,
+    },
+    {
+      col: 'col-2',
+      id: 'name',
+      child: [
+        { id: 'first-name', type: 'text', label: 'First Name' },
+        { id: 'last-name', type: 'text', label: 'Last Name' },
+      ],
+    },
+    {
+      col: 'col-2',
+      id: 'gender-birth',
+      child: [
+        {
+          id: 'gender',
+          type: 'select',
+          label: 'Select Gender',
+          options: [
+            { id: 'male', label: 'Male' },
+            { id: 'female', label: 'Female' },
+          ],
+        },
+        { id: 'birth-date', type: 'date', label: 'Birth Date' },
+      ],
+    },
+    {
+      id: 'membership',
+      type: 'radio',
+      name: 'membership',
+      label: 'Membership',
+      config: { flex: 'flex-row', margin: 'm-1' },
+      options: [
+        { id: 'membership-paid', label: 'Paid' },
+        { id: 'membership-free', label: 'Free' },
+      ],
+    },
+    { id: 'address-info-header', label: 'Address', icon: Info },
+    { id: 'street', type: 'text', label: 'Street' },
+    {
+      col: 'col-2',
+      id: 'city-state',
+      child: [
+        { id: 'city', type: 'text', label: 'City' },
+        { id: 'state', type: 'text', label: 'State' },
+      ],
+    },
+    {
+      col: 'col-2',
+      id: 'post-code-country',
+      child: [
+        { id: 'post-code', type: 'text', label: 'Post Code' },
+        { id: 'country', type: 'text', label: 'Country' },
+      ],
     },
   ],
 };
@@ -137,7 +193,20 @@ const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
       label: 'Submit',
     },
   ],
-  [ID_BASIC_HEADER_FORM]: [],
+  [ID_BASIC_HEADER_FORM]: [
+    {
+      id: `${ID_BASIC_HEADER_FORM}-cancel`,
+      type: 'cancel',
+      label: 'Cancel',
+      color: 'warning',
+    },
+    {
+      id: `${ID_BASIC_HEADER_FORM}-submit`,
+      type: 'submit',
+      label: 'Submit',
+      color: 'primary',
+    },
+  ],
 };
 
 export {
