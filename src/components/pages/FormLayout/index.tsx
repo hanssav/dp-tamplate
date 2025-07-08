@@ -16,17 +16,20 @@ import {
   ID_ORDINARY_FORM,
 } from '@datas/pages/formLayout/config';
 
-import { useDefaultForm } from '@datas/pages/formLayout/hooks/useDefaultForm';
-import { useInputVariantForm } from '@datas/pages/formLayout/hooks/useInputVariantForm';
-import { useOrdinaryForm } from '@datas/pages/formLayout/hooks/useOrdinaryForm';
-import { useBasicHeaderForm } from '@datas/pages/formLayout/hooks/useBacisHeaderForm';
+import {
+  useDefaultForm,
+  useInputVariantForm,
+  useBasicHeaderForm,
+  useOrdinaryForm,
+} from '@datas/pages/formLayout/hooks';
+
 import { HeaderInfo, isHeader } from './items/HeaderInfo';
 import { renderInput } from './items';
 import {
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
 } from '@datas/pages/formLayout/types';
-import { FormLayoutProvider } from '../../../datas/pages/formLayout/FormContextLayout';
+import { FormLayoutProvider } from '@datas/pages/formLayout/FormContextLayout';
 
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,

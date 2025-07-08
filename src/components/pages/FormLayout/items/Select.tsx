@@ -19,7 +19,11 @@ export const SelectGroupItem = ({ item, field }: Props) => {
     <>
       <FormLabel className="font-bold">{item.label}</FormLabel>
       <FormControl>
-        <Select defaultValue={field.value} onValueChange={field.onChange}>
+        <Select
+          defaultValue={field.value}
+          onValueChange={field.onChange}
+          value={field.value}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Choose Options" />
           </SelectTrigger>

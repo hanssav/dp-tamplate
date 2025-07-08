@@ -35,10 +35,12 @@ export function useBasicHeaderForm() {
   });
 
   const onCancel = () => {
+    console.log('onCancel');
     form.reset();
   };
 
   const onSubmit = (data: HeaderFormNameSchema) => {
+    console.log('onSubmit', data);
     return data;
   };
 

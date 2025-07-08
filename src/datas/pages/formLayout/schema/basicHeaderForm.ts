@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const basicHeaderForm = z.object({
-  firstName: z.string().min(1, 'First name is required'),
+  firstName: z.string(),
   lastName: z.string(),
   gender: z.string(),
   dateOfBirth: z.string(),
