@@ -83,6 +83,7 @@ interface ButtonFormType {
   type: 'submit' | 'cancel' | 'reset';
   color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
   label: string;
+  onClick?: () => void;
 }
 
 export {

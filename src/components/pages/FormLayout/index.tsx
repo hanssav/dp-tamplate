@@ -26,7 +26,7 @@ import {
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
 } from '@datas/pages/formLayout/types';
-import { FormLayoutProvider } from '../../../datas/pages/formLayout/context/FormContextLayout';
+import { FormLayoutProvider } from '../../../datas/pages/formLayout/FormContextLayout';
 
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,
@@ -42,7 +42,7 @@ const PreviewFormLayout = ({
   id: string;
   variant: FormLayoutVariant;
 }) => {
-  const { form, onSubmit } = formHooksMap[variant]();
+  const { form, onSubmit, onCancel } = formHooksMap[variant]();
 
   return (
     <FormLayoutProvider value={{ form, control: form.control, variant }}>
@@ -109,7 +109,12 @@ const PreviewFormLayout = ({
             <Box className="mt-4 flex items-center justify-start space-x-2">
               {buttonFormConfig[variant].map((btn: any, index: number) =>
                 btn?.id ? (
-                  <Button key={index} type={btn.type} color={btn.color}>
+                  <Button
+                    key={index}
+                    type={btn.type}
+                    color={btn.color}
+                    {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
+                  >
                     {btn.label}
                   </Button>
                 ) : null

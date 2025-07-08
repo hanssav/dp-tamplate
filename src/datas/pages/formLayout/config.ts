@@ -123,10 +123,10 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
     },
     {
       col: 'col-2',
-      id: 'name',
+      id: 'name-header-form',
       child: [
-        { id: 'first-name', type: 'text', label: 'First Name' },
-        { id: 'last-name', type: 'text', label: 'Last Name' },
+        { id: 'firstName', type: 'text', label: 'First Name' },
+        { id: 'lastName', type: 'text', label: 'Last Name' },
       ],
     },
     {
@@ -170,7 +170,7 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
       col: 'col-2',
       id: 'post-code-country',
       child: [
-        { id: 'post-code', type: 'text', label: 'Post Code' },
+        { id: 'postCode', type: 'text', label: 'Post Code' },
         { id: 'country', type: 'text', label: 'Country' },
       ],
     },

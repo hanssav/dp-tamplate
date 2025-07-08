@@ -10,12 +10,4 @@ const defaultFormSchema = z.object({
   select: z.string(),
 });
 
-const basicHeaderForm = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  gender: z.string(),
-  dateOfBirth: z.string(),
-  membership: z.boolean(),
-});
-
-export { basicHeaderForm, defaultFormSchema };
+export { defaultFormSchema };
