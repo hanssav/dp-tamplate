@@ -34,7 +34,7 @@ export const button = {
     },
     disabled: {
       default:
-        'disabled:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-200 border-none',
+        'disabled:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-300 disabled:text-gray-700 border-none',
     },
   },
   border: {
