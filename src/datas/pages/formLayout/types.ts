@@ -1,3 +1,4 @@
+import { ButtonColor } from '@components/types/button';
 import { ColKey } from '@components/UI/Box/boxTheme';
 import { LucideIcon } from 'lucide-react';
 
@@ -21,7 +22,7 @@ type FormFieldType =
   | 'textarea'
   | 'radio'
   | 'select'
-  | 'date';
+  | 'datepicker';
 
 // Type for checkbox item
 interface Options {
@@ -42,7 +43,6 @@ interface BaseFormField {
 }
 
 interface CheckboxGroupField extends BaseFormField {
-  type: FormFieldType;
   name?: string;
   options: Options[];
 }
@@ -52,15 +52,19 @@ interface SingleCheckboxField extends BaseFormField {
 }
 
 interface SelectField extends BaseFormField {
-  type: FormFieldType;
   options: Options[];
+}
+
+interface DatepickerField extends BaseFormField {
+  value?: Date | string;
 }
 
 type FormField =
   | BaseFormField
   | CheckboxGroupField
   | SingleCheckboxField
-  | SelectField;
+  | SelectField
+  | DatepickerField;
 
 interface FormFieldGroup {
   col: ColKey;
@@ -80,8 +84,8 @@ type FormSection = (FormField | FormFieldGroup | HeaderForm)[];
 
 interface ButtonFormType {
   id: string;
-  type: 'submit' | 'cancel' | 'reset';
-  color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+  type: 'submit' | 'reset';
+  color?: ButtonColor;
   label: string;
   onClick?: () => void;
 }
@@ -105,4 +109,5 @@ export type {
   HeaderForm,
   HeaderFormItem,
   SelectField,
+  DatepickerField,
 };

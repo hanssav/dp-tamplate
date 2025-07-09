@@ -26,6 +26,7 @@ import {
 import { HeaderInfo, isHeader } from './items/HeaderInfo';
 import { renderInput } from './items';
 import {
+  ButtonFormType,
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
 } from '@datas/pages/formLayout/types';
@@ -110,17 +111,18 @@ const PreviewFormLayout = ({
             })}
 
             <Box className="mt-4 flex items-center justify-start space-x-2">
-              {buttonFormConfig[variant].map((btn: any, index: number) =>
-                btn?.id ? (
-                  <Button
-                    key={index}
-                    type={btn.type}
-                    color={btn.color}
-                    {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
-                  >
-                    {btn.label}
-                  </Button>
-                ) : null
+              {buttonFormConfig[variant].map(
+                (btn: ButtonFormType, index: number) =>
+                  btn?.id ? (
+                    <Button
+                      key={index}
+                      type={btn.type}
+                      color={btn.color}
+                      {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
+                    >
+                      {btn.label}
+                    </Button>
+                  ) : null
               )}
             </Box>
           </form>

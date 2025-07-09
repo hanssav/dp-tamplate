@@ -142,7 +142,7 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
             { id: 'female', label: 'Female' },
           ],
         },
-        { id: 'birth-date', type: 'date', label: 'Birth Date' },
+        { id: 'birth-date', type: 'datepicker', label: 'Birth Date' },
       ],
     },
     {
@@ -196,7 +196,7 @@ const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
   [ID_BASIC_HEADER_FORM]: [
     {
       id: `${ID_BASIC_HEADER_FORM}-cancel`,
-      type: 'cancel',
+      type: 'reset',
       label: 'Cancel',
       color: 'warning',
     },
