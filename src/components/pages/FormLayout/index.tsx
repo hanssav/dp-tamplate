@@ -29,14 +29,17 @@ import {
   ButtonFormType,
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
+  ID_DISABLED_FORM,
 } from '@datas/pages/formLayout/types';
 import { FormLayoutProvider } from '@datas/pages/formLayout/FormContextLayout';
+import { useDisabledForm } from '@datas/pages/formLayout/hooks/useDisabledForm';
 
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,
   [ID_INPUT_VARIANT_FORM]: useInputVariantForm,
   [ID_DEFAULT_FORM]: useDefaultForm,
   [ID_BASIC_HEADER_FORM]: useBasicHeaderForm,
+  [ID_DISABLED_FORM]: useDisabledForm,
 };
 
 const PreviewFormLayout = ({
@@ -118,6 +121,7 @@ const PreviewFormLayout = ({
                       key={index}
                       type={btn.type}
                       color={btn.color}
+                      disabled={btn.disabled}
                       {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
                     >
                       {btn.label}

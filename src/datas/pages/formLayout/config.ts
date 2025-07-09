@@ -5,6 +5,7 @@ import {
   FormSection,
   ID_BASIC_HEADER_FORM,
   ID_DEFAULT_FORM,
+  ID_DISABLED_FORM,
   ID_INPUT_VARIANT_FORM,
   ID_ORDINARY_FORM,
 } from './types';
@@ -175,6 +176,32 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
       ],
     },
   ],
+  [ID_DISABLED_FORM]: [
+    {
+      id: 'name',
+      type: 'text',
+      label: 'Name',
+      placeholder: 'Enter your name',
+      description: 'This field is required',
+      disabled: true,
+    },
+    {
+      id: 'email',
+      type: 'email',
+      label: 'Email',
+      placeholder: 'Enter your email',
+      description: 'This field is required',
+      disabled: true,
+    },
+    {
+      id: 'password',
+      type: 'password',
+      label: 'Password',
+      placeholder: 'Enter your password',
+      description: 'This field is required',
+      disabled: true,
+    },
+  ],
 };
 
 const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
@@ -205,6 +232,14 @@ const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
       type: 'submit',
       label: 'Submit',
       color: 'primary',
+    },
+  ],
+  [ID_DISABLED_FORM]: [
+    {
+      id: `${ID_DISABLED_FORM}-submit`,
+      type: 'submit',
+      label: 'Submit',
+      disabled: true,
     },
   ],
 };

@@ -1,17 +1,20 @@
 import { ButtonColor } from '@components/types/button';
 import { ColKey } from '@components/UI/Box/boxTheme';
+import { ButtonProps } from 'flowbite-react';
 import { LucideIcon } from 'lucide-react';
 
 const ID_ORDINARY_FORM = 'ordinary-form';
 const ID_INPUT_VARIANT_FORM = 'input-variant-form';
 const ID_DEFAULT_FORM = 'default-form';
 const ID_BASIC_HEADER_FORM = 'basic-header-form';
+const ID_DISABLED_FORM = 'disabled-form';
 
 type FormLayoutVariant =
   | typeof ID_ORDINARY_FORM
   | typeof ID_INPUT_VARIANT_FORM
   | typeof ID_DEFAULT_FORM
-  | typeof ID_BASIC_HEADER_FORM;
+  | typeof ID_BASIC_HEADER_FORM
+  | typeof ID_DISABLED_FORM;
 
 // Define supported form input types
 type FormFieldType =
@@ -37,6 +40,7 @@ interface BaseFormField {
   label?: string;
   placeholder?: string;
   description?: string;
+  disabled?: boolean;
   config?: {
     [key: string]: any;
   };
@@ -82,7 +86,7 @@ interface HeaderForm {
 type HeaderFormItem = HeaderForm[];
 type FormSection = (FormField | FormFieldGroup | HeaderForm)[];
 
-interface ButtonFormType {
+interface ButtonFormType extends ButtonProps {
   id: string;
   type: 'submit' | 'reset';
   color?: ButtonColor;
@@ -95,6 +99,7 @@ export {
   ID_INPUT_VARIANT_FORM,
   ID_ORDINARY_FORM,
   ID_BASIC_HEADER_FORM,
+  ID_DISABLED_FORM,
 };
 export type {
   FormLayoutVariant,

@@ -19,6 +19,7 @@ export const InputItem = ({ item, field }: Props) => {
           id={`${item.id}-${variant}`}
           type={item.type}
           placeholder={item.placeholder}
+          disabled={item.disabled}
           {...field}
         />
       </FormControl>

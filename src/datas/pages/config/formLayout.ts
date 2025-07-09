@@ -9,9 +9,10 @@ import {
   inputVariantFrom,
   defaultForm,
   basicHeadertForm,
+  disbaledForm,
 } from '@datas/pages/formLayout';
 import { createTabs } from '@datas/pages/helpers/tabHelpers';
-import { ID_BASIC_HEADER_FORM } from '../formLayout/types';
+import { ID_BASIC_HEADER_FORM, ID_DISABLED_FORM } from '../formLayout/types';
 
 const config = {
   componentType: 'tabs',
@@ -76,6 +77,17 @@ const formLayout: SectionContent[] = [
           ID_BASIC_HEADER_FORM,
           basicHeadertForm(ID_BASIC_HEADER_FORM)
         ),
+      },
+      {
+        variant: 'default',
+        type: 'columnGroup',
+        config: {
+          id: ID_DISABLED_FORM,
+          ...config,
+        },
+        title: 'Disabled Form',
+        col: 'col-1',
+        tabData: createTabs(ID_DISABLED_FORM, disbaledForm(ID_DISABLED_FORM)),
       },
     ],
   },
