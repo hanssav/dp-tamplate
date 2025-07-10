@@ -6,7 +6,12 @@ import {
 } from '@datas/pages/formLayout/config';
 import { lazy } from 'react';
 import { generateTab, TabContent } from './../helpers/generateTabs';
-import { ID_BASIC_HEADER_FORM, ID_DISABLED_FORM } from './types';
+import {
+  ID_BASIC_HEADER_FORM,
+  ID_DISABLED_FORM,
+  ID_FORM_LEFT_ICON,
+  ID_FORM_RIGHT_ICON,
+} from './types';
 
 const ordinaryForm = (id: string): TabContent =>
   generateTab(
@@ -93,10 +98,46 @@ const disbaledForm = (id: string): TabContent =>
     )
   );
 
+const leftIconForm = (id: string): TabContent =>
+  generateTab(
+    PreviewFormLayout,
+    id,
+    ID_FORM_LEFT_ICON,
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewHtml'],
+      }))
+    ),
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewTsx'],
+      }))
+    )
+  );
+
+const rightIconForm = (id: string): TabContent =>
+  generateTab(
+    PreviewFormLayout,
+    id,
+    ID_FORM_RIGHT_ICON,
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewHtml'],
+      }))
+    ),
+    lazy(() =>
+      import('@datas/pages/radio/preview/basicRadioPreview').then(mod => ({
+        default: mod['BasicRadioPreviewTsx'],
+      }))
+    )
+  );
+
 export {
   ordinaryForm,
   inputVariantFrom,
   defaultForm,
   basicHeadertForm,
   disbaledForm,
+  leftIconForm,
+  rightIconForm,
 };

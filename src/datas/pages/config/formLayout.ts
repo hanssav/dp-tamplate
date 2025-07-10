@@ -10,9 +10,16 @@ import {
   defaultForm,
   basicHeadertForm,
   disbaledForm,
+  leftIconForm,
+  rightIconForm,
 } from '@datas/pages/formLayout';
 import { createTabs } from '@datas/pages/helpers/tabHelpers';
-import { ID_BASIC_HEADER_FORM, ID_DISABLED_FORM } from '../formLayout/types';
+import {
+  ID_BASIC_HEADER_FORM,
+  ID_DISABLED_FORM,
+  ID_FORM_LEFT_ICON,
+  ID_FORM_RIGHT_ICON,
+} from '../formLayout/types';
 
 const config = {
   componentType: 'tabs',
@@ -88,6 +95,51 @@ const formLayout: SectionContent[] = [
         title: 'Disabled Form',
         col: 'col-1',
         tabData: createTabs(ID_DISABLED_FORM, disbaledForm(ID_DISABLED_FORM)),
+      },
+      {
+        variant: 'default',
+        // type: 'columnGroup',
+        config: {
+          headerLine: true,
+          border: 'border-none',
+          padding: 'px-5 py-2 gap-5',
+          usePaddingInContent: true,
+        },
+        // title: 'Form Icons',
+        col: 'col-2',
+        childOptions: {
+          type: 'columnGroup',
+        },
+        data: [
+          {
+            variant: 'default',
+            type: 'columnGroup',
+            config: {
+              id: ID_FORM_LEFT_ICON,
+              ...config,
+            },
+            title: 'Form With Left Icon',
+            col: 'col-1',
+            tabData: createTabs(
+              ID_FORM_LEFT_ICON,
+              leftIconForm(ID_FORM_LEFT_ICON)
+            ),
+          },
+          {
+            variant: 'default',
+            type: 'columnGroup',
+            config: {
+              id: ID_FORM_RIGHT_ICON,
+              ...config,
+            },
+            title: 'Form With Right Icon',
+            col: 'col-1',
+            tabData: createTabs(
+              ID_FORM_RIGHT_ICON,
+              rightIconForm(ID_FORM_RIGHT_ICON)
+            ),
+          },
+        ],
       },
     ],
   },

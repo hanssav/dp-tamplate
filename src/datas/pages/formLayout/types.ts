@@ -8,13 +8,17 @@ const ID_INPUT_VARIANT_FORM = 'input-variant-form';
 const ID_DEFAULT_FORM = 'default-form';
 const ID_BASIC_HEADER_FORM = 'basic-header-form';
 const ID_DISABLED_FORM = 'disabled-form';
+const ID_FORM_LEFT_ICON = 'form-left-icon';
+const ID_FORM_RIGHT_ICON = 'form-right-icon';
 
 type FormLayoutVariant =
   | typeof ID_ORDINARY_FORM
   | typeof ID_INPUT_VARIANT_FORM
   | typeof ID_DEFAULT_FORM
   | typeof ID_BASIC_HEADER_FORM
-  | typeof ID_DISABLED_FORM;
+  | typeof ID_DISABLED_FORM
+  | typeof ID_FORM_LEFT_ICON
+  | typeof ID_FORM_RIGHT_ICON;
 
 // Define supported form input types
 type FormFieldType =
@@ -100,6 +104,8 @@ export {
   ID_ORDINARY_FORM,
   ID_BASIC_HEADER_FORM,
   ID_DISABLED_FORM,
+  ID_FORM_LEFT_ICON,
+  ID_FORM_RIGHT_ICON,
 };
 export type {
   FormLayoutVariant,

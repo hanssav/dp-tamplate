@@ -21,6 +21,9 @@ import {
   useInputVariantForm,
   useBasicHeaderForm,
   useOrdinaryForm,
+  useLeftIconForm,
+  useRightIconForm,
+  useDisabledForm,
 } from '@datas/pages/formLayout/hooks';
 
 import { HeaderInfo, isHeader } from './items/HeaderInfo';
@@ -30,9 +33,10 @@ import {
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
   ID_DISABLED_FORM,
+  ID_FORM_LEFT_ICON,
+  ID_FORM_RIGHT_ICON,
 } from '@datas/pages/formLayout/types';
 import { FormLayoutProvider } from '@datas/pages/formLayout/FormContextLayout';
-import { useDisabledForm } from '@datas/pages/formLayout/hooks/useDisabledForm';
 
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,
@@ -40,6 +44,8 @@ const formHooksMap: Record<string, any> = {
   [ID_DEFAULT_FORM]: useDefaultForm,
   [ID_BASIC_HEADER_FORM]: useBasicHeaderForm,
   [ID_DISABLED_FORM]: useDisabledForm,
+  [ID_FORM_LEFT_ICON]: useLeftIconForm,
+  [ID_FORM_RIGHT_ICON]: useRightIconForm,
 };
 
 const PreviewFormLayout = ({

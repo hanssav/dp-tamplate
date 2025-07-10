@@ -43,7 +43,7 @@ const UiSection = ({ section }: UiSectionProps) => {
         <Box
           col={item.col ?? 'col-1'}
           items={children}
-          className={isCollumnGroup ? 'gap-x-6 py-5' : `gap-y-6`}
+          className={isCollumnGroup ? 'gap-x-6 py-5' : `gap-x-5 gap-y-6`}
         />
       ),
       span: (item as any).span ?? 'span-1',

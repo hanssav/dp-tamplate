@@ -6,10 +6,38 @@ import {
   ID_BASIC_HEADER_FORM,
   ID_DEFAULT_FORM,
   ID_DISABLED_FORM,
+  ID_FORM_LEFT_ICON,
+  ID_FORM_RIGHT_ICON,
   ID_INPUT_VARIANT_FORM,
   ID_ORDINARY_FORM,
 } from './types';
 
+const baseIconForm = [
+  {
+    id: 'username',
+    type: 'text',
+    label: 'Username',
+    placeholder: 'Enter your username',
+  },
+  {
+    id: 'email',
+    type: 'email',
+    label: 'Email',
+    placeholder: 'Enter your email',
+  },
+  {
+    id: 'password',
+    type: 'password',
+    label: 'Password',
+    placeholder: 'Enter your password',
+  },
+  {
+    id: 'confirm-password',
+    type: 'password',
+    label: 'Confirm Password',
+    placeholder: 'Confirm your password',
+  },
+];
 const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
   [ID_ORDINARY_FORM]: [
     {
@@ -202,6 +230,8 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
       disabled: true,
     },
   ],
+  [ID_FORM_LEFT_ICON]: baseIconForm,
+  [ID_FORM_RIGHT_ICON]: baseIconForm,
 };
 
 const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
@@ -240,6 +270,34 @@ const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
       type: 'submit',
       label: 'Submit',
       disabled: true,
+    },
+  ],
+  [ID_FORM_LEFT_ICON]: [
+    {
+      id: `${ID_FORM_LEFT_ICON}-submit`,
+      type: 'submit',
+      label: 'Submit',
+      color: 'primary',
+    },
+    {
+      id: `${ID_FORM_LEFT_ICON}-cancel`,
+      type: 'reset',
+      label: 'Cancel',
+      color: 'warning',
+    },
+  ],
+  [ID_FORM_RIGHT_ICON]: [
+    {
+      id: `${ID_FORM_RIGHT_ICON}-submit`,
+      type: 'submit',
+      label: 'Submit',
+      color: 'primary',
+    },
+    {
+      id: `${ID_FORM_RIGHT_ICON}-cancel`,
+      type: 'reset',
+      label: 'Cancel',
+      color: 'warning',
     },
   ],
 };
