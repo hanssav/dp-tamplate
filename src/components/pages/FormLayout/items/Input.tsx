@@ -5,12 +5,16 @@ import { ControllerRenderProps } from 'react-hook-form';
 import { useFormLayout } from '../../../../datas/pages/formLayout/FormContextLayout';
 
 interface Props {
-  item: BaseFormField;
+  item: BaseFormField & {
+    icon?: React.ElementType;
+    iconPosition?: 'start' | 'end';
+  };
   field: ControllerRenderProps;
 }
 
 export const InputItem = ({ item, field }: Props) => {
   const { variant } = useFormLayout();
+
   return (
     <>
       <FormLabel className="font-bold">{item.label}</FormLabel>
@@ -20,6 +24,8 @@ export const InputItem = ({ item, field }: Props) => {
           type={item.type}
           placeholder={item.placeholder}
           disabled={item.disabled}
+          icon={item.icon}
+          iconPosition={item.iconPosition}
           {...field}
         />
       </FormControl>

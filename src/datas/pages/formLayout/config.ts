@@ -12,32 +12,50 @@ import {
   ID_ORDINARY_FORM,
 } from './types';
 
+import { User, Mail, Lock, ShieldCheck } from 'lucide-react';
+
 const baseIconForm = [
   {
     id: 'username',
     type: 'text',
     label: 'Username',
     placeholder: 'Enter your username',
+    icon: User,
   },
   {
     id: 'email',
     type: 'email',
     label: 'Email',
     placeholder: 'Enter your email',
+    icon: Mail,
   },
   {
     id: 'password',
     type: 'password',
     label: 'Password',
     placeholder: 'Enter your password',
+
+    icon: Lock,
   },
   {
     id: 'confirm-password',
     type: 'password',
     label: 'Confirm Password',
     placeholder: 'Confirm your password',
+    icon: ShieldCheck,
   },
 ];
+
+const addIconPosition = (
+  fields: any[],
+  position: 'start' | 'end' = 'start'
+): any[] => {
+  return fields.map(field => ({
+    ...field,
+    iconPosition: field.icon ? position : undefined,
+  }));
+};
+
 const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
   [ID_ORDINARY_FORM]: [
     {
@@ -230,8 +248,8 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
       disabled: true,
     },
   ],
-  [ID_FORM_LEFT_ICON]: baseIconForm,
-  [ID_FORM_RIGHT_ICON]: baseIconForm,
+  [ID_FORM_LEFT_ICON]: addIconPosition(baseIconForm),
+  [ID_FORM_RIGHT_ICON]: addIconPosition(baseIconForm, 'end'),
 };
 
 const buttonFormConfig: Record<FormLayoutVariant, ButtonFormType[]> = {
