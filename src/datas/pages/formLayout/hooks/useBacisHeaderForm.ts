@@ -35,6 +35,7 @@ export function useBasicHeaderForm() {
   });
 
   const onCancel = () => {
+    form.clearErrors();
     return form.reset();
   };
 

@@ -14,11 +14,10 @@ export const useLeftIconForm = () => {
     },
   });
 
-  const onSubmit = (data: IconFormSchema) => {
-    return data;
-  };
+  const onCancel = () => (form.clearErrors(), form.reset());
+  const onSubmit = (data: IconFormSchema) => data;
 
-  return { form, onSubmit };
+  return { form, onSubmit, onCancel };
 };
 
 export const useRightIconForm = () => {
@@ -33,9 +32,8 @@ export const useRightIconForm = () => {
     },
   });
 
-  const onSubmit = (data: IconFormSchema) => {
-    return data;
-  };
+  const onCancel = () => (form.clearErrors(), form.reset());
+  const onSubmit = (data: IconFormSchema) => data;
 
-  return { form, onSubmit };
+  return { form, onSubmit, onCancel };
 };

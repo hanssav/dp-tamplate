@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 const basicHeaderForm = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z.string().min(3),
+  lastName: z.string().min(3),
   gender: z.string(),
   dateOfBirth: z.string(),
   membership: z.string(),
