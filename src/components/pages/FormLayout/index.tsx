@@ -48,6 +48,67 @@ const formHooksMap: Record<string, any> = {
   [ID_FORM_RIGHT_ICON]: useRightIconForm,
 };
 
+const FormButtons = ({
+  buttons,
+  onCancel,
+}: {
+  buttons: ButtonFormType[];
+  onCancel: () => void;
+}) => (
+  <Box className="mt-4 flex items-center justify-start space-x-2">
+    {buttons.map((btn, index) =>
+      btn?.id ? (
+        <Button
+          key={index}
+          type={btn.type}
+          color={btn.color}
+          disabled={btn.disabled}
+          {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
+        >
+          {btn.label}
+        </Button>
+      ) : null
+    )}
+  </Box>
+);
+
+const SingleField = ({ item, control }: { item: any; control: any }) => (
+  <FormField
+    control={control}
+    name={item.id}
+    render={({ field }) => (
+      <FormItem>
+        {RenderInput({ item, field })}
+        {item.description && (
+          <FormDescription>{item.description}</FormDescription>
+        )}
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+);
+
+const FieldGroup = ({ group, control }: { group: any; control: any }) => (
+  <Box col={group.col} className="gap-x-10">
+    {group.child.map((child: any, childIndex: number) => (
+      <FormField
+        key={childIndex}
+        control={control}
+        name={child.id}
+        render={({ field }) => (
+          <FormItem>
+            {RenderInput({ item: child, field })}
+            {child.description && (
+              <FormDescription>{child.description}</FormDescription>
+            )}
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    ))}
+  </Box>
+);
+
 const PreviewFormLayout = ({
   id,
   variant,
@@ -74,67 +135,21 @@ const PreviewFormLayout = ({
 
               if ('child' in item) {
                 return (
-                  <Box col={item.col} key={index} className="gap-x-10">
-                    {item.child.map((child: any, childIndex: number) => {
-                      return (
-                        <FormField
-                          key={childIndex}
-                          control={form.control}
-                          name={child.id}
-                          render={({ field }) => (
-                            <FormItem>
-                              {RenderInput({ item: child, field })}
-                              {child.description && (
-                                <FormDescription>
-                                  {child.description}
-                                </FormDescription>
-                              )}
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      );
-                    })}
-                  </Box>
+                  <FieldGroup key={index} group={item} control={form.control} />
                 );
               }
 
               if ('type' in item) {
                 return (
-                  <FormField
-                    key={index}
-                    control={form.control}
-                    name={item.id}
-                    render={({ field }) => (
-                      <FormItem>
-                        {RenderInput({ item, field })}
-                        {item.description && (
-                          <FormDescription>{item.description}</FormDescription>
-                        )}
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <SingleField key={index} item={item} control={form.control} />
                 );
               }
             })}
 
-            <Box className="mt-4 flex items-center justify-start space-x-2">
-              {buttonFormConfig[variant].map(
-                (btn: ButtonFormType, index: number) =>
-                  btn?.id ? (
-                    <Button
-                      key={index}
-                      type={btn.type}
-                      color={btn.color}
-                      disabled={btn.disabled}
-                      {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
-                    >
-                      {btn.label}
-                    </Button>
-                  ) : null
-              )}
-            </Box>
+            <FormButtons
+              buttons={buttonFormConfig[variant]}
+              onCancel={onCancel}
+            />
           </form>
         </Form>
       </Box>
