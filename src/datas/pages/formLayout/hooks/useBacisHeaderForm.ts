@@ -21,11 +21,11 @@ export function useBasicHeaderForm() {
   const form = useForm<HeaderFormNameSchema>({
     resolver: zodResolver(headerFormNameSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      firstName: 'handi',
+      lastName: 'irawan',
       gender: '',
-      dateOfBirth: '',
       membership: '',
+      dateOfBirth: null, // Use null for controlled value; field.value will reflect the selected date
       street: '',
       city: '',
       state: '',
@@ -34,14 +34,9 @@ export function useBasicHeaderForm() {
     },
   });
 
-  const onCancel = () => {
-    form.clearErrors();
-    return form.reset();
-  };
+  const onCancel = () => (form.clearErrors(), form.reset());
 
-  const onSubmit = (data: HeaderFormNameSchema) => {
-    return data;
-  };
+  const onSubmit = (data: HeaderFormNameSchema) => data;
 
   return { form, onSubmit, onCancel };
 }

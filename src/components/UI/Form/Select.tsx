@@ -74,7 +74,7 @@ const SelectContent = React.forwardRef<
       className={cn(
         'cursor-pointer rounded-md border bg-white shadow-md focus:outline-none',
         'data-[state=open]:animate-in data-[state=closed]:animate-out',
-        'data-[state=open]:fade-in data-[state=closed]:fade-out',
+        'data-[state=closed]:fade-out data-[state=open]:fade-in',
 
         // ✅ Animate based on side (dynamic direction)
         'data-[side=bottom]:slide-in-from-top-4 data-[side=bottom]:slide-out-to-top-4',

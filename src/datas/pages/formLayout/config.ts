@@ -189,7 +189,7 @@ const formLayoutConfig: Record<FormLayoutVariant, FormSection> = {
             { id: 'female', label: 'Female' },
           ],
         },
-        { id: 'birth-date', type: 'datepicker', label: 'Birth Date' },
+        { id: 'dateOfBirth', type: 'datepicker', label: 'Birth Date' },
       ],
     },
     {

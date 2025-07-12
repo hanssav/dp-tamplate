@@ -27,7 +27,7 @@ import {
 } from '@datas/pages/formLayout/hooks';
 
 import { HeaderInfo, isHeader } from './items/HeaderInfo';
-import { renderInput } from './items';
+import { RenderInput } from './items';
 import {
   ButtonFormType,
   FormLayoutVariant,
@@ -83,7 +83,7 @@ const PreviewFormLayout = ({
                           name={child.id}
                           render={({ field }) => (
                             <FormItem>
-                              {renderInput({ item: child, field })}
+                              {RenderInput({ item: child, field })}
                               {child.description && (
                                 <FormDescription>
                                   {child.description}
@@ -107,7 +107,7 @@ const PreviewFormLayout = ({
                     name={item.id}
                     render={({ field }) => (
                       <FormItem>
-                        {renderInput({ item, field })}
+                        {RenderInput({ item, field })}
                         {item.description && (
                           <FormDescription>{item.description}</FormDescription>
                         )}
