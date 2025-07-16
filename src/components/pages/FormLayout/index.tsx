@@ -30,6 +30,8 @@ import { HeaderInfo, isHeader } from './items/HeaderInfo';
 import { RenderInput } from './items';
 import {
   ButtonFormType,
+  FormField as FormFieldProps,
+  FormFieldGroup as FormFieldGroupProps,
   FormLayoutVariant,
   ID_BASIC_HEADER_FORM,
   ID_DISABLED_FORM,
@@ -37,6 +39,7 @@ import {
   ID_FORM_RIGHT_ICON,
 } from '@datas/pages/formLayout/types';
 import { FormLayoutProvider } from '@datas/pages/formLayout/FormContextLayout';
+import { UseFormReturn } from 'react-hook-form';
 
 const formHooksMap: Record<string, any> = {
   [ID_ORDINARY_FORM]: useOrdinaryForm,
@@ -48,47 +51,13 @@ const formHooksMap: Record<string, any> = {
   [ID_FORM_RIGHT_ICON]: useRightIconForm,
 };
 
-const FormButtons = ({
-  buttons,
-  onCancel,
+const FieldGroup = ({
+  group,
+  control,
 }: {
-  buttons: ButtonFormType[];
-  onCancel: () => void;
+  group: FormFieldGroupProps;
+  control: UseFormReturn['control'];
 }) => (
-  <Box className="mt-4 flex items-center justify-start space-x-2">
-    {buttons.map((btn, index) =>
-      btn?.id ? (
-        <Button
-          key={index}
-          type={btn.type}
-          color={btn.color}
-          disabled={btn.disabled}
-          {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
-        >
-          {btn.label}
-        </Button>
-      ) : null
-    )}
-  </Box>
-);
-
-const SingleField = ({ item, control }: { item: any; control: any }) => (
-  <FormField
-    control={control}
-    name={item.id}
-    render={({ field }) => (
-      <FormItem>
-        {RenderInput({ item, field })}
-        {item.description && (
-          <FormDescription>{item.description}</FormDescription>
-        )}
-        <FormMessage />
-      </FormItem>
-    )}
-  />
-);
-
-const FieldGroup = ({ group, control }: { group: any; control: any }) => (
   <Box col={group.col} className="gap-x-10">
     {group.child.map((child: any, childIndex: number) => (
       <FormField
@@ -106,6 +75,52 @@ const FieldGroup = ({ group, control }: { group: any; control: any }) => (
         )}
       />
     ))}
+  </Box>
+);
+
+const SingleField = ({
+  item,
+  control,
+}: {
+  item: FormFieldProps;
+  control: UseFormReturn['control'];
+}) => (
+  <FormField
+    control={control}
+    name={item.id}
+    render={({ field }) => (
+      <FormItem>
+        {RenderInput({ item, field })}
+        {item.description && (
+          <FormDescription>{item.description}</FormDescription>
+        )}
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+);
+
+const FormButtons = ({
+  buttons,
+  onCancel,
+}: {
+  buttons: ButtonFormType[];
+  onCancel: ButtonFormType['onClick'];
+}) => (
+  <Box className="mt-4 flex items-center justify-start space-x-2">
+    {buttons.map((btn, index) =>
+      btn?.id ? (
+        <Button
+          key={index}
+          type={btn.type}
+          color={btn.color}
+          disabled={btn.disabled}
+          {...(btn.label === 'Cancel' ? { onClick: onCancel } : {})}
+        >
+          {btn.label}
+        </Button>
+      ) : null
+    )}
   </Box>
 );
 
